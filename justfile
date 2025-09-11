@@ -17,10 +17,10 @@ list:
 init:
     #!/usr/bin/env bash
     git submodule update --init --recursive --recommend-shallow
-    #stow -R -d {{justfile_directory()}}/qmk -t {{justfile_directory()}}/firmware .
-    if [ "$(git config submodule.firmware.ignore)" != "all" ]; then
-      git config submodule.firmware.ignore all
+    #stow -D -d {{justfile_directory()}} -t {{justfile_directory()}}/bastardkb-qmk .
+    if [ "$(git config submodule.bastardkb-qmk.ignore)" != "all" ]; then
+      git config submodule.bastardkb-qmk.ignore all
     fi
     if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/bastardkb-qmk" ]; then
-      qmk config user.qmk_home="{{justfile_directory()}}/bastardbk-qmk"
+      qmk config user.qmk_home="{{justfile_directory()}}/bastardkb-qmk"
     fi

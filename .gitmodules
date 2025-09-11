@@ -1,6 +1,7 @@
 [submodule "bastardkb-qmk"]
 	path = bastardkb-qmk
-	url = https://github.com/Bastardkb/bastardkb-qmk
+	url = https://github.com/bastardkb/bastardkb-qmk
+    branch ="bkb-master"
 [submodule "modules/getreuer"]
 	path = modules/getreuer
 	url = https://github.com/getreuer/qmk-modules.git
