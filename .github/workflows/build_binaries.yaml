@@ -6,15 +6,15 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: 'QMK Userspace Build'
-    uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
-    with:
-      qmk_repo: bastardkb/bastardkb-qmk
-      qmk_ref: bkb-master
+  # build:
+  #   name: 'QMK Userspace Build'
+  #   uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
+  #   with:
+  #     qmk_repo: bastardkb/bastardkb-qmk
+  #     qmk_ref: bkb-master
 
-  publish:
-    name: 'QMK Userspace Publish'
-    uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
-    if: always() && !cancelled()
-    needs: build
+  # publish:
+  #   name: 'QMK Userspace Publish'
+  #   uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
+  #   if: always() && !cancelled()
+  #   needs: build
