@@ -16,10 +16,6 @@
  */
 #pragma once
 
-#ifdef VIA_ENABLE
-/* VIA configuration. */
-#    define DYNAMIC_KEYMAP_LAYER_COUNT 7
-#endif // VIA_ENABLE
 
 #ifndef __arm__
 /* Disable unused features. */
