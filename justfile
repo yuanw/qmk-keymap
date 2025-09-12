@@ -16,7 +16,7 @@ list:
 # Setup submodule and link directories to submodules
 init:
     #!/usr/bin/env bash
-    git submodule update --init --recursive --recommend-shallow
+    git submodule update --init --recursive
     if [ "$(git config submodule.bastardkb-qmk.ignore)" != "all" ]; then
       git config submodule.bastardkb-qmk.ignore all
     fi
