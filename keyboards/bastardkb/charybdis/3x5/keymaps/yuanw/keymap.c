@@ -18,20 +18,11 @@
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
-
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
-    LAYER_FUNCTION,
-    LAYER_NAVIGATION,
-    LAYER_MEDIA,
-    LAYER_POINTER,
-    LAYER_NUMERAL,
-    LAYER_SYMBOLS,
-};
+
 
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -48,12 +39,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
-#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_FUN LT(LAYER_FUNCTION, KC_TAB)
-#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
-#define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -62,18 +47,52 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+enum charybdis_keymap_layers {
+    LAYER_BASE = 0,
+    LAYER_FUNCTION,
+    LAYER_NAVIGATION,
+    LAYER_MEDIA,
+    LAYER_POINTER,
+    LAYER_NUMERAL,
+    LAYER_SYMBOLS,
+};
+
+#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
+#define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
+#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
+#define E_NUM LT(LAYER_NUMERAL, KC_E)
+#define _L_PTR(KC) LT(LAYER_POINTER, KC)
+
+#define U_RDO SCMD(KC_Z)
+#define U_PST LCMD(KC_V)
+#define U_CPY LCMD(KC_C)
+#define U_CUT LCMD(KC_X)
+#define U_UND LCMD(KC_Z)
+
+enum my_keycodes { RDO = SAFE_RANGE,
+                   PST,
+                   CPY,
+                   CUT,
+                   UND,
+                   ALTREP2,
+                   ALTREP3,
+                    };
+
 // clang-format off
-/** \brief QWERTY layout (3 rows, 10 columns). */
-#define LAYOUT_LAYER_BASE                                                                     \
-       SELLINE,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
-       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
-       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
+
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ______________HOME_ROW_GACS_L______________ KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
 #define ______________HOME_ROW_GACS_R______________ XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI
+
+/** \brief adept layout (3 rows, 10 columns). */
+#define LAYOUT_LAYER_BASE                                                                     \
+       QK_REP,   KC_W,    KC_M,    KC_P,    XXXXXXX,    XXXXXXX, KC_COMM, KC_SCLN, KC_DOT,  QK_REP, \
+       KC_R,     KC_S,    KC_N,    KC_T,    KC_G,       KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
+       XXXXXXX,  KC_C,    KC_F,    KC_D,    XXXXXXX,    XXXXXXX, KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+                       ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
 
 /*
  * Layers used on the Charybdis Nano.
@@ -94,10 +113,11 @@ static uint16_t auto_pointer_layer_timer = 0;
  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, KC_PSCR,   KC_F7,   KC_F8,   KC_F9,  KC_F12, \
-    ______________HOME_ROW_GACS_L______________, KC_SCRL,   KC_F4,   KC_F5,   KC_F6,  KC_F11, \
-    _______________DEAD_HALF_ROW_______________, KC_PAUS,   KC_F1,   KC_F2,   KC_F3,  KC_F10, \
-                      XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  ALTREP3,  \
+    ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
+    _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
+                      XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
+
 
 /**
  * \brief Media layer.
@@ -106,14 +126,15 @@ static uint16_t auto_pointer_layer_timer = 0;
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, \
-    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, \
-    XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT, QK_BOOT,  EE_CLR, XXXXXXX, XXXXXXX, XXXXXXX, \
-                      _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY
+    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
+    KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
+    XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
+                      _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
+
 
 /** \brief Mouse emulation and pointer functions. */
 #define LAYOUT_LAYER_POINTER                                                                  \
-    QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
+    XXXXXXX,  XXXXXXX, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  XXXXXXX, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
     _______, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
                       KC_BTN2, KC_BTN1, KC_BTN3, KC_BTN3, KC_BTN1
@@ -127,10 +148,11 @@ static uint16_t auto_pointer_layer_timer = 0;
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, _______________DEAD_HALF_ROW_______________, \
-    ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, \
-    _______________DEAD_HALF_ROW_______________,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, \
-                      XXXXXXX, _______, XXXXXXX,  KC_ENT, KC_BSPC
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, ALTREP2, \
+    ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
+    _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
+                      XXXXXXX, _______, XXXXXXX, XXXXXXX , KC_TAB
+
 
 /**
  * \brief Numeral layout.
@@ -140,7 +162,7 @@ static uint16_t auto_pointer_layer_timer = 0;
  * `KC_DOT` is duplicated from the base layer.
  */
 #define LAYOUT_LAYER_NUMERAL                                                                  \
-    KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
+    ALTREP2,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
     KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
      KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
                        KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______
@@ -153,10 +175,10 @@ static uint16_t auto_pointer_layer_timer = 0;
  * `KC_RPRN`.
  */
 #define LAYOUT_LAYER_SYMBOLS                                                                  \
-    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
+    ALTREP3, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
     KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
     KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
-                      KC_LPRN, KC_RPRN, KC_UNDS, _______, XXXXXXX
+                      QK_REP, QK_AREP, KC_UNDS, _______, XXXXXXX
 
 /**
  * \brief Add Home Row mod to a layout.
@@ -258,3 +280,181 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 // rgb_matrix.c.
 void rgb_matrix_update_pwm_buffers(void);
 #endif
+
+
+// Thumb Combos
+/* #define EXTRA_SHORT_COMBOS */
+
+enum combos {
+    FD_B,
+    LU_J,
+    MP_Q,
+    COMMSCLN_K,
+    SCLNDOT_Z,
+    LEFT_QUESTION,
+    CF_X,
+    UY_L,
+    COMBO_LENGTH
+};
+
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
+
+const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
+const uint16_t PROGMEM k_combo[]    = {KC_COMM, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
+const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
+const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
+const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
+
+combo_t key_combos[] = {
+    [FD_B] = COMBO(b_combo, KC_B),
+    [LU_J] = COMBO(j_combo, KC_J),
+    [MP_Q] = COMBO(q_combo, KC_Q),
+    [COMMSCLN_K] = COMBO(k_combo, KC_K),
+    [SCLNDOT_Z] = COMBO(z_combo, KC_Z),
+    [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
+    [CF_X] = COMBO(x_combo, KC_X),
+    [UY_L] = COMBO(l_combo, KC_L),
+};
+
+
+// Use ALTREP2 and ALTREP3 in your layout...
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    switch (keycode) {
+        case ALTREP2:
+        case ALTREP3:
+            return false;  // Ignore ALTREP keys.
+    }
+
+    return true;  // Other keys can be repeated.
+}
+
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+    /* if ((mods & MOD_MASK_CTRL)) {  // Was Ctrl held? */
+    /*     switch (keycode) { */
+    /*         case KC_Y: return C(KC_Z);  // Ctrl + Y reverses to Ctrl + Z. */
+    /*         case KC_Z: return C(KC_Y);  // Ctrl + Z reverses to Ctrl + Y. */
+    /*     } */
+    /* } */
+    switch (keycode) {
+      case KC_LPRN: return KC_RPRN;
+      case KC_RPRN: return KC_LPRN;
+    }
+
+    return KC_TRNS;  // Defer to default definitions.
+}
+
+static void process_altrep2(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case KC_A:
+        case RCTL_T(KC_A):
+          SEND_STRING("tion");
+          break;
+        case LALT_T(KC_I): SEND_STRING("tion"); break;
+        case LALT_T(KC_S): SEND_STRING("sion"); break;
+        case LSFT_T(KC_T): SEND_STRING("heir"); break;
+        case KC_Y: SEND_STRING("ou"); break;
+        case KC_W: SEND_STRING("hich"); break;
+        case KC_AT: SEND_STRING("Workiva/release-management-p"); break;
+        case KC_C: SEND_STRING("ontent management"); break;
+    }
+}
+
+static void process_altrep3(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case RCTL_T(KC_A): SEND_STRING("bout"); break;
+        case LALT_T(KC_I): SEND_STRING("ng"); break;
+        case LALT_T(KC_S): SEND_STRING("tate"); break;
+        case LSFT_T(KC_T): SEND_STRING("here"); break;
+        case KC_W: SEND_STRING("ould"); break;
+        case KC_AT: SEND_STRING("rmconsole-wf"); break;
+        case E_NUM: SEND_STRING("specially");break;
+        case KC_C: SEND_STRING("ontent-management-service"); break;
+    }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+    switch (keycode) {
+        case ALTREP2:
+            if (record->event.pressed) {
+                process_altrep2(get_last_keycode(), get_last_mods());
+            }
+            return false;
+        case ALTREP3:
+            if (record->event.pressed) {
+                process_altrep3(get_last_keycode(), get_last_mods());
+            }
+            return false;
+        case CPY:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_C));
+                        return false;
+                    default:
+                        tap_code16(KC_COPY);
+                        return false;
+                }
+            }
+        case PST:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_V));
+                        break;
+                    default:
+                        tap_code16(KC_PSTE);
+                        break;
+                }
+            }
+            return false;
+        case CUT:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_X));
+                        break;
+                    default:
+                        tap_code16(KC_CUT);
+                        break;
+                }
+            }
+            return false;
+        case UND:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_Z));
+                        break;
+                    default:
+                        tap_code16(KC_UNDO);
+                        break;
+                }
+            }
+            return false;
+        case RDO:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_Z));
+                        break;
+                    default:
+                        tap_code16(KC_AGIN);
+                        break;
+                }
+            }
+            return false;
+
+       }
+        return true; // Process all other keycodes normally
+}
