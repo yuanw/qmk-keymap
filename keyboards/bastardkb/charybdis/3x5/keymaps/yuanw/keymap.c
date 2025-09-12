@@ -380,13 +380,6 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
-        case C_X:
-            if (record->event.pressed) {
-                SEND_STRING(SS_LCTL("x"));
-                return false;
-            }
-            return false;
-
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
