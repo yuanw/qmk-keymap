@@ -22,15 +22,7 @@
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
-    LAYER_FUNCTION,
-    LAYER_NAVIGATION,
-    LAYER_MEDIA,
-    LAYER_POINTER,
-    LAYER_NUMERAL,
-    LAYER_SYMBOLS,
-};
+
 
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -47,12 +39,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
-#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_FUN LT(LAYER_FUNCTION, KC_TAB)
-#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
-#define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -61,18 +47,52 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+enum charybdis_keymap_layers {
+    LAYER_BASE = 0,
+    LAYER_FUNCTION,
+    LAYER_NAVIGATION,
+    LAYER_MEDIA,
+    LAYER_POINTER,
+    LAYER_NUMERAL,
+    LAYER_SYMBOLS,
+};
+
+#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
+#define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
+#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
+#define E_NUM LT(LAYER_NUMERAL, KC_E)
+#define _L_PTR(KC) LT(LAYER_POINTER, KC)
+
+#define U_RDO SCMD(KC_Z)
+#define U_PST LCMD(KC_V)
+#define U_CPY LCMD(KC_C)
+#define U_CUT LCMD(KC_X)
+#define U_UND LCMD(KC_Z)
+
+enum my_keycodes { RDO = SAFE_RANGE,
+                   PST,
+                   CPY,
+                   CUT,
+                   UND,
+                   ALTREP2,
+                   ALTREP3,
+                    };
+
 // clang-format off
-/** \brief QWERTY layout (3 rows, 10 columns). */
-#define LAYOUT_LAYER_BASE                                                                     \
-       SELLINE,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
-       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
-       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                      ESC_MED, SPC_NAV, TAB_FUN, ENT_SYM, BSP_NUM
+
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ______________HOME_ROW_GACS_L______________ KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
 #define ______________HOME_ROW_GACS_R______________ XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI
+
+/** \brief adept layout (3 rows, 10 columns). */
+#define LAYOUT_LAYER_BASE                                                                     \
+       QK_REP,   KC_W,    KC_M,    KC_P,    XXXXXXX,    XXXXXXX, KC_COMM, KC_SCLN, KC_DOT,  QK_REP, \
+       KC_R,     KC_S,    KC_N,    KC_T,    KC_G,       KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
+       XXXXXXX,  KC_C,    KC_F,    KC_D,    XXXXXXX,    XXXXXXX, KC_L,    KC_U,    KC_Y,    KC_QUOT, \
+                       ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
 
 /*
  * Layers used on the Charybdis Nano.
@@ -93,10 +113,11 @@ static uint16_t auto_pointer_layer_timer = 0;
  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, KC_PSCR,   KC_F7,   KC_F8,   KC_F9,  KC_F12, \
-    ______________HOME_ROW_GACS_L______________, KC_SCRL,   KC_F4,   KC_F5,   KC_F6,  KC_F11, \
-    _______________DEAD_HALF_ROW_______________, KC_PAUS,   KC_F1,   KC_F2,   KC_F3,  KC_F10, \
-                      XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  ALTREP3,  \
+    ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
+    _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
+                      XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
+
 
 /**
  * \brief Media layer.
