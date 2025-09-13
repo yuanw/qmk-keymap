@@ -48,14 +48,14 @@ static uint16_t auto_pointer_layer_timer = 0;
 #endif // !POINTING_DEVICE_ENABLE
 
 enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
+    LAYER_BASE,
+    LAYER_HDGOLD,
     LAYER_FUNCTION,
     LAYER_NAVIGATION,
     LAYER_MEDIA,
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
-    LAYER_HDGOLD,
 };
 
 
