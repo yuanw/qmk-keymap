@@ -135,7 +135,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    HD_GOLD,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, ADEPT \
+    HD_GOLD,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, ADEPT, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
     XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
@@ -401,7 +401,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(LAYER_BASE);
             }
             return false;
-        case QWERTY:
+        case ADEPT:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(LAYER_HDGOLD);
             }
