@@ -329,8 +329,8 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
-    [YQUOT_GOLD] = COMBO(gold_combo, MO(LAYER_HDGOLD)),
-    [YK_ADEPT] = COMBO(adept_combo, MO(LAYER_BASE)),
+    [YQUOT_GOLD] = COMBO(gold_combo, TO(LAYER_HDGOLD)),
+    [YK_ADEPT] = COMBO(adept_combo, TO(LAYER_BASE)),
 };
 
 
