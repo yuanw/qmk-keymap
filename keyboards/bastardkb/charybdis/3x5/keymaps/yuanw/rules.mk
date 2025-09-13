@@ -3,3 +3,6 @@ COMBO_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 SEND_STRING_ENABLE = yes
+
+
+SRC += secrets.c

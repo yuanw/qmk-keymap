@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "yuanw.h"
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
@@ -22,7 +23,10 @@
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-
+__attribute__ ((weak))
+bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
 
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -76,14 +80,7 @@ enum charybdis_keymap_layers {
 #define U_CUT LCMD(KC_X)
 #define U_UND LCMD(KC_Z)
 
-enum my_keycodes { RDO = SAFE_RANGE,
-                   PST,
-                   CPY,
-                   CUT,
-                   UND,
-                   ALTREP2,
-                   ALTREP3,
-                    };
+
 
 // clang-format off
 
@@ -139,9 +136,9 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, ADEPT, HD_GOLD, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
+    KC_SECRET_1,RGB_RMOD, RGB_TOG, RGB_MOD, ADEPT, HD_GOLD, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
-    XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
+    KC_SECRET_2, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
 
 
@@ -393,7 +390,9 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
     }
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         case ALTREP2:
@@ -473,4 +472,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
        }
         return true; // Process all other keycodes normally
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // your existing macro code here.
+    return process_record_keymap(keycode, record) && process_record_secrets(keycode, record);
 }

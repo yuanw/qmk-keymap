@@ -1,0 +1,10 @@
+enum my_keycodes { RDO = SAFE_RANGE,
+                   PST,
+                   CPY,
+                   CUT,
+                   UND,
+                   ALTREP2,
+                   ALTREP3,
+                   KC_SECRET_1,
+                   KC_SECRET_2,
+                    };
