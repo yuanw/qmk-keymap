@@ -140,7 +140,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    HD_GOLD,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
+    KC_CYCLE_LAYERS,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
     XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
