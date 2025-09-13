@@ -55,14 +55,15 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
+    LAYER_HDGOLD,
 };
-
 #define ESC_MED LT(LAYER_MEDIA, KC_ESC)
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
 #define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
 #define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
 #define E_NUM LT(LAYER_NUMERAL, KC_E)
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
+#define T_NUM LT(LAYER_NUMERAL, KC_T)
 
 #define U_RDO SCMD(KC_Z)
 #define U_PST LCMD(KC_V)
@@ -88,12 +89,18 @@ enum my_keycodes { RDO = SAFE_RANGE,
 #define ______________HOME_ROW_GACS_R______________ XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI
 
 /** \brief adept layout (3 rows, 10 columns). */
-#define LAYOUT_LAYER_BASE                                                                     \
+#define LAYOUT_LAYER_ADEPT                                                                    \
        QK_REP,   KC_W,    KC_M,    KC_P,    XXXXXXX,    XXXXXXX, KC_COMM, KC_SCLN, KC_DOT,  QK_REP, \
        KC_R,     KC_S,    KC_N,    KC_T,    KC_G,       KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
        XXXXXXX,  KC_C,    KC_F,    KC_D,    XXXXXXX,    XXXXXXX, KC_L,    KC_U,    KC_Y,    KC_QUOT, \
                        ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
 
+/** \brief adept layout (3 rows, 10 columns). */
+#define LAYOUT_LAYER_HDGOLD                                                                    \
+       KC_J,   KC_G,    KC_M,    KC_P,    KC_V,    XXXXXXX, KC_COMM, KC_SCLN, KC_DOT,  QK_REP, \
+       KC_R,     KC_S,    KC_N,    KC_D,    KC_B,       KC_V,    KC_A,    KC_E,    KC_I,    KC_H,      \
+       XXXXXXX,  KC_F,    KC_L,    KC_C,    XXXXXXX,    XXXXXXX, KC_U,    KC_O,    KC_Y,    KC_K, \
+                       ESC_MED, T_NUM, TAB_FUN,    ENT_SYM, SPC_NAV
 /*
  * Layers used on the Charybdis Nano.
  *
@@ -229,14 +236,15 @@ enum my_keycodes { RDO = SAFE_RANGE,
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
+    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_ADEPT))
   ),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
-  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
+  [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
+  [LAYOUT_LAYER_HDGOLD] = LAYOUT_wrapper(LAYOUT_LAYER_HDGOLD),
 };
 // clang-format on
 
@@ -294,6 +302,8 @@ enum combos {
     LEFT_QUESTION,
     CF_X,
     UY_L,
+    YQUOT_GOLD,
+    YK_ADEPT,
     COMBO_LENGTH
 };
 
@@ -307,6 +317,8 @@ const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM gold_combo[]    = {KC_Y, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM adept_combo[]    = {KC_Y, KC_K, COMBO_END};
 
 combo_t key_combos[] = {
     [FD_B] = COMBO(b_combo, KC_B),
@@ -317,6 +329,8 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
+    [YQUOT_GOLD] = COMBO(gold_combo, MO(LAYER_HDGOLD)),
+    [YK_ADEPT] = COMBO(adept_combo, MO(LAYER_BASE)),
 };
 
 
