@@ -49,14 +49,20 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
+    LAYER_HDGOLD = 1,
     LAYER_FUNCTION,
     LAYER_NAVIGATION,
     LAYER_MEDIA,
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
-    LAYER_HDGOLD,
 };
+
+// 1st layer on the cycle
+#define LAYER_CYCLE_START 0
+// Last layer on the cycle
+#define LAYER_CYCLE_END   1
+
 #define ESC_MED LT(LAYER_MEDIA, KC_ESC)
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
 #define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
@@ -78,8 +84,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    UND,
                    ALTREP2,
                    ALTREP3,
-                   HD_GOLD,
-                   ADEPT
+                   KC_CYCLE_LAYERS,
                     };
 
 // clang-format off
@@ -102,7 +107,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
        KC_J,   KC_G,    KC_M,    KC_P,    KC_V,    XXXXXXX, KC_COMM, KC_SCLN, KC_DOT,  QK_REP, \
        KC_R,     KC_S,    KC_N,    KC_D,    KC_B,       KC_V,    KC_A,    KC_E,    KC_I,    KC_H,      \
        XXXXXXX,  KC_F,    KC_L,    KC_C,    XXXXXXX,    XXXXXXX, KC_U,    KC_O,    KC_Y,    KC_K, \
-                       ESC_MED, T_NUM, TAB_FUN,    ENT_SYM, SPC_NAV
+                       ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, T_NUM
 /*
  * Layers used on the Charybdis Nano.
  *
@@ -135,7 +140,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    HD_GOLD,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, ADEPT, \
+    HD_GOLD,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
     XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
@@ -240,13 +245,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
     POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_ADEPT))
   ),
+  [LAYER_HDGOLD] = LAYOUT_wrapper(POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_HDGOLD))),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
-  [LAYER_HDGOLD] = LAYOUT_wrapper(LAYOUT_LAYER_HDGOLD),
+
 };
 // clang-format on
 
@@ -304,8 +310,6 @@ enum combos {
     LEFT_QUESTION,
     CF_X,
     UY_L,
-    YQUOT_GOLD,
-    YK_ADEPT,
     COMBO_LENGTH
 };
 
@@ -319,8 +323,7 @@ const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM gold_combo[]    = {KC_Y, KC_QUOT, COMBO_END};
-const uint16_t PROGMEM adept_combo[]    = {KC_Y, KC_K, COMBO_END};
+
 
 combo_t key_combos[] = {
     [FD_B] = COMBO(b_combo, KC_B),
@@ -331,8 +334,6 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
-    [YQUOT_GOLD] = COMBO(gold_combo, HD_GOLD),
-    [YK_ADEPT] = COMBO(adept_combo, ADEPT),
 };
 
 
@@ -396,16 +397,26 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
-         case HD_GOLD:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(LAYER_BASE);
-            }
-            return false;
-        case ADEPT:
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(LAYER_HDGOLD);
-            }
-            return false;
+        case KC_CYCLE_LAYERS:
+      // Our logic will happen on presses, nothing is done on releases
+      if (!record->event.pressed) {
+        // We've already handled the keycode (doing nothing), let QMK know so no further code is run unnecessarily
+        return false;
+      }
+
+      uint8_t current_layer = get_highest_layer(layer_state);
+
+      // Check if we are within the range, if not quit
+      if (current_layer > LAYER_CYCLE_END || current_layer < LAYER_CYCLE_START) {
+        return false;
+      }
+
+      uint8_t next_layer = current_layer + 1;
+      if (next_layer > LAYER_CYCLE_END) {
+          next_layer = LAYER_CYCLE_START;
+      }
+      layer_move(next_layer);
+      return false;
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
