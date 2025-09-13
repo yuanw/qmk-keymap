@@ -78,6 +78,8 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    UND,
                    ALTREP2,
                    ALTREP3,
+                   HD_GOLD,
+                   ADEPT
                     };
 
 // clang-format off
@@ -133,7 +135,7 @@ enum my_keycodes { RDO = SAFE_RANGE,
  * symmetrical to accomodate the left- and right-hand trackball.
  */
 #define LAYOUT_LAYER_MEDIA                                                                    \
-    XXXXXXX,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, XXXXXXX, \
+    HD_GOLD,RGB_RMOD, RGB_TOG, RGB_MOD, XXXXXXX, XXXXXXX, KC_LBRC, KC_SLSH, KC_RBRC, ADEPT \
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, QK_CAPS_WORD_TOGGLE, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
     XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT, QK_BOOT, KC_HOME, KC_PGDN, KC_PGUP, KC_END, \
                       _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB
@@ -329,8 +331,8 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
-    [YQUOT_GOLD] = COMBO(gold_combo, TO(LAYER_HDGOLD)),
-    [YK_ADEPT] = COMBO(adept_combo, TO(LAYER_BASE)),
+    [YQUOT_GOLD] = COMBO(gold_combo, HD_GOLD),
+    [YK_ADEPT] = COMBO(adept_combo, ADEPT),
 };
 
 
@@ -394,6 +396,16 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
+         case HD_GOLD:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(LAYER_BASE);
+            }
+            return false;
+        case QWERTY:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(LAYER_HDGOLD);
+            }
+            return false;
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
