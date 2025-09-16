@@ -82,10 +82,7 @@ enum charybdis_keymap_layers {
 #define U_UND LCMD(KC_Z)
 
 
-
 // clang-format off
-
-
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ______________HOME_ROW_GACS_L______________ KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
@@ -240,7 +237,7 @@ enum charybdis_keymap_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
+         POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
   ),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
@@ -314,6 +311,9 @@ enum combos {
     COMBO_LENGTH
 };
 
+
+
+
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
@@ -343,6 +343,12 @@ combo_t key_combos[] = {
     [FL_X] = COMBO(goldx_combo, KC_X),
 };
 
+const custom_shift_key_t custom_shift_keys[] = {
+    {QK_REP, QK_AREP}, // Shift magic is repeat. */
+    {SPC_NAV , KC_TAB}, // Shift SPC is tab.
+    {ESC_MED , KC_ENT}, // Shift esc is enter.
+    {TAB_FUN, KC_DEL}, //Shift BSPC is DEL
+};
 
 // Use ALTREP2 and ALTREP3 in your layout...
 
@@ -367,7 +373,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
       case KC_LPRN: return KC_RPRN;
       case KC_RPRN: return KC_LPRN;
+
     }
+
 
     return KC_TRNS;  // Defer to default definitions.
 }
