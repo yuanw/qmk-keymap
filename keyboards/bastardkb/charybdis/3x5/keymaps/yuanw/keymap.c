@@ -258,7 +258,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
    [LAYER_HDGOLD] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_HDGOLD))
+    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_ENTHIUM))
   ),
 };
 // clang-format on
@@ -317,9 +317,8 @@ enum combos {
     LEFT_QUESTION,
     CF_X,
     UY_L,
-    JG_Z,
-    GM_Q,
-    FL_X,
+    CI_W,
+    NS_F,
     COMBO_LENGTH
 };
 
@@ -333,9 +332,9 @@ const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM goldz_combo[]    = {KC_J, KC_G, COMBO_END};
-const uint16_t PROGMEM goldq_combo[]    = {KC_G, KC_M, COMBO_END};
-const uint16_t PROGMEM goldx_combo[]    = {KC_F, KC_L, COMBO_END};
+const uint16_t PROGMEM enthium_w_combo[]    = {LGUI_T(KC_C), LALT_T(KC_I), COMBO_END};
+const uint16_t PROGMEM enthium_f_combo[]    = {RGUI_T(KC_N), LALT_T(KC_S), COMBO_END};
+
 
 
 combo_t key_combos[] = {
@@ -347,9 +346,9 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
-    [JG_Z] = COMBO(goldz_combo, KC_Z),
-    [GM_Q] = COMBO(goldq_combo, KC_Q),
-    [FL_X] = COMBO(goldx_combo, KC_X),
+    [CI_W] = COMBO(enthium_w_combo, KC_W),
+    [NS_F] = COMBO(enthium_f_combo, KC_F),
+
 };
 
 
