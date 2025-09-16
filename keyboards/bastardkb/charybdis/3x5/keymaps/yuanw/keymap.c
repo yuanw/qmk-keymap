@@ -333,7 +333,7 @@ const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM enthium_w_combo[]    = {LGUI_T(KC_C), LALT_T(KC_I), COMBO_END};
-const uint16_t PROGMEM enthium_f_combo[]    = {RGUI_T(KC_N), LALT_T(KC_S), COMBO_END};
+const uint16_t PROGMEM enthium_f_combo[]    = {RGUI_T(KC_S), LALT_T(KC_N), COMBO_END};
 
 
 
