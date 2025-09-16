@@ -11,3 +11,16 @@ You can read how to compile your own keymap on the official docs here: [[https:/
 ** imprint
 
 https://github.com/Cyboard-DigitalTailor/vial-qmk/tree/cyboard/keyboards/cyboard/imprint/imprint_number_row
+
+
+* Enithium
+
+https://sunaku.github.io/enthium-keyboard-layout.html
+
+
+#+begin_src
+  z y u o ; q l d p x
+w c i e a , k h t n s f
+  ' - = . / j m g b v
+            r
+#+end_src

@@ -109,10 +109,10 @@ enum charybdis_keymap_layers {
 
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
-       KC_Z,   KC_Y,    KC_U,    KC_O,    KC_V,    KC_Q, KC_L, KC_D, KC_P,  KC_X, \
-       KC_C,   KC_I,    KC_E,    KC_A,    KC_B,    KC_K, KC_H,    KC_T,    KC_N,    KC_S,      \
-       XXXXXXX,  KC_F,    KC_L,    KC_C,    KC_W,  KC_J, KC_M,    KC_G,    KC_B,    KC_V, \
-           ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM,  R_NUM
+       KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    KC_Q, KC_L, KC_D, KC_P,  KC_X, \
+       KC_C,    KC_I,    KC_E,    KC_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
+       KC_QUOT, KC_MINS, KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, KC_B,  KC_V, \
+                  ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM,  R_NUM
 
 /*
  * Layers used on the Charybdis Nano.
