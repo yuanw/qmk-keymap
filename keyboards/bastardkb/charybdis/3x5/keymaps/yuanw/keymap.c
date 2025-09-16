@@ -83,10 +83,7 @@ enum charybdis_keymap_layers {
 #define U_UND LCMD(KC_Z)
 
 
-
 // clang-format off
-
-
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ______________HOME_ROW_GACS_L______________ KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
@@ -171,7 +168,7 @@ enum charybdis_keymap_layers {
     _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, ALTREP2, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
-                      XXXXXXX, _______, XXXXXXX, XXXXXXX , KC_TAB
+                      XXXXXXX, _______, XXXXXXX, QK_LLCK , KC_TAB
 
 
 /**
@@ -185,7 +182,7 @@ enum charybdis_keymap_layers {
     ALTREP2,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
     KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
      KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
-                       KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______
+        QK_LLCK,    KC_0, KC_MINS,                XXXXXXX, _______
 
 /**
  * \brief Symbols layer.
@@ -249,7 +246,7 @@ enum charybdis_keymap_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
+         POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
   ),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
@@ -322,6 +319,9 @@ enum combos {
     COMBO_LENGTH
 };
 
+
+
+
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
@@ -351,6 +351,12 @@ combo_t key_combos[] = {
 
 };
 
+const custom_shift_key_t custom_shift_keys[] = {
+    {QK_REP, QK_AREP}, // Shift magic is repeat. */
+    {SPC_NAV , KC_TAB}, // Shift SPC is tab.
+    {ESC_MED , KC_ENT}, // Shift esc is enter.
+    {TAB_FUN, KC_DEL}, //Shift BSPC is DEL
+};
 
 // Use ALTREP2 and ALTREP3 in your layout...
 
@@ -375,7 +381,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
       case KC_LPRN: return KC_RPRN;
       case KC_RPRN: return KC_LPRN;
+
     }
+
 
     return KC_TRNS;  // Defer to default definitions.
 }
