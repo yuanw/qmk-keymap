@@ -162,7 +162,7 @@ enum charybdis_keymap_layers {
     _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, ALTREP2, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
-                      XXXXXXX, _______, XXXXXXX, XXXXXXX , KC_TAB
+                      XXXXXXX, _______, XXXXXXX, QK_LLCK , KC_TAB
 
 
 /**
@@ -176,7 +176,7 @@ enum charybdis_keymap_layers {
     ALTREP2,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
     KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
      KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
-                       KC_DOT,    KC_0, KC_MINS, QK_LLCK, _______
+        QK_LLCK,    KC_0, KC_MINS,                XXXXXXX, _______
 
 /**
  * \brief Symbols layer.
