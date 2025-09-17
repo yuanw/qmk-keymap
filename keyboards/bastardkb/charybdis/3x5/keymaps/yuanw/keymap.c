@@ -76,6 +76,9 @@ enum charybdis_keymap_layers {
 #define SPC_NUM LT(LAYER_NUMERAL, KC_SPC)
 #define R_NUM LT(LAYER_NUMERAL, KC_R)
 
+#define REP_SYM LT(LAYER_SYMBOLS, ALTREP2)
+
+
 #define U_RDO SCMD(KC_Z)
 #define U_PST LCMD(KC_V)
 #define U_CPY LCMD(KC_C)
@@ -106,10 +109,10 @@ enum charybdis_keymap_layers {
 
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
-       KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    KC_Q, KC_L, KC_D, KC_P,  KC_X, \
+       KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
        KC_C,    KC_I,    KC_E,    KC_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
-       KC_QUOT, KC_MINS, KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, KC_B,  KC_V, \
-                  ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM,  R_NUM
+           KC_QUOT, LT(LAYER_SYMBOLS, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, LT(LAYER_SYMBOLS,KC_B),  KC_V, \
+                  ESC_MED, SPC_NAV, TAB_FUN,    QK_REP,  R_NUM
 
 /*
  * Layers used on the Charybdis Nano.
