@@ -19,6 +19,7 @@
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
+#include "unicode.h"
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
@@ -60,6 +61,7 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
+    LAYER_SYMBOLS2,
 };
 
 
@@ -111,7 +113,7 @@ enum charybdis_keymap_layers {
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
        KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
        KC_C,    KC_I,    KC_E,    KC_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
-           KC_QUOT, LT(LAYER_SYMBOLS, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, LT(LAYER_SYMBOLS,KC_B),  KC_V, \
+       KC_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, LT(LAYER_SYMBOLS2,KC_B),  KC_V, \
                   ESC_MED, SPC_NAV, TAB_FUN,    QK_REP,  R_NUM
 
 /*
@@ -200,6 +202,13 @@ enum charybdis_keymap_layers {
     KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
                       QK_REP, QK_AREP, KC_UNDS, _______, XXXXXXX
 
+#define LAYOUT_LAYER_SYMBOLS2                  \
+    KC_GRV , KC_LABK, KC_RABK, KC_MINS, KC_PIPE,   KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , ARROW ,\
+    KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL, KC_AMPR,   KC_HASH, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,\
+    KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_COLN, KC_COMM, KC_DOT , KC_QUOT,\
+                       XXXXXXX, _______, XXXXXXX,  _______ , _______
+
+
 /**
  * \brief Add Home Row mod to a layout.
  *
@@ -260,6 +269,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [LAYER_HDGOLD] = LAYOUT_wrapper(
     POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_ENTHIUM))
   ),
+  [LAYER_SYMBOLS2] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS2),
+
 };
 // clang-format on
 
@@ -428,6 +439,15 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
+        case ARROW:
+          /* send_unicode_string(alt ? (shift_mods */
+          /*                           ? "\xe2\x87\x94"     // <=> */
+          /*                           : "\xe2\x86\x94")    // <-> */
+          /*                        : (shift_mods */
+          /*                           ? "\xe2\x87\x92"     // => */
+          /*  ));  // -> */
+          return false;
+
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());

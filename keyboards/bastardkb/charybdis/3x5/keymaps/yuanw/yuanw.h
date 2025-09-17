@@ -7,4 +7,5 @@ enum my_keycodes { RDO = SAFE_RANGE,
                    ALTREP3,
                    KC_SECRET_1,
                    KC_SECRET_2,
+                   ARROW,
                     };
