@@ -205,7 +205,7 @@ enum charybdis_keymap_layers {
 #define LAYOUT_LAYER_SYMBOLS2                  \
     KC_GRV , KC_LABK, KC_RABK, KC_MINS, KC_PIPE,   KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , ARROW ,\
     KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL, KC_AMPR,   KC_HASH, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,\
-    KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_COLN, KC_COMM, KC_DOT , KC_QUOT,\
+    KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_BSLS, KC_COMM, KC_DOT , KC_QUOT,\
                        XXXXXXX, _______, XXXXXXX,  _______ , _______
 
 
