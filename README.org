@@ -13,7 +13,7 @@ You can read how to compile your own keymap on the official docs here: [[https:/
 https://github.com/Cyboard-DigitalTailor/vial-qmk/tree/cyboard/keyboards/cyboard/imprint/imprint_number_row
 
 
-* Enithium
+* Enthium
 
 https://sunaku.github.io/enthium-keyboard-layout.html
 
@@ -24,7 +24,8 @@ w c i e a , k h t n s f
   ' - = . / j m g b v
             r
 #+end_src
-symbol
+symbol based on https://github.com/getreuer/qmk-keymap
+
 #+begin_src
 ` < > - | ^ {  } $ Arrow
 ! * / = & # (  ) ; "

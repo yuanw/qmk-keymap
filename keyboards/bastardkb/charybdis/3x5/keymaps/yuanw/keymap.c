@@ -437,15 +437,24 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-
+  const uint8_t mods = get_mods();
+  const uint8_t all_mods = (mods | get_weak_mods()
+#ifndef NO_ACTION_ONESHOT
+                        | get_oneshot_mods()
+#endif  // NO_ACTION_ONESHOT
+  );
+  const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+  const bool alt = all_mods & MOD_BIT_LALT;
     switch (keycode) {
         case ARROW:
-          /* send_unicode_string(alt ? (shift_mods */
-          /*                           ? "\xe2\x87\x94"     // <=> */
-          /*                           : "\xe2\x86\x94")    // <-> */
-          /*                        : (shift_mods */
-          /*                           ? "\xe2\x87\x92"     // => */
-          /*  ));  // -> */
+            if( record->event.pressed) {
+          SEND_STRING(alt ? (shift_mods
+                                    ? "<=>"     // <=>
+                                    : "<->")    // <->
+                                 : (shift_mods
+                                    ? "=>"     // =>
+                                    : "->"));     // ->
+            }
           return false;
 
         case ALTREP2:
