@@ -114,7 +114,7 @@ enum charybdis_keymap_layers {
        KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
        KC_C,    KC_I,    KC_E,    KC_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
        KC_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, LT(LAYER_SYMBOLS2,KC_B),  KC_V, \
-                  ESC_MED, SPC_NAV, TAB_FUN,    QK_REP,  R_NUM
+           ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
 
 /*
  * Layers used on the Charybdis Nano.
