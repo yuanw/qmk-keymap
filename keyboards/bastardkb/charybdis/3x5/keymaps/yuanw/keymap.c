@@ -328,8 +328,8 @@ enum combos {
     LEFT_QUESTION,
     CF_X,
     UY_L,
-    CI_W,
-    NS_F,
+    UO_W,
+    DP_F,
     LD_Q,
     COMBO_LENGTH
 };
@@ -347,8 +347,8 @@ const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
 const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
 const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM enthium_w_combo[]    = {LGUI_T(KC_C), LALT_T(KC_I), COMBO_END};
-const uint16_t PROGMEM enthium_f_combo[]    = {RGUI_T(KC_S), LALT_T(KC_N), COMBO_END};
+const uint16_t PROGMEM enthium_w_combo[]    = {KC_U, KC_O, COMBO_END};
+const uint16_t PROGMEM enthium_f_combo[]    = {KC_D, KC_P, COMBO_END};
 const uint16_t PROGMEM enthium_q_combo[]    = {KC_L, KC_D, COMBO_END};
 
 
@@ -362,8 +362,8 @@ combo_t key_combos[] = {
     [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
     [CF_X] = COMBO(x_combo, KC_X),
     [UY_L] = COMBO(l_combo, KC_L),
-    [CI_W] = COMBO(enthium_w_combo, KC_W),
-    [NS_F] = COMBO(enthium_f_combo, KC_F),
+    [UO_W] = COMBO(enthium_w_combo, KC_W),
+    [DP_F] = COMBO(enthium_f_combo, KC_F),
     [LD_Q] = COMBO(enthium_q_combo, KC_Q),
 
 };
