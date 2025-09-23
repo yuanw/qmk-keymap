@@ -65,27 +65,44 @@ enum charybdis_keymap_layers {
 };
 
 
+enum keycode_aliases {
+  // The "magic" key is the Alternate Repeat Key.
+  MAGIC = QK_AREP,
+  // F20 mutes the mic on my system.
+  MUTEMIC = KC_F20,
+  // Short aliases for home row mods and other tap-hold keys.
+  HRM_A = LSFT_T(KC_A),
+  HRM_E = LCTL_T(KC_E),
+  HRM_I = LCTL_T(KC_I),
+  HRM_C = LT(LAYER_SYMBOLS2, KC_C),
+  HRM_QUOT =LGUI_T(KC_QUOT),
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
-#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_FUN LT(LAYER_FUNCTION, KC_BSPC)
-#define ENT_SYM LT(LAYER_SYMBOLS, KC_ENT)
-#define E_NUM LT(LAYER_NUMERAL, KC_E)
+  HRM_H = RSFT_T(KC_H),
+  HRM_T = RCTL_T(KC_T),
+  HRM_N = LALT_T(KC_N),
+  HRM_S = LT(LAYER_SYMBOLS2, KC_S),
+  HRM_V = RGUI_T(KC_V),
+
+  ESC_MED = LT(LAYER_MEDIA, KC_ESC),
+  SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
+  TAB_FUN = LT(LAYER_FUNCTION, KC_BSPC),
+  ENT_SYM = LT(LAYER_SYMBOLS, KC_ENT),
+  E_NUM = LT(LAYER_NUMERAL, KC_E),
+  ADEPT = DF(LAYER_BASE),
+  HD_GOLD = DF(LAYER_HDGOLD),
+  T_NAV = LT(LAYER_NAVIGATION, KC_T),
+  SPC_NUM = LT(LAYER_NUMERAL, KC_SPC),
+  R_NUM = LT(LAYER_NUMERAL, KC_R),
+  REP_SYM = LT(LAYER_SYMBOLS, ALTREP2),
+
+  U_RDO= SCMD(KC_Z),
+ U_PST= LCMD(KC_V),
+ U_CPY= LCMD(KC_C),
+ U_CUT= LCMD(KC_X),
+ U_UND= LCMD(KC_Z),
+};
+
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
-#define ADEPT DF(LAYER_BASE)
-#define HD_GOLD DF(LAYER_HDGOLD)
-#define T_NAV LT(LAYER_NAVIGATION, KC_T)
-#define SPC_NUM LT(LAYER_NUMERAL, KC_SPC)
-#define R_NUM LT(LAYER_NUMERAL, KC_R)
-#define REP_SYM LT(LAYER_SYMBOLS, ALTREP2)
-
-
-#define U_RDO SCMD(KC_Z)
-#define U_PST LCMD(KC_V)
-#define U_CPY LCMD(KC_C)
-#define U_CUT LCMD(KC_X)
-#define U_UND LCMD(KC_Z)
-
 
 // clang-format off
 /** Convenience row shorthands. */
@@ -104,7 +121,7 @@ enum charybdis_keymap_layers {
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
        KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
-       KC_C,    KC_I,    KC_E,    KC_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
+       KC_C,    KC_I,    KC_E,    HRM_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
        KC_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, LT(LAYER_SYMBOLS2,KC_B),  KC_V, \
            ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
 
@@ -162,10 +179,10 @@ enum charybdis_keymap_layers {
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_PIPE, KC_RPRN, ALTREP2, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_UP, KC_RPRN, ALTREP2, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
-                      XXXXXXX, _______, XXXXXXX, QK_LLCK , KC_TAB
+                      XXXXXXX, _______, XXXXXXX, QK_LLCK , KC_CAPS
 
 
 /**
@@ -242,7 +259,7 @@ enum charybdis_keymap_layers {
              L10,         L11,         L12,         L13,         L14,  \
              R15,         R16,         R17,         R18,         R19,  \
       _L_PTR(L20),        L21,         L22,         L23,         L24,  \
-             R25,         R26,         R27,         R28,  _L_PTR(R29), \
+             R25,         R26,         R27,         R28,         R29, \
       __VA_ARGS__
 #define POINTER_MOD(...) _POINTER_MOD(__VA_ARGS__)
 
@@ -259,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
   [LAYER_HDGOLD] = LAYOUT_wrapper(
-    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_ENTHIUM))
+    POINTER_MOD(LAYOUT_LAYER_ENTHIUM)
   ),
   [LAYER_SYMBOLS2] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS2),
 
