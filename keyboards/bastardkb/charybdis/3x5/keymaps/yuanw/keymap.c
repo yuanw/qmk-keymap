@@ -77,7 +77,6 @@ enum charybdis_keymap_layers {
 #define T_NAV LT(LAYER_NAVIGATION, KC_T)
 #define SPC_NUM LT(LAYER_NUMERAL, KC_SPC)
 #define R_NUM LT(LAYER_NUMERAL, KC_R)
-
 #define REP_SYM LT(LAYER_SYMBOLS, ALTREP2)
 
 
@@ -100,13 +99,6 @@ enum charybdis_keymap_layers {
        KC_R,     KC_S,    KC_N,    KC_T,    KC_G,       KC_V,    KC_H,    KC_A,    KC_I,    KC_O,      \
        XXXXXXX,  KC_C,    KC_F,    KC_D,    XXXXXXX,    XXXXXXX, KC_L,    KC_U,    KC_Y,    KC_QUOT, \
                        ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
-
-/** \brief adept layout (3 rows, 10 columns). */
-#define LAYOUT_LAYER_HDGOLD                                                                    \
-       KC_J,   KC_G,    KC_M,    KC_P,    KC_V,    XXXXXXX, KC_COMM, KC_SCLN, KC_DOT,  QK_REP, \
-       KC_R,     KC_S,    KC_N,    KC_D,    KC_B,       KC_V,    KC_A,    KC_E,    KC_I,    KC_H,      \
-       XXXXXXX,  KC_F,    KC_L,    KC_C,    KC_W,    XXXXXXX, KC_U,    KC_O,    KC_Y,    KC_K, \
-           ESC_MED, T_NAV, TAB_FUN,    ENT_SYM, SPC_NUM
 
 
 /** \brief enthium layout (3 rows, 10 columns). */
@@ -266,7 +258,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
-   [LAYER_HDGOLD] = LAYOUT_wrapper(
+  [LAYER_HDGOLD] = LAYOUT_wrapper(
     POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_ENTHIUM))
   ),
   [LAYER_SYMBOLS2] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS2),
