@@ -75,13 +75,13 @@ enum keycode_aliases {
   HRM_E = LCTL_T(KC_E),
   HRM_I = LCTL_T(KC_I),
   HRM_C = LT(LAYER_SYMBOLS2, KC_C),
-  HRM_QUOT =LGUI_T(KC_QUOT),
+  HRM_QUOT = LGUI_T(KC_QUOT),
 
   HRM_H = RSFT_T(KC_H),
   HRM_T = RCTL_T(KC_T),
   HRM_N = LALT_T(KC_N),
   HRM_S = LT(LAYER_SYMBOLS2, KC_S),
-  HRM_V = RGUI_T(KC_V),
+  HRM_V =  GUI_T(KC_V),
 
   ESC_MED = LT(LAYER_MEDIA, KC_ESC),
   SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
@@ -120,8 +120,8 @@ enum keycode_aliases {
 
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
-       KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
-       HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,    KC_K, HRM_H, HRM_T, HRM+>_N,  HRM_S,      \
+    LT(LAYER,KC_Z),    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
+       HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,    KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
        HRM_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, KC_B,  HRM_V, \
            ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
 
@@ -276,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
   [LAYER_HDGOLD] = LAYOUT_wrapper(
-    POINTER_MOD(LAYOUT_LAYER_ENTHIUM)
+   LAYOUT_LAYER_ENTHIUM
   ),
   [LAYER_SYMBOLS2] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS2),
 
@@ -457,12 +457,16 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case ARROW:
             if( record->event.pressed) {
+          clear_weak_mods();
+          clear_mods();
+
           SEND_STRING(alt ? (shift_mods
                                     ? "<=>"     // <=>
                                     : "<->")    // <->
                                  : (shift_mods
                                     ? "=>"     // =>
                                     : "->"));     // ->
+            set_mods(mods);
             }
           return false;
 
