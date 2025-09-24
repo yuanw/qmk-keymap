@@ -73,7 +73,7 @@ enum keycode_aliases {
   // Short aliases for home row mods and other tap-hold keys.
   HRM_A = LSFT_T(KC_A),
   HRM_E = LCTL_T(KC_E),
-  HRM_I = LATL_T(KC_I),
+  HRM_I = LALT_T(KC_I),
   HRM_C = LT(LAYER_SYMBOLS2, KC_C),
   HRM_QUOT = LGUI_T(KC_QUOT),
 
@@ -213,7 +213,7 @@ enum keycode_aliases {
 
 #define LAYOUT_LAYER_SYMBOLS2                  \
     KC_GRV , KC_LABK, KC_RABK, KC_MINS, KC_PIPE,   KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , ARROW ,\
-    KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL, KC_AMPR,   KC_HASH, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,\
+    KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL, KC_AMPR,   KC_HASH, KC_LPRN, KC_RPRN, KC_CAPS, CW_TOGG,\
     KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_BSLS, KC_COMM, KC_DOT , KC_QUOT,\
                        XXXXXXX, _______, XXXXXXX,  _______ , _______
 
