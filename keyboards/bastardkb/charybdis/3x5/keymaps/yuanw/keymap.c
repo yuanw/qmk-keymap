@@ -93,7 +93,8 @@ enum keycode_aliases {
   T_NAV = LT(LAYER_NAVIGATION, KC_T),
   SPC_NUM = LT(LAYER_NUMERAL, KC_SPC),
   R_NUM = LT(LAYER_NUMERAL, KC_R),
-  REP_SYM = LT(LAYER_SYMBOLS, ALTREP2),
+  //https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
+  REP_SYM = LT(LAYER_SYMBOLS2, KC_0),
 
   U_RDO= SCMD(KC_Z),
   U_PST= LCMD(KC_V),
@@ -123,7 +124,7 @@ enum keycode_aliases {
     KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
     HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,      KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
     LT(LAYER_POINTER, KC_QUOT), LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, RGUI_T(KC_B), LT(LAYER_POINTER, KC_V), \
-                           ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
+                           ESC_MED, SPC_NAV, TAB_FUN,     REP_SYM,  R_NUM
 
 /*
  * Layers used on the Charybdis Nano.
@@ -389,6 +390,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
                             uint8_t* remembered_mods) {
     switch (keycode) {
+        case REP_SYM:
         case ALTREP2:
         case ALTREP3:
             return false;  // Ignore ALTREP keys.
@@ -456,7 +458,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   const bool alt = all_mods & MOD_BIT_LALT;
     switch (keycode) {
         case ARROW:
-            if( record->event.pressed) {
+            if (record->event.pressed) {
           clear_weak_mods();
           clear_mods();
 
@@ -469,7 +471,14 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             set_mods(mods);
             }
           return false;
-
+        case REP_SYM:
+            if (record->event.pressed) {
+                if (record->tap.count) {
+                    repeat_key_invoke(&record->event);
+                }
+                return false;
+            }
+            break;
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
