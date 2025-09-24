@@ -121,8 +121,8 @@ enum keycode_aliases {
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
        KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
-       KC_C,    KC_I,    KC_E,    HRM_A,    KC_COMM,    KC_K, KC_H, KC_T, KC_N,  KC_S,      \
-       KC_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, LT(LAYER_SYMBOLS2,KC_B),  KC_V, \
+       HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,    KC_K, HRM_H, HRM_T, HRM+>_N,  HRM_S,      \
+       HRM_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, KC_B,  HRM_V, \
            ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
 
 /*
