@@ -73,7 +73,7 @@ enum keycode_aliases {
   // Short aliases for home row mods and other tap-hold keys.
   HRM_A = LSFT_T(KC_A),
   HRM_E = LCTL_T(KC_E),
-  HRM_I = LCTL_T(KC_I),
+  HRM_I = LATL_T(KC_I),
   HRM_C = LT(LAYER_SYMBOLS2, KC_C),
   HRM_QUOT = LGUI_T(KC_QUOT),
 
@@ -81,7 +81,7 @@ enum keycode_aliases {
   HRM_T = RCTL_T(KC_T),
   HRM_N = LALT_T(KC_N),
   HRM_S = LT(LAYER_SYMBOLS2, KC_S),
-  HRM_V =  GUI_T(KC_V),
+  HRM_V = RGUI_T(KC_V),
 
   ESC_MED = LT(LAYER_MEDIA, KC_ESC),
   SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
@@ -96,10 +96,10 @@ enum keycode_aliases {
   REP_SYM = LT(LAYER_SYMBOLS, ALTREP2),
 
   U_RDO= SCMD(KC_Z),
- U_PST= LCMD(KC_V),
- U_CPY= LCMD(KC_C),
- U_CUT= LCMD(KC_X),
- U_UND= LCMD(KC_Z),
+  U_PST= LCMD(KC_V),
+  U_CPY= LCMD(KC_C),
+  U_CUT= LCMD(KC_X),
+  U_UND= LCMD(KC_Z),
 };
 
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
@@ -120,10 +120,10 @@ enum keycode_aliases {
 
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
-    LT(LAYER,KC_Z),    KC_Y,    KC_U,    KC_O,    KC_SCLN,    ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
-       HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,    KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
-       HRM_QUOT, LT(LAYER_SYMBOLS2, KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, KC_B,  HRM_V, \
-           ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
+    KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
+    HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,      KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
+    LT(LAYER_POINTER, KC_QUOT), LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, RGUI_T(KC_B), LT(LAYER_POINTER, KC_V), \
+                           ESC_MED, SPC_NAV, TAB_FUN,     QK_REP,  R_NUM
 
 /*
  * Layers used on the Charybdis Nano.
