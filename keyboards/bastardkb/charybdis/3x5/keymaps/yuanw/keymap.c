@@ -121,7 +121,7 @@ enum keycode_aliases {
 
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
-    KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
+    KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          KC_Q, KC_L, KC_D, KC_P,  KC_X, \
     HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,      KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
     LT(LAYER_POINTER, KC_QUOT), LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, RGUI_T(KC_B), LT(LAYER_POINTER, KC_V), \
                            ESC_MED, SPC_NAV, TAB_FUN,     REP_SYM,  R_NUM
@@ -215,7 +215,7 @@ enum keycode_aliases {
 #define LAYOUT_LAYER_SYMBOLS2                  \
     KC_GRV , KC_LABK, KC_RABK, KC_MINS, KC_PIPE,   KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , ARROW ,\
     KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL, KC_AMPR,   KC_HASH, KC_LPRN, KC_RPRN, KC_CAPS, CW_TOGG,\
-    KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_BSLS, SELLINE, SELWBAK , SELWORD,\
+    KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_BSLS, KC_DOT, SELWBAK , SELWORD,\
                        XXXXXXX, _______, XXXXXXX,  _______ , _______
 
 
@@ -472,7 +472,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
           return false;
         case REP_SYM:
             if (record->tap.count) {
-                    if (shift_mods) {
+                    if (alt) {
                         process_altrep2(get_last_keycode(), get_last_mods());
                     }
                     else {
