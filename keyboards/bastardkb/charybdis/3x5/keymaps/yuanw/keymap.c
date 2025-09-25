@@ -459,25 +459,28 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case ARROW:
             if (record->event.pressed) {
-          clear_weak_mods();
-          clear_mods();
-
-          SEND_STRING(alt ? (shift_mods
+              clear_weak_mods();
+              clear_mods();
+               SEND_STRING(alt ? (shift_mods
                                     ? "<=>"     // <=>
                                     : "<->")    // <->
                                  : (shift_mods
                                     ? "=>"     // =>
                                     : "->"));     // ->
-            set_mods(mods);
+              set_mods(mods);
             }
           return false;
         case REP_SYM:
-            if (record->event.pressed) {
-                if (record->tap.count) {
-                    repeat_key_invoke(&record->event);
+            if (record->tap.count) {
+                    if (shift_mods) {
+                        process_altrep2(get_last_keycode(), get_last_mods());
+                    }
+                    else {
+                        repeat_key_invoke(&record->event);
+                    }
+                    return false;
                 }
-                return false;
-            }
+
             break;
         case ALTREP2:
             if (record->event.pressed) {
@@ -555,7 +558,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             return false;
 
        }
-        return true; // Process all other keycodes normally
+       return true; // Process all other keycodes normally
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
