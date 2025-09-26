@@ -4,6 +4,12 @@
 
 #include QMK_KEYBOARD_H
 #include <cyboard.h>
+#include "yuanw.h"
+#ifdef OS_DETECTION_ENABLE
+#    include "os_detection.h"
+#endif
+#include "unicode.h"
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
