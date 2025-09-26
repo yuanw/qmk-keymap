@@ -34,3 +34,5 @@ symbol based on https://github.com/getreuer/qmk-keymap
 * put repeat on hold
 https://www.reddit.com/r/ErgoMechKeyboards/comments/1hoe3xe/qmk_repeat_key_as_tap_layer_on_hold/
 https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
+* Automatic mouse key
+https://docs.qmk.fm/features/pointing_device#pointing-device-auto-mouse
