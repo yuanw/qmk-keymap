@@ -68,8 +68,6 @@ enum charybdis_keymap_layers {
 enum keycode_aliases {
   // The "magic" key is the Alternate Repeat Key.
   MAGIC = QK_AREP,
-  // F20 mutes the mic on my system.
-  MUTEMIC = KC_F20,
   // Short aliases for home row mods and other tap-hold keys.
   HRM_A = LSFT_T(KC_A),
   HRM_E = LCTL_T(KC_E),

@@ -1,6 +1,3 @@
-/* Copyright 2023 Cyboard LLC (@Cyboard-DigitalTailor)
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
 
 #include QMK_KEYBOARD_H
 #include <cyboard.h>
@@ -9,10 +6,57 @@
 #    include "os_detection.h"
 #endif
 
+enum layers {
+    BASE,
+    FUN,
+    NAV,
+    MED,
+    PNT,
+    NUM,
+    SYM,
+};
+
+enum keycode_aliases {
+  // The "magic" key is the Alternate Repeat Key.
+  MAGIC = QK_AREP,
+  // Short aliases for home row mods and other tap-hold keys.
+  HRM_A = LSFT_T(KC_A),
+  HRM_E = LCTL_T(KC_E),
+  HRM_I = LALT_T(KC_I),
+  HRM_C = LT(LAYER_SYMBOLS, KC_C),
+  HRM_QUOT = LGUI_T(KC_QUOT),
+
+  HRM_H = RSFT_T(KC_H),
+  HRM_T = RCTL_T(KC_T),
+  HRM_N = LALT_T(KC_N),
+  HRM_S = LT(LAYER_SYMBOLS, KC_S),
+  HRM_V = RGUI_T(KC_V),
+
+  ESC_MED = LT(LAYER_MEDIA, KC_ESC),
+  SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
+  TAB_FUN = LT(LAYER_FUNCTION, KC_BSPC),
+  ENT_SYM = LT(LAYER_SYMBOLS, KC_ENT),
+  E_NUM = LT(LAYER_NUMERAL, KC_E),
+  ADEPT = DF(LAYER_BASE),
+  HD_GOLD = DF(LAYER_HDGOLD),
+  T_NAV = LT(LAYER_NAVIGATION, KC_T),
+  SPC_NUM = LT(LAYER_NUMERAL, KC_SPC),
+  R_NUM = LT(LAYER_NUMERAL, KC_R),
+  //https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
+  REP_SYM = LT(LAYER_SYMBOLS, KC_0),
+
+  U_RDO= SCMD(KC_Z),
+  U_PST= LCMD(KC_V),
+  U_CPY= LCMD(KC_C),
+  U_CUT= LCMD(KC_X),
+  U_UND= LCMD(KC_Z),
+};
+
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [0] = LAYOUT_let_no_bottom_row(
+    [] = LAYOUT_let_no_bottom_row(
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
