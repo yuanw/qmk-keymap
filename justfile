@@ -20,6 +20,10 @@ init:
     if [ "$(git config submodule.bastardkb-qmk.ignore)" != "all" ]; then
       git config submodule.bastardkb-qmk.ignore all
     fi
+    if [ "$(git config submodule.imprint.ignore)" != "all" ]; then
+      git config submodule.imprint.ignore all
+    fi
+
 
 # build charybdis/3x5
 charybdis:
@@ -35,5 +39,4 @@ imprint:
     if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/imprint" ]; then
       qmk config user.qmk_home="{{justfile_directory()}}/imprint"
     fi
-    qmk compile -c -kb imprint/imprint_letters_only_no_bottom_row -km vial
-'
+    qmk compile -c -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km vial
