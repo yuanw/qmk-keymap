@@ -20,11 +20,20 @@ init:
     if [ "$(git config submodule.bastardkb-qmk.ignore)" != "all" ]; then
       git config submodule.bastardkb-qmk.ignore all
     fi
-    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/bastardkb-qmk" ]; then
-      qmk config user.qmk_home="{{justfile_directory()}}/bastardkb-qmk"
-    fi
 
 # build charybdis/3x5
 charybdis:
     #!/usr/bin/env bash
+    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/bastardkb-qmk" ]; then
+      qmk config user.qmk_home="{{justfile_directory()}}/bastardkb-qmk"
+    fi
     qmk compile -c -kb bastardkb/charybdis/3x5 -km yuanw
+
+# build imprint
+imprint:
+    #!/usr/bin/env bash
+    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/imprint" ]; then
+      qmk config user.qmk_home="{{justfile_directory()}}/imprint"
+    fi
+    qmk compile -c -kb imprint/imprint_letters_only_no_bottom_row -km vial
+'
