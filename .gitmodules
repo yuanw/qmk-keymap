@@ -5,3 +5,7 @@
 [submodule "modules/getreuer"]
 	path = modules/getreuer
 	url = https://github.com/getreuer/qmk-modules.git
+[submodule "imprint"]
+	path = imprint
+	url = https://github.com/Cyboard-DigitalTailor/vial-qmk
+    branch = cyboard
