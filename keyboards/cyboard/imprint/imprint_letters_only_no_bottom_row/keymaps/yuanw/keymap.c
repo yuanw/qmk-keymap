@@ -6,6 +6,11 @@
 #    include "os_detection.h"
 #endif
 
+__attribute__ ((weak))
+bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
+
 enum layers {
     BASE,
     FUN,
@@ -46,7 +51,6 @@ enum keycode_aliases {
   U_CUT= LCMD(KC_X),
   U_UND= LCMD(KC_Z),
 };
-
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -113,3 +117,169 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,         _______, _______, _______
     )
 };
+
+const custom_shift_key_t custom_shift_keys[] = {
+    {SPC_NAV , KC_TAB}, // Shift SPC is tab.
+    {ESC_WIN , KC_ENT}, // Shift esc is enter.
+    {BSPC_FUN, KC_DEL}, //Shift BSPC is DEL
+};
+
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
+                            uint8_t* remembered_mods) {
+    switch (keycode) {
+        case REP_SYM:
+        case ALTREP2:
+        case ALTREP3:
+            return false;  // Ignore ALTREP keys.
+    }
+    return true;  // Other keys can be repeated.
+};
+
+static void process_altrep2(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case KC_A:
+        case RCTL_T(KC_A):
+          SEND_STRING("tion");
+          break;
+        case LALT_T(KC_I): SEND_STRING("tion"); break;
+        case LALT_T(KC_S): SEND_STRING("sion"); break;
+        case LSFT_T(KC_T): SEND_STRING("heir"); break;
+        case KC_Y: SEND_STRING("ou"); break;
+        case KC_W: SEND_STRING("hich"); break;
+        case KC_AT: SEND_STRING("Workiva/release-management-p"); break;
+        case KC_C: SEND_STRING("ontent management"); break;
+    }
+};
+
+static void process_altrep3(uint16_t keycode, uint8_t mods) {
+    switch (keycode) {
+        case RCTL_T(KC_A): SEND_STRING("bout"); break;
+        case LALT_T(KC_I): SEND_STRING("ng"); break;
+        case LALT_T(KC_S): SEND_STRING("tate"); break;
+        case LSFT_T(KC_T): SEND_STRING("here"); break;
+        case KC_W: SEND_STRING("ould"); break;
+        case KC_AT: SEND_STRING("rmconsole-wf"); break;
+        case KC_E: SEND_STRING("specially");break;
+        case KC_C: SEND_STRING("ontent-management-service"); break;
+    }
+};
+
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+  const uint8_t mods = get_mods();
+  const uint8_t all_mods = (mods | get_weak_mods()
+#ifndef NO_ACTION_ONESHOT
+                        | get_oneshot_mods()
+#endif  // NO_ACTION_ONESHOT
+  );
+  const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+  const bool alt = all_mods & MOD_BIT_LALT;
+    switch (keycode) {
+        case ARROW:
+            if (record->event.pressed) {
+              clear_weak_mods();
+              clear_mods();
+               SEND_STRING(alt ? (shift_mods
+                                    ? "<=>"     // <=>
+                                    : "<->")    // <->
+                                 : (shift_mods
+                                    ? "=>"     // =>
+                                    : "->"));     // ->
+              set_mods(mods);
+            }
+          return false;
+        case REP_SYM:
+            if (record->tap.count) {
+                    if (alt) {
+                        process_altrep2(get_last_keycode(), get_last_mods());
+                    }
+                    else {
+                        repeat_key_invoke(&record->event);
+                    }
+                    return false;
+                }
+
+            break;
+        case ALTREP2:
+            if (record->event.pressed) {
+                process_altrep2(get_last_keycode(), get_last_mods());
+            }
+            return false;
+        case ALTREP3:
+            if (record->event.pressed) {
+                process_altrep3(get_last_keycode(), get_last_mods());
+            }
+            return false;
+        case CPY:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_C));
+                        return false;
+                    default:
+                        tap_code16(KC_COPY);
+                        return false;
+                }
+            }
+        case PST:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_V));
+                        break;
+                    default:
+                        tap_code16(KC_PSTE);
+                        break;
+                }
+            }
+            return false;
+        case CUT:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_X));
+                        break;
+                    default:
+                        tap_code16(KC_CUT);
+                        break;
+                }
+            }
+            return false;
+        case UND:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_Z));
+                        break;
+                    default:
+                        tap_code16(KC_UNDO);
+                        break;
+                }
+            }
+            return false;
+        case RDO:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS: // On Mac, set default layer to BASE_MAC.
+                    case OS_IOS:
+                        tap_code16(LCMD(KC_Z));
+                        break;
+                    default:
+                        tap_code16(KC_AGIN);
+                        break;
+                }
+            }
+            return false;
+
+       }
+       return true; // Process all other keycodes normally
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // your existing macro code here.
+    return process_record_keymap(keycode, record) && process_record_secrets(keycode, record);
+}
