@@ -55,9 +55,9 @@ enum keycode_aliases {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE] = LAYOUT_let_no_bottom_row(
-        XXXXXXX,  KC_Z,    KC_Y,    KC_E,    KC_R,    KC_T,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        KC_W, HRM_C,    HRM_I,    HRM_E,    KC_F,    KC_G,                                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        XXXXXXX, KC_Z,    KC_Y,    KC_U,   KC_O,    KC_SCLN,                             KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
+        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_N, HRM_S,
+        XXXXXXX, KC_QUOT, KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    KC_V,  XXXXXXX,
                                             KC_ENT,  KC_DEL,  KC_ESC,           KC_GRAVE, KC_BSPC, KC_SPC,
                                             QK_BOOT, KC_HOME, KC_END,           KC_CAPS,  KC_APP,  MO(1)
     ),
