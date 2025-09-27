@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_7, KC_8, KC_9, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, KC_4, KC_5, KC_6, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, KC_1, KC_2, KC_3, _______, _______,                           _______, _______, _______, _______, _______, _______,
-                                            QK_LLCK, KC_MINS, _______,         _______, _______, _______,
+                                            KC_0, QK_LLCK, _______,         _______, _______, _______,
                                             _______, _______, _______,         _______, _______, _______
     ),
     [TXT] = LAYOUT_let_no_bottom_row(
@@ -190,15 +190,15 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
           return false;
         case REP_SYM:
             if (record->tap.count) {
-                    if (alt) {
-                        process_altrep2(get_last_keycode(), get_last_mods());
-                    }
-                    else {
-                        repeat_key_invoke(&record->event);
-                    }
+                    repeat_key_invoke(&record->event);
                     return false;
-                }
-
+            }
+            break;
+        case MAGIC_TXT:
+            if (record->tap.count) {
+                process_altrep2(get_last_keycode(), get_last_mods());
+                return false;
+            }
             break;
         case ALTREP2:
             if (record->event.pressed) {
@@ -274,7 +274,6 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-
        }
        return true; // Process all other keycodes normally
 }

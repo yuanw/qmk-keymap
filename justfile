@@ -39,4 +39,7 @@ imprint:
     if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/imprint" ]; then
       qmk config user.qmk_home="{{justfile_directory()}}/imprint"
     fi
+    if [ "$(qmk config user.overlay_dir | cut -d '=' -f 2)" != "{{justfile_directory()}}" ]; then
+      qmk config user.overlay_dir="{{justfile_directory()}}"
+    fi
     qmk compile -c -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km yuanw
