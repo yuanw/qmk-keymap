@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Z,    KC_Y,    KC_U,   KC_O,    KC_SCLN,                             KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
-        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, HRM_F,
+        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
         XXXXXXX, KC_QUOT, KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    KC_V,  XXXXXXX,
                                             SPC_NAV, ENT_SYM, XXXXXXX,           XXXXXXX, REP_SYM, R_NUM,
                                             MAGIC_TXT, ESC_WIN, XXXXXXX,         XXXXXXX,  BSPC_FUN,  KC_APP
