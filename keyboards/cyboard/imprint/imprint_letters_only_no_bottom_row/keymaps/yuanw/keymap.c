@@ -10,38 +10,35 @@ enum layers {
     BASE,
     FUN,
     NAV,
-    MED,
+    WIN,
     PNT,
     NUM,
     SYM,
+    TXT
 };
 
 enum keycode_aliases {
-  // The "magic" key is the Alternate Repeat Key.
-  MAGIC = QK_AREP,
   // Short aliases for home row mods and other tap-hold keys.
   HRM_A = LSFT_T(KC_A),
   HRM_E = LCTL_T(KC_E),
   HRM_I = LALT_T(KC_I),
-  HRM_C = LT(SYM, KC_C),
+  HRM_C = LGUI_T(KC_C),
   HRM_QUOT = LGUI_T(KC_QUOT),
 
   HRM_H = RSFT_T(KC_H),
   HRM_T = RCTL_T(KC_T),
   HRM_N = LALT_T(KC_N),
-  HRM_S = LT(SYM, KC_S),
+  HRM_S = RGUI_T(KC_S),
   HRM_V = RGUI_T(KC_V),
 
-  ESC_MED = LT(MED, KC_ESC),
+  ESC_WIN = LT(WIN, KC_ESC),
   SPC_NAV = LT(NAV, KC_SPC),
-  TAB_FUN = LT(FUN, KC_BSPC),
+  BSPC_FUN = LT(FUN, KC_BSPC),
   ENT_SYM = LT(SYM, KC_ENT),
-  E_NUM = LT(NUM, KC_E),
-  T_NAV = LT(NAV, KC_T),
-  SPC_NUM = LT(NUM, KC_SPC),
   R_NUM = LT(NUM, KC_R),
   //https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
   REP_SYM = LT(SYM, KC_0),
+  MAGIC_TXT = LT(TXT, KC_1),
 
   U_RDO= SCMD(KC_Z),
   U_PST= LCMD(KC_V),
@@ -58,9 +55,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_Z,    KC_Y,    KC_U,   KC_O,    KC_SCLN,                             KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
         KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_N, HRM_S,
         XXXXXXX, KC_QUOT, KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    KC_V,  XXXXXXX,
-                                            KC_ENT,  KC_DEL,  KC_ESC,           KC_GRAVE, KC_BSPC, KC_SPC,
-                                            QK_BOOT, KC_HOME, KC_END,           KC_CAPS,  KC_APP,  MO(1)
-    ),
+                                            SPC_NAV, ENT_SYM, XXXXXXX,           XXXXXXX, REP_SYM, R_NUM,
+                                            MAGIC_TXT, ESC_WIN, XXXXXXX,         XXXXXXX,  BSPC_FUN,  KC_APP,
 
     [SYM] = LAYOUT_let_no_bottom_row(
         QK_BOOT, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, _______,
@@ -86,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,         _______, _______, _______
     ),
 
-    [MED] = LAYOUT_let_no_bottom_row(
+    [WIN] = LAYOUT_let_no_bottom_row(
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
@@ -103,6 +99,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NUM] = LAYOUT_let_no_bottom_row(
+        _______, KC_7, KC_8, KC_9, _______, _______,                           _______, _______, _______, _______, _______, _______,
+        _______, KC_4, KC_5, KC_6, _______, _______,                           _______, _______, _______, _______, _______, _______,
+        _______, KC_1, KC_2, KC_3, _______, _______,                           _______, _______, _______, _______, _______, _______,
+                                            QK_LLCK, KC_MINS, _______,         _______, _______, _______,
+                                            _______, _______, _______,         _______, _______, _______
+    ),
+    [TXT] = LAYOUT_let_no_bottom_row(
         _______, KC_7, KC_8, KC_9, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, KC_4, KC_5, KC_6, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, KC_1, KC_2, KC_3, _______, _______,                           _______, _______, _______, _______, _______, _______,
