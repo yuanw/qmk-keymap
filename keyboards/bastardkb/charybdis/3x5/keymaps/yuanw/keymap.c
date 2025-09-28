@@ -101,7 +101,6 @@ enum keycode_aliases {
   U_UND= LCMD(KC_Z),
 };
 
-#define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
 // clang-format off
 /** Convenience row shorthands. */
@@ -121,7 +120,7 @@ enum keycode_aliases {
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
     KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          KC_Q, KC_L, KC_D, KC_P,  KC_X, \
     HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,      KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
-    LT(LAYER_POINTER, KC_QUOT), LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH,   KC_J, KC_M, KC_G, RGUI_T(KC_B), LT(LAYER_POINTER, KC_V), \
+    KC_QUOT, LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH, KC_J, KC_M, KC_G, RGUI_T(KC_B),  KC_V, \
                            ESC_MED, SPC_NAV, TAB_FUN,     REP_SYM,  R_NUM
 
 /*
@@ -266,7 +265,7 @@ enum keycode_aliases {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
-         POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
+         HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)
   ),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
@@ -293,7 +292,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
 #        endif // RGB_MATRIX_ENABLE
         }
-        auto_pointer_layer_timer = timer_read();
+         auto_pointer_layer_timer = timer_read();
     }
     return mouse_report;
 }
