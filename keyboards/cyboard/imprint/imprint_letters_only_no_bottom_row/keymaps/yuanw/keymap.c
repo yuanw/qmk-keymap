@@ -184,6 +184,12 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
     }
 };
 
+void pointing_device_init_user() {
+    //    charybdis_set_pointer_dragscroll_enabled(true, true);
+    set_auto_mouse_layer(NAV);   // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
+    set_auto_mouse_enable(true); // always required before the auto mouse feature will work
+    set_auto_mouse_timeout(5000);
+}
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
     const uint8_t all_mods = (mods | get_weak_mods()
