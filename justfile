@@ -43,3 +43,10 @@ imprint:
       qmk config user.overlay_dir="{{justfile_directory()}}"
     fi
     qmk compile -c -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km yuanw
+
+# keymap
+keymap:
+    #!/usr/bin/env bash
+    qmk -v c2json --no-cpp -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km yuanw ./keyboards/cyboard/imprint/imprint_letters_only_no_bottom_row/keymaps/yuanw/keymap.c > imprint.json
+    keymap parse -c 10 -q imprint.json > imprint.yaml
+    keymap draw imprint.yaml > imprint.svg
