@@ -1,4 +1,4 @@
-layout: { qmk_layout: LAYOUT}
+layout: {qmk_keyboard: cyboard/imprint/imprint_letters_only_no_bottom_row, layout_name: LAYOUT_let_no_bottom_row}
 layers:
   L0:
   - ['', Z, Y, U, O, ;, Q, L, D, P]

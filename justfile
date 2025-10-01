@@ -4,11 +4,8 @@ red    := '\033[1;31m'
 green  := '\033[1;32m'
 yellow := '\033[1;33m'
 blue   := '\033[1;34m'
-
-# alias b := build
-# alias f := flash
-# alias l := layout
-# alias w := watch-layout
+charybdisNS := "bastardkb/charybdis/3x5"
+imprintNS := "cyboard/imprint/imprint_letters_only_no_bottom_row"
 
 list:
     @just --list
@@ -42,11 +39,11 @@ imprint:
     if [ "$(qmk config user.overlay_dir | cut -d '=' -f 2)" != "{{justfile_directory()}}" ]; then
       qmk config user.overlay_dir="{{justfile_directory()}}"
     fi
-    qmk compile -c -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km yuanw
+    qmk compile -c -kb "{{imprintNS}}" -km yuanw
 
 # keymap
 keymap:
     #!/usr/bin/env bash
-    qmk -v c2json --no-cpp -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km yuanw ./keyboards/cyboard/imprint/imprint_letters_only_no_bottom_row/keymaps/yuanw/keymap.c > imprint.json
+    qmk -v c2json --no-cpp -kb "{{imprintNS}}" -km yuanw ./keyboards/"{{imprintNS}}"/keymaps/yuanw/keymap.c > imprint.json
     keymap parse -c 10 -q imprint.json > imprint.yaml
-    keymap draw imprint.yaml > imprint.svg
+    keymap draw imprint.yaml -j ./imprint/keyboards/"{{imprintNS}}"/info.json > imprint.svg
