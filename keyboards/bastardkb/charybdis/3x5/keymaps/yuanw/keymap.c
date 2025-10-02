@@ -118,7 +118,7 @@ enum keycode_aliases {
 
 /** \brief enthium layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_ENTHIUM                                                                  \
-    KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          KC_Q, KC_L, KC_D, KC_P,  KC_X, \
+    KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
     HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,      KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
     KC_QUOT, LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH, KC_J, KC_M, KC_G, RGUI_T(KC_B),  KC_V, \
                            ESC_MED, SPC_NAV, TAB_FUN,     REP_SYM,  R_NUM
@@ -165,8 +165,8 @@ enum keycode_aliases {
 #define LAYOUT_LAYER_POINTER                                                                  \
     XXXXXXX,  XXXXXXX, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  XXXXXXX, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-    _______, DRGSCRL, SNIPING, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
-                      KC_BTN2, KC_BTN1, KC_BTN3, KC_BTN3, KC_BTN1
+    _______, DRGSCRL, KC_BTN2, KC_BTN3, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
+                      XXXXXXX, KC_BTN1, XXXXXXX, KC_BTN3, KC_BTN1
 
 /**
  * \brief Navigation layer.
