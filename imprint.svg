@@ -285,9 +285,6 @@ path.combo {
 </g>
 <g transform="translate(280, 168)" class="key keypos-36">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">SPC</tspan><tspan x="0" dy="1.2em">NAV</tspan>
-</text>
 </g>
 <g transform="translate(336, 168)" class="key keypos-37">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -309,9 +306,6 @@ path.combo {
 </g>
 <g transform="translate(700, 168)" class="key keypos-41">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">R</tspan><tspan x="0" dy="1.2em">NUM</tspan>
-</text>
 </g>
 <g transform="translate(392, 252)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -322,19 +316,25 @@ path.combo {
 <g transform="translate(448, 252)" class="key keypos-43">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">ESC</tspan><tspan x="0" dy="1.2em">WIN</tspan>
+<tspan x="0" dy="-0.6em">SPC</tspan><tspan x="0" dy="1.2em">NAV</tspan>
 </text>
 </g>
 <g transform="translate(448, 196)" class="key keypos-44">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">ESC</tspan><tspan x="0" dy="1.2em">WIN</tspan>
+</text>
 </g>
 <g transform="translate(532, 196)" class="key keypos-45">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">BSPC</tspan><tspan x="0" dy="1.2em">FUN</tspan>
+</text>
 </g>
 <g transform="translate(532, 252)" class="key keypos-46">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">BSPC</tspan><tspan x="0" dy="1.2em">FUN</tspan>
+<tspan x="0" dy="-0.6em">R</tspan><tspan x="0" dy="1.2em">NUM</tspan>
 </text>
 </g>
 <g transform="translate(588, 252)" class="key keypos-47">

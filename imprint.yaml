@@ -4,8 +4,8 @@ layers:
   - ['', Z, Y, U, O, ;, Q, L, D, P]
   - [X, '', W, HRM C, HRM I, HRM E, HRM A, ',', K, HRM H]
   - [HRM T, HRM N, HRM S, F, '', '''', '-', '=', ., /]
-  - [J, M, G, B, V, '', SPC NAV, ENT SYM, '', '']
-  - [REP SYM, R NUM, MAGIC TXT, ESC WIN, '', '', BSPC FUN, APP]
+  - [J, M, G, B, V, '', '', ENT SYM, '', '']
+  - [REP SYM, '', MAGIC TXT, SPC NAV, ESC WIN, BSPC FUN, R NUM, APP]
   L1:
   - [QK BOOT, '`', <, '>', '-', '|', ^, '{', '}', $]
   - - ARROW
