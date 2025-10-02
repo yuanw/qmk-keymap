@@ -41,6 +41,15 @@ imprint:
     fi
     qmk compile -c -kb "{{imprintNS}}" -km yuanw
 
+keymap2:
+    #!/usr/bin/env bash
+    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{justfile_directory()}}/bastardkb-qmk" ]; then
+      qmk config user.qmk_home="{{justfile_directory()}}/bastardkb-qmk"
+    fi
+    qmk -v c2json --no-cpp -kb "{{charybdisNS}}" -km yuanw ./keyboards/"{{charybdisNS}}"/keymaps/yuanw/keymap.c > 3x5.json
+    keymap parse -c 10 -q 3x5.json > 3x5.yaml
+    keymap draw 3x5.yaml -j ./bastardkb-qmk/keyboards/"{{charybdisNS}}"/keyboard.json > 3x5.svg
+
 # keymap
 keymap:
     #!/usr/bin/env bash
