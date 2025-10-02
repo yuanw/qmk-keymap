@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Z,    KC_Y,    KC_U,   KC_O,    KC_SCLN,                             KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
-        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
+        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             LT(PNT, KC_K),    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
         XXXXXXX, KC_QUOT, KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    KC_V,  XXXXXXX,
                                             SPC_NAV, ENT_SYM, XXXXXXX,           XXXXXXX, REP_SYM, R_NUM,
                                             MAGIC_TXT, ESC_WIN, XXXXXXX,         XXXXXXX,  BSPC_FUN,  KC_APP
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______,
+                                            KC_BTN1, KC_BTN2, _______,         _______, KC_BTN2, KC_BTN1,
                                             _______, _______, _______,         _______, _______, _______
     ),
 
@@ -186,9 +186,9 @@ static void process_altrep3(uint16_t keycode, uint8_t mods) {
 
 void pointing_device_init_user() {
     //    charybdis_set_pointer_dragscroll_enabled(true, true);
-    set_auto_mouse_layer(NAV);   // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
+    set_auto_mouse_layer(PNT);   // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
     set_auto_mouse_enable(true); // always required before the auto mouse feature will work
-    set_auto_mouse_timeout(5000);
+    //  set_auto_mouse_timeout(5000);
 }
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
