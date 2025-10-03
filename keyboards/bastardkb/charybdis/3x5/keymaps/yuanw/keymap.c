@@ -163,7 +163,7 @@ enum keycode_aliases {
 
 /** \brief Mouse emulation and pointer functions. */
 #define LAYOUT_LAYER_POINTER                                                                  \
-    XXXXXXX,  XXXXXXX, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  XXXXXXX, XXXXXXX, \
+    XXXXXXX,  XXXXXXX, QK_LLCK, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, QK_LLCK,  XXXXXXX, XXXXXXX, \
     ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
     _______, DRGSCRL, KC_BTN2, KC_BTN3, XXXXXXX, XXXXXXX, XXXXXXX, SNIPING, DRGSCRL, _______, \
                       XXXXXXX, KC_BTN1, XXXXXXX, KC_BTN3, KC_BTN1

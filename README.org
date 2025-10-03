@@ -37,3 +37,5 @@ https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
 * Automatic mouse key
 https://docs.qmk.fm/features/pointing_device#pointing-device-auto-mouse
 clang-format -i <file> --style .clang-format
+
+[[./imprint.svg]]

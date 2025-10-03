@@ -1,0 +1,20 @@
+layout: {qmk_keyboard: bastardkb/charybdis/3x5, layout_name: LAYOUT}
+layers:
+  L0:
+  - [HOME ROW MOD GACS(LAYOUT LAYER BASE)]
+  L1:
+  - [LAYOUT LAYER FUNCTION]
+  L2:
+  - [LAYOUT LAYER NAVIGATION]
+  L3:
+  - [LAYOUT LAYER MEDIA]
+  L4:
+  - [LAYOUT LAYER NUMERAL]
+  L5:
+  - [LAYOUT LAYER POINTER]
+  L6:
+  - [LAYOUT LAYER SYMBOLS]
+  L7:
+  - [LAYOUT LAYER ENTHIUM]
+  L8:
+  - [LAYOUT LAYER SYMBOLS2]
