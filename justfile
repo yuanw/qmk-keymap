@@ -14,15 +14,13 @@ list:
 # build with target parameter
 build target:
     #!/usr/bin/env bash
-    just setup target
-    if [ "{{ target }}" = "imprint" ]; then
-    qmk compile -c -kb "{{ imprintNS }}" -km yuanw
-    elif [ "{{ target }}" = "charybdis" ]; then
-    qmk compile -c -kb "{{ charybdisNS }}" -km yuanw
-    else
-    echo "Unknown target: {{ target }}"
-    exit 1
-    fi
+    just setup {{ target }}
+    qmk compile -kb $(just _keyboard {{ target }}) -km yuanw
+
+flash target:
+    #!/usr/bin/env bash
+    just setup {{ target }}
+    qmk flash -kb $(just _keyboard {{ target }}) -km yuanw
 
 # Setup submodule and link directories to submodules
 init:
@@ -44,30 +42,15 @@ setup target:
     qmk config user.overlay_dir="{{ justfile_directory() }}"
     fi
 
-# build charybdis/3x5
-charybdis:
-    just setup charybdis
+_keyboard keyboard:
     #!/usr/bin/env bash
-    qmk compile -c -kb "{{ charybdisNS }}" -km yuanw
-
-# build charybdis/3x5
-imprint:
-    #!/usr/bin/env bash
-    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{ justfile_directory() }}/imprint" ]; then
-    qmk config user.qmk_home="{{ justfile_directory() }}/imprint"
+    if [ "{{ keyboard }}" = "imprint" ]; then
+      echo "{{ imprintNS }}"
+    elif [ "{{ keyboard }}" = "charybdis" ]; then
+      echo "{{ charybdisNS }}"
+    else
+      printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
     fi
-    qmk compile -c -kb cyboard/imprint/imprint_letters_only_no_bottom_row -km yuanw
-
-# build imprint
-flash_imprint:
-    #!/usr/bin/env bash
-    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{ justfile_directory() }}/imprint" ]; then
-    qmk config user.qmk_home="{{ justfile_directory() }}/imprint"
-    fi
-    if [ "$(qmk config user.overlay_dir | cut -d '=' -f 2)" != "{{ justfile_directory() }}" ]; then
-    qmk config user.overlay_dir="{{ justfile_directory() }}"
-    fi
-    qmk flash -c -kb "{{ imprintNS }}" -km yuanw
 
 keymap2:
     #!/usr/bin/env bash
