@@ -26,8 +26,8 @@ build target:
 init:
     #!/usr/bin/env bash
     git submodule update --init --recursive --recommend-shallow
-    if [ "$(git config submodule.bastardkb-qmk.ignore)" != "all" ]; then
-      git config submodule.bastardkb-qmk.ignore all
+    if [ "$(git config submodule.charybdis.ignore)" != "all" ]; then
+      git config submodule.charybdis.ignore all
     fi
     if [ "$(git config submodule.imprint.ignore)" != "all" ]; then
       git config submodule.imprint.ignore all

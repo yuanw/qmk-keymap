@@ -1,5 +1,5 @@
-[submodule "bastardkb-qmk"]
-	path = bastardkb-qmk
+[submodule "charybdis"]
+	path = charybdis
 	url = https://github.com/bastardkb/bastardkb-qmk
     branch ="bkb-master"
 [submodule "modules/getreuer"]
