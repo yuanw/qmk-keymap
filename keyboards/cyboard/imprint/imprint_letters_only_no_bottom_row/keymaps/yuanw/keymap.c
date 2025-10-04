@@ -32,7 +32,7 @@ enum keycode_aliases {
     ENT_SYM  = LT(SYM, KC_ENT),
     R_NUM    = LT(NUM, KC_R),
     // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
-    REP_SYM   = LT(SYM, KC_0),
+    REP_TXT   = LT(TXT, KC_0),
     MAGIC_TXT = LT(TXT, KC_1),
 
     U_RDO = SCMD(KC_Z),
@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Z,    KC_Y,    KC_U,   KC_O,    KC_SCLN,                             KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
         KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
-        XXXXXXX, KC_QUOT, KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    KC_V,  XXXXXXX,
-                                            XXXXXXX, ENT_SYM, XXXXXXX,           XXXXXXX, REP_SYM, XXXXXXX,
-                                            MAGIC_TXT, SPC_NAV, ESC_WIN,         BSPC_FUN,  R_NUM,  KC_APP
+        XXXXXXX, LT(SYM,KC_QUOT), KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    LT(SYM,KC_V),  XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
+                                            MAGIC_TXT, SPC_NAV, ESC_WIN,         BSPC_FUN,  R_NUM, REP_TXT
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
         QK_BOOT, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, _______,
@@ -100,8 +100,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,         _______, _______, _______
     ),
     [TXT] = LAYOUT_let_no_bottom_row(
-        _______, KC_7, KC_8, KC_9, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, KC_4, KC_5, KC_6, _______, _______,                           _______, _______, _______, _______, _______, _______,
+        _______, KC_7, KC_8, KC_9, KC_SECRET_1, _______,                           _______, _______, _______, _______, _______, _______,
+        _______, KC_4, KC_5, KC_6, KC_SECRET_2, _______,                           _______, _______, _______, _______, _______, _______,
         _______, KC_1, KC_2, KC_3, _______, _______,                           _______, _______, _______, _______, _______, _______,
                                             QK_LLCK, KC_MINS, _______,         _______, _______, _______,
                                             _______, _______, _______,         _______, _______, _______
