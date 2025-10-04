@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Z,    KC_Y,    KC_U,   KC_O,    KC_SCLN,                             KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
-        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             LT(PNT, KC_K),    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
+        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
         XXXXXXX, KC_QUOT, KC_MINS, KC_EQL, KC_DOT,  KC_SLASH,                            KC_J,    KC_M,    KC_G,    KC_B,    KC_V,  XXXXXXX,
                                             XXXXXXX, ENT_SYM, XXXXXXX,           XXXXXXX, REP_SYM, XXXXXXX,
                                             MAGIC_TXT, SPC_NAV, ESC_WIN,         BSPC_FUN,  R_NUM,  KC_APP
@@ -69,8 +69,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NAV] = LAYOUT_let_no_bottom_row(
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           KC_PGUP, KC_HOME, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                           _______, KC_HOME, KC_UP, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                           KC_PGUP, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______,
         _______, _______, _______, _______, _______, _______,                           KC_PGDN, KC_LEFT, _______, _______, _______, _______,
                                             _______, _______, _______,         _______, _______, _______,
                                             _______, _______, _______,         _______, QK_LLCK, _______
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, QK_LLCK, _______,                           _______, QK_LLCK, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
                                             KC_BTN1, KC_BTN2, _______,         _______, KC_BTN2, KC_BTN1,
-                                            _______, _______, _______,         _______, _______, _______
+                                            _______, KC_BTN1, KC_BTN2,         _______, _______, _______
     ),
 
     [NUM] = LAYOUT_let_no_bottom_row(
