@@ -9,7 +9,7 @@ You can read how to compile your own keymap on the official docs here: [[https:/
 
 
 ** imprint
-
+[[imprint.jpeg]]
 https://github.com/Cyboard-DigitalTailor/vial-qmk/tree/cyboard/keyboards/cyboard/imprint/imprint_number_row
 
 
