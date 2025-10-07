@@ -1,12 +1,12 @@
 layout: {qmk_keyboard: cyboard/imprint/imprint_letters_only_no_bottom_row, layout_name: LAYOUT_let_no_bottom_row}
 layers:
-  BASE:
+  L0:
   - ['', Z, Y, U, O, ;, Q, L, D, P]
   - [X, '', W, HRM C, HRM I, HRM E, HRM A, ',', K, HRM H]
   - [HRM T, HRM N, HRM S, F, '', '''', '-', 'LT(SYM,EQL)', ., /]
   - [J, M, 'LT(SYM,G)', B, V, '', '', '', '', '']
   - ['', '', ALTREP2, SPC NAV, ESC WIN, BSPC FUN, R NUM, REP TXT]
-  SYM:
+  L1:
   - - {t: ▽, type: trans}
     - '`'
     - <
@@ -55,7 +55,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  FUN:
+  L2:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -104,7 +104,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  NAV:
+  L3:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -153,7 +153,7 @@ layers:
     - {t: ▽, type: trans}
     - QK LLCK
     - {t: ▽, type: trans}
-  WIN:
+  L4:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -202,7 +202,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  PNT:
+  L5:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -251,7 +251,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  NUM:
+  L6:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - '7'
@@ -300,7 +300,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  TXT:
+  L7:
   - - {t: ▽, type: trans}
     - '7'
     - '8'

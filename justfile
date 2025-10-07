@@ -65,5 +65,6 @@ keymap2:
 keymap:
     #!/usr/bin/env bash
     qmk -v c2json --no-cpp -kb "{{ imprintNS }}" -km yuanw ./keyboards/"{{ imprintNS }}"/keymaps/yuanw/keymap.c > imprint.json
-    keymap parse -c 10 -q imprint.json --layer-names BASE SYM FUN NAV WIN PNT NUM TXT  > imprint.yaml
-    keymap draw imprint.yaml -j ./imprint/keyboards/"{{ imprintNS }}"/info.json > imprint.svg
+    KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q imprint.json > imprint.yaml
+    python process.py
+    keymap draw output.yaml -j ./imprint/keyboards/"{{ imprintNS }}"/info.json > imprint.svg
