@@ -312,7 +312,7 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - QK LLCK
+    - $$mdi:lock$$
     - h: ''
       t: "\u25BD"
       type: trans
@@ -410,7 +410,7 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - QK LLCK
+    - $$mdi:lock$$
     - h: ''
       t: "\u25BD"
       type: trans
@@ -488,14 +488,14 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - QK LLCK
+    - $$mdi:lock$$
     - h: ''
       t: "\u25BD"
       type: trans
     - h: ''
       t: "\u25BD"
       type: trans
-    - QK LLCK
+    - $$mdi:lock$$
   - - h: ''
       t: "\u25BD"
       type: trans
@@ -744,7 +744,7 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - QK LLCK
+    - $$mdi:lock$$
     - '-'
     - h: ''
       t: "\u25BD"

@@ -55,6 +55,7 @@ key_dict = {
     "ALTREP2": "\u21BA 2",
     "ALTREP3": "\u21BA 3",
     "UP": "\u25B3",
+    "QK LLCK": "$$mdi:lock$$",
     "ENT": "⏎",
     "LGUI": "⌘",
     "RGUI": "⌘",
