@@ -24,9 +24,8 @@
 #    include "timer.h"
 #endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-__attribute__ ((weak))
-bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
-  return true;
+__attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+    return true;
 }
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -44,7 +43,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
@@ -53,7 +51,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #endif // !POINTING_DEVICE_ENABLE
 
 enum charybdis_keymap_layers {
-     LAYER_BASE,
+    LAYER_BASE,
     LAYER_HDGOLD,
     LAYER_FUNCTION,
     LAYER_NAVIGATION,
@@ -64,43 +62,41 @@ enum charybdis_keymap_layers {
     LAYER_SYMBOLS2,
 };
 
-
 enum keycode_aliases {
-  // The "magic" key is the Alternate Repeat Key.
-  MAGIC = QK_AREP,
-  // Short aliases for home row mods and other tap-hold keys.
-  HRM_A = LSFT_T(KC_A),
-  HRM_E = LCTL_T(KC_E),
-  HRM_I = LALT_T(KC_I),
-  HRM_C = LT(LAYER_SYMBOLS2, KC_C),
-  HRM_QUOT = LGUI_T(KC_QUOT),
+    // The "magic" key is the Alternate Repeat Key.
+    MAGIC = QK_AREP,
+    // Short aliases for home row mods and other tap-hold keys.
+    HRM_A    = LSFT_T(KC_A),
+    HRM_E    = LCTL_T(KC_E),
+    HRM_I    = LALT_T(KC_I),
+    HRM_C    = LT(LAYER_SYMBOLS2, KC_C),
+    HRM_QUOT = LGUI_T(KC_QUOT),
 
-  HRM_H = RSFT_T(KC_H),
-  HRM_T = RCTL_T(KC_T),
-  HRM_N = LALT_T(KC_N),
-  HRM_S = LT(LAYER_SYMBOLS2, KC_S),
-  HRM_V = RGUI_T(KC_V),
+    HRM_H = RSFT_T(KC_H),
+    HRM_T = RCTL_T(KC_T),
+    HRM_N = LALT_T(KC_N),
+    HRM_S = LT(LAYER_SYMBOLS2, KC_S),
+    HRM_V = RGUI_T(KC_V),
 
-  ESC_MED = LT(LAYER_MEDIA, KC_ESC),
-  SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
-  TAB_FUN = LT(LAYER_FUNCTION, KC_BSPC),
-  ENT_SYM = LT(LAYER_SYMBOLS, KC_ENT),
-  E_NUM = LT(LAYER_NUMERAL, KC_E),
-  ADEPT = DF(LAYER_BASE),
-  HD_GOLD = DF(LAYER_HDGOLD),
-  T_NAV = LT(LAYER_NAVIGATION, KC_T),
-  SPC_NUM = LT(LAYER_NUMERAL, KC_SPC),
-  R_NUM = LT(LAYER_NUMERAL, KC_R),
-  //https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
-  REP_SYM = LT(LAYER_SYMBOLS2, KC_0),
+    ESC_MED = LT(LAYER_MEDIA, KC_ESC),
+    SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
+    TAB_FUN = LT(LAYER_FUNCTION, KC_BSPC),
+    ENT_SYM = LT(LAYER_SYMBOLS, KC_ENT),
+    E_NUM   = LT(LAYER_NUMERAL, KC_E),
+    ADEPT   = DF(LAYER_BASE),
+    HD_GOLD = DF(LAYER_HDGOLD),
+    T_NAV   = LT(LAYER_NAVIGATION, KC_T),
+    SPC_NUM = LT(LAYER_NUMERAL, KC_SPC),
+    R_NUM   = LT(LAYER_NUMERAL, KC_R),
+    // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
+    REP_SYM = LT(LAYER_SYMBOLS2, KC_0),
 
-  U_RDO= SCMD(KC_Z),
-  U_PST= LCMD(KC_V),
-  U_CPY= LCMD(KC_C),
-  U_CUT= LCMD(KC_X),
-  U_UND= LCMD(KC_Z),
+    U_RDO = SCMD(KC_Z),
+    U_PST = LCMD(KC_V),
+    U_CPY = LCMD(KC_C),
+    U_CUT = LCMD(KC_X),
+    U_UND = LCMD(KC_Z),
 };
-
 
 // clang-format off
 /** Convenience row shorthands. */
@@ -268,7 +264,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
 #        endif // RGB_MATRIX_ENABLE
         }
-         auto_pointer_layer_timer = timer_read();
+        auto_pointer_layer_timer = timer_read();
     }
     return mouse_report;
 }
@@ -298,78 +294,48 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void rgb_matrix_update_pwm_buffers(void);
 #endif
 
-
 // Thumb Combos
 /* #define EXTRA_SHORT_COMBOS */
 
-enum combos {
-    FD_B,
-    LU_J,
-    MP_Q,
-    COMMSCLN_K,
-    SCLNDOT_Z,
-    LEFT_QUESTION,
-    CF_X,
-    UY_L,
-    UO_W,
-    DP_F,
-    LD_Q,
-    COMBO_LENGTH
-};
-
-
-
+enum combos { FD_B, LU_J, MP_Q, COMMSCLN_K, SCLNDOT_Z, LEFT_QUESTION, CF_X, UY_L, UO_W, DP_F, LD_Q, COMBO_LENGTH };
 
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
-const uint16_t PROGMEM b_combo[]    = {KC_F, KC_D, COMBO_END};
-const uint16_t PROGMEM j_combo[]    = {KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM q_combo[]    = {KC_M, KC_P, COMBO_END};
-const uint16_t PROGMEM k_combo[]    = {KC_COMM, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM z_combo[]    = {KC_SCLN, KC_DOT, COMBO_END};
-const uint16_t PROGMEM left_combo[] = {KC_W, KC_M, COMBO_END};
-const uint16_t PROGMEM x_combo[]    = {KC_C, KC_F, COMBO_END};
-const uint16_t PROGMEM l_combo[]    = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM enthium_w_combo[]    = {KC_U, KC_O, COMBO_END};
-const uint16_t PROGMEM enthium_f_combo[]    = {KC_D, KC_P, COMBO_END};
-const uint16_t PROGMEM enthium_q_combo[]    = {KC_L, KC_D, COMBO_END};
-
-
+const uint16_t PROGMEM b_combo[]         = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM j_combo[]         = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM q_combo[]         = {KC_M, KC_P, COMBO_END};
+const uint16_t PROGMEM k_combo[]         = {KC_COMM, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM z_combo[]         = {KC_SCLN, KC_DOT, COMBO_END};
+const uint16_t PROGMEM left_combo[]      = {KC_W, KC_M, COMBO_END};
+const uint16_t PROGMEM x_combo[]         = {KC_C, KC_F, COMBO_END};
+const uint16_t PROGMEM l_combo[]         = {KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM enthium_w_combo[] = {KC_U, KC_O, COMBO_END};
+const uint16_t PROGMEM enthium_f_combo[] = {KC_D, KC_P, COMBO_END};
+const uint16_t PROGMEM enthium_q_combo[] = {KC_L, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
-    [FD_B] = COMBO(b_combo, KC_B),
-    [LU_J] = COMBO(j_combo, KC_J),
-    [MP_Q] = COMBO(q_combo, KC_Q),
-    [COMMSCLN_K] = COMBO(k_combo, KC_K),
-    [SCLNDOT_Z] = COMBO(z_combo, KC_Z),
-    [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION),
-    [CF_X] = COMBO(x_combo, KC_X),
-    [UY_L] = COMBO(l_combo, KC_L),
-    [UO_W] = COMBO(enthium_w_combo, KC_W),
-    [DP_F] = COMBO(enthium_f_combo, KC_F),
-    [LD_Q] = COMBO(enthium_q_combo, KC_Q),
+    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [COMMSCLN_K] = COMBO(k_combo, KC_K), [SCLNDOT_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION), [CF_X] = COMBO(x_combo, KC_X), [UY_L] = COMBO(l_combo, KC_L), [UO_W] = COMBO(enthium_w_combo, KC_W), [DP_F] = COMBO(enthium_f_combo, KC_F), [LD_Q] = COMBO(enthium_q_combo, KC_Q),
 
 };
 
 const custom_shift_key_t custom_shift_keys[] = {
     {QK_REP, QK_AREP}, // Shift magic is repeat. */
-    {SPC_NAV , KC_TAB}, // Shift SPC is tab.
-    {ESC_MED , KC_ENT}, // Shift esc is enter.
-    {TAB_FUN, KC_DEL}, //Shift BSPC is DEL
+    {SPC_NAV, KC_TAB}, // Shift SPC is tab.
+    {ESC_MED, KC_ENT}, // Shift esc is enter.
+    {TAB_FUN, KC_DEL}, // Shift BSPC is DEL
 };
 
 // Use ALTREP2 and ALTREP3 in your layout...
 
-bool remember_last_key_user(uint16_t keycode, keyrecord_t* record,
-                            uint8_t* remembered_mods) {
+bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
     switch (keycode) {
         case REP_SYM:
         case ALTREP2:
         case ALTREP3:
-            return false;  // Ignore ALTREP keys.
+            return false; // Ignore ALTREP keys.
     }
 
-    return true;  // Other keys can be repeated.
+    return true; // Other keys can be repeated.
 }
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
@@ -380,79 +346,104 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     /*     } */
     /* } */
     switch (keycode) {
-      case KC_LPRN: return KC_RPRN;
-      case KC_RPRN: return KC_LPRN;
-
+        case KC_LPRN:
+            return KC_RPRN;
+        case KC_RPRN:
+            return KC_LPRN;
     }
 
-
-    return KC_TRNS;  // Defer to default definitions.
+    return KC_TRNS; // Defer to default definitions.
 }
 
 static void process_altrep2(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
         case KC_A:
         case RCTL_T(KC_A):
-          SEND_STRING("tion");
-          break;
-        case LALT_T(KC_I): SEND_STRING("tion"); break;
-        case LALT_T(KC_S): SEND_STRING("sion"); break;
-        case LSFT_T(KC_T): SEND_STRING("heir"); break;
-        case KC_Y: SEND_STRING("ou"); break;
-        case KC_W: SEND_STRING("hich"); break;
-        case KC_AT: SEND_STRING("Workiva/release-management-p"); break;
-        case KC_C: SEND_STRING("ontent management"); break;
+            SEND_STRING("tion");
+            break;
+        case LALT_T(KC_I):
+            SEND_STRING("tion");
+            break;
+        case LALT_T(KC_S):
+            SEND_STRING("sion");
+            break;
+        case LSFT_T(KC_T):
+            SEND_STRING("heir");
+            break;
+        case KC_Y:
+            SEND_STRING("ou");
+            break;
+        case KC_W:
+            SEND_STRING("hich");
+            break;
+        case KC_AT:
+            SEND_STRING("Workiva/release-management-p");
+            break;
+        case KC_C:
+            SEND_STRING("ontent management");
+            break;
     }
 }
 
 static void process_altrep3(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
-        case RCTL_T(KC_A): SEND_STRING("bout"); break;
-        case LALT_T(KC_I): SEND_STRING("ng"); break;
-        case LALT_T(KC_S): SEND_STRING("tate"); break;
-        case LSFT_T(KC_T): SEND_STRING("here"); break;
-        case KC_W: SEND_STRING("ould"); break;
-        case KC_AT: SEND_STRING("rmconsole-wf"); break;
-        case E_NUM: SEND_STRING("specially");break;
-        case KC_C: SEND_STRING("ontent-management-service"); break;
+        case RCTL_T(KC_A):
+            SEND_STRING("bout");
+            break;
+        case LALT_T(KC_I):
+            SEND_STRING("ng");
+            break;
+        case LALT_T(KC_S):
+            SEND_STRING("tate");
+            break;
+        case LSFT_T(KC_T):
+            SEND_STRING("here");
+            break;
+        case KC_W:
+            SEND_STRING("ould");
+            break;
+        case KC_AT:
+            SEND_STRING("rmconsole-wf");
+            break;
+        case E_NUM:
+            SEND_STRING("specially");
+            break;
+        case KC_C:
+            SEND_STRING("ontent-management-service");
+            break;
     }
 }
 
-
-
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
-  const uint8_t mods = get_mods();
-  const uint8_t all_mods = (mods | get_weak_mods()
+    const uint8_t mods     = get_mods();
+    const uint8_t all_mods = (mods | get_weak_mods()
 #ifndef NO_ACTION_ONESHOT
-                        | get_oneshot_mods()
-#endif  // NO_ACTION_ONESHOT
-  );
-  const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
-  const bool alt = all_mods & MOD_BIT_LALT;
+                              | get_oneshot_mods()
+#endif // NO_ACTION_ONESHOT
+    );
+    const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+    const bool    alt        = all_mods & MOD_BIT_LALT;
     switch (keycode) {
         case ARROW:
             if (record->event.pressed) {
-              clear_weak_mods();
-              clear_mods();
-               SEND_STRING(alt ? (shift_mods
-                                    ? "<=>"     // <=>
-                                    : "<->")    // <->
-                                 : (shift_mods
-                                    ? "=>"     // =>
-                                    : "->"));     // ->
-              set_mods(mods);
+                clear_weak_mods();
+                clear_mods();
+                SEND_STRING(alt ? (shift_mods ? "<=>"   // <=>
+                                              : "<->")  // <->
+                                : (shift_mods ? "=>"    // =>
+                                              : "->")); // ->
+                set_mods(mods);
             }
-          return false;
+            return false;
         case REP_SYM:
             if (record->tap.count) {
-                    if (alt) {
-                        process_altrep2(get_last_keycode(), get_last_mods());
-                    }
-                    else {
-                        repeat_key_invoke(&record->event);
-                    }
-                    return false;
+                if (alt) {
+                    process_altrep2(get_last_keycode(), get_last_mods());
+                } else {
+                    repeat_key_invoke(&record->event);
                 }
+                return false;
+            }
 
             break;
         case ALTREP2:
@@ -529,9 +520,8 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-
-       }
-       return true; // Process all other keycodes normally
+    }
+    return true; // Process all other keycodes normally
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
