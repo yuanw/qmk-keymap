@@ -5,7 +5,7 @@ layers:
   - [X, '', W, HRM C, HRM I, HRM E, HRM A, ',', K, HRM H]
   - [HRM T, HRM N, HRM S, F, '', '''', '-', 'LT(SYM,EQL)', ., /]
   - [J, M, 'LT(SYM,G)', B, V, '', '', '', '', '']
-  - ['', '', ALTREP2, SPC NAV, ESC WIN, BSPC FUN, R NUM, REP TXT]
+  - ['', '', ESC WIN, SPC NAV, ALTREP2, REP TXT, R NUM, BSPC FUN]
   L1:
   - - {t: ▽, type: trans}
     - '`'

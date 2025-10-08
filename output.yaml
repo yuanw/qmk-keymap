@@ -48,12 +48,12 @@ layers:
     - ''
   - - ''
     - ''
-    - "\u21BA 2"
-    - SPC NAV
     - ESC WIN
-    - BSPC FUN
-    - R NUM
+    - SPC NAV
+    - "\u21BA 2"
     - REP TXT
+    - R NUM
+    - BSPC FUN
   Fun:
   - - h: ''
       t: "\u25BD"
