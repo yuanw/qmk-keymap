@@ -50,7 +50,9 @@ layers:
     - ''
   - - ''
     - ''
-    - ESC WIN
+    - h: Win
+      s: Enter
+      t: Esc
     - SPC NAV
     - "\u21BA 2"
     - REP TXT

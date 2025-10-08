@@ -314,9 +314,10 @@ path.combo {
 </g>
 <g transform="translate(392, 252)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">ESC</tspan><tspan x="0" dy="1.2em">WIN</tspan>
-</text>
+<text x="0" y="0" class="key tap">Esc</text>
+<a href="#Win">
+<text x="0" y="24" class="key hold layer-activator">Win</text>
+</a><text x="0" y="-24" class="key shifted">Enter</text>
 </g>
 <g transform="translate(448, 252)" class="key keypos-43">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

@@ -31,8 +31,9 @@ key_dict = {
     "HRM A": {"t": "A", "h":  "Shift"},
     "HRM H": {"t": "H", "h":  "⇧"},
     "HRM I": {"t": "I", "h": "$$mdi:apple-keyboard-option$$"},
-     #apple-keyboard-option
-    "LT(LAYER POINTER, X)": {"t": "x", "h": "Cursor" },
+     #apple-keyboard-command apple-keyboard-shift"
+     #apple-keyboard-option apple-keyboard-control"
+    "ESC WIN": {"t": "Esc", "s": "Enter", "h": "Win" },
     "LT(LAYER POINTER, QUOT)":  {"t": "'", "h": "Cursor" },
     "LT(LAYER MEDIA, ESC)":  {"t": "Esc", "h": "Media" },
     "LT(LAYER NAVIGATION, SPC)":  {"t": "SPC", "h": "Nav" },
