@@ -35,9 +35,8 @@
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             package = pkgs.treefmt;
-
             programs.nixpkgs-fmt.enable = true;
-
+            programs.clang-format.enable = true;
           };
 
           packages.draw = pkgs.writeShellApplication {

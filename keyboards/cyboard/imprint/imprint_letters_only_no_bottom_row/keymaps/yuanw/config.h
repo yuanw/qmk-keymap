@@ -4,4 +4,4 @@
 // in config.h:
 
 // only required if not setting mouse layer elsewhere
-//#define AUTO_MOUSE_DEFAULT_LAYER 3
+// #define AUTO_MOUSE_DEFAULT_LAYER 3
