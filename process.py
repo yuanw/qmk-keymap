@@ -27,8 +27,11 @@ layer_key_dict = {
 }
 
 key_dict = {
-    "HRM C": {"t": "C", "h": "⌘"},
-    "HRM A": {"t": "A", "h":  "⇧"},
+    "HRM C": {"t": "C", "h": "Meta"},
+    "HRM A": {"t": "A", "h":  "Shift"},
+    "HRM H": {"t": "H", "h":  "⇧"},
+    "HRM I": {"t": "I", "h": "$$mdi:apple-keyboard-option$$"},
+     #apple-keyboard-option
     "LT(LAYER POINTER, X)": {"t": "x", "h": "Cursor" },
     "LT(LAYER POINTER, QUOT)":  {"t": "'", "h": "Cursor" },
     "LT(LAYER MEDIA, ESC)":  {"t": "Esc", "h": "Media" },
@@ -66,14 +69,14 @@ key_dict = {
      "RCTL": "⌃",
     "CAPS": "⇪",
     "QK CAPS WORD TOGGLE": "Caps Word",
-    "LAG(1)":"⌘⌥1",
-    "LAG(2)":"⌘⌥2",
-    "LAG(3)":"⌘⌥3",
-    "LAG(4)":"⌘⌥4",
-    "LSG(1)": "⌘⇧1",
-    "LSG(2)": "⌘⇧2",
-    "LSG(3)": "⌘⇧3",
-    "LSG(4)": "⌘⇧4",
+    "Alt+Gui+1":"⌘⌥1",
+    "Alt+Gui+2":"⌘⌥2",
+    "LAG(KC_3)":"⌘⌥3",
+    "LAG(KC_4)":"⌘⌥4",
+    "LSG(KC_1)": "⌘⇧1",
+    "LSG(KC_2)": "⌘⇧2",
+    "LSG(KC_3)": "⌘⇧3",
+    "LSG(KC_4)": "⌘⇧4",
 }
 
 layer_hold_dict = {}

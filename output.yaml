@@ -14,16 +14,18 @@ layers:
   - - X
     - ''
     - W
-    - h: "\u2318"
+    - h: Meta
       t: C
-    - HRM I
+    - h: $$mdi:apple-keyboard-option$$
+      t: I
     - HRM E
-    - h: "\u21E7"
+    - h: Shift
       t: A
     - s: <
       t: ','
     - K
-    - HRM H
+    - h: "\u21E7"
+      t: H
   - - HRM T
     - HRM N
     - HRM S
@@ -834,8 +836,8 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - Alt+Gui+1
-  - - Alt+Gui+2
+    - "\u2318\u23251"
+  - - "\u2318\u23252"
     - Alt+Gui+3
     - Alt+Gui+4
     - h: ''
