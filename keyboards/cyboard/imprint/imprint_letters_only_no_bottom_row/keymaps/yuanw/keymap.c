@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
         XXXXXXX, KC_QUOT, KC_MINS, LT(SYM,KC_EQL), KC_DOT,  KC_SLASH,                    KC_J,    KC_M,    LT(SYM,KC_G),    KC_B,   KC_V,  XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
-                                            ALTREP2, SPC_NAV, ESC_WIN,         BSPC_FUN,  R_NUM, REP_TXT
+                                            ESC_WIN, SPC_NAV, ALTREP2,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
         _______, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, _______,
