@@ -28,16 +28,22 @@ layer_key_dict = {
 
 key_dict = {
     "HRM C": {"t": "C", "h": "Meta"},
+    "HRM S": {"t": "S", "h": "Meta"},
+
     "HRM E":{"t": "E", "h": "$$mdi:apple-keyboard-control$$"},
+    "HRM T":{"t": "T", "h": "$$mdi:apple-keyboard-control$$"},
+
     "HRM A": {"t": "A", "h": "$$mdi:apple-keyboard-shift$$", "type": "ghost"},
     "HRM H": {"t": "H", "h": "$$mdi:apple-keyboard-shift$$", "type": "ghost"},
     "HRM I": {"t": "I", "h": "$$mdi:apple-keyboard-option$$"},
+    "HRM N": {"t": "N", "h": "$$mdi:apple-keyboard-option$$"},
+
      #apple-keyboard-command apple-keyboard-shift"
      #apple-keyboard-option apple-keyboard-control"
     "ESC WIN": {"t": "Esc", "s": "Enter", "h": "Win" },
     "SPC NAV": {"t": "Spc", "s": "Tab", "h": "Nav", "type": "ghost"},
     "LT(SYM,EQL)":  {"t": "=", "h": "Sym" },
-    "LT(LAYER MEDIA, ESC)":  {"t": "Esc", "h": "Media" },
+    "LT(SYM,G)":  {"t": "G", "h": "Sym" },
     "LT(LAYER NAVIGATION, SPC)":  {"t": "SPC", "h": "Nav" },
     "LT(LAYER FUNCTION, BSPC)":  {"t": "\u232B", "h": "Fun" },
     "LT(LAYER SYMBOLS, ENT)":  {"t": "⏎",

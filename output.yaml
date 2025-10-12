@@ -29,9 +29,12 @@ layers:
     - h: $$mdi:apple-keyboard-shift$$
       t: H
       type: ghost
-  - - HRM T
-    - HRM N
-    - HRM S
+  - - h: $$mdi:apple-keyboard-control$$
+      t: T
+    - h: $$mdi:apple-keyboard-option$$
+      t: N
+    - h: Meta
+      t: S
     - F
     - ''
     - ''''
@@ -44,7 +47,8 @@ layers:
     - /
   - - J
     - M
-    - LT(SYM,G)
+    - h: Sym
+      t: G
     - B
     - V
     - ''
