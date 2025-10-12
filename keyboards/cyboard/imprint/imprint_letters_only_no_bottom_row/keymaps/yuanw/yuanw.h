@@ -9,4 +9,20 @@ enum my_keycodes {
     KC_SECRET_1,
     KC_SECRET_2,
     ARROW,
+  // Macros invoked through the Magic key.
+    SHIP_IT,
+    USRNAME,
+  M_DOCSTR,
+  M_EQEQ,
+  M_INCLUDE,
+  M_ION,
+  M_MENT,
+  M_MKGRVS,
+  M_QUEN,
+  M_THE,
+  M_TMENT,
+  M_UPDIR,
+  M_NBSP,
+  M_NOOP,
+
 };
