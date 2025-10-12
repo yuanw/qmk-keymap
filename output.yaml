@@ -36,7 +36,8 @@ layers:
     - ''
     - ''''
     - '-'
-    - LT(SYM,EQL)
+    - h: Sym
+      t: '='
     - &id001
       s: '>'
       t: .
