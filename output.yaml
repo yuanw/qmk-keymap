@@ -18,7 +18,8 @@ layers:
       t: C
     - h: $$mdi:apple-keyboard-option$$
       t: I
-    - HRM E
+    - h: $$mdi:apple-keyboard-control$$
+      t: E
     - h: $$mdi:apple-keyboard-shift$$
       t: A
       type: ghost
