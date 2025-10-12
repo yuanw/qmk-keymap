@@ -34,6 +34,7 @@ key_dict = {
      #apple-keyboard-command apple-keyboard-shift"
      #apple-keyboard-option apple-keyboard-control"
     "ESC WIN": {"t": "Esc", "s": "Enter", "h": "Win" },
+    "SPC NAV": {"t": "Spc", "s": "Tab", "h": "Nav", "type": "ghost"},
     "LT(LAYER POINTER, QUOT)":  {"t": "'", "h": "Cursor" },
     "LT(LAYER MEDIA, ESC)":  {"t": "Esc", "h": "Media" },
     "LT(LAYER NAVIGATION, SPC)":  {"t": "SPC", "h": "Nav" },

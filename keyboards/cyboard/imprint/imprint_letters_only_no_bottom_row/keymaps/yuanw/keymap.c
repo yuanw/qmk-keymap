@@ -8,7 +8,7 @@
 
 __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     return true;
-}
+ }
 
 enum layers { BASE, FUN, NAV, WIN, PNT, NUM, SYM, TXT };
 

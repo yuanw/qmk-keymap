@@ -53,7 +53,10 @@ layers:
     - h: Win
       s: Enter
       t: Esc
-    - SPC NAV
+    - h: Nav
+      s: Tab
+      t: Spc
+      type: ghost
     - "\u21BA 2"
     - REP TXT
     - R NUM

@@ -319,11 +319,12 @@ path.combo {
 <text x="0" y="24" class="key hold layer-activator">Win</text>
 </a><text x="0" y="-24" class="key shifted">Enter</text>
 </g>
-<g transform="translate(448, 252)" class="key keypos-43">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">SPC</tspan><tspan x="0" dy="1.2em">NAV</tspan>
-</text>
+<g transform="translate(448, 252)" class="key ghost keypos-43">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key ghost"/>
+<text x="0" y="0" class="key ghost tap">Spc</text>
+<a href="#Nav">
+<text x="0" y="24" class="key ghost hold layer-activator">Nav</text>
+</a><text x="0" y="-24" class="key ghost shifted">Tab</text>
 </g>
 <g transform="translate(448, 196)" class="key keypos-44">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
