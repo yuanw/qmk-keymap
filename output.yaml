@@ -19,13 +19,13 @@ layers:
     - h: $$mdi:apple-keyboard-option$$
       t: I
     - HRM E
-    - h: Shift
+    - h: $$mdi:apple-keyboard-shift$$
       t: A
       type: ghost
     - s: <
       t: ','
     - K
-    - h: "\u21E7"
+    - h: $$mdi:apple-keyboard-shift$$
       t: H
       type: ghost
   - - HRM T

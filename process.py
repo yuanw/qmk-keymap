@@ -28,8 +28,8 @@ layer_key_dict = {
 
 key_dict = {
     "HRM C": {"t": "C", "h": "Meta"},
-    "HRM A": {"t": "A", "h":  "Shift", "type": "ghost"},
-    "HRM H": {"t": "H", "h":  "⇧", "type": "ghost"},
+    "HRM A": {"t": "A", "h": "$$mdi:apple-keyboard-shift$$", "type": "ghost"},
+    "HRM H": {"t": "H", "h": "$$mdi:apple-keyboard-shift$$", "type": "ghost"},
     "HRM I": {"t": "I", "h": "$$mdi:apple-keyboard-option$$"},
      #apple-keyboard-command apple-keyboard-shift"
      #apple-keyboard-option apple-keyboard-control"
