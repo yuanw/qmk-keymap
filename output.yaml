@@ -21,11 +21,13 @@ layers:
     - HRM E
     - h: Shift
       t: A
+      type: ghost
     - s: <
       t: ','
     - K
     - h: "\u21E7"
       t: H
+      type: ghost
   - - HRM T
     - HRM N
     - HRM S
