@@ -33,7 +33,7 @@ enum keycode_aliases {
     R_NUM    = LT(NUM, KC_R),
     // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
     REP_TXT   = LT(TXT, KC_0),
-    MAGIC_TXT = LT(TXT, KC_1),
+    MAGIC = QK_AREP,
 
     U_RDO = SCMD(KC_Z),
     U_PST = LCMD(KC_V),
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_COMM,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
         XXXXXXX, KC_QUOT, KC_MINS, LT(SYM,KC_EQL), KC_DOT,  KC_SLASH,                    KC_J,    KC_M,    LT(SYM,KC_G),    KC_B,   KC_V,  XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
-                                            ESC_WIN, SPC_NAV, ALTREP2,           REP_TXT ,  R_NUM, BSPC_FUN
+                                            ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
         _______, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, _______,
@@ -253,7 +253,7 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //     . *   -> ../             (shell)
 //     . * @ -> ../../
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-  keycode = get_tap_keycode(keycode);
+    // keycode = get_tap_keycode(keycode);
 
   if (mods == MOD_BIT_LALT) {
     switch (keycode) {
@@ -268,6 +268,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_SPC:  // spc -> THE
       case KC_ENT:
       case KC_TAB:
+      case SPC_NAV:
         return M_THE;
 
       // For navigating next/previous search results in Vim:
@@ -312,7 +313,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_AMPR: return M_NBSP;     // & -> nbsp;
       case KC_EQL: return M_EQEQ;      // = -> ==
       case KC_RBRC: return KC_SCLN;    // ] -> ;
-      case KC_AT: return USRNAME;      // @ -> <username>
+      case KC_AT: return SHIP_IT;      // @ -> <username>
 
       case KC_COMM:
         if ((mods & MOD_MASK_SHIFT) != 0) {
@@ -395,12 +396,6 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-        case MAGIC_TXT:
-            if (record->tap.count) {
-                process_altrep2(get_last_keycode(), get_last_mods());
-                return false;
-            }
-            break;
         case ALTREP2:
             if (record->event.pressed) {
                 process_altrep2(get_last_keycode(), get_last_mods());
@@ -411,6 +406,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 process_altrep3(get_last_keycode(), get_last_mods());
             }
             return false;
+
         case CPY:
             if (record->event.pressed) {
                 switch (detected_host_os()) {
@@ -433,7 +429,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                     default:
                         tap_code16(KC_PSTE);
                         break;
-                }
+                 }
             }
             return false;
         case CUT:
@@ -476,6 +472,15 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
     }
+    if(record->event.pressed){
+        switch(keycode){
+     case SHIP_IT:
+            MAGIC_STRING("Workiva/release-management-p", KC_AT);
+            return false;
+
+     case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
+        }}
+
     return true; // Process all other keycodes normally
 }
 
