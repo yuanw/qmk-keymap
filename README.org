@@ -13,9 +13,9 @@ https://sunaku.github.io/enthium-keyboard-layout.html
 
 base layer
 #+begin_src
-  z y u o ; q l d p x
-w c i e a , k h t n s f
-  ' - = . / j m g b v
+  z y o u = q l d p x
+w c i a e ; k h t n s f
+  ' - , . / j m g b v
             r
 #+end_src
 symbol based on https://github.com/getreuer/qmk-keymap
