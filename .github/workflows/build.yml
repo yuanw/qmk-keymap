@@ -20,8 +20,10 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
 
-      - name: Setup Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: cachix/cachix-action@v16
+        with:
+           name: yuanwang-wf
+           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build imprint
         run: nix develop --command just build imprint

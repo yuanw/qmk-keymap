@@ -1,0 +1,28 @@
+name: Update Nix Flake
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" # Weekly on Sunday at midnight
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - uses: cachix/install-nix-action@v31
+      with:
+        extra_nix_config: |
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}    - uses: cachix/cachix-action@v16
+    - uses: cachix/cachix-action@v16
+      with:
+        name: yuanw-blog
+        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+        # Only needed for private caches
+        #authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - name: Update flake.lock
+      uses: DeterminateSystems/update-flake-lock@v28
+      with:
+        pr-title: "Update flake.lock" # Title of PR to be created
+        pr-labels: |                  # Labels to be set on the PR
+          automated    - run: GITHUB_PATH= nix flake update
