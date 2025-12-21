@@ -62,6 +62,7 @@
               (python3.withPackages (ps: [ ps.pyyaml ]))
               config.packages.drawer
               qmk
+              just
             ];
             #https://github.com/EdenEast/qmk/blob/main/flake.nix
             shellHook = ''
