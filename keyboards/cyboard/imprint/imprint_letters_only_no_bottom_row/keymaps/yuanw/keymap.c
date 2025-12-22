@@ -162,7 +162,7 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //
 // SFB removal and common n-grams:
 //
-//     A * -> AO     L * -> LK      S * -> SK
+//     A * -> AO     L * -> LK      S * -> ST
 //     C * -> CY     M * -> MENT    T * -> TMENT
 //     D * -> DY     O * -> OA      U * -> UE
 //     E * -> EU     P * -> PN      Y * -> YP
@@ -241,7 +241,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_Y: return KC_P;         // Y -> P
 
       case KC_L: return KC_K;         // L -> K
-      case KC_S: return KC_T;         // S -> K
+      case KC_S: return KC_T;         // S -> T
 
       case KC_R: return KC_L;         // R -> L
       case KC_DOT:
