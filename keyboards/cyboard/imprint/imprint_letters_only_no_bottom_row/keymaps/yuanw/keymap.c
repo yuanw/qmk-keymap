@@ -241,7 +241,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_Y: return KC_P;         // Y -> P
 
       case KC_L: return KC_K;         // L -> K
-      case KC_S: return KC_K;         // S -> K
+      case KC_S: return KC_T;         // S -> T
 
       case KC_R: return KC_L;         // R -> L
       case KC_DOT:
