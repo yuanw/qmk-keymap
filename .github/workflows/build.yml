@@ -1,4 +1,4 @@
-name: Build Imprint
+name: Build
 
 on:
   push:
@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        keyboard: [imprint, charybdis]
 
     steps:
       - name: Checkout
@@ -25,5 +28,5 @@ jobs:
            name: yuanwang-wf
            authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Build imprint
-        run: nix develop --command just build imprint
+      - name: Build ${{ matrix.keyboard }}
+        run: nix develop --command just build ${{ matrix.keyboard }}
