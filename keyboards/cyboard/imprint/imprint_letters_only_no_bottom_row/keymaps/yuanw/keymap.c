@@ -118,71 +118,11 @@ const custom_shift_key_t custom_shift_keys[] = {
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
     switch (keycode) {
         case REP_TXT:
-        case ALTREP2:
-        case ALTREP3:
             return false; // Ignore ALTREP keys.
     }
     return true; // Other keys can be repeated.
 };
 
-static void process_altrep2(uint16_t keycode, uint8_t mods) {
-    switch (keycode) {
-        case KC_A:
-        case RCTL_T(KC_A):
-            SEND_STRING("tion");
-            break;
-        case LALT_T(KC_I):
-            SEND_STRING("tion");
-            break;
-        case LALT_T(KC_S):
-            SEND_STRING("sion");
-            break;
-        case LSFT_T(KC_T):
-            SEND_STRING("heir");
-            break;
-        case KC_Y:
-            SEND_STRING("ou");
-            break;
-        case KC_W:
-            SEND_STRING("hich");
-            break;
-        case KC_AT:
-            SEND_STRING("Workiva/release-management-p");
-            break;
-        case KC_C:
-            SEND_STRING("ontent management");
-            break;
-    }
-};
-
-static void process_altrep3(uint16_t keycode, uint8_t mods) {
-    switch (keycode) {
-        case RCTL_T(KC_A):
-            SEND_STRING("bout");
-            break;
-        case LALT_T(KC_I):
-            SEND_STRING("ng");
-            break;
-        case LALT_T(KC_S):
-            SEND_STRING("tate");
-            break;
-        case LSFT_T(KC_T):
-            SEND_STRING("here");
-            break;
-        case KC_W:
-            SEND_STRING("ould");
-            break;
-        case KC_AT:
-            SEND_STRING("rmconsole-wf");
-            break;
-        case KC_E:
-            SEND_STRING("specially");
-            break;
-        case KC_C:
-            SEND_STRING("ontent-management-service");
-            break;
-    }
-};
 
 void pointing_device_init_user() {
     //    charybdis_set_pointer_dragscroll_enabled(true, true);
@@ -225,7 +165,7 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //     A * -> AO     L * -> LK      S * -> SK
 //     C * -> CY     M * -> MENT    T * -> TMENT
 //     D * -> DY     O * -> OA      U * -> UE
-//     E * -> EU     P * -> PY      Y * -> YP
+//     E * -> EU     P * -> PN      Y * -> YP
 //     G * -> GY     Q * -> QUEN    spc * -> THE
 //     I * -> ION    R * -> RL
 //
@@ -297,7 +237,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_C: return KC_Y;         // C -> Y
       case KC_D: return KC_Y;         // D -> Y
       case KC_G: return KC_Y;         // G -> Y
-      case KC_P: return KC_Y;         // P -> Y
+      case KC_P: return KC_N;         // P -> N
       case KC_Y: return KC_P;         // Y -> P
 
       case KC_L: return KC_K;         // L -> K
@@ -313,7 +253,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_AMPR: return M_NBSP;     // & -> nbsp;
       case KC_EQL: return M_EQEQ;      // = -> ==
       case KC_RBRC: return KC_SCLN;    // ] -> ;
-      case KC_AT: return SHIP_IT;      // @ -> <username>
+      case KC_AT: return SHIP_IT;      // @ -> SHIP_IT
 
       case KC_COMM:
         if ((mods & MOD_MASK_SHIFT) != 0) {
@@ -396,16 +336,6 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-        case ALTREP2:
-            if (record->event.pressed) {
-                process_altrep2(get_last_keycode(), get_last_mods());
-            }
-            return false;
-        case ALTREP3:
-            if (record->event.pressed) {
-                process_altrep3(get_last_keycode(), get_last_mods());
-            }
-            return false;
 
         case CPY:
             if (record->event.pressed) {
