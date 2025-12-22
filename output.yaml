@@ -1,30 +1,28 @@
 layers:
   Base:
   - - ''
-    - Z
-    - Y
-    - U
-    - O
-    - s: ':'
-      t: ;
     - Q
+    - Y
+    - O
+    - U
+    - '='
+    - X
     - L
     - D
-    - P
-  - - X
-    - ''
     - W
+  - - Z
+    - ''
+    - B
     - h: Meta
       t: C
     - h: $$mdi:apple-keyboard-option$$
       t: I
-    - h: $$mdi:apple-keyboard-control$$
-      t: E
     - h: $$mdi:apple-keyboard-shift$$
       t: A
       type: ghost
-    - s: <
-      t: ','
+    - h: $$mdi:apple-keyboard-control$$
+      t: E
+    - '-'
     - K
     - h: $$mdi:apple-keyboard-shift$$
       t: H
@@ -38,18 +36,17 @@ layers:
     - F
     - ''
     - ''''
-    - '-'
-    - h: Sym
-      t: '='
-    - &id001
-      s: '>'
-      t: .
+    - s: <
+      t: ','
+    - LT(SYM,DOT)
+    - s: ':'
+      t: ;
     - /
   - - J
     - M
     - h: Sym
       t: G
-    - B
+    - P
     - V
     - ''
     - ''
@@ -65,7 +62,7 @@ layers:
       s: Tab
       t: Spc
       type: ghost
-    - "\u21BA 2"
+    - MAGIC
     - REP TXT
     - R NUM
     - BSPC FUN
@@ -628,7 +625,8 @@ layers:
     - '%'
   - - '@'
     - \
-    - *id001
+    - s: '>'
+      t: .
     - h: ''
       t: "\u25BD"
       type: trans

@@ -68,6 +68,7 @@ keymap2:
 # keymap
 keymap:
     #!/usr/bin/env bash
+    just setup imprint
     qmk -v c2json --no-cpp -kb "{{ imprintNS }}" -km yuanw ./keyboards/"{{ imprintNS }}"/keymaps/yuanw/keymap.c > imprint.json
     KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q imprint.json > imprint.yaml
     python process.py
