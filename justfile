@@ -22,6 +22,10 @@ flash target:
     just setup {{ target }}
     qmk flash -kb $(just _keyboard {{ target }}) -km yuanw
 
+# Update all git submodules to latest
+update-submodules:
+    git submodule update --remote --recursive
+
 # Setup submodule and link directories to submodules
 init:
     #!/usr/bin/env bash

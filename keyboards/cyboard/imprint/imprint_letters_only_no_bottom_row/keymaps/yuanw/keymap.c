@@ -14,8 +14,8 @@ enum layers { BASE, FUN, NAV, WIN, PNT, NUM, SYM, TXT };
 
 enum keycode_aliases {
     // Short aliases for home row mods and other tap-hold keys.
-    HRM_A    = LSFT_T(KC_A),
-    HRM_E    = LCTL_T(KC_E),
+    HRM_E    = LSFT_T(KC_E),
+    HRM_A    = LCTL_T(KC_A),
     HRM_I    = LALT_T(KC_I),
     HRM_C    = LGUI_T(KC_C),
     HRM_QUOT = LGUI_T(KC_QUOT),
@@ -46,9 +46,9 @@ enum keycode_aliases {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE] = LAYOUT_let_no_bottom_row(
-        XXXXXXX, KC_Z,    KC_Y,    KC_O,   KC_U,    KC_EQL,                              KC_Q,    KC_L,    KC_D,    KC_P,    KC_X,  XXXXXXX,
-        KC_W,    HRM_C,   HRM_I,   HRM_E,  HRM_A,   KC_SCLN,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
-        XXXXXXX, KC_QUOT, KC_MINS, LT(SYM,KC_COMM), KC_DOT,  KC_SLASH,                    KC_J,    KC_M,    LT(SYM,KC_G),    KC_B,   KC_V,  XXXXXXX,
+        XXXXXXX, KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                              KC_X,    KC_L,    KC_D,    KC_W,    KC_Z,  XXXXXXX,
+        KC_B,    HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_F,
+        XXXXXXX, KC_QUOT, KC_COMM, LT(SYM,KC_DOT), KC_SCLN,  KC_SLASH,                   KC_J,    KC_M,    LT(SYM,KC_G),    KC_P,   KC_V,  XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
