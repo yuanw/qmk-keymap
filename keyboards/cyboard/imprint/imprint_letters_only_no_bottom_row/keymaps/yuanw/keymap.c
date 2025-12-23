@@ -193,7 +193,7 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //     . *   -> ../             (shell)
 //     . * @ -> ../../
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-    // keycode = get_tap_keycode(keycode);
+   keycode = get_tap_keycode(keycode);
 
   if (mods == MOD_BIT_LALT) {
     switch (keycode) {
