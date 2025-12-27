@@ -318,6 +318,20 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     );
     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
     const bool    alt        = all_mods & MOD_BIT_LALT;
+  // If alt repeating key A, E, I, O, U, Y with no mods other than Shift, set
+  // the last key to KC_N. Above, alternate repeat of KC_N is defined to be
+  // again KC_N. This way, either tapping alt repeat and then repeat (or
+  // equivalently double tapping alt repeat) is useful to type certain patterns
+  // without SFBs:
+  //
+  //   D <altrep> <rep> -> DYN (as in "dynamic")
+  //   O <altrep> <rep> -> OAN (as in "loan")
+  if (get_repeat_key_count() < 0 && (all_mods & ~MOD_MASK_SHIFT) == 0 &&
+      (keycode == KC_A || keycode == KC_E || keycode == KC_I ||
+       keycode == KC_O || keycode == KC_U || keycode == KC_Y)) {
+    set_last_keycode(KC_N);
+    set_last_mods(0);
+  }
     switch (keycode) {
         case ARROW:
             if (record->event.pressed) {
@@ -407,6 +421,10 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
      case SHIP_IT:
             MAGIC_STRING("Workiva/release-management-p", KC_AT);
             return false;
+
+      case UPDIR:
+        SEND_STRING_DELAY("../", TAP_CODE_DELAY);
+        return false;
 
      case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
         }}
