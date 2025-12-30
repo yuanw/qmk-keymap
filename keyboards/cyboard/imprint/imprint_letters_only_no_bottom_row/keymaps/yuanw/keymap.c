@@ -426,7 +426,12 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING_DELAY("../", TAP_CODE_DELAY);
         return false;
 
-     case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
+      case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
+      case M_ION:     MAGIC_STRING(/*i*/"on", KC_S); break;
+      case M_MENT:    MAGIC_STRING(/*m*/"ent", KC_S); break;
+      case M_QUEN:    MAGIC_STRING(/*q*/"uen", KC_C); break;
+      case M_TMENT:   MAGIC_STRING(/*t*/"ment", KC_S); break;
+      case M_UPDIR:   MAGIC_STRING(/*.*/"./", UPDIR); break;
         }}
 
     return true; // Process all other keycodes normally
