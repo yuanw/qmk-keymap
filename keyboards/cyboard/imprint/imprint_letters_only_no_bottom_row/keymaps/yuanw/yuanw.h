@@ -1,5 +1,6 @@
 enum my_keycodes {
     RDO = SAFE_RANGE,
+    UPDIR,
     PST,
     CPY,
     CUT,

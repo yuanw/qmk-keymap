@@ -8,14 +8,14 @@ except ImportError:
 Point = namedtuple('Point', ['layer', 'row', 'key'])
 # hardcode layer list
 layer_dict = {
-    "L0": "Base",
-    "L1": "Sym",
-    "L2": "Fun",
-    "L3": "Nav",
-    "L4": "Win",
-    "L5": "PNT",
-    "L6": "Num",
-    "L7": "Txt"}
+    "L0": "0 Base",
+    "L1": "1 Sym",
+    "L2": "2 Fun",
+    "L3": "3 Nav",
+    "L4": "4 Win",
+    "L5": "5 PNT",
+    "L6": "6 Num",
+    "L7": "7 Txt"}
 
 layer_key_dict = {
     "LLAYER_POINTER": "Cursor",
@@ -93,9 +93,9 @@ new_data = {}
 with open('imprint.yaml',  encoding="utf8") as reader:
     data = load(reader, Loader=Loader)
 #    new_data['layout'] ={"qmk_keyboard": "bastardkb/charybdis/3x5/v2/splinky_3", "qmk_layout": "LAYOUT"}
-
     new_data['layers'] = {}
     for l in data.get('layers').keys():
+        print(l)
         new_data['layers'][layer_dict[l]] = []
         for row_counter, row in enumerate(data.get('layers')[l]):
             new_row = []

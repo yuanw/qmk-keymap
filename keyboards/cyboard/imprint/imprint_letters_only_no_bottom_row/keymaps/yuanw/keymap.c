@@ -10,7 +10,7 @@ __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t 
     return true;
  }
 
-enum layers { BASE, FUN, NAV, WIN, PNT, NUM, SYM, TXT };
+enum layers { BASE, SYM,NAV, WIN, PNT, NUM, TXT, FUN };
 
 enum keycode_aliases {
     // Short aliases for home row mods and other tap-hold keys.
@@ -162,7 +162,7 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //
 // SFB removal and common n-grams:
 //
-//     A * -> AO     L * -> LK      S * -> SK
+//     A * -> AO     L * -> LK      S * -> ST
 //     C * -> CY     M * -> MENT    T * -> TMENT
 //     D * -> DY     O * -> OA      U * -> UE
 //     E * -> EU     P * -> PN      Y * -> YP
@@ -193,7 +193,7 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //     . *   -> ../             (shell)
 //     . * @ -> ../../
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-    // keycode = get_tap_keycode(keycode);
+   keycode = get_tap_keycode(keycode);
 
   if (mods == MOD_BIT_LALT) {
     switch (keycode) {
@@ -318,6 +318,20 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     );
     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
     const bool    alt        = all_mods & MOD_BIT_LALT;
+  // If alt repeating key A, E, I, O, U, Y with no mods other than Shift, set
+  // the last key to KC_N. Above, alternate repeat of KC_N is defined to be
+  // again KC_N. This way, either tapping alt repeat and then repeat (or
+  // equivalently double tapping alt repeat) is useful to type certain patterns
+  // without SFBs:
+  //
+  //   D <altrep> <rep> -> DYN (as in "dynamic")
+  //   O <altrep> <rep> -> OAN (as in "loan")
+  if (get_repeat_key_count() < 0 && (all_mods & ~MOD_MASK_SHIFT) == 0 &&
+      (keycode == KC_A || keycode == KC_E || keycode == KC_I ||
+       keycode == KC_O || keycode == KC_U || keycode == KC_Y)) {
+    set_last_keycode(KC_N);
+    set_last_mods(0);
+  }
     switch (keycode) {
         case ARROW:
             if (record->event.pressed) {
@@ -408,7 +422,16 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             MAGIC_STRING("Workiva/release-management-p", KC_AT);
             return false;
 
-     case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
+      case UPDIR:
+        SEND_STRING_DELAY("../", TAP_CODE_DELAY);
+        return false;
+
+      case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
+      case M_ION:     MAGIC_STRING(/*i*/"on", KC_S); break;
+      case M_MENT:    MAGIC_STRING(/*m*/"ent", KC_S); break;
+      case M_QUEN:    MAGIC_STRING(/*q*/"uen", KC_C); break;
+      case M_TMENT:   MAGIC_STRING(/*t*/"ment", KC_S); break;
+      case M_UPDIR:   MAGIC_STRING(/*.*/"./", UPDIR); break;
         }}
 
     return true; // Process all other keycodes normally
