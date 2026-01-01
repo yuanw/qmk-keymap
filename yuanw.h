@@ -1,4 +1,7 @@
-enum my_keycodes {
+#pragma once
+
+// Custom keycodes enum - shared between yuanw.c and secrets.c
+enum custom_keycodes {
     RDO = SAFE_RANGE,
     UPDIR,
     PST,
@@ -11,6 +14,7 @@ enum my_keycodes {
     EMAIL_1,
     EMAIL_2,
     // Macros invoked through the Magic key.
+  // Macros invoked through the Magic key.
     SHIP_IT,
     USRNAME,
     M_DOCSTR,

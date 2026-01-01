@@ -1,9 +1,8 @@
-OS_DETECTION_ENABLE = yes
-CAPS_WORD_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
-SEND_STRING_ENABLE = yes
-LAYER_LOCK_ENABLE = yes
-CAPS_WORD_ENABLE = yes
-COMBO_ENABLE = yes
+# Include shared rules
+ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+include ${ROOT_DIR}../../../../../../rules.mk
+
+# Imprint-specific rules
 TAP_DANCE_ENABLE ?= no
-SRC += secrets.c
+
+SRC += ${ROOT_DIR}../../../../../../secrets.c

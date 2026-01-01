@@ -1,10 +1,9 @@
+// Cyboard Imprint keymap - minimal wrapper for shared yuanw.c
 
 #include QMK_KEYBOARD_H
 #include <cyboard.h>
-#include "yuanw.h"
-#ifdef OS_DETECTION_ENABLE
-#    include "os_detection.h"
-#endif
+#include "layout.h"
+#include "yuanw.c"
 
 __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     return true;

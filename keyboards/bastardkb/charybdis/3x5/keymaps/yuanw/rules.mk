@@ -1,9 +1,8 @@
-OS_DETECTION_ENABLE = yes
+# Include shared rules
+ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+include ${ROOT_DIR}../../../../../../rules.mk
+
+# Charybdis-specific rules
 COMBO_ENABLE = yes
-CAPS_WORD_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
-SEND_STRING_ENABLE = yes
-LAYER_LOCK_ENABLE = yes
-UNICODE_COMMON = yes
-CAPS_WORD_ENABLE = yes
-SRC += secrets.c
+
+SRC += ${ROOT_DIR}../../../../../../secrets.c
