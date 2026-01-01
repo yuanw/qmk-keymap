@@ -2,7 +2,7 @@
 #include "yuanw.h"
 
 #if (__has_include("secrets.h") && !defined(NO_SECRETS))
-#    include "secrets.h"
+#include "secrets.h"
 #else
 const char secret_0[] PROGMEM = "test1";
 const char secret_1[] PROGMEM = "test2";
@@ -17,14 +17,13 @@ static const char *const secrets[] PROGMEM = {
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_SECRET_1 ... KC_SECRET_2: // Secrets!  Externally defined strings, not stored in repo
+        case KC_SECRET_1 ... KC_SECRET_2:
             if (record->event.pressed) {
                 clear_mods();
                 clear_oneshot_mods();
-                SEND_STRING(secrets[keycode - KC_SECRET_1]);
+                send_string_P((char *)pgm_read_ptr(&secrets[keycode - KC_SECRET_1]));
             }
             return false;
-            break;
     }
     return true;
 }
