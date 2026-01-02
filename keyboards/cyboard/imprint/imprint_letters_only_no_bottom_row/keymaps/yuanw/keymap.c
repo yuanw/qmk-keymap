@@ -8,9 +8,9 @@
 
 __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     return true;
- }
+}
 
-enum layers { BASE, SYM,NAV, WIN, PNT, NUM, TXT, FUN };
+enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN };
 
 enum keycode_aliases {
     // Short aliases for home row mods and other tap-hold keys.
@@ -32,8 +32,8 @@ enum keycode_aliases {
     ENT_SYM  = LT(SYM, KC_ENT),
     R_NUM    = LT(NUM, KC_R),
     // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
-    REP_TXT   = LT(TXT, KC_0),
-    MAGIC = QK_AREP,
+    REP_TXT = LT(TXT, KC_0),
+    MAGIC   = QK_AREP,
 
     U_RDO = SCMD(KC_Z),
     U_PST = LCMD(KC_V),
@@ -123,7 +123,6 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
     return true; // Other keys can be repeated.
 };
 
-
 void pointing_device_init_user() {
     //    charybdis_set_pointer_dragscroll_enabled(true, true);
     set_auto_mouse_layer(PNT);   // only required if AUTO_MOUSE_DEFAULT_LAYER is not set to index of <mouse_layer>
@@ -131,28 +130,26 @@ void pointing_device_init_user() {
     //  set_auto_mouse_timeout(5000);
 }
 
-
 // An enhanced version of SEND_STRING: if Caps Word is active, the Shift key is
 // held while sending the string. Additionally, the last key is set such that if
 // the Repeat Key is pressed next, it produces `repeat_keycode`. This helper is
 // used for several macros below in my process_record_user() function.
-#define MAGIC_STRING(str, repeat_keycode) \
-  magic_send_string_P(PSTR(str), (repeat_keycode))
-static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
-  uint8_t saved_mods = 0;
-  // If Caps Word is on, save the mods and hold Shift.
-  if (is_caps_word_on()) {
-    saved_mods = get_mods();
-    register_mods(MOD_BIT_LSHIFT);
-  }
+#define MAGIC_STRING(str, repeat_keycode) magic_send_string_P(PSTR(str), (repeat_keycode))
+static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
+    uint8_t saved_mods = 0;
+    // If Caps Word is on, save the mods and hold Shift.
+    if (is_caps_word_on()) {
+        saved_mods = get_mods();
+        register_mods(MOD_BIT_LSHIFT);
+    }
 
-  send_string_P(str);  // Send the string.
-  set_last_keycode(repeat_keycode);
+    send_string_P(str); // Send the string.
+    set_last_keycode(repeat_keycode);
 
-  // If Caps Word is on, restore the mods.
-  if (is_caps_word_on()) {
-    set_mods(saved_mods);
-  }
+    // If Caps Word is on, restore the mods.
+    if (is_caps_word_on()) {
+        set_mods(saved_mods);
+    }
 }
 
 // The following describes the magic key functionality, where * represents the
@@ -193,130 +190,156 @@ static void magic_send_string_P(const char* str, uint16_t repeat_keycode) {
 //     . *   -> ../             (shell)
 //     . * @ -> ../../
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-   keycode = get_tap_keycode(keycode);
+    keycode = get_tap_keycode(keycode);
 
-  if (mods == MOD_BIT_LALT) {
-    switch (keycode) {
-      case KC_U: return A(KC_O);
-      case KC_O: return A(KC_U);
-      case KC_N: return A(KC_I);
-      case KC_I: return A(KC_N);
+    if (mods == MOD_BIT_LALT) {
+        switch (keycode) {
+            case KC_U:
+                return A(KC_O);
+            case KC_O:
+                return A(KC_U);
+            case KC_N:
+                return A(KC_I);
+            case KC_I:
+                return A(KC_N);
+        }
+    } else if ((mods & ~MOD_MASK_SHIFT) == 0) {
+        // This is where most of the "magic" for the MAGIC key is implemented.
+        switch (keycode) {
+            case KC_SPC: // spc -> THE
+            case KC_ENT:
+            case KC_TAB:
+            case SPC_NAV:
+                return M_THE;
+
+            // For navigating next/previous search results in Vim:
+            // N -> Shift + N, Shift + N -> N.
+            case KC_N:
+                if ((mods & MOD_MASK_SHIFT) == 0) {
+                    return S(KC_N);
+                }
+                return KC_N;
+
+            // Fix SFBs and awkward strokes.
+            case KC_A:
+                return KC_O; // A -> O
+            case KC_O:
+                return KC_A; // O -> A
+            case KC_E:
+                return KC_U; // E -> U
+            case KC_U:
+                return KC_E; // U -> E
+            case KC_I:
+                if ((mods & MOD_MASK_SHIFT) == 0) {
+                    return M_ION; // I -> ON
+                } else {
+                    return KC_QUOT; // Shift I -> '
+                }
+            case KC_M:
+                return M_MENT; // M -> ENT
+            case KC_Q:
+                return M_QUEN; // Q -> UEN
+            case KC_T:
+                return M_TMENT; // T -> TMENT
+
+            case KC_C:
+                return KC_Y; // C -> Y
+            case KC_D:
+                return KC_Y; // D -> Y
+            case KC_G:
+                return KC_Y; // G -> Y
+            case KC_P:
+                return KC_N; // P -> N
+            case KC_Y:
+                return KC_P; // Y -> P
+
+            case KC_L:
+                return KC_K; // L -> K
+            case KC_S:
+                return KC_T; // S -> T
+
+            case KC_R:
+                return KC_L; // R -> L
+            case KC_DOT:
+                if ((mods & MOD_MASK_SHIFT) == 0) {
+                    return M_UPDIR; // . -> ./
+                }
+                return M_NOOP;
+            case KC_HASH:
+                return M_INCLUDE; // # -> include
+            case KC_AMPR:
+                return M_NBSP; // & -> nbsp;
+            case KC_EQL:
+                return M_EQEQ; // = -> ==
+            case KC_RBRC:
+                return KC_SCLN; // ] -> ;
+            case KC_AT:
+                return SHIP_IT; // @ -> SHIP_IT
+
+            case KC_COMM:
+                if ((mods & MOD_MASK_SHIFT) != 0) {
+                    return KC_EQL; // ! -> =
+                }
+                return M_NOOP;
+            case KC_QUOT:
+                if ((mods & MOD_MASK_SHIFT) != 0) {
+                    return M_DOCSTR; // " -> ""<cursor>"""
+                }
+                return M_NOOP;
+            case KC_GRV: // ` -> ``<cursor>``` (for Markdown code)
+                return M_MKGRVS;
+            case KC_LABK: // < -> - (for Haskell)
+                return KC_MINS;
+            case KC_SLSH:
+                return KC_SLSH; // / -> / (easier reach than Repeat)
+
+            case KC_PLUS:
+            case KC_MINS:
+            case KC_ASTR:
+            case KC_PERC:
+            case KC_PIPE:
+            case KC_CIRC:
+            case KC_TILD:
+            case KC_EXLM:
+            case KC_DLR:
+            case KC_RABK:
+            case KC_LPRN:
+            case KC_RPRN:
+            case KC_UNDS:
+            case KC_COLN:
+                return KC_EQL;
+            case KC_F:
+            case KC_V:
+            case KC_X:
+            case KC_SCLN:
+            case KC_1 ... KC_0:
+                return M_NOOP;
+        }
     }
-  } else if ((mods & ~MOD_MASK_SHIFT) == 0) {
-    // This is where most of the "magic" for the MAGIC key is implemented.
+
     switch (keycode) {
-      case KC_SPC:  // spc -> THE
-      case KC_ENT:
-      case KC_TAB:
-      case SPC_NAV:
-        return M_THE;
-
-      // For navigating next/previous search results in Vim:
-      // N -> Shift + N, Shift + N -> N.
-      case KC_N:
-        if ((mods & MOD_MASK_SHIFT) == 0) {
-          return S(KC_N);
-        }
-        return KC_N;
-
-      // Fix SFBs and awkward strokes.
-      case KC_A: return KC_O;         // A -> O
-      case KC_O: return KC_A;         // O -> A
-      case KC_E: return KC_U;         // E -> U
-      case KC_U: return KC_E;         // U -> E
-      case KC_I:
-        if ((mods & MOD_MASK_SHIFT) == 0) {
-          return M_ION;  // I -> ON
-        } else {
-          return KC_QUOT;  // Shift I -> '
-        }
-      case KC_M: return M_MENT;       // M -> ENT
-      case KC_Q: return M_QUEN;       // Q -> UEN
-      case KC_T: return M_TMENT;      // T -> TMENT
-
-      case KC_C: return KC_Y;         // C -> Y
-      case KC_D: return KC_Y;         // D -> Y
-      case KC_G: return KC_Y;         // G -> Y
-      case KC_P: return KC_N;         // P -> N
-      case KC_Y: return KC_P;         // Y -> P
-
-      case KC_L: return KC_K;         // L -> K
-      case KC_S: return KC_T;         // S -> T
-
-      case KC_R: return KC_L;         // R -> L
-      case KC_DOT:
-        if ((mods & MOD_MASK_SHIFT) == 0) {
-          return M_UPDIR;  // . -> ./
-        }
-        return M_NOOP;
-      case KC_HASH: return M_INCLUDE;  // # -> include
-      case KC_AMPR: return M_NBSP;     // & -> nbsp;
-      case KC_EQL: return M_EQEQ;      // = -> ==
-      case KC_RBRC: return KC_SCLN;    // ] -> ;
-      case KC_AT: return SHIP_IT;      // @ -> SHIP_IT
-
-      case KC_COMM:
-        if ((mods & MOD_MASK_SHIFT) != 0) {
-          return KC_EQL;  // ! -> =
-        }
-        return M_NOOP;
-      case KC_QUOT:
-        if ((mods & MOD_MASK_SHIFT) != 0) {
-          return M_DOCSTR;  // " -> ""<cursor>"""
-        }
-        return M_NOOP;
-      case KC_GRV:  // ` -> ``<cursor>``` (for Markdown code)
-        return M_MKGRVS;
-      case KC_LABK:  // < -> - (for Haskell)
-        return KC_MINS;
-      case KC_SLSH:
-        return KC_SLSH;  // / -> / (easier reach than Repeat)
-
-      case KC_PLUS:
-      case KC_MINS:
-      case KC_ASTR:
-      case KC_PERC:
-      case KC_PIPE:
-      case KC_CIRC:
-      case KC_TILD:
-      case KC_EXLM:
-      case KC_DLR:
-      case KC_RABK:
-      case KC_LPRN:
-      case KC_RPRN:
-      case KC_UNDS:
-      case KC_COLN:
-        return KC_EQL;
-      case KC_F:
-      case KC_V:
-      case KC_X:
-      case KC_SCLN:
-      case KC_1 ... KC_0:
-        return M_NOOP;
+        case KC_WH_U:
+            return KC_WH_D;
+        case KC_WH_D:
+            return KC_WH_U;
+        case SELWBAK:
+            return SELWORD;
+        case SELWORD:
+            return SELWBAK;
     }
-  }
-
-  switch (keycode) {
-    case KC_WH_U: return KC_WH_D;
-    case KC_WH_D: return KC_WH_U;
-    case SELWBAK: return SELWORD;
-    case SELWORD: return SELWBAK;
-  }
-  return KC_TRNS;
+    return KC_TRNS;
 }
 
 const uint16_t PROGMEM test_combo1[] = {KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM test_combo2[] = {KC_L, KC_D, COMBO_END};
-const uint16_t PROGMEM test_combo3[] = {KC_M, LT(SYM,KC_G), COMBO_END};
-const uint16_t PROGMEM test_combo4[] = {LT(KC_DOT, KC_SCLN), COMBO_END};
-combo_t key_combos[] = {
+const uint16_t PROGMEM test_combo3[] = {KC_M, LT(SYM, KC_G), COMBO_END};
+const uint16_t PROGMEM test_combo4[] = {LT(SYM, KC_DOT), KC_SCLN, COMBO_END};
+combo_t                key_combos[]  = {
     COMBO(test_combo1, QK_REP),
     COMBO(test_combo2, QK_REP),
     COMBO(test_combo3, QK_AREP),
     COMBO(test_combo4, QK_AREP),
 };
-
-
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
@@ -327,20 +350,18 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     );
     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
     const bool    alt        = all_mods & MOD_BIT_LALT;
-  // If alt repeating key A, E, I, O, U, Y with no mods other than Shift, set
-  // the last key to KC_N. Above, alternate repeat of KC_N is defined to be
-  // again KC_N. This way, either tapping alt repeat and then repeat (or
-  // equivalently double tapping alt repeat) is useful to type certain patterns
-  // without SFBs:
-  //
-  //   D <altrep> <rep> -> DYN (as in "dynamic")
-  //   O <altrep> <rep> -> OAN (as in "loan")
-  if (get_repeat_key_count() < 0 && (all_mods & ~MOD_MASK_SHIFT) == 0 &&
-      (keycode == KC_A || keycode == KC_E || keycode == KC_I ||
-       keycode == KC_O || keycode == KC_U || keycode == KC_Y)) {
-    set_last_keycode(KC_N);
-    set_last_mods(0);
-  }
+    // If alt repeating key A, E, I, O, U, Y with no mods other than Shift, set
+    // the last key to KC_N. Above, alternate repeat of KC_N is defined to be
+    // again KC_N. This way, either tapping alt repeat and then repeat (or
+    // equivalently double tapping alt repeat) is useful to type certain patterns
+    // without SFBs:
+    //
+    //   D <altrep> <rep> -> DYN (as in "dynamic")
+    //   O <altrep> <rep> -> OAN (as in "loan")
+    if (get_repeat_key_count() < 0 && (all_mods & ~MOD_MASK_SHIFT) == 0 && (keycode == KC_A || keycode == KC_E || keycode == KC_I || keycode == KC_O || keycode == KC_U || keycode == KC_Y)) {
+        set_last_keycode(KC_N);
+        set_last_mods(0);
+    }
     switch (keycode) {
         case ARROW:
             if (record->event.pressed) {
@@ -382,7 +403,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                     default:
                         tap_code16(KC_PSTE);
                         break;
-                 }
+                }
             }
             return false;
         case CUT:
@@ -425,23 +446,36 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
     }
-    if(record->event.pressed){
-        switch(keycode){
-     case SHIP_IT:
-            MAGIC_STRING("Workiva/release-management-p", KC_AT);
-            return false;
+    if (record->event.pressed) {
+        switch (keycode) {
+            case SHIP_IT:
+                MAGIC_STRING("Workiva/release-management-p", KC_AT);
+                return false;
 
-      case UPDIR:
-        SEND_STRING_DELAY("../", TAP_CODE_DELAY);
-        return false;
+            case UPDIR:
+                SEND_STRING_DELAY("../", TAP_CODE_DELAY);
+                return false;
 
-      case M_THE:     MAGIC_STRING(/* */"the", KC_N); break;
-      case M_ION:     MAGIC_STRING(/*i*/"on", KC_S); break;
-      case M_MENT:    MAGIC_STRING(/*m*/"ent", KC_S); break;
-      case M_QUEN:    MAGIC_STRING(/*q*/"uen", KC_C); break;
-      case M_TMENT:   MAGIC_STRING(/*t*/"ment", KC_S); break;
-      case M_UPDIR:   MAGIC_STRING(/*.*/"./", UPDIR); break;
-        }}
+            case M_THE:
+                MAGIC_STRING(/* */ "the", KC_N);
+                break;
+            case M_ION:
+                MAGIC_STRING(/*i*/ "on", KC_S);
+                break;
+            case M_MENT:
+                MAGIC_STRING(/*m*/ "ent", KC_S);
+                break;
+            case M_QUEN:
+                MAGIC_STRING(/*q*/ "uen", KC_C);
+                break;
+            case M_TMENT:
+                MAGIC_STRING(/*t*/ "ment", KC_S);
+                break;
+            case M_UPDIR:
+                MAGIC_STRING(/*.*/ "./", UPDIR);
+                break;
+        }
+    }
 
     return true; // Process all other keycodes normally
 }
