@@ -73,6 +73,7 @@ keymap:
     KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q imprint.json > imprint.yaml
     python process.py
     keymap draw output.yaml -j ./imprint/keyboards/"{{ imprintNS }}"/info.json > imprint.svg
+    python hide_empty_keys.py imprint.svg
 
 # Format C files under keyboards directory
 c-format:
