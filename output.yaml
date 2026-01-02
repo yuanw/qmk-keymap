@@ -352,7 +352,7 @@ layers:
       type: trans
     - PGDN
     - "\u25C1"
-  - - "\u25BD"
+  - - Down
     - RIGHT
     - h: ''
       t: "\u25BD"

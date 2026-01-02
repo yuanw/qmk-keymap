@@ -61,7 +61,7 @@ key_dict = {
     "MPRV": "\u21E4",
     "LEFT": "\u25C1",
     "RGHT": "\u25B7",
-    "DOWN": "\u25BD",
+    "DOWN": "Down",
     "QK REP": "\u21BB",
     "QK AREP": "\u21BA",
     "ALTREP2": "\u21BA 2",
