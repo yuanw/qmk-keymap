@@ -67,9 +67,7 @@ layers:
     - R NUM
     - BSPC FUN
   1 Sym:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
     - '`'
     - <
     - '>'
@@ -80,12 +78,8 @@ layers:
     - '}'
     - $
   - - ARROW
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
     - '!'
     - '*'
     - /
@@ -95,15 +89,9 @@ layers:
     - (
   - - )
     - RIGHT
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
     - '~'
     - +
     - '['
@@ -113,808 +101,312 @@ layers:
     - \
     - s: '>'
       t: .
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   2 Fun:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   3 Nav:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - PGUP
     - HOME
     - "\u25B3"
     - END
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - PGDN
     - "\u25C1"
   - - Down
     - RIGHT
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   - - RDO
     - PST
     - CPY
     - CUT
     - UND
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - $$mdi:lock$$
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
   4 Win:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - "\u2318\u23251"
   - - "\u2318\u23252"
     - Alt+Gui+3
     - Alt+Gui+4
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
     - Sft+Gui+1
     - Sft+Gui+2
     - Sft+Gui+3
     - Sft+Gui+4
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   5 PNT:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - $$mdi:lock$$
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
     - $$mdi:lock$$
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
     - BTN1
     - BTN2
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - BTN2
-    - BTN1
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - BTN1
-    - BTN2
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
   6 Num:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
+    - ''
     - '7'
     - '8'
     - '9'
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
     - '4'
     - '5'
     - '6'
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - '1'
     - '2'
     - '3'
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - $$mdi:lock$$
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
     - '0'
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
   7 Txt:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
     - '7'
     - '8'
     - '9'
     - SECRET 1
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
     - QK BOOT
     - SELWORD
     - SELWBAK
     - SELLINE
     - SECRET 2
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - '1'
     - '2'
     - '3'
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - $$mdi:lock$$
     - '-'
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
