@@ -59,7 +59,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               clang-tools
-              (python3.withPackages (ps: [ ps.pyyaml ]))
+              (python3.withPackages (ps: [ ps.pyyaml ps.beautifulsoup4 ps.lxml]))
               config.packages.drawer
               qmk
               just
