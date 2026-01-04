@@ -53,58 +53,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
-        _______, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, _______,
-        _______, KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL,  KC_AMPR,                           KC_HASH, KC_LPRN, KC_RPRN, KC_RIGHT, _______, _______,
-        _______, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                           KC_AT,   KC_BSLS, KC_DOT, _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______
+        XXXXXXX, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL,  KC_AMPR,                           KC_HASH, KC_LPRN, KC_RPRN, KC_RIGHT, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                           KC_AT,   KC_BSLS, KC_DOT, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [FUN] = LAYOUT_let_no_bottom_row(
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NAV] = LAYOUT_let_no_bottom_row(
-        _______, _______, _______, _______, _______, _______,                           KC_PGUP, KC_HOME, KC_UP, KC_END, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           RDO, PST,     CPY,     CUT,    UND, _______,
-                                            _______, _______, _______,         _______, _______, _______,
-                                            _______, _______, _______,         _______, QK_LLCK, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           KC_PGUP, KC_HOME, KC_UP, KC_END, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           RDO, PST,     CPY,     CUT,    UND, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, QK_LLCK, XXXXXXX
     ),
 
     [WIN] = LAYOUT_let_no_bottom_row(
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           _______, LAG(KC_1), LAG(KC_2), LAG(KC_3), LAG(KC_4), _______,
-        _______, _______, _______, _______, _______, _______,                           _______, LSG(KC_1), LSG(KC_2), LSG(KC_3), LSG(KC_4), _______,
-                                            _______, _______, _______,         _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, LAG(KC_1), LAG(KC_2), LAG(KC_3), LAG(KC_4), XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, LSG(KC_1), LSG(KC_2), LSG(KC_3), LSG(KC_4), XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [PNT] = LAYOUT_let_no_bottom_row(
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, QK_LLCK, _______,                           _______, QK_LLCK, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-                                            KC_BTN1, KC_BTN2, _______,         _______, KC_BTN2, KC_BTN1,
-                                            _______, KC_BTN1, KC_BTN2,         _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_LLCK, XXXXXXX,                           XXXXXXX, QK_LLCK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, KC_BTN1, KC_BTN2,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_let_no_bottom_row(
-        _______, _______, KC_7, KC_8, KC_9, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_4, KC_5, KC_6, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_1, KC_2, KC_3, _______,                           _______, _______, _______, _______, _______, _______,
-                                            _______, QK_LLCK, _______,         _______, _______, _______,
-                                            _______, KC_0, _______,         _______, _______, _______
+        XXXXXXX, XXXXXXX, KC_7, KC_8, KC_9, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, QK_LLCK, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, KC_0, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [TXT] = LAYOUT_let_no_bottom_row(
-        _______, KC_7, KC_8, KC_9, KC_SECRET_1, _______,                           _______, _______, _______, _______, _______, _______,
-        QK_BOOT, SELWORD , SELWBAK, SELLINE, KC_SECRET_2, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, KC_1, KC_2, KC_3, _______, _______,                           _______, _______, _______, _______, _______, _______,
-                                            QK_LLCK, KC_MINS, _______,         _______, _______, _______,
-                                            _______, _______, _______,         _______, _______, _______
+        XXXXXXX, KC_7, KC_8, KC_9, KC_SECRET_1, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        QK_BOOT, SELWORD , SELWBAK, SELLINE, KC_SECRET_2, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            QK_LLCK, KC_MINS, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     )
 };
 // clang-format on
