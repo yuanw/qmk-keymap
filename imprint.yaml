@@ -1,10 +1,10 @@
 layout: {qmk_keyboard: cyboard/imprint/imprint_letters_only_no_bottom_row, layout_name: LAYOUT_let_no_bottom_row}
 layers:
   L0:
-  - ['', Q, Y, O, U, '=', X, L, D, W]
+  - ['', Q, Y, O, U, '=', X, L, D, P]
   - [Z, '', B, HRM C, HRM I, HRM A, HRM E, '-', K, HRM H]
-  - [HRM T, HRM N, HRM S, F, '', '''', ',', 'LT(SYM,DOT)', ;, /]
-  - [J, M, 'LT(SYM,G)', P, V, '', '', '', '', '']
+  - [HRM T, HRM N, HRM S, W, '', '''', ',', 'LT(SYM,DOT)', ;, /]
+  - [J, M, 'LT(SYM,G)', F, V, '', '', '', '', '']
   - ['', '', ESC WIN, SPC NAV, MAGIC, REP TXT, R NUM, BSPC FUN]
   L1:
   - ['', '`', <, '>', '-', '|', ^, '{', '}', $]

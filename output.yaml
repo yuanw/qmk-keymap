@@ -9,7 +9,7 @@ layers:
     - X
     - L
     - D
-    - W
+    - P
   - - Z
     - ''
     - B
@@ -19,9 +19,9 @@ layers:
       t: I
     - h: $$mdi:apple-keyboard-shift$$
       t: A
-      type: ghost
     - h: $$mdi:apple-keyboard-control$$
       t: E
+      type: ghost
     - '-'
     - K
     - h: $$mdi:apple-keyboard-shift$$
@@ -33,7 +33,7 @@ layers:
       t: N
     - h: Meta
       t: S
-    - F
+    - W
     - ''
     - ''''
     - s: <
@@ -46,7 +46,7 @@ layers:
     - M
     - h: Sym
       t: G
-    - P
+    - F
     - V
     - ''
     - ''
