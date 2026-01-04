@@ -30,10 +30,10 @@ key_dict = {
     "HRM C": {"t": "C", "h": "Meta"},
     "HRM S": {"t": "S", "h": "Meta"},
 
-    "HRM E":{"t": "E", "h": "$$mdi:apple-keyboard-control$$"},
+    "HRM E":{"t": "E", "h": "$$mdi:apple-keyboard-control$$", "type":"ghost"},
     "HRM T":{"t": "T", "h": "$$mdi:apple-keyboard-control$$"},
 
-    "HRM A": {"t": "A", "h": "$$mdi:apple-keyboard-shift$$", "type": "ghost"},
+    "HRM A": {"t": "A", "h": "$$mdi:apple-keyboard-shift$$"},
     "HRM H": {"t": "H", "h": "$$mdi:apple-keyboard-shift$$", "type": "ghost"},
     "HRM I": {"t": "I", "h": "$$mdi:apple-keyboard-option$$"},
     "HRM N": {"t": "N", "h": "$$mdi:apple-keyboard-option$$"},
