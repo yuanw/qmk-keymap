@@ -3,7 +3,6 @@ name: Update Nix Flake
 on:
   schedule:
     - cron: "0 0 * * 0" # Weekly on Sunday at midnight
-  workflow_dispatch:
 
 jobs:
   update-dependencies:
@@ -16,8 +15,8 @@ jobs:
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}    - uses: cachix/cachix-action@v16
     - uses: cachix/cachix-action@v16
       with:
-        name: yuanw-blog
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+        name: yuanwang-wf
+        signingKey: '${{ secrets.CACHIX_AUTH_TOKEN }}'
         # Only needed for private caches
         #authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - name: Update flake.lock
