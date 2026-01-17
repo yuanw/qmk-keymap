@@ -37,6 +37,30 @@ init:
     git config submodule.imprint.ignore all
     fi
 
+# Update git submodules and commit the changes
+update-submodules:
+    #!/usr/bin/env bash
+    echo "{{ blue }}Updating git submodules...{{ reset }}"
+    git submodule update --remote --merge
+
+    # Check if any submodules have changes
+    if git diff --quiet && git diff --staged --quiet; then
+        echo "{{ green }}No submodule changes to commit{{ reset }}"
+    else
+        echo "{{ yellow }}Committing submodule updates...{{ reset }}"
+
+        # Get list of changed submodules
+        changed_submodules=$(git diff --name-only)
+        if [ -n "$changed_submodules" ]; then
+            echo "{{ blue }}Changed submodules:{{ reset }}"
+            echo "$changed_submodules"
+            git add $changed_submodules
+        fi
+
+        git commit -m "Update git submodules"
+        echo "{{ green }}Submodules updated and committed{{ reset }}"
+    fi
+
 setup target:
     #!/usr/bin/env bash
     if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{ justfile_directory() }}/{{ target }}" ]; then
