@@ -33,6 +33,23 @@ init:
     if [ "$(git config submodule.imprint.ignore)" != "all" ]; then
     git config submodule.imprint.ignore all
     fi
+    if [ "$(git config submodule.svalboard.ignore)" != "all" ]; then
+    git config submodule.svalboard.ignore all
+    fi
+
+# Update svalboard git submodule
+update-svalboard:
+    #!/usr/bin/env bash
+    echo "{{ blue }}Updating svalboard submodule...{{ reset }}"
+    git submodule update --remote --merge svalboard
+    if git diff --quiet svalboard; then
+        echo "{{ green }}No svalboard changes to commit{{ reset }}"
+    else
+        echo "{{ yellow }}Committing svalboard update...{{ reset }}"
+        git add svalboard
+        git commit -m "Update svalboard submodule"
+        echo "{{ green }}Svalboard submodule updated and committed{{ reset }}"
+    fi
 
 # Update imprint git submodule
 update-imprint:

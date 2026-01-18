@@ -9,3 +9,7 @@
 	path = imprint
 	url = https://github.com/Cyboard-DigitalTailor/vial-qmk
     branch = cyboard
+[submodule "svalboard"]
+	path = svalboard
+	url = https://github.com/svalboard/vial-qmk.git
+	branch = vial
