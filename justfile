@@ -34,6 +34,20 @@ init:
     git config submodule.imprint.ignore all
     fi
 
+# Update imprint git submodule
+update-imprint:
+    #!/usr/bin/env bash
+    echo "{{ blue }}Updating imprint submodule...{{ reset }}"
+    git submodule update --remote --merge imprint
+    if git diff --quiet imprint; then
+        echo "{{ green }}No imprint changes to commit{{ reset }}"
+    else
+        echo "{{ yellow }}Committing imprint update...{{ reset }}"
+        git add imprint
+        git commit -m "Update imprint submodule"
+        echo "{{ green }}Imprint submodule updated and committed{{ reset }}"
+    fi
+
 # Update git submodules and commit the changes
 update-submodules:
     #!/usr/bin/env bash
