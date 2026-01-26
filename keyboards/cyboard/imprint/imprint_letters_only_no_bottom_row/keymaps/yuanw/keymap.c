@@ -85,11 +85,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [PNT] = LAYOUT_let_no_bottom_row(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_LLCK, XXXXXXX,                           XXXXXXX, QK_LLCK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, KC_BTN1, KC_BTN2,         XXXXXXX, XXXXXXX, XXXXXXX
+                                            QK_LLCK, KC_BTN1, KC_BTN2,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_let_no_bottom_row(
