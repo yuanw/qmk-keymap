@@ -264,49 +264,121 @@ layers:
     - ''
     - ''
   5 PNT:
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
   - - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-  - - ''
-    - ''
-    - ''
-    - ''
-    - ''
     - ''
     - $$mdi:lock$$
-    - ''
-    - ''
-    - $$mdi:lock$$
-  - - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-  - - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-  - - ''
-    - ''
-    - ''
     - BTN1
     - BTN2
     - ''
