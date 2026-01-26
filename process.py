@@ -42,7 +42,7 @@ key_dict = {
      #apple-keyboard-option apple-keyboard-control"
     "ESC WIN": {"t": "Esc", "s": "Enter", "h": "Win" },
     "SPC NAV": {"t": "Spc", "s": "Tab", "h": "Nav", "type": "ghost"},
-    "LT(SYM,EQL)":  {"t": "=", "h": "Sym" },
+    "LT(SYM,DOT)":  {"t": ".", "h": "Sym" },
     "LT(SYM,G)":  {"t": "G", "h": "Sym" },
     "LT(LAYER NAVIGATION, SPC)":  {"t": "SPC", "h": "Nav" },
     "LT(LAYER FUNCTION, BSPC)":  {"t": "\u232B", "h": "Fun" },
