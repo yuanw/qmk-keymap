@@ -7,9 +7,9 @@ layers:
   - [J, M, 'LT(SYM,G)', F, V, '', '', '', '', '']
   - ['', '', ESC WIN, SPC NAV, MAGIC, REP TXT, R NUM, BSPC FUN]
   L1:
-  - ['', '`', <, '>', '-', '|', ^, '{', '}', $]
-  - [ARROW, '', '', '!', '*', /, '=', '&', '#', (]
-  - [), RIGHT, '', '', '', '~', +, '[', ']', '%']
+  - ['', '`', \, <, '>', '|', ^, '{', '}', $]
+  - [ARROW, '', '', '!', '*', '[', ']', '&', '#', (]
+  - [), '@', '', '', '', '~', +, '[', ']', '%']
   - ['@', \, ., '', '', '', '', '', '', '']
   - ['', '', '', '', '', '', '', '']
   L2:
@@ -31,7 +31,7 @@ layers:
   - ['', Sft+Gui+1, Sft+Gui+2, Sft+Gui+3, Sft+Gui+4, '', '', '', '', '']
   - ['', '', '', '', '', '', '', '']
   L5:
-  - - {t: ▽, type: trans}
+  - - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -42,17 +42,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -65,8 +55,18 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
     - ''
     - ''
     - ''

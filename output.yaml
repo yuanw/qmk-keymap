@@ -70,9 +70,9 @@ layers:
   1 Sym:
   - - ''
     - '`'
+    - \
     - <
     - '>'
-    - '-'
     - '|'
     - ^
     - '{'
@@ -83,13 +83,13 @@ layers:
     - ''
     - '!'
     - '*'
-    - /
-    - '='
+    - '['
+    - ']'
     - '&'
     - '#'
     - (
   - - )
-    - RIGHT
+    - '@'
     - ''
     - ''
     - ''
@@ -265,9 +265,7 @@ layers:
     - ''
     - ''
   5 PNT:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
     - h: ''
       t: "\u25BD"
       type: trans
@@ -298,39 +296,7 @@ layers:
   - - h: ''
       t: "\u25BD"
       type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-  - - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
     - h: ''
       t: "\u25BD"
       type: trans
@@ -367,12 +333,38 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
+    - ''
     - h: ''
       t: "\u25BD"
       type: trans
     - h: ''
       t: "\u25BD"
       type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
     - ''
     - ''
     - ''
