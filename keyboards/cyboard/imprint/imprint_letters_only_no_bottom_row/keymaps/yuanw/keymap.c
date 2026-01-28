@@ -18,7 +18,7 @@ enum keycode_aliases {
     HRM_A    = LCTL_T(KC_A),
     HRM_I    = LALT_T(KC_I),
     HRM_C    = LGUI_T(KC_C),
-    HRM_QUOT = LGUI_T(KC_QUOT),
+     HRM_QUOT = LGUI_T(KC_QUOT),
 
     HRM_H = RSFT_T(KC_H),
     HRM_T = RCTL_T(KC_T),
@@ -53,9 +53,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
-        XXXXXXX, KC_GRV,  KC_BSLS, KC_LABK, KC_RABK, KC_PIPE,                           XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
-        XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, KC_RBRC, KC_AMPR,                           XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,  KC_CIRC, XXXXXXX,
-        XXXXXXX, KC_TILD, KC_BSLS, KC_PIPE, KC_RBRC, KC_PERC,                           XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_GRV,  KC_AMPR, KC_PERC, KC_RABK, XXXXXXX,                           XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, EMAIL_1, XXXXXXX,                           XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,  KC_CIRC, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_BSLS, KC_PIPE, EMAIL_2, XXXXXXX,                           XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
@@ -451,7 +451,12 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             case SHIP_IT:
                 MAGIC_STRING("Workiva/release-management-p", KC_AT);
                 return false;
-
+        case EMAIL_1:
+            SEND_STRING_DELAY("yuan.wang@workiva.com", TAP_CODE_DELAY);
+            return false;
+    case EMAIL_2 :
+            SEND_STRING_DELAY("me@yuanwang.ca", TAP_CODE_DELAY);
+            return false;
             case UPDIR:
                 SEND_STRING_DELAY("../", TAP_CODE_DELAY);
                 return false;
