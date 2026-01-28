@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYM] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_GRV,  KC_BSLS, KC_LABK, KC_RABK, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
         XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, KC_RBRC, KC_AMPR,                           KC_HASH, KC_LPRN, KC_RPRN, KC_AT, XXXXXXX, XXXXXXX,
-        XXXXXXX, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                           KC_AT,   KC_BSLS, KC_DOT, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                           KC_AT,   KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
