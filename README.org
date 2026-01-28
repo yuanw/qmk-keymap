@@ -15,14 +15,14 @@ base layer
 #+begin_src
   q y o u =  x l d w x
 w c i a e -  k h t n s f
-  ' , . ; /  j m g p v
+  ' , . / ;  j m g p v
              r
 #+end_src
 symbol based on https://github.com/getreuer/qmk-keymap
 
 #+begin_src
 ` < > - |  ^ {  } $ Arrow
-! * / = &  # (  ) ; "
+! * [ ] &  # (  ) @
 ~ + [ ] %  @ \ , . '
 #+end_src
 * put repeat on hold

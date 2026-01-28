@@ -53,8 +53,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
-        XXXXXXX, KC_GRV,  KC_LABK, KC_RABK, KC_MINS, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
-        XXXXXXX, KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL,  KC_AMPR,                           KC_HASH, KC_LPRN, KC_RPRN, KC_RIGHT, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_GRV,  KC_BSLS, KC_LABK, KC_RABK, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, KC_RBRC, KC_AMPR,                           KC_HASH, KC_LPRN, KC_RPRN, KC_AT, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                           KC_AT,   KC_BSLS, KC_DOT, XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [PNT] = LAYOUT_let_no_bottom_row(
+        XXXXXXX, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, XXXXXXX,
         _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, _______,
+        XXXXXXX, _______, _______, _______, _______, _______,                           _______, _______, _______, _______, _______, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             QK_LLCK, KC_BTN1, KC_BTN2,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, QK_LLCK, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, KC_0, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
+                                            XXXXXXX, KC_0,    XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [TXT] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_7, KC_8, KC_9, KC_SECRET_1, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -333,7 +333,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 const uint16_t PROGMEM test_combo1[] = {KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM test_combo2[] = {KC_L, KC_D, COMBO_END};
 const uint16_t PROGMEM test_combo3[] = {KC_M, LT(SYM, KC_G), COMBO_END};
-const uint16_t PROGMEM test_combo4[] = {LT(SYM, KC_DOT), KC_SCLN, COMBO_END};
+const uint16_t PROGMEM test_combo4[] = {LT(SYM, KC_DOT), KC_SLASH, COMBO_END};
 combo_t                key_combos[]  = {
     COMBO(test_combo1, QK_REP),
     COMBO(test_combo2, QK_REP),
