@@ -17,7 +17,7 @@ layers:
       t: C
     - h: $$mdi:apple-keyboard-option$$
       t: I
-    - h: $$mdi:apple-keyboard-shift$$
+    - h: '$$mdi:apple-keyboard-shift$$ '
       t: A
     - h: $$mdi:apple-keyboard-control$$
       t: E
@@ -39,6 +39,7 @@ layers:
     - s: <
       t: ','
     - h: Sym
+      s: '>'
       t: .
     - /
     - s: ':'
@@ -99,9 +100,8 @@ layers:
     - ']'
     - '%'
   - - '@'
-    - \
-    - s: '>'
-      t: .
+    - '['
+    - ']'
     - ''
     - ''
     - ''
