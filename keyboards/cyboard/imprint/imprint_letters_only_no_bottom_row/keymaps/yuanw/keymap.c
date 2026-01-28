@@ -53,9 +53,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
-        XXXXXXX, KC_GRV,  KC_BSLS, KC_LABK, KC_RABK, KC_PIPE,                           KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
-        XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, KC_RBRC, KC_AMPR,                           KC_HASH, KC_LPRN, KC_RPRN, KC_AT, XXXXXXX, XXXXXXX,
-        XXXXXXX, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                           KC_AT,   KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_GRV,  KC_BSLS, KC_LABK, KC_RABK, KC_PIPE,                           XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, KC_RBRC, KC_AMPR,                           XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,  KC_CIRC, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_BSLS, KC_PIPE, KC_RBRC, KC_PERC,                           XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
