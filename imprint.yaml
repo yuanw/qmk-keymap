@@ -3,7 +3,7 @@ layers:
   L0:
   - ['', Q, Y, O, U, '=', X, L, D, P]
   - [Z, '', B, HRM C, HRM I, HRM A, HRM E, '-', K, HRM H]
-  - [HRM T, HRM N, HRM S, W, '', '''', ',', 'LT(SYM,DOT)', ;, /]
+  - [HRM T, HRM N, HRM S, W, '', '''', ',', 'LT(SYM,DOT)', /, ;]
   - [J, M, 'LT(SYM,G)', F, V, '', '', '', '', '']
   - ['', '', ESC WIN, SPC NAV, MAGIC, REP TXT, R NUM, BSPC FUN]
   L1:

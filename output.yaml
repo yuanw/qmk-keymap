@@ -38,10 +38,11 @@ layers:
     - ''''
     - s: <
       t: ','
-    - LT(SYM,DOT)
+    - h: Sym
+      t: .
+    - /
     - s: ':'
       t: ;
-    - /
   - - J
     - M
     - h: Sym
