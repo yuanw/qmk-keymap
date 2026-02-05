@@ -5,7 +5,8 @@ layers:
     - Y
     - O
     - U
-    - '='
+    - s: +
+      t: '='
     - X
     - L
     - D
@@ -41,9 +42,9 @@ layers:
     - h: Sym
       s: '>'
       t: .
-    - /
     - s: ':'
       t: ;
+    - /
   - - J
     - M
     - h: Sym
