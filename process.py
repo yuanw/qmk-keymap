@@ -27,6 +27,7 @@ layer_key_dict = {
 }
 
 key_dict = {
+    "=": {"t": "=", "s": "+"},
     "HRM C": {"t": "C", "h": "Meta"},
     "HRM S": {"t": "S", "h": "Meta"},
 

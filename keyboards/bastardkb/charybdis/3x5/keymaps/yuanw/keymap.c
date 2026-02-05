@@ -106,10 +106,10 @@ enum keycode_aliases {
 
 /** \brief adept layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_Q,   KC_Y,    KC_O,    KC_U,   KC_EQL,    KC_X, KC_L, KC_D, KC_P,  KC_Z, \
+       KC_Q,     KC_Y,    KC_O,    KC_U,   KC_EQL,    KC_X, KC_L, KC_D, KC_P,  KC_Z, \
        KC_C,     KC_I,    KC_A,    KC_E,    KC_MINS,   KC_K,    KC_H,    KC_T,    KC_N,    KC_S,      \
-       XXXXXXX,  KC_C,    KC_F,    KC_D,    XXXXXXX,    XXXXXXX, KC_L,    KC_U,    KC_Y,    KC_QUOT, \
-                       ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, E_NUM
+           KC_QUOT,  KC_COMM, LT(LAYER_SYMBOLS2, KC_DOT),  KC_SLASH,  KC_SCLN,    KC_J, KC_L,   LT(LAYER_SYMBOLS2, KC_G),    KC_F,    KC_V, \
+                       ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, R_NUM
 
 
 /** \brief enthium layout (3 rows, 10 columns). */
