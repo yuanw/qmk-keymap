@@ -25,4 +25,5 @@ EMAIL_2,
     M_UPDIR,
     M_NBSP,
     M_NOOP,
+    M_SON
 };

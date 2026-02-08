@@ -66,17 +66,18 @@ enum keycode_aliases {
     // The "magic" key is the Alternate Repeat Key.
     MAGIC = QK_AREP,
     // Short aliases for home row mods and other tap-hold keys.
-    HRM_A    = LSFT_T(KC_A),
-    HRM_E    = LCTL_T(KC_E),
+    HRM_E    = LSFT_T(KC_E),
+    HRM_A    = LCTL_T(KC_A),
     HRM_I    = LALT_T(KC_I),
-    HRM_C    = LT(LAYER_SYMBOLS2, KC_C),
+    HRM_C    = LGUI_T(KC_C),
     HRM_QUOT = LGUI_T(KC_QUOT),
 
     HRM_H = RSFT_T(KC_H),
     HRM_T = RCTL_T(KC_T),
     HRM_N = LALT_T(KC_N),
-    HRM_S = LT(LAYER_SYMBOLS2, KC_S),
+    HRM_S = RGUI_T(KC_S),
     HRM_V = RGUI_T(KC_V),
+
 
     ESC_MED = LT(LAYER_MEDIA, KC_ESC),
     SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
@@ -106,9 +107,9 @@ enum keycode_aliases {
 
 /** \brief adept layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_Q,     KC_Y,    KC_O,    KC_U,   KC_EQL,    KC_X, KC_L, KC_D, KC_P,  KC_Z, \
-       KC_C,     KC_I,    KC_A,    KC_E,    KC_MINS,   KC_K,    KC_H,    KC_T,    KC_N,    KC_S,      \
-           KC_QUOT,  KC_COMM, LT(LAYER_SYMBOLS2, KC_DOT),  KC_SLASH,  KC_SCLN,    KC_J, KC_L,   LT(LAYER_SYMBOLS2, KC_G),    KC_F,    KC_V, \
+       KC_Q,     KC_Y,    KC_O,    KC_U,   KC_EQL,                             KC_X, KC_L, KC_D, KC_P,  KC_Z, \
+       HRM_C,    HRM_I,   HRM_A,   HRM_E,  KC_MINS,                            KC_K, HRM_H, HRM_T,  HRM_N,  HRM_S,      \
+       KC_QUOT,  KC_COMM, LT(LAYER_SYMBOLS2, KC_DOT),  KC_SLASH,  KC_SCLN,     KC_J, KC_M,   LT(LAYER_SYMBOLS2, KC_G),    KC_F,    KC_V, \
                        ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, R_NUM
 
 
@@ -138,7 +139,7 @@ enum keycode_aliases {
  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  ALTREP3,  \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  MAGIC,  \
     ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
     _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
                       XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
@@ -173,7 +174,7 @@ enum keycode_aliases {
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_UP, KC_RPRN, ALTREP2, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_UP, KC_RPRN, MAGIC, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
                       XXXXXXX, _______, XXXXXXX, QK_LLCK , KC_CAPS
@@ -245,9 +246,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
-  [LAYER_HDGOLD] = LAYOUT_wrapper(
-   LAYOUT_LAYER_ENTHIUM
-  ),
   [LAYER_SYMBOLS2] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS2),
 
 };
