@@ -17,7 +17,7 @@
 //   X   L10 L11 L12 L13 L14    R10 R11 R12 R13 R14 X    <- Row 1 (add outer cols)
 //   X   L20 L21 L22 L23 L24    R20 R21 R22 R23 R24 X    <- Row 2 (add outer cols)
 //                 X   X   X         X   X   X           <- Top thumbs (extra row)
-//               LT0 LT1 LT2       RT0 RT1  X            <- Bottom thumbs (add RT2)
+//               LT0 LT1 LT2         X RT0 RT1            <- Bottom thumbs (add RT2)
 
 #define LAYOUT_LR( \
     L00, L01, L02, L03, L04,    R00, R01, R02, R03, R04, \
@@ -29,5 +29,5 @@
     KC_B,    L10, L11, L12, L13, L14,    R10, R11, R12, R13, R14, KC_W,    \
     XXXXXXX, L20, L21, L22, L23, L24,    R20, R21, R22, R23, R24, XXXXXXX, \
                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, \
-                  LT0,     LT1,     LT2,        RT0,     RT1,     QK_AREP \
+                  LT0,     LT1,     LT2,        QK_AREP,     RT0,     RT1 \
 )
