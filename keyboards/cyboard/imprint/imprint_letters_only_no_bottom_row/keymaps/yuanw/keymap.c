@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYM] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_GRV,  KC_AMPR, KC_PERC, KC_RABK, XXXXXXX,                           XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
         XXXXXXX, KC_EXLM, KC_LABK, KC_RABK, EMAIL_1, XXXXXXX,                           XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,  KC_CIRC, XXXXXXX,
-        XXXXXXX, KC_TILD, KC_BSLS, KC_SCLN, KC_PIPE, KC_TILD,                           XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_BSLS, KC_SCLN, KC_PIPE, KC_BSLS,                          XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
@@ -113,6 +113,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {SPC_NAV, KC_TAB},  // Shift SPC is tab.
     {ESC_WIN, KC_ENT},  // Shift esc is enter.
     {BSPC_FUN, KC_DEL}, // Shift BSPC is DEL
+
 };
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
