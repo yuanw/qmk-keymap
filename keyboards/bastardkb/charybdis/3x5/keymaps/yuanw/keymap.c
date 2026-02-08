@@ -78,7 +78,6 @@ enum keycode_aliases {
     HRM_S = RGUI_T(KC_S),
     HRM_V = RGUI_T(KC_V),
 
-
     ESC_MED = LT(LAYER_MEDIA, KC_ESC),
     SPC_NAV = LT(LAYER_NAVIGATION, KC_SPC),
     TAB_FUN = LT(LAYER_FUNCTION, KC_BSPC),

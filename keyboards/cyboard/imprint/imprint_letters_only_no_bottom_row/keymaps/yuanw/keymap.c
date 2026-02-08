@@ -18,7 +18,7 @@ enum keycode_aliases {
     HRM_A    = LCTL_T(KC_A),
     HRM_I    = LALT_T(KC_I),
     HRM_C    = LGUI_T(KC_C),
-     HRM_QUOT = LGUI_T(KC_QUOT),
+    HRM_QUOT = LGUI_T(KC_QUOT),
 
     HRM_H = RSFT_T(KC_H),
     HRM_T = RCTL_T(KC_T),
@@ -352,7 +352,7 @@ combo_t                key_combos[]  = {
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
     const uint8_t all_mods = (mods | get_weak_mods()
- #ifndef NO_ACTION_ONESHOT
+#ifndef NO_ACTION_ONESHOT
                               | get_oneshot_mods()
 #endif // NO_ACTION_ONESHOT
     );
@@ -459,12 +459,12 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             case SHIP_IT:
                 MAGIC_STRING("Workiva/release-management-p", KC_AT);
                 return false;
-        case EMAIL_1:
-            SEND_STRING_DELAY("yuan.wang@workiva.com", TAP_CODE_DELAY);
-            return false;
-    case EMAIL_2 :
-            SEND_STRING_DELAY("me@yuanwang.ca", TAP_CODE_DELAY);
-            return false;
+            case EMAIL_1:
+                SEND_STRING_DELAY("yuan.wang@workiva.com", TAP_CODE_DELAY);
+                return false;
+            case EMAIL_2:
+                SEND_STRING_DELAY("me@yuanwang.ca", TAP_CODE_DELAY);
+                return false;
             case UPDIR:
                 SEND_STRING_DELAY("../", TAP_CODE_DELAY);
                 return false;
@@ -484,9 +484,9 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             case T_ION:
                 MAGIC_STRING(/*t*/ "ion", KC_S);
                 break;
-        case M_SON:
-            MAGIC_STRING(/*s*/ "on", KC_S);
-            break;
+            case M_SON:
+                MAGIC_STRING(/*s*/ "on", KC_S);
+                break;
             case M_UPDIR:
                 MAGIC_STRING(/*.*/ "./", UPDIR);
                 break;

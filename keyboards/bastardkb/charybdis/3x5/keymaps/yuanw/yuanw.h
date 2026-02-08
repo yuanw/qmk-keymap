@@ -9,9 +9,9 @@ enum my_keycodes {
     KC_SECRET_2,
     ARROW,
     EMAIL_1,
-EMAIL_2,
-ALTREP2,
-ALTREP3,
+    EMAIL_2,
+    ALTREP2,
+    ALTREP3,
     // Macros invoked through the Magic key.
     SHIP_IT,
     USRNAME,
