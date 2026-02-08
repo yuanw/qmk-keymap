@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                              KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,  XXXXXXX,
         KC_B,    HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_W,
-        XXXXXXX, KC_QUOT,  KC_COMM, LT(SYM,KC_DOT),  LT(REP, KC_SCLN), KC_SLASH,                     KC_J,   LT(REP, KC_M),    LT(SYM,KC_G),    KC_F,   KC_V,  XXXXXXX,
+        XXXXXXX, KC_QUOT,  KC_COMM, LT(SYM,KC_DOT),  LT(REP, KC_SCLN), KC_SLASH,                     KC_J,   KC_M,    LT(SYM,KC_G),    KC_F,   KC_V,  XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
@@ -338,14 +338,14 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     return KC_TRNS;
 }
 
-const uint16_t PROGMEM test_combo1[] = {KC_O, KC_U, COMBO_END};
-const uint16_t PROGMEM test_combo2[] = {KC_L, KC_D, COMBO_END};
-const uint16_t PROGMEM test_combo3[] = {QK_REP, LT(SYM, KC_G), COMBO_END};
-const uint16_t PROGMEM test_combo4[] = {LT(SYM, KC_DOT), KC_SCLN, COMBO_END};
+const uint16_t PROGMEM test_combo1[] = {R_NUM, BSPC_FUN, COMBO_END};
+const uint16_t PROGMEM test_combo2[] = {KC_L, KC_D,  COMBO_END};
+const uint16_t PROGMEM test_combo3[] = {KC_M, LT(SYM, KC_G), COMBO_END};
+const uint16_t PROGMEM test_combo4[] = {ESC_WIN, SPC_NAV, COMBO_END};
 combo_t                key_combos[]  = {
     COMBO(test_combo1, QK_REP),
     COMBO(test_combo2, QK_REP),
-    COMBO(test_combo3, KC_M),
+    COMBO(test_combo3, QK_AREP),
     COMBO(test_combo4, QK_AREP),
 };
 
