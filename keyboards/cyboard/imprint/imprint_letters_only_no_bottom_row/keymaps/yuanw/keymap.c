@@ -108,10 +108,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     ),
     [REP] = LAYOUT_let_no_bottom_row(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, QK_REP, KC_LSFT, XXXXXXX,                        XXXXXXX, KC_LSFT, QK_REP, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, QK_AREP, KC_LSFT, XXXXXXX,                        XXXXXXX, KC_LSFT, QK_AREP, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, QK_AREP ,   XXXXXXX,      XXXXXXX, QK_AREP, XXXXXXX
+                                            XXXXXXX, QK_REP ,   XXXXXXX,      XXXXXXX, QK_REP, XXXXXXX
     ),
 };
 // clang-format on
