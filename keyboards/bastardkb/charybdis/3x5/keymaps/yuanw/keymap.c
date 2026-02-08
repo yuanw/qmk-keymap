@@ -59,23 +59,22 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
-    LAYER_SYMBOLS2,
 };
 
 enum keycode_aliases {
     // The "magic" key is the Alternate Repeat Key.
     MAGIC = QK_AREP,
     // Short aliases for home row mods and other tap-hold keys.
-    HRM_A    = LSFT_T(KC_A),
-    HRM_E    = LCTL_T(KC_E),
+    HRM_E    = LSFT_T(KC_E),
+    HRM_A    = LCTL_T(KC_A),
     HRM_I    = LALT_T(KC_I),
-    HRM_C    = LT(LAYER_SYMBOLS2, KC_C),
+    HRM_C    = LGUI_T(KC_C),
     HRM_QUOT = LGUI_T(KC_QUOT),
 
     HRM_H = RSFT_T(KC_H),
     HRM_T = RCTL_T(KC_T),
     HRM_N = LALT_T(KC_N),
-    HRM_S = LT(LAYER_SYMBOLS2, KC_S),
+    HRM_S = RGUI_T(KC_S),
     HRM_V = RGUI_T(KC_V),
 
     ESC_MED = LT(LAYER_MEDIA, KC_ESC),
@@ -89,35 +88,31 @@ enum keycode_aliases {
     SPC_NUM = LT(LAYER_NUMERAL, KC_SPC),
     R_NUM   = LT(LAYER_NUMERAL, KC_R),
     // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
-    REP_SYM = LT(LAYER_SYMBOLS2, KC_0),
+    REP_SYM = LT(LAYER_SYMBOLS, KC_0),
 
     U_RDO = SCMD(KC_Z),
     U_PST = LCMD(KC_V),
     U_CPY = LCMD(KC_C),
     U_CUT = LCMD(KC_X),
     U_UND = LCMD(KC_Z),
+    LR_DOT = LT(LAYER_SYMBOLS, KC_DOT),
+    LR_G = LT(LAYER_SYMBOLS, KC_G),
 };
 
 // clang-format off
-/** Convenience row shorthands. */
+ /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ______________HOME_ROW_GACS_L______________ KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
 #define ______________HOME_ROW_GACS_R______________ XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI
 
 /** \brief adept layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
-       KC_Q,     KC_Y,    KC_O,    KC_U,   KC_EQL,    KC_X, KC_L, KC_D, KC_P,  KC_Z, \
-       KC_C,     KC_I,    KC_A,    KC_E,    KC_MINS,   KC_K,    KC_H,    KC_T,    KC_N,    KC_S,      \
-           KC_QUOT,  KC_COMM, LT(LAYER_SYMBOLS2, KC_DOT),  KC_SLASH,  KC_SCLN,    KC_J, KC_L,   LT(LAYER_SYMBOLS2, KC_G),    KC_F,    KC_V, \
-                       ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, R_NUM
+       KC_Q,     KC_Y,    KC_O,    KC_U,   KC_EQL,                             KC_X, KC_L, KC_D, KC_P,  KC_Z, \
+       HRM_C,    HRM_I,   HRM_A,   HRM_E,  KC_MINS,                            KC_K, HRM_H, HRM_T,  HRM_N,  HRM_S,      \
+       KC_QUOT,  KC_COMM, LR_DOT,  KC_SLASH,  KC_SCLN,                         KC_J, KC_M,  LR_G,    KC_F,    KC_V, \
+                       ESC_MED, SPC_NAV, QK_AREP,    ENT_SYM, R_NUM
 
 
-/** \brief enthium layout (3 rows, 10 columns). */
-#define LAYOUT_LAYER_ENTHIUM                                                                  \
-    KC_Z,    KC_Y,    KC_U,    KC_O,    KC_SCLN,          ALTREP2, KC_L, KC_D, KC_P,  KC_X, \
-    HRM_C,    HRM_I,    HRM_E,    HRM_A,    KC_COMM,      KC_K, HRM_H, HRM_T, HRM_N,  HRM_S,      \
-    KC_QUOT, LGUI_T(KC_MINS), KC_EQL,  KC_DOT,  KC_SLASH, KC_J, KC_M, KC_G, RGUI_T(KC_B),  KC_V, \
-                           ESC_MED, SPC_NAV, TAB_FUN,     REP_SYM,  R_NUM
 
 /*
  * Layers used on the Charybdis Nano.
@@ -135,10 +130,10 @@ enum keycode_aliases {
  * Secondary right-hand layer has function keys mirroring the numerals on the
  * primary layer with extras on the pinkie column, plus system keys on the inner
  * column. App is on the tertiary thumb key and other thumb keys are duplicated
- * from the base layer to enable auto-repeat.
+  * from the base layer to enable auto-repeat.
  */
 #define LAYOUT_LAYER_FUNCTION                                                                 \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  ALTREP3,  \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX,   KC_LCBR,   KC_BSLS,    KC_RCBR,  MAGIC,  \
     ______________HOME_ROW_GACS_L______________, KC_SCRL,   LAG(KC_1),   LAG(KC_2), LAG(KC_3),  LAG(KC_4), \
     _______________DEAD_HALF_ROW_______________, KC_PAUS,   LSG(KC_1),   LSG(KC_2), LSG(KC_3),  LSG(KC_4), \
                       XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_TAB
@@ -173,7 +168,7 @@ enum keycode_aliases {
  * base layer to avoid having to layer change mid edit and to enable auto-repeat.
  */
 #define LAYOUT_LAYER_NAVIGATION                                                               \
-    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_UP, KC_RPRN, ALTREP2, \
+    _______________DEAD_HALF_ROW_______________, XXXXXXX, KC_LPRN,  KC_UP, KC_RPRN, MAGIC, \
     ______________HOME_ROW_GACS_L______________, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,    KC_RGHT, \
     _______________DEAD_HALF_ROW_______________, RDO,     PST,     CPY,      CUT,      UND, \
                       XXXXXXX, _______, XXXXXXX, QK_LLCK , KC_CAPS
@@ -187,68 +182,32 @@ enum keycode_aliases {
  * `KC_DOT` is duplicated from the base layer.
  */
 #define LAYOUT_LAYER_NUMERAL                                                                  \
-    ALTREP2,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
+    XXXXXXX,    KC_7,    KC_8,    KC_9, KC_RBRC, _______________DEAD_HALF_ROW_______________, \
     KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, ______________HOME_ROW_GACS_R______________, \
      KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS, _______________DEAD_HALF_ROW_______________, \
         QK_LLCK,    KC_0, KC_MINS,                XXXXXXX, _______
 
-/**
- * \brief Symbols layer.
- *
- * Secondary left-hand layer has shifted symbols in the same locations to reduce
- * chording when using mods with shifted symbols. `KC_LPRN` is duplicated next to
- * `KC_RPRN`.
- */
-#define LAYOUT_LAYER_SYMBOLS                                                                  \
-    ALTREP3, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, _______________DEAD_HALF_ROW_______________, \
-    KC_COLN,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS, ______________HOME_ROW_GACS_R______________, \
-    KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, _______________DEAD_HALF_ROW_______________, \
-                      QK_REP, QK_AREP, KC_UNDS, _______, XXXXXXX
 
-#define LAYOUT_LAYER_SYMBOLS2                  \
+
+#define LAYOUT_LAYER_SYMBOLS                  \
     KC_GRV , KC_LABK, KC_RABK, KC_MINS, KC_PIPE,   KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , ARROW ,\
     KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL, KC_AMPR,   KC_HASH, KC_LPRN, KC_RPRN, KC_CAPS, CW_TOGG,\
     KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,   KC_AT  , KC_BSLS, KC_DOT, SELWBAK , SELWORD,\
                        XXXXXXX, _______, XXXXXXX,  _______ , _______
 
 
-/**
- * \brief Add Home Row mod to a layout.
- *
- * Expects a 10-key per row layout.  Adds support for GACS (Gui, Alt, Ctl, Shift)
- * home row.  The layout passed in parameter must contain at least 20 keycodes.
- *
- * This is meant to be used with `LAYER_ALPHAS_QWERTY` defined above, eg.:
- *
- *     HOME_ROW_MOD_GACS(LAYER_ALPHAS_QWERTY)
- */
-#define _HOME_ROW_MOD_GACS(                                            \
-    L00, L01, L02, L03, L04, R05, R06, R07, R08, R09,                  \
-    L10, L11, L12, L13, L14, R15, R16, R17, R18, R19,                  \
-    ...)                                                               \
-             L00,         L01,         L02,         L03,         L04,  \
-             R05,         R06,         R07,         R08,         R09,  \
-      LGUI_T(L10), LALT_T(L11), LCTL_T(L12), LSFT_T(L13),        L14,  \
-             R15,  RSFT_T(R16), RCTL_T(R17), LALT_T(R18), RGUI_T(R19), \
-      __VA_ARGS__
-#define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
+
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [LAYER_BASE] = LAYOUT_wrapper(
-         HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)
-  ),
+  [LAYER_BASE] = LAYOUT_wrapper(LAYOUT_LAYER_BASE),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
   [LAYER_MEDIA] = LAYOUT_wrapper(LAYOUT_LAYER_MEDIA),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
-  [LAYER_HDGOLD] = LAYOUT_wrapper(
-   LAYOUT_LAYER_ENTHIUM
-  ),
-  [LAYER_SYMBOLS2] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS2),
 
 };
 // clang-format on
@@ -311,15 +270,16 @@ const uint16_t PROGMEM x_combo[]         = {KC_C, KC_F, COMBO_END};
 const uint16_t PROGMEM l_combo[]         = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM enthium_w_combo[] = {KC_U, KC_O, COMBO_END};
 const uint16_t PROGMEM enthium_f_combo[] = {KC_D, KC_P, COMBO_END};
-const uint16_t PROGMEM enthium_q_combo[] = {KC_L, KC_D, COMBO_END};
+const uint16_t PROGMEM enthium_q_combo[] = {ENT_SYM, R_NUM, COMBO_END};
 
 combo_t key_combos[] = {
-    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [COMMSCLN_K] = COMBO(k_combo, KC_K), [SCLNDOT_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION), [CF_X] = COMBO(x_combo, KC_X), [UY_L] = COMBO(l_combo, KC_L), [UO_W] = COMBO(enthium_w_combo, KC_W), [DP_F] = COMBO(enthium_f_combo, KC_F), [LD_Q] = COMBO(enthium_q_combo, KC_Q),
+    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J),
+    [MP_Q] = COMBO(q_combo, KC_Q), [COMMSCLN_K] = COMBO(k_combo, KC_K),
+    [SCLNDOT_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION), [CF_X] = COMBO(x_combo, KC_X), [UY_L] = COMBO(l_combo, KC_L), [UO_W] = COMBO(enthium_w_combo, KC_W), [DP_F] = COMBO(enthium_f_combo, KC_F), [LD_Q] = COMBO(enthium_q_combo, QK_REP),
 
 };
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {QK_REP, QK_AREP}, // Shift magic is repeat. */
     {SPC_NAV, KC_TAB}, // Shift SPC is tab.
     {ESC_MED, KC_ENT}, // Shift esc is enter.
     {TAB_FUN, KC_DEL}, // Shift BSPC is DEL

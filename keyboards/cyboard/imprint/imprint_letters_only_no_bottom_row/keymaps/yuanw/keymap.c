@@ -10,7 +10,7 @@ __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t 
     return true;
 }
 
-enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN };
+enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN, REP };
 
 enum keycode_aliases {
     // Short aliases for home row mods and other tap-hold keys.
@@ -18,7 +18,7 @@ enum keycode_aliases {
     HRM_A    = LCTL_T(KC_A),
     HRM_I    = LALT_T(KC_I),
     HRM_C    = LGUI_T(KC_C),
-     HRM_QUOT = LGUI_T(KC_QUOT),
+    HRM_QUOT = LGUI_T(KC_QUOT),
 
     HRM_H = RSFT_T(KC_H),
     HRM_T = RCTL_T(KC_T),
@@ -48,14 +48,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                              KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,  XXXXXXX,
         KC_B,    HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_W,
-        XXXXXXX, KC_QUOT, KC_COMM, LT(SYM,KC_DOT),  KC_SCLN, KC_SLASH,                   KC_J,    KC_M,    LT(SYM,KC_G),    KC_F,   KC_V,  XXXXXXX,
+        XXXXXXX, KC_QUOT,  KC_COMM, LT(SYM,KC_DOT),  LT(REP, KC_SCLN), KC_SLASH,                     KC_J,   KC_M,    LT(SYM,KC_G),    KC_F,   KC_V,  XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
     [SYM] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_GRV,  KC_AMPR, KC_PERC, KC_RABK, XXXXXXX,                           XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR, ARROW, XXXXXXX,
-        XXXXXXX, KC_EXLM, KC_ASTR, KC_LBRC, EMAIL_1, XXXXXXX,                           XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,  KC_CIRC, XXXXXXX,
-        XXXXXXX, KC_TILD, KC_BSLS, KC_PIPE, EMAIL_2, XXXXXXX,                           XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_LABK, KC_RABK, EMAIL_1, XXXXXXX,                           XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,  KC_CIRC, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_BSLS, KC_SCLN, KC_PIPE, KC_BSLS,                          XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
@@ -96,8 +96,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, KC_7, KC_8, KC_9, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, QK_LLCK, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, KC_0,    XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, KC_0,   QK_LLCK,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [TXT] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_7, KC_8, KC_9, KC_SECRET_1, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -105,7 +105,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             QK_LLCK, KC_MINS, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
-    )
+                                    ),
+    [REP] = LAYOUT_let_no_bottom_row(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, QK_AREP, KC_LSFT, XXXXXXX,                        XXXXXXX, KC_LSFT, QK_AREP, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, QK_REP ,   XXXXXXX,      XXXXXXX, QK_REP, XXXXXXX
+    ),
 };
 // clang-format on
 
@@ -113,6 +120,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {SPC_NAV, KC_TAB},  // Shift SPC is tab.
     {ESC_WIN, KC_ENT},  // Shift esc is enter.
     {BSPC_FUN, KC_DEL}, // Shift BSPC is DEL
+
 };
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
@@ -159,8 +167,8 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 //
 // SFB removal and common n-grams:
 //
-//     A * -> AO     L * -> LK      S * -> ST
-//     C * -> CY     M * -> MENT    T * -> TMENT
+//     A * -> AO     L * -> LK      S * -> SON
+//     C * -> CO     M * -> MENT    T * >  TION
 //     D * -> DY     O * -> OA      U * -> UE
 //     E * -> EU     P * -> PN      Y * -> YP
 //     G * -> GY     Q * -> QUEN    spc * -> THE
@@ -243,7 +251,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return T_ION; // T -> TION
 
             case KC_C:
-                return KC_Y; // C -> Y
+                return KC_O; // C -> O
             case KC_D:
                 return KC_Y; // D -> Y
             case KC_G:
@@ -256,7 +264,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_L:
                 return KC_K; // L -> K
             case KC_S:
-                return KC_T; // S -> T
+                return M_SON; // S -> T
 
             case KC_R:
                 return KC_L; // R -> L
@@ -330,10 +338,10 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     return KC_TRNS;
 }
 
-const uint16_t PROGMEM test_combo1[] = {KC_O, KC_U, COMBO_END};
-const uint16_t PROGMEM test_combo2[] = {KC_L, KC_D, COMBO_END};
+const uint16_t PROGMEM test_combo1[] = {R_NUM, BSPC_FUN, COMBO_END};
+const uint16_t PROGMEM test_combo2[] = {KC_L, KC_D,  COMBO_END};
 const uint16_t PROGMEM test_combo3[] = {KC_M, LT(SYM, KC_G), COMBO_END};
-const uint16_t PROGMEM test_combo4[] = {LT(SYM, KC_DOT), KC_SCLN, COMBO_END};
+const uint16_t PROGMEM test_combo4[] = {ESC_WIN, SPC_NAV, COMBO_END};
 combo_t                key_combos[]  = {
     COMBO(test_combo1, QK_REP),
     COMBO(test_combo2, QK_REP),
@@ -451,12 +459,12 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             case SHIP_IT:
                 MAGIC_STRING("Workiva/release-management-p", KC_AT);
                 return false;
-        case EMAIL_1:
-            SEND_STRING_DELAY("yuan.wang@workiva.com", TAP_CODE_DELAY);
-            return false;
-    case EMAIL_2 :
-            SEND_STRING_DELAY("me@yuanwang.ca", TAP_CODE_DELAY);
-            return false;
+            case EMAIL_1:
+                SEND_STRING_DELAY("yuan.wang@workiva.com", TAP_CODE_DELAY);
+                return false;
+            case EMAIL_2:
+                SEND_STRING_DELAY("me@yuanwang.ca", TAP_CODE_DELAY);
+                return false;
             case UPDIR:
                 SEND_STRING_DELAY("../", TAP_CODE_DELAY);
                 return false;
@@ -474,7 +482,10 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 MAGIC_STRING(/*q*/ "uen", KC_C);
                 break;
             case T_ION:
-                MAGIC_STRING(/*t*/ "ion", KC_T);
+                MAGIC_STRING(/*t*/ "ion", KC_S);
+                break;
+            case M_SON:
+                MAGIC_STRING(/*s*/ "on", KC_S);
                 break;
             case M_UPDIR:
                 MAGIC_STRING(/*.*/ "./", UPDIR);

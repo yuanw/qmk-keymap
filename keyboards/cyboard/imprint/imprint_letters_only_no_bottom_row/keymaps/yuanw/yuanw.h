@@ -9,7 +9,7 @@ enum my_keycodes {
     KC_SECRET_2,
     ARROW,
     EMAIL_1,
-EMAIL_2,
+    EMAIL_2,
     // Macros invoked through the Magic key.
     SHIP_IT,
     USRNAME,
@@ -25,4 +25,5 @@ EMAIL_2,
     M_UPDIR,
     M_NBSP,
     M_NOOP,
+    M_SON
 };
