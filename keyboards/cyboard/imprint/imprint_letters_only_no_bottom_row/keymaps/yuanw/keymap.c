@@ -10,7 +10,7 @@ __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t 
     return true;
 }
 
-enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN };
+enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN, REP };
 
 enum keycode_aliases {
     // Short aliases for home row mods and other tap-hold keys.
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                              KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,  XXXXXXX,
         KC_B,    HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                             KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S, KC_W,
-        XXXXXXX, KC_QUOT, KC_COMM, LT(SYM,KC_DOT),  MAGIC, KC_SLASH,                     KC_J,    QK_REP,    LT(SYM,KC_G),    KC_F,   KC_V,  XXXXXXX,
+        XXXXXXX, KC_QUOT,  KC_COMM, LT(SYM,KC_DOT),  LT(REP, KC_SCLN), KC_SLASH,                     KC_J,   LT(REP, KC_M),    LT(SYM,KC_G),    KC_F,   KC_V,  XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, XXXXXXX, XXXXXXX,
                                             ESC_WIN, SPC_NAV, MAGIC,           REP_TXT ,  R_NUM, BSPC_FUN
                                      ),
@@ -96,8 +96,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, KC_7, KC_8, KC_9, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, QK_LLCK, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, KC_0,    XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, KC_0,   QK_LLCK,         XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [TXT] = LAYOUT_let_no_bottom_row(
         XXXXXXX, KC_7, KC_8, KC_9, KC_SECRET_1, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -105,7 +105,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             QK_LLCK, KC_MINS, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX
-    )
+                                    ),
+    [REP] = LAYOUT_let_no_bottom_row(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, QK_REP, KC_LSFT, XXXXXXX,                        XXXXXXX, KC_LSFT, QK_REP, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, QK_AREP ,   XXXXXXX,      XXXXXXX, QK_AREP, XXXXXXX
+    ),
 };
 // clang-format on
 
@@ -161,7 +168,7 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 // SFB removal and common n-grams:
 //
 //     A * -> AO     L * -> LK      S * -> SON
-//     C * -> CY     M * -> MENT    T * >  TION
+//     C * -> CO     M * -> MENT    T * >  TION
 //     D * -> DY     O * -> OA      U * -> UE
 //     E * -> EU     P * -> PN      Y * -> YP
 //     G * -> GY     Q * -> QUEN    spc * -> THE
@@ -244,7 +251,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return T_ION; // T -> TION
 
             case KC_C:
-                return KC_Y; // C -> Y
+                return KC_O; // C -> O
             case KC_D:
                 return KC_Y; // D -> Y
             case KC_G:
