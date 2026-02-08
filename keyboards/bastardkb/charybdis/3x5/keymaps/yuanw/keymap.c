@@ -96,6 +96,8 @@ enum keycode_aliases {
     U_CPY = LCMD(KC_C),
     U_CUT = LCMD(KC_X),
     U_UND = LCMD(KC_Z),
+    LR_DOT = LT(LAYER_SYMBOLS2, KC_DOT),
+    LR_G = LT(LAYER_SYMBOLS2, KC_G),
 };
 
 // clang-format off
@@ -108,7 +110,7 @@ enum keycode_aliases {
 #define LAYOUT_LAYER_BASE                                                                     \
        KC_Q,     KC_Y,    KC_O,    KC_U,   KC_EQL,                             KC_X, KC_L, KC_D, KC_P,  KC_Z, \
        HRM_C,    HRM_I,   HRM_A,   HRM_E,  KC_MINS,                            KC_K, HRM_H, HRM_T,  HRM_N,  HRM_S,      \
-       KC_QUOT,  KC_COMM, LT(LAYER_SYMBOLS2, KC_DOT),  KC_SLASH,  KC_SCLN,     KC_J, KC_M,   LT(LAYER_SYMBOLS2, KC_G),    KC_F,    KC_V, \
+       KC_QUOT,  KC_COMM, LR_DOT,  KC_SLASH,  KC_SCLN,                         KC_J, KC_M,  LR_G,    KC_F,    KC_V, \
                        ESC_MED, SPC_NAV, TAB_FUN,    ENT_SYM, R_NUM
 
 
@@ -311,12 +313,13 @@ const uint16_t PROGMEM enthium_f_combo[] = {KC_D, KC_P, COMBO_END};
 const uint16_t PROGMEM enthium_q_combo[] = {KC_L, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
-    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J), [MP_Q] = COMBO(q_combo, KC_Q), [COMMSCLN_K] = COMBO(k_combo, KC_K), [SCLNDOT_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION), [CF_X] = COMBO(x_combo, KC_X), [UY_L] = COMBO(l_combo, KC_L), [UO_W] = COMBO(enthium_w_combo, KC_W), [DP_F] = COMBO(enthium_f_combo, KC_F), [LD_Q] = COMBO(enthium_q_combo, KC_Q),
+    [FD_B] = COMBO(b_combo, KC_B), [LU_J] = COMBO(j_combo, KC_J),
+    [MP_Q] = COMBO(q_combo, KC_Q), [COMMSCLN_K] = COMBO(k_combo, KC_K),
+    [SCLNDOT_Z] = COMBO(z_combo, KC_Z), [LEFT_QUESTION] = COMBO(left_combo, KC_QUESTION), [CF_X] = COMBO(x_combo, KC_X), [UY_L] = COMBO(l_combo, KC_L), [UO_W] = COMBO(enthium_w_combo, KC_W), [DP_F] = COMBO(enthium_f_combo, KC_F), [LD_Q] = COMBO(enthium_q_combo, KC_Q),
 
 };
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {QK_REP, QK_AREP}, // Shift magic is repeat. */
     {SPC_NAV, KC_TAB}, // Shift SPC is tab.
     {ESC_MED, KC_ENT}, // Shift esc is enter.
     {TAB_FUN, KC_DEL}, // Shift BSPC is DEL
