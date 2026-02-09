@@ -2,7 +2,7 @@
 #include <cyboard.h>
 #include "layout.h"
 
-#include "../../../../../../yuanw.c"
+#include "yuanw.c"
 
 void pointing_device_init_user(void) {
     set_auto_mouse_layer(PNT);
