@@ -52,7 +52,9 @@ def expand_layer(layer_35):
     return layer_48
 
 def main():
-    with open("imprint.json", "r") as f:
+    filename = sys.argv[1] if len(sys.argv) > 1 else "imprint.json"
+
+    with open(filename, "r") as f:
         data = json.load(f)
 
     # Update layout name
@@ -69,7 +71,7 @@ def main():
 
     data["layers"] = expanded_layers
 
-    with open("imprint.json", "w") as f:
+    with open(filename, "w") as f:
         json.dump(data, f)
 
     print(f"Expanded {len(expanded_layers)} layers from 35 to 48 keys")

@@ -1,0 +1,524 @@
+layers:
+  0 Base:
+  - - ''
+    - Q
+    - Y
+    - O
+    - U
+    - s: +
+      t: '='
+    - X
+    - L
+    - D
+    - P
+  - - Z
+    - ''
+    - B
+    - h: Meta
+      t: C
+    - h: $$mdi:apple-keyboard-option$$
+      t: I
+    - h: '$$mdi:apple-keyboard-shift$$ '
+      t: A
+    - h: $$mdi:apple-keyboard-control$$
+      t: E
+      type: ghost
+    - &id001
+      s: _
+      t: '-'
+    - K
+    - h: $$mdi:apple-keyboard-shift$$
+      t: H
+      type: ghost
+  - - h: $$mdi:apple-keyboard-control$$
+      t: T
+    - h: $$mdi:apple-keyboard-option$$
+      t: N
+    - h: Meta
+      t: S
+    - W
+    - ''
+    - s: '"'
+      t: ''''
+    - s: <
+      t: ','
+    - LR DOT
+    - LT(REP,SCLN)
+    - s: '?'
+      t: /
+  - - J
+    - M
+    - LR G
+    - F
+    - V
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - h: Win
+      s: Enter
+      t: Esc
+    - h: Nav
+      s: Tab
+      t: Spc
+      type: ghost
+    - MAGIC
+    - "\u21BA"
+    - REP TXT
+    - R NUM
+  1 Sym:
+  - - ''
+    - '`'
+    - '&'
+    - '%'
+    - '>'
+    - ''
+    - ''
+    - '{'
+    - '}'
+    - $
+  - - ARROW
+    - ''
+    - B
+    - '!'
+    - <
+    - '>'
+    - EMAIL 1
+    - ''
+    - ''
+    - (
+  - - )
+    - '@'
+    - ^
+    - W
+    - ''
+    - '~'
+    - \
+    - s: ':'
+      t: ;
+    - '|'
+    - \
+  - - ''
+    - '['
+    - ']'
+    - '#'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - "\u21BA"
+    - ''
+    - ''
+  2 Nav:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - B
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - W
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - "\u21BA"
+    - ''
+    - ''
+  3 Win:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PGUP
+    - HOME
+    - "\u25B3"
+    - END
+  - - ''
+    - ''
+    - B
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PGDN
+    - "\u25C1"
+  - - Down
+    - RIGHT
+    - ''
+    - W
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - RDO
+    - PST
+    - CPY
+    - CUT
+    - UND
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - "\u21BA"
+    - ''
+    - $$mdi:lock$$
+  4 PNT:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - B
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - "\u2318\u23251"
+  - - "\u2318\u23252"
+    - Alt+Gui+3
+    - Alt+Gui+4
+    - W
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - Sft+Gui+1
+    - Sft+Gui+2
+    - Sft+Gui+3
+    - Sft+Gui+4
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - "\u21BA"
+    - ''
+    - ''
+  5 Num:
+  - - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - B
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - W
+    - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - $$mdi:lock$$
+    - BTN1
+    - BTN2
+    - "\u21BA"
+    - ''
+    - ''
+  6 Txt:
+  - - ''
+    - ''
+    - '7'
+    - '8'
+    - '9'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - B
+    - ''
+    - '4'
+    - '5'
+    - '6'
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - W
+    - ''
+    - ''
+    - '1'
+    - '2'
+    - '3'
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - '0'
+    - $$mdi:lock$$
+    - "\u21BA"
+    - ''
+    - ''
+  7 Fun:
+  - - ''
+    - QK BOOT
+    - '8'
+    - '9'
+    - SECRET 1
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - B
+    - SELWORD
+    - SELWBAK
+    - SELLINE
+    - SECRET 2
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - W
+    - ''
+    - '1'
+    - '2'
+    - '3'
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - $$mdi:lock$$
+    - *id001
+    - ''
+    - "\u21BA"
+    - ''
+    - ''
+  8 Rep:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - B
+    - ''
+    - ''
+    - "\u21BA"
+    - "\u21E7"
+    - ''
+    - ''
+    - "\u21E7"
+  - - "\u21BA"
+    - ''
+    - ''
+    - W
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - "\u21BB"
+    - ''
+    - "\u21BA"
+    - ''
+    - "\u21BB"
