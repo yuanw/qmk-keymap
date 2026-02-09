@@ -121,7 +121,10 @@ keymap2:
 keymap:
     #!/usr/bin/env bash
     just setup imprint
-    qmk -v c2json --no-cpp -kb "{{ imprintNS }}" -km yuanw ./keyboards/"{{ imprintNS }}"/keymaps/yuanw/keymap.c > imprint.json
+    # Use yuanw.c directly (contains the keymaps array) instead of keymap.c (which just includes it)
+    qmk -v c2json --no-cpp -kb "{{ imprintNS }}" -km yuanw ./yuanw.c > imprint.json
+    # Expand LAYOUT_LR (35 keys) to LAYOUT_let_no_bottom_row (48 keys)
+    python expand_layout.py
     KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q imprint.json > imprint.yaml
     python process.py
     keymap draw output.yaml -j ./imprint/keyboards/"{{ imprintNS }}"/info.json > imprint.svg
