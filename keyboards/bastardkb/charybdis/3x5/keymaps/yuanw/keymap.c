@@ -63,15 +63,3 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #ifdef RGB_MATRIX_ENABLE
 void rgb_matrix_update_pwm_buffers(void);
 #endif
-
-// Charybdis combos
-const uint16_t PROGMEM combo1[] = {R_NUM, BSPC_FUN, COMBO_END};
-const uint16_t PROGMEM combo2[] = {KC_L, KC_D, COMBO_END};
-const uint16_t PROGMEM combo3[] = {KC_M, LR_G, COMBO_END};
-const uint16_t PROGMEM combo4[] = {ESC_WIN, SPC_NAV, COMBO_END};
-combo_t                key_combos[] = {
-    COMBO(combo1, QK_REP),
-    COMBO(combo2, QK_REP),
-    COMBO(combo3, QK_AREP),
-    COMBO(combo4, QK_AREP),
-};

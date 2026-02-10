@@ -6,7 +6,31 @@
 #    include "os_detection.h"
 #endif
 
-__attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+// Secrets support
+#if (__has_include("secrets.h") && !defined(NO_SECRETS))
+#    include "secrets.h"
+#else
+static const char secret_0[] PROGMEM = "test1";
+static const char secret_1[] PROGMEM = "test2";
+static const char secret_2[] PROGMEM = "test3";
+static const char secret_3[] PROGMEM = "test4";
+static const char secret_4[] PROGMEM = "test5";
+#endif
+
+static const char *const secrets[] PROGMEM = {
+    secret_0, secret_1, secret_2, secret_3, secret_4,
+};
+
+static bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_SECRET_1 ... KC_SECRET_2:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string_P((char *)pgm_read_ptr(&secrets[keycode - KC_SECRET_1]));
+            }
+            return false;
+    }
     return true;
 }
 
@@ -43,6 +67,18 @@ enum keycode_aliases {
 
     LR_DOT = LT(SYM, KC_DOT),
     LR_G   = LT(SYM, KC_G),
+};
+
+// Shared combos for QK_REP and QK_AREP access
+const uint16_t PROGMEM combo_rep_thumb[]  = {R_NUM, BSPC_FUN, COMBO_END};
+const uint16_t PROGMEM combo_rep_top[]    = {KC_L, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_arep_bot[]   = {KC_M, LR_G, COMBO_END};
+const uint16_t PROGMEM combo_arep_thumb[] = {ESC_WIN, SPC_NAV, COMBO_END};
+combo_t                key_combos[]       = {
+    COMBO(combo_rep_thumb, QK_REP),
+    COMBO(combo_rep_top, QK_REP),
+    COMBO(combo_arep_bot, QK_AREP),
+    COMBO(combo_arep_thumb, QK_AREP),
 };
 
 // clang-format off
