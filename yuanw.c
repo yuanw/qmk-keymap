@@ -52,7 +52,7 @@ enum keycode_aliases {
 
     ESC_WIN  = LT(WIN, KC_ESC),
     SPC_NAV  = LT(NAV, KC_SPC),
-    BSPC_FUN = LT(FUN, KC_BSPC),
+    BSPC_FUN = LT(TXT, KC_BSPC),
     ENT_SYM  = LT(SYM, KC_ENT),
     R_NUM    = LT(NUM, KC_R),
     // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
@@ -70,13 +70,13 @@ enum keycode_aliases {
 };
 
 // Shared combos for QK_REP and QK_AREP access
-const uint16_t PROGMEM combo_rep_thumb[]  = {R_NUM, BSPC_FUN, COMBO_END};
+const uint16_t PROGMEM combo_rep_thumb[]  = {KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM combo_rep_top[]    = {KC_L, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_arep_bot[]   = {KC_M, LR_G, COMBO_END};
-const uint16_t PROGMEM combo_arep_thumb[] = {ESC_WIN, SPC_NAV, COMBO_END};
+const uint16_t PROGMEM combo_arep_thumb[] = {KC_0, SPC_NAV, COMBO_END};
 combo_t                key_combos[]       = {
-    COMBO(combo_rep_thumb, QK_REP),
-    COMBO(combo_rep_top, QK_REP),
+    COMBO(combo_rep_thumb, KC_B),
+    COMBO(combo_rep_top, KC_W),
     COMBO(combo_arep_bot, QK_AREP),
     COMBO(combo_arep_thumb, QK_AREP),
 };
@@ -99,8 +99,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_LR(
         KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                         KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,
         HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                        KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S,
-        KC_QUOT, KC_COMM, LR_DOT, LT(REP, KC_SCLN), KC_SLASH,              KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
-                                  ESC_WIN, SPC_NAV, MAGIC,                 REP_TXT, R_NUM
+         KC_QUOT, KC_COMM, LR_DOT, LT(REP, KC_SCLN), KC_SLASH,              KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
+        ESC_WIN, SPC_NAV,    QK_REP,                    BSPC_FUN,R_NUM
     ),
 
     [SYM] = LAYOUT_LR(
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [FUN] = LAYOUT_LR(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       RDO,     PST,     CPY,     CUT,     UND,
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, QK_LLCK
-    ),
+     ),
 
     [WIN] = LAYOUT_LR(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NUM] = LAYOUT_LR(
-        XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        QK_BOOT, KC_7,    KC_8,    KC_9,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, KC_0,    QK_LLCK,              XXXXXXX, XXXXXXX
