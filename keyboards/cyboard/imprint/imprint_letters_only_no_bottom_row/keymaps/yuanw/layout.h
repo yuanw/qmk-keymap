@@ -29,5 +29,5 @@
     KC_B,    L10, L11, L12, L13, L14,    R10, R11, R12, R13, R14, KC_W,    \
     XXXXXXX, L20, L21, L22, L23, L24,    R20, R21, R22, R23, R24, XXXXXXX, \
                   XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, \
-                  LT0,     LT1,     LT2,        QK_AREP,     RT0,     RT1 \
+                  LT0,     LT1,     LT2,        KC_BSPC,     RT0,     RT1 \
 )
