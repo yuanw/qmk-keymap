@@ -2,6 +2,7 @@
 // Include layout.h before this file to define LAYOUT_LR()
 
 #include "yuanw.h"
+#include "keycodes.h"
 #ifdef OS_DETECTION_ENABLE
 #    include "os_detection.h"
 #endif
@@ -73,12 +74,10 @@ enum keycode_aliases {
 const uint16_t PROGMEM combo_rep_thumb[]  = {KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM combo_rep_top[]    = {KC_L, KC_D, COMBO_END};
 const uint16_t PROGMEM combo_arep_bot[]   = {KC_M, LR_G, COMBO_END};
-const uint16_t PROGMEM combo_arep_thumb[] = {KC_0, SPC_NAV, COMBO_END};
+const uint16_t PROGMEM combo_arep_thumb[] = {R_NUM, SPC_NAV, COMBO_END};
+const uint16_t PROGMEM combo_bspc_thumb[] = {R_NUM, REP_TXT, COMBO_END};
 combo_t                key_combos[]       = {
-    COMBO(combo_rep_thumb, KC_B),
-    COMBO(combo_rep_top, KC_W),
-    COMBO(combo_arep_bot, QK_AREP),
-    COMBO(combo_arep_thumb, QK_AREP),
+    COMBO(combo_rep_thumb, KC_B), COMBO(combo_rep_top, KC_W), COMBO(combo_arep_bot, QK_AREP), COMBO(combo_arep_thumb, KC_BSPC), COMBO(combo_bspc_thumb, KC_BSPC),
 };
 
 // clang-format off
@@ -100,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                         KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,
         HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                        KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S,
          KC_QUOT, KC_COMM, LR_DOT, LT(REP, KC_SCLN), KC_SLASH,              KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
-        ESC_WIN, SPC_NAV,    QK_REP,                    BSPC_FUN,R_NUM
+        ESC_WIN, SPC_NAV,    QK_AREP,                   REP_TXT  ,R_NUM
     ),
 
     [SYM] = LAYOUT_LR(
@@ -134,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [PNT] = LAYOUT_LR(
         _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
+        _______, _______, QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,                       _______, _______, _______, _______, _______,
                                    QK_LLCK, KC_BTN1, KC_BTN2,              XXXXXXX, XXXXXXX
     ),
 

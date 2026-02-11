@@ -25,6 +25,8 @@
 
 /* Charybdis-specific features. */
 
+#define MOUSEKEY_WHEEL_INTERVAL 120
+
 #ifdef POINTING_DEVICE_ENABLE
 // Automatically enable the pointer layer when moving the trackball.
 #    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE

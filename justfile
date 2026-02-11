@@ -144,6 +144,14 @@ keymap target:
     fi
     echo "{{ green }}Generated {{ target }}.svg{{ reset }}"
 
+# Generate compile_commands.json for clangd LSP
+compiledb target:
+    #!/usr/bin/env bash
+    just setup {{ target }}
+    qmk compile --compiledb -kb $(just _keyboard {{ target }}) -km yuanw
+    cp {{ target }}/compile_commands.json .
+
 # Format C files under keyboards directory
-c-format:
+format:
     find {{ justfile_directory() }}/keyboards -name '*.c' -o -name '*.h' | xargs clang-format -i
+    find {{ justfile_directory() }} -maxdepth 1 \( -name '*.c' -o -name '*.h' \) | xargs clang-format -i
