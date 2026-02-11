@@ -1,9 +1,2 @@
-OS_DETECTION_ENABLE = yes
-COMBO_ENABLE = yes
-CAPS_WORD_ENABLE = yes
-REPEAT_KEY_ENABLE = yes
-SEND_STRING_ENABLE = yes
-LAYER_LOCK_ENABLE = yes
-UNICODE_COMMON = yes
-CAPS_WORD_ENABLE = yes
-SRC += secrets.c
+# Include shared feature flags
+include $(dir $(realpath $(lastword $(MAKEFILE_LIST))))../../../../../../rules.mk

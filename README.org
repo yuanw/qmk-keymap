@@ -6,6 +6,9 @@
 [[imprint.jpeg]]
 https://github.com/Cyboard-DigitalTailor/vial-qmk/tree/cyboard/keyboards/cyboard/imprint/imprint_number_row
 
+** BastardKB Charybdis 3x5
+[[./charybdis.svg]]
+
 
 * Enthium (Dec-05-2025)
 
@@ -25,6 +28,11 @@ symbol based on https://github.com/getreuer/qmk-keymap
 ! * [ ] &  # (  ) @
 ~ + [ ] %  @ \ , . '
 #+end_src
+
+
+[[./imprint.svg]]
+
+
 * put repeat on hold
 https://www.reddit.com/r/ErgoMechKeyboards/comments/1hoe3xe/qmk_repeat_key_as_tap_layer_on_hold/
 https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
@@ -32,7 +40,6 @@ https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
 https://docs.qmk.fm/features/pointing_device#pointing-device-auto-mouse
 clang-format -i <file> --style .clang-format
 
-[[./imprint.svg]]
 *N-gram
 N-Letter Sequences (N-grams)
 What are the most common n-letter sequences (called "n-grams") for various values of n? You can see the 50 most common for each value of n from 1 to 9 in the table below. The counts and percentages are not shown, but don't worry -- you'll get lots of counts in the next section.

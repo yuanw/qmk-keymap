@@ -1,3 +1,5 @@
+#pragma once
+
 enum my_keycodes {
     RDO = SAFE_RANGE,
     UPDIR,
@@ -10,8 +12,6 @@ enum my_keycodes {
     ARROW,
     EMAIL_1,
     EMAIL_2,
-    ALTREP2,
-    ALTREP3,
     // Macros invoked through the Magic key.
     SHIP_IT,
     USRNAME,

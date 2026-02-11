@@ -16,6 +16,8 @@
  */
 #pragma once
 
+#include "../../../../../../config_yuanw.h"
+
 #ifndef __arm__
 /* Disable unused features. */
 #    define NO_ACTION_ONESHOT
@@ -23,9 +25,9 @@
 
 /* Charybdis-specific features. */
 
+#define MOUSEKEY_WHEEL_INTERVAL 120
+
 #ifdef POINTING_DEVICE_ENABLE
-// Automatically enable the pointer layer when moving the trackball.  See also:
-// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
-// #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
+// Automatically enable the pointer layer when moving the trackball.
 #    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#endif // PONINTING_DEVICE_ENABLE
+#endif // POINTING_DEVICE_ENABLE

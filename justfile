@@ -108,25 +108,50 @@ _keyboard keyboard:
       printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
     fi
 
-keymap2:
+# Returns the submodule directory for a keyboard
+_submodule keyboard:
     #!/usr/bin/env bash
-    if [ "$(qmk config user.qmk_home | cut -d '=' -f 2)" != "{{ justfile_directory() }}/bastardkb-qmk" ]; then
-    qmk config user.qmk_home="{{ justfile_directory() }}/bastardkb-qmk"
+    if [ "{{ keyboard }}" = "imprint" ]; then
+      echo "imprint"
+    elif [ "{{ keyboard }}" = "charybdis" ]; then
+      echo "charybdis"
+    else
+      printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
     fi
-    qmk -v c2json --no-cpp -kb "{{ charybdisNS }}" -km yuanw ./keyboards/"{{ charybdisNS }}"/keymaps/yuanw/keymap.c > 3x5.json
-    keymap parse -c 10 -q 3x5.json > 3x5.yaml
-    keymap draw 3x5.yaml -j ./bastardkb-qmk/keyboards/"{{ charybdisNS }}"/keyboard.json > 3x5.svg
 
-# keymap
-keymap:
+# Generate keymap SVG visualization
+keymap target:
     #!/usr/bin/env bash
-    just setup imprint
-    qmk -v c2json --no-cpp -kb "{{ imprintNS }}" -km yuanw ./keyboards/"{{ imprintNS }}"/keymaps/yuanw/keymap.c > imprint.json
-    KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q imprint.json > imprint.yaml
-    python process.py
-    keymap draw output.yaml -j ./imprint/keyboards/"{{ imprintNS }}"/info.json > imprint.svg
-    python hide_empty_keys.py imprint.svg
+    just setup {{ target }}
+    kb=$(just _keyboard {{ target }})
+    submod=$(just _submodule {{ target }})
+
+    # Use yuanw.c directly (contains the keymaps array)
+    qmk -v c2json --no-cpp -kb "$kb" -km yuanw ./yuanw.c > {{ target }}.json
+
+    if [ "{{ target }}" = "imprint" ]; then
+      # Expand LAYOUT_LR (35 keys) to LAYOUT_let_no_bottom_row (48 keys)
+      python expand_layout.py {{ target }}.json
+      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q {{ target }}.json > {{ target }}.yaml
+      python process.py {{ target }}.yaml {{ target }}_output.yaml
+      keymap draw {{ target }}_output.yaml -j ./$submod/keyboards/$kb/info.json > {{ target }}.svg
+      python hide_empty_keys.py {{ target }}.svg
+    elif [ "{{ target }}" = "charybdis" ]; then
+      # Charybdis LAYOUT_LR maps 1:1 to LAYOUT, just fix the layout name
+      sed -i 's/"LAYOUT_LR"/"LAYOUT"/' {{ target }}.json
+      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q {{ target }}.json > {{ target }}.yaml
+      keymap draw {{ target }}.yaml -j ./$submod/keyboards/$kb/keyboard.json > {{ target }}.svg
+    fi
+    echo "{{ green }}Generated {{ target }}.svg{{ reset }}"
+
+# Generate compile_commands.json for clangd LSP
+compiledb target:
+    #!/usr/bin/env bash
+    just setup {{ target }}
+    qmk compile --compiledb -kb $(just _keyboard {{ target }}) -km yuanw
+    cp {{ target }}/compile_commands.json .
 
 # Format C files under keyboards directory
-c-format:
+format:
     find {{ justfile_directory() }}/keyboards -name '*.c' -o -name '*.h' | xargs clang-format -i
+    find {{ justfile_directory() }} -maxdepth 1 \( -name '*.c' -o -name '*.h' \) | xargs clang-format -i
