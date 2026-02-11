@@ -65,10 +65,10 @@ layers:
       s: Tab
       t: Spc
       type: ghost
+    - "\u21BB"
     - "\u21BA"
-    - "\u21BA"
-    - REP TXT
     - R NUM
+    - REP TXT
   1 Sym:
   - - ''
     - '`'
