@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                         KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,
         HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                        KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S,
          KC_QUOT, KC_COMM, LR_DOT, LT(REP, KC_SCLN), KC_SLASH,              KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
-        ESC_WIN, SPC_NAV,    QK_AREP,                   REP_TXT  ,R_NUM
+        ESC_WIN, SPC_NAV,    QK_REP,                   R_NUM,REP_TXT
     ),
 
     [SYM] = LAYOUT_LR(
@@ -411,7 +411,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             return false;
         case REP_TXT:
             if (record->tap.count) {
-                repeat_key_invoke(&record->event);
+                alt_repeat_key_invoke(&record->event);
                 return false;
             }
             break;
