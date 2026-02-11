@@ -3,11 +3,11 @@
 
 
 ** Cyboard imprint (3 rows no bottom row)
-[[imprint.jpeg]]
+[[/img/imprint.jpeg]]
 https://github.com/Cyboard-DigitalTailor/vial-qmk/tree/cyboard/keyboards/cyboard/imprint/imprint_number_row
 
 ** BastardKB Charybdis 3x5
-[[./charybdis.svg]]
+s[[./keymap-drawer/charybdis.svg]]
 
 
 * Enthium (Dec-05-2025)
@@ -30,7 +30,7 @@ symbol based on https://github.com/getreuer/qmk-keymap
 #+end_src
 
 
-[[./imprint.svg]]
+[[./keymap-drawer/imprint.svg]]
 
 
 * put repeat on hold

@@ -125,24 +125,25 @@ keymap target:
     just setup {{ target }}
     kb=$(just _keyboard {{ target }})
     submod=$(just _submodule {{ target }})
+    outdir="keymap-drawer"
 
     # Use yuanw.c directly (contains the keymaps array)
-    qmk -v c2json --no-cpp -kb "$kb" -km yuanw ./yuanw.c > {{ target }}.json
+    qmk -v c2json --no-cpp -kb "$kb" -km yuanw ./yuanw.c > $outdir/{{ target }}.json
 
     if [ "{{ target }}" = "imprint" ]; then
       # Expand LAYOUT_LR (35 keys) to LAYOUT_let_no_bottom_row (48 keys)
-      python expand_layout.py {{ target }}.json
-      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q {{ target }}.json > {{ target }}.yaml
-      python process.py {{ target }}.yaml {{ target }}_output.yaml
-      keymap draw {{ target }}_output.yaml -j ./$submod/keyboards/$kb/info.json > {{ target }}.svg
-      python hide_empty_keys.py {{ target }}.svg
+      python $outdir/expand_layout.py $outdir/{{ target }}.json
+      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
+      python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
+      keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/info.json > $outdir/{{ target }}.svg
+      python $outdir/hide_empty_keys.py $outdir/{{ target }}.svg
     elif [ "{{ target }}" = "charybdis" ]; then
       # Charybdis LAYOUT_LR maps 1:1 to LAYOUT, just fix the layout name
-      sed -i 's/"LAYOUT_LR"/"LAYOUT"/' {{ target }}.json
-      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q {{ target }}.json > {{ target }}.yaml
-      keymap draw {{ target }}.yaml -j ./$submod/keyboards/$kb/keyboard.json > {{ target }}.svg
+      sed -i 's/"LAYOUT_LR"/"LAYOUT"/' $outdir/{{ target }}.json
+      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
+      keymap draw $outdir/{{ target }}.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
     fi
-    echo "{{ green }}Generated {{ target }}.svg{{ reset }}"
+    echo "{{ green }}Generated $outdir/{{ target }}.svg{{ reset }}"
 
 # Generate compile_commands.json for clangd LSP
 compiledb target:
