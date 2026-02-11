@@ -65,7 +65,7 @@ layers:
       s: Tab
       t: Spc
       type: ghost
-    - MAGIC
+    - "\u21BA"
     - "\u21BA"
     - REP TXT
     - R NUM
@@ -121,7 +121,7 @@ layers:
     - ''
   2 Nav:
   - - ''
-    - ''
+    - QK BOOT
     - ''
     - ''
     - ''
@@ -338,12 +338,8 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - QK MOUSE WHEEL UP
+    - QK MOUSE WHEEL DOWN
     - h: ''
       t: "\u25BD"
       type: trans
@@ -377,7 +373,7 @@ layers:
     - ''
   6 Txt:
   - - ''
-    - ''
+    - QK BOOT
     - '7'
     - '8'
     - '9'
