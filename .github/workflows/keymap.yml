@@ -27,7 +27,7 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Generate keymap
-        run: nix develop --command just keymap imprint
+        run: nix develop --command just keymap all
 
       - name: Commit changes
         run: |

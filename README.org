@@ -18,6 +18,8 @@ symbol based on https://github.com/getreuer/qmk-keymap
 
 ** BastardKB Charybdis 3x5
 
-[[/img/keeb.jpg
-]]
+[[/img/keeb.jpg]]
+
+
+
 s[[./keymap-drawer/charybdis.svg]]

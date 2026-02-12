@@ -122,6 +122,11 @@ _submodule keyboard:
 # Generate keymap SVG visualization
 keymap target:
     #!/usr/bin/env bash
+    if [ "{{ target }}" = "all" ]; then
+      just keymap imprint
+      just keymap charybdis
+      exit 0
+    fi
     just setup {{ target }}
     kb=$(just _keyboard {{ target }})
     submod=$(just _submodule {{ target }})
