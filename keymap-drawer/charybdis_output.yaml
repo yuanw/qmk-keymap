@@ -37,13 +37,16 @@ layers:
       t: ''''
     - s: <
       t: ','
-    - LR DOT
+    - h: Sym
+      s: '>'
+      t: .
     - LT(REP,SCLN)
     - s: '?'
       t: /
     - J
     - M
-    - LR G
+    - h: Sym
+      t: G
     - F
     - V
   - - h: Win

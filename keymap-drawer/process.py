@@ -49,8 +49,8 @@ key_dict = {
      #apple-keyboard-option apple-keyboard-control"
     "ESC WIN": {"t": "Esc", "s": "Enter", "h": "Win" },
     "SPC NAV": {"t": "Spc", "s": "Tab", "h": "Nav", "type": "ghost"},
-    "LR_DOT":  {"t": ".", "h": "Sym" , "s": ">"},
-    "LR_G":  {"t": "G", "h": "Sym" },
+    "LR DOT":  {"t": ".", "h": "Sym" , "s": ">"},
+    "LR G":  {"t": "G", "h": "Sym" },
     ",":  {"t": ",","s": "<"},
     ".": {"t":".", "s": ">"},
     ";": {"t":";", "s": ":"},
