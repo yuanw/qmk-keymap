@@ -3,7 +3,7 @@ layers:
   L0:
   - ['', Q, Y, O, U, '=', X, L, D, P]
   - [Z, '', B, HRM C, HRM I, HRM A, HRM E, '-', K, HRM H]
-  - [HRM T, HRM N, HRM S, W, '', '''', ',', LR DOT, 'LT(REP,SCLN)', /]
+  - [HRM T, HRM N, HRM S, W, '', '''', ',', LR DOT, ;, /]
   - [J, M, LR G, F, V, '', '', '', '', '']
   - ['', '', ESC WIN, SPC NAV, QK REP, QK AREP, R NUM, REP TXT]
   L1:

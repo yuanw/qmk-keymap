@@ -23,7 +23,7 @@ layers:
     - h: $$mdi:apple-keyboard-control$$
       t: E
       type: ghost
-    - &id001
+    - &id002
       s: _
       t: '-'
     - K
@@ -45,7 +45,9 @@ layers:
     - h: Sym
       s: '>'
       t: .
-    - LT(REP,SCLN)
+    - &id001
+      s: ':'
+      t: ;
     - s: '?'
       t: /
   - - J
@@ -100,8 +102,7 @@ layers:
     - ''
     - '~'
     - \
-    - s: ':'
-      t: ;
+    - *id001
     - '|'
     - \
   - - ''
@@ -467,7 +468,7 @@ layers:
   - - ''
     - ''
     - $$mdi:lock$$
-    - *id001
+    - *id002
     - ''
     - '*'
     - ''
