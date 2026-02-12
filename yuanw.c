@@ -35,7 +35,7 @@ static bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN, REP };
+enum layers { BASE, SYM, FUN, NAV, WIN, PNT, NUM, TXT, REP };
 
 enum keycode_aliases {
     // Short aliases for home row mods and other tap-hold keys.

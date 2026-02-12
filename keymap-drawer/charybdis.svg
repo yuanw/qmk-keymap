@@ -294,18 +294,18 @@ path.combo {
 </g>
 <g transform="translate(364, 196)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">↺</text>
+<text x="0" y="0" class="key tap">↻</text>
 </g>
 <g transform="translate(532, 196)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">REP</tspan><tspan x="0" dy="1.2em">TXT</tspan>
+<tspan x="0" dy="-0.6em">R</tspan><tspan x="0" dy="1.2em">NUM</tspan>
 </text>
 </g>
 <g transform="translate(588, 196)" class="key keypos-34">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">R</tspan><tspan x="0" dy="1.2em">NUM</tspan>
+<tspan x="0" dy="-0.6em">REP</tspan><tspan x="0" dy="1.2em">TXT</tspan>
 </text>
 </g>
 </g>

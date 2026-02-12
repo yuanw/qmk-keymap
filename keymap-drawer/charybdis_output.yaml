@@ -53,9 +53,9 @@ layers:
       s: Tab
       t: Spc
       type: ghost
-    - "\u21BA"
-    - REP TXT
+    - "\u21BB"
     - R NUM
+    - REP TXT
   1 Sym:
   - - '`'
     - '&'

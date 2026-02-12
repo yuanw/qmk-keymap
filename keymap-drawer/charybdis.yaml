@@ -4,7 +4,7 @@ layers:
   - [Q, Y, O, U, '=', X, L, D, P, Z]
   - [HRM C, HRM I, HRM A, HRM E, '-', K, HRM H, HRM T, HRM N, HRM S]
   - ['''', ',', LR DOT, 'LT(REP,SCLN)', /, J, M, LR G, F, V]
-  - [ESC WIN, SPC NAV, QK AREP, REP TXT, R NUM]
+  - [ESC WIN, SPC NAV, QK REP, R NUM, REP TXT]
   L1:
   - ['`', '&', '%', '>', '', '', '{', '}', $, ARROW]
   - ['!', <, '>', EMAIL 1, '', '', (, ), '@', ^]
