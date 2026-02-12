@@ -1,0 +1,403 @@
+layers:
+  0 Base:
+  - - Q
+    - Y
+    - O
+    - U
+    - s: +
+      t: '='
+    - X
+    - L
+    - D
+    - P
+    - Z
+  - - h: Meta
+      t: C
+    - h: $$mdi:apple-keyboard-option$$
+      t: I
+    - h: '$$mdi:apple-keyboard-shift$$ '
+      t: A
+    - h: $$mdi:apple-keyboard-control$$
+      t: E
+      type: ghost
+    - &id001
+      s: _
+      t: '-'
+    - K
+    - h: $$mdi:apple-keyboard-shift$$
+      t: H
+      type: ghost
+    - h: $$mdi:apple-keyboard-control$$
+      t: T
+    - h: $$mdi:apple-keyboard-option$$
+      t: N
+    - h: Meta
+      t: S
+  - - s: '"'
+      t: ''''
+    - s: <
+      t: ','
+    - LR DOT
+    - LT(REP,SCLN)
+    - s: '?'
+      t: /
+    - J
+    - M
+    - LR G
+    - F
+    - V
+  - - h: Win
+      s: Enter
+      t: Esc
+    - h: Nav
+      s: Tab
+      t: Spc
+      type: ghost
+    - "\u21BA"
+    - REP TXT
+    - R NUM
+  1 Sym:
+  - - '`'
+    - '&'
+    - '%'
+    - '>'
+    - ''
+    - ''
+    - '{'
+    - '}'
+    - $
+    - ARROW
+  - - '!'
+    - <
+    - '>'
+    - EMAIL 1
+    - ''
+    - ''
+    - (
+    - )
+    - '@'
+    - ^
+  - - '~'
+    - \
+    - s: ':'
+      t: ;
+    - '|'
+    - \
+    - ''
+    - '['
+    - ']'
+    - '#'
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  2 Nav:
+  - - QK BOOT
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  3 Win:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PGUP
+    - HOME
+    - "\u25B3"
+    - END
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PGDN
+    - "\u25C1"
+    - Down
+    - RIGHT
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - RDO
+    - PST
+    - CPY
+    - CUT
+    - UND
+  - - ''
+    - ''
+    - ''
+    - ''
+    - $$mdi:lock$$
+  4 PNT:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - "\u2318\u23251"
+    - "\u2318\u23252"
+    - Alt+Gui+3
+    - Alt+Gui+4
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - Sft+Gui+1
+    - Sft+Gui+2
+    - Sft+Gui+3
+    - Sft+Gui+4
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  5 Num:
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - QK MOUSE WHEEL UP
+    - QK MOUSE WHEEL DOWN
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - $$mdi:lock$$
+    - BTN1
+    - BTN2
+    - ''
+    - ''
+  6 Txt:
+  - - QK BOOT
+    - '7'
+    - '8'
+    - '9'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - '4'
+    - '5'
+    - '6'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - '1'
+    - '2'
+    - '3'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - '0'
+    - $$mdi:lock$$
+    - ''
+    - ''
+  7 Fun:
+  - - QK BOOT
+    - '8'
+    - '9'
+    - SECRET 1
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - SELWORD
+    - SELWBAK
+    - SELLINE
+    - SECRET 2
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - '1'
+    - '2'
+    - '3'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - $$mdi:lock$$
+    - *id001
+    - ''
+    - ''
+    - ''
+  8 Rep:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - "\u21BA"
+    - "\u21E7"
+    - ''
+    - ''
+    - "\u21E7"
+    - "\u21BA"
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - "\u21BB"
+    - ''
+    - ''
+    - "\u21BB"

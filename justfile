@@ -141,7 +141,8 @@ keymap target:
       # Charybdis LAYOUT_LR maps 1:1 to LAYOUT, just fix the layout name
       sed -i 's/"LAYOUT_LR"/"LAYOUT"/' $outdir/{{ target }}.json
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
-      keymap draw $outdir/{{ target }}.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
+      python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
+      keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
     fi
     echo "{{ green }}Generated $outdir/{{ target }}.svg{{ reset }}"
 

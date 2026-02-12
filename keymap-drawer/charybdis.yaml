@@ -4,14 +4,14 @@ layers:
   - [Q, Y, O, U, '=', X, L, D, P, Z]
   - [HRM C, HRM I, HRM A, HRM E, '-', K, HRM H, HRM T, HRM N, HRM S]
   - ['''', ',', LR DOT, 'LT(REP,SCLN)', /, J, M, LR G, F, V]
-  - [ESC WIN, SPC NAV, MAGIC, REP TXT, R NUM]
+  - [ESC WIN, SPC NAV, QK AREP, REP TXT, R NUM]
   L1:
   - ['`', '&', '%', '>', '', '', '{', '}', $, ARROW]
   - ['!', <, '>', EMAIL 1, '', '', (, ), '@', ^]
   - ['~', \, ;, '|', \, '', '[', ']', '#', '']
   - ['', '', '', '', '']
   L2:
-  - ['', '', '', '', '', '', '', '', '', '']
+  - [QK BOOT, '', '', '', '', '', '', '', '', '']
   - ['', '', '', '', '', '', '', '', '', '']
   - ['', '', '', '', '', '', '', '', '', '']
   - ['', '', '', '', '']
@@ -48,8 +48,8 @@ layers:
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - QK MOUSE WHEEL UP
+    - QK MOUSE WHEEL DOWN
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -58,7 +58,7 @@ layers:
     - {t: ▽, type: trans}
   - [QK LLCK, BTN1, BTN2, '', '']
   L6:
-  - ['', '7', '8', '9', '', '', '', '', '', '']
+  - [QK BOOT, '7', '8', '9', '', '', '', '', '', '']
   - ['', '4', '5', '6', '', '', '', '', '', '']
   - ['', '1', '2', '3', '', '', '', '', '', '']
   - ['', '0', QK LLCK, '', '']
