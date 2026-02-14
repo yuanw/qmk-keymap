@@ -370,7 +370,7 @@ path.combo {
 </g>
 <g class="key keypos-4" transform="translate(252, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">&gt;</text>
+<text class="key tap" x="0" y="0">PAST</text>
 </g>
 <g class="key keypos-5" transform="translate(308, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1235,6 +1235,7 @@ path.combo {
 </g>
 <g class="key keypos-5" transform="translate(308, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">PAST</text>
 </g>
 <g class="key keypos-6" transform="translate(616, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
