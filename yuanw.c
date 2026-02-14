@@ -71,8 +71,8 @@ enum keycode_aliases {
 };
 
 // Shared combos for QK_REP and QK_AREP access
-const uint16_t PROGMEM combo_rep_thumb[]  = {KC_O, KC_U, COMBO_END};
-const uint16_t PROGMEM combo_rep_top[]    = {KC_L, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_rep_thumb[]  = {KC_SCLN, LR_DOT, COMBO_END};
+const uint16_t PROGMEM combo_rep_top[]    = {KC_M, LR_G, COMBO_END};
 const uint16_t PROGMEM combo_arep_bot[]   = {KC_M, LR_G, COMBO_END};
 const uint16_t PROGMEM combo_arep_thumb[] = {R_NUM, SPC_NAV, COMBO_END};
 const uint16_t PROGMEM combo_bspc_thumb[] = {R_NUM, REP_TXT, COMBO_END};
