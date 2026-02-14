@@ -77,7 +77,7 @@ const uint16_t PROGMEM combo_arep_bot[]   = {KC_M, LR_G, COMBO_END};
 const uint16_t PROGMEM combo_arep_thumb[] = {R_NUM, SPC_NAV, COMBO_END};
 const uint16_t PROGMEM combo_bspc_thumb[] = {R_NUM, REP_TXT, COMBO_END};
 combo_t                key_combos[]       = {
-    COMBO(combo_rep_thumb, KC_B), COMBO(combo_rep_top, KC_W), COMBO(combo_arep_bot, QK_AREP), COMBO(combo_arep_thumb, KC_BSPC), COMBO(combo_bspc_thumb, KC_BSPC),
+    COMBO(combo_rep_thumb, KC_B), COMBO(combo_rep_top, KC_W), COMBO(combo_arep_thumb, KC_BSPC), COMBO(combo_bspc_thumb, KC_BSPC),
 };
 
 // clang-format off
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [SYM] = LAYOUT_LR(
-        KC_GRV,  KC_AMPR, KC_PERC, KC_RABK, XXXXXXX,                       XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR,  ARROW,
+         KC_GRV,  KC_AMPR, KC_PERC, KC_PAST, XXXXXXX,                       XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR,  ARROW,
         KC_EXLM, KC_LABK, KC_RABK, EMAIL_1, XXXXXXX,                       XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,   KC_CIRC,
         KC_TILD, KC_BSLS, KC_SCLN, KC_PIPE, KC_BSLS,                       XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX,
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX
@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NUM] = LAYOUT_LR(
-        QK_BOOT, KC_7,    KC_8,    KC_9,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        QK_BOOT, KC_7,    KC_8,    KC_9,    KC_PAST,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, KC_0,    QK_LLCK,              XXXXXXX, XXXXXXX
@@ -209,8 +209,8 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 //     C * -> CO     M * -> MENT    T * >  TION
 //     D * -> DY     O * -> OA      U * -> UE
 //     E * -> EU     P * -> PN      Y * -> YP
-//     G * -> GY     Q * -> QUEN    spc * -> THE
-//     I * -> ION    R * -> RL
+//     G * -> GY     Q * -> QUEN    w * -> h
+//     I * -> ION    R * -> RL      spc * -> the
 //
 // When the magic key types a letter, following it with the repeat key produces
 // "n". This is useful to type certain patterns without SFBs.
@@ -306,6 +306,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 
             case KC_R:
                 return KC_L; // R -> L
+        case KC_W:
+            return KC_H; // W -> H
             case KC_DOT:
                 if ((mods & MOD_MASK_SHIFT) == 0) {
                     return M_UPDIR; // . -> ./
