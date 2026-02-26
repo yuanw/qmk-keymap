@@ -58,7 +58,7 @@ layers:
       s: Tab
       t: Spc
       type: ghost
-    - "\u21BB"
+    - ARCANE
     - R NUM
     - REP TXT
   1 Sym:
