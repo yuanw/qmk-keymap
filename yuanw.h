@@ -27,5 +27,6 @@ enum my_keycodes {
     M_UPDIR,
     M_NBSP,
     M_NOOP,
-    M_SON
+    M_SON,
+    ARCANE
 };

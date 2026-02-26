@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                         KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,
         HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                        KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S,
          KC_QUOT, KC_COMM, LR_DOT, KC_SCLN, KC_SLASH,                      KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
-                                   ESC_WIN, SPC_NAV, QK_REP,               R_NUM, REP_TXT
+                                   ESC_WIN, SPC_NAV, ARCANE,               R_NUM, REP_TXT
     ),
 
     [SYM] = LAYOUT_LR(
@@ -168,12 +168,16 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
+static bool g_last_key_on_right = false;
+
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
     switch (keycode) {
+        case ARCANE:
         case REP_TXT:
-            return false; // Ignore ALTREP keys.
+            return false; // Don't let arcane keys overwrite last-key state.
     }
-    return true; // Other keys can be repeated.
+    g_last_key_on_right = record->event.key.row >= MATRIX_ROWS / 2;
+    return true;
 }
 
 // An enhanced version of SEND_STRING: if Caps Word is active, the Shift key is
@@ -378,6 +382,15 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     return KC_TRNS;
 }
 
+static void handle_arcane(keyrecord_t *record) {
+    bool arcane_on_right = (record->event.key.row >= MATRIX_ROWS / 2);
+    if (arcane_on_right == g_last_key_on_right) {
+        repeat_key_invoke(&record->event);     // same hand → repeat
+    } else {
+        alt_repeat_key_invoke(&record->event); // opposite hand → magic
+    }
+}
+
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
     const uint8_t all_mods = (mods | get_weak_mods()
@@ -411,9 +424,15 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 set_mods(mods);
             }
             return false;
+        case ARCANE:
+            if (record->event.pressed) {
+                handle_arcane(record);
+            }
+            return false;
+
         case REP_TXT:
             if (record->tap.count) {
-                alt_repeat_key_invoke(&record->event);
+                handle_arcane(record); // was: alt_repeat_key_invoke
                 return false;
             }
             break;
