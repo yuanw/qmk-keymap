@@ -169,6 +169,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 static bool g_last_key_on_right = false;
+static bool g_arcane_is_repeat  = false;
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
     switch (keycode) {
@@ -383,8 +384,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 }
 
 static void handle_arcane(keyrecord_t *record) {
-    bool arcane_on_right = (record->event.key.row >= MATRIX_ROWS / 2);
-    if (arcane_on_right == g_last_key_on_right) {
+    if (record->event.pressed) {
+        bool arcane_on_right  = (record->event.key.row >= MATRIX_ROWS / 2);
+        g_arcane_is_repeat = (arcane_on_right == g_last_key_on_right);
+    }
+    if (g_arcane_is_repeat) {
         repeat_key_invoke(&record->event);     // same hand → repeat
     } else {
         alt_repeat_key_invoke(&record->event); // opposite hand → magic
@@ -425,9 +429,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case ARCANE:
-            if (record->event.pressed) {
-                handle_arcane(record);
-            }
+            handle_arcane(record);
             return false;
 
         case REP_TXT:
