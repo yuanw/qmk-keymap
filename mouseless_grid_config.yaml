@@ -1,0 +1,36 @@
+# Mouseless Grid Configuration
+# Generated from: charybdis.json
+# Keyboard: bastardkb/charybdis/3x5
+# Generation date: 2026-02-12 18:15:58
+
+grid_configs:
+  - name: colemak_3x5
+    grid_defn:
+      - keys: "=UOYQ KHTNS ZPDLX ',.;/ -EAIC JMGFV"
+        num_cells_x: 10
+        num_cells_y: 3
+    subgrid_mouse_action_keys: "=UOY KHTNS ZPDLX ',.; -EAIC MG"
+    subgrid_dims:
+      - 8
+      - 3
+
+# Usage Instructions:
+# ==================
+# 1. Review the generated grid keys above
+# 2. Compare with your current ~/.mouseless/configs/config.yaml
+# 3. If satisfied, copy the following values:
+#    - keys: "=UOYQ KHTNS ZPDLX ',.;/ -EAIC JMGFV"
+#    - subgrid_mouse_action_keys: "=UOY KHTNS ZPDLX ',.; -EAIC MG"
+# 4. Paste into your ~/.mouseless/configs/config.yaml under grid_configs
+# 5. Restart mouseless or reload config (cmd+shift+r)
+#
+# Grid Layout Visualization (10 keys × 3 rows):
+# =============================================
+# Row 0 (top):    =UOYQ KHTNS
+# Row 1 (middle): ZPDLX ',.;/
+# Row 2 (bottom): -EAIC JMGFV
+#
+# Each row shows: [LEFT HAND (5 keys)] [RIGHT HAND (5 keys)]
+#
+# Excluded from subgrid: /, F, J, Q, V
+# (These keys are typically used for mouse actions)

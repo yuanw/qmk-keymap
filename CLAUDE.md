@@ -26,10 +26,14 @@ just flash imprint
 just flash charybdis
 
 # Generate keymap visualization
-just keymap             # For imprint - outputs imprint.svg
+just keymap charybdis   # Outputs charybdis.svg
+just keymap imprint     # Outputs imprint.svg
+
+# Generate mouseless grid configuration (from keymap)
+just mouseless          # Outputs mouseless_grid_config.yaml
 
 # Format C code
-just c-format
+just format
 ```
 
 ## Architecture

@@ -162,3 +162,15 @@ compiledb target:
 format:
     find {{ justfile_directory() }}/keyboards -name '*.c' -o -name '*.h' | xargs clang-format -i
     find {{ justfile_directory() }} -maxdepth 1 \( -name '*.c' -o -name '*.h' \) | xargs clang-format -i
+
+# Generate mouseless grid configuration from QMK keymap
+mouseless target="charybdis":
+    #!/usr/bin/env bash
+    json_file="keymap-drawer/{{ target }}.json"
+    if [ ! -f "$json_file" ]; then
+        echo "{{ yellow }}JSON not found, generating keymap first...{{ reset }}"
+        just keymap {{ target }}
+    fi
+    python scripts/generate_mouseless_grid.py "$json_file"
+    echo "{{ green }}Generated mouseless_grid_config.yaml{{ reset }}"
+    echo "{{ blue }}Review and copy grid keys to ~/.mouseless/configs/config.yaml{{ reset }}"
