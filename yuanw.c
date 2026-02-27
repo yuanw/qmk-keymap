@@ -126,8 +126,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NAV] = LAYOUT_LR(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
+                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  APP_SWCH,
+        XXXXXXX, XXXXXXX, XXXXXXX, APP_SWCH, XXXXXXX,                    KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       RDO,     PST,     CPY,     CUT,     UND,
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, QK_LLCK, XXXXXXX
      ),
@@ -177,7 +177,16 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
-static bool g_last_key_on_right = false;
+static bool     g_last_key_on_right    = false;
+static bool     g_app_switcher_active  = false;
+static uint16_t g_app_switcher_timer   = 0;
+
+void matrix_scan_user(void) {
+    if (g_app_switcher_active && timer_elapsed(g_app_switcher_timer) > 750) {
+        unregister_mods(MOD_BIT(KC_LGUI));
+        g_app_switcher_active = false;
+    }
+}
 static bool g_arcane_is_repeat  = false;
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
@@ -458,6 +467,21 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             return false;
         case ARCANE:
             handle_arcane(record);
+            return false;
+
+        // macOS app switcher: first press holds Cmd and taps Tab to open the
+        // switcher; each subsequent press taps Tab to cycle. After 750ms of
+        // inactivity Cmd is released (via matrix_scan_user), confirming the
+        // selected app.
+        case APP_SWCH:
+            if (record->event.pressed) {
+                if (!g_app_switcher_active) {
+                    g_app_switcher_active = true;
+                    register_mods(MOD_BIT(KC_LGUI));
+                }
+                tap_code(KC_TAB);
+                g_app_switcher_timer = timer_read();
+            }
             return false;
 
         case REP_TXT:
