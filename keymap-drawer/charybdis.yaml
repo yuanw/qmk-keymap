@@ -16,8 +16,8 @@ layers:
   - ['', '', '', '', '', '', '', '', '', '']
   - ['', '', '', '', '', '']
   L3:
-  - ['', '', '', '', '', PGUP, HOME, UP, END, '']
-  - ['', '', '', '', '', PGDN, LEFT, DOWN, RIGHT, '']
+  - ['', '', '', '', '', PGUP, HOME, UP, END, APP SWCH]
+  - ['', '', '', APP SWCH, '', PGDN, LEFT, DOWN, RIGHT, '']
   - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
   - ['', '', '', '', QK LLCK, '']
   L4:
