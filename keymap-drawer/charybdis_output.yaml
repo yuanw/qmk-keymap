@@ -59,8 +59,9 @@ layers:
       t: Spc
       type: ghost
     - ARCANE
-    - R NUM
     - REP TXT
+    - R NUM
+    - BSPC FUN
   1 Sym:
   - - '`'
     - '&'
@@ -93,6 +94,7 @@ layers:
     - '#'
     - ''
   - - ''
+    - ''
     - ''
     - ''
     - ''
@@ -133,6 +135,7 @@ layers:
     - ''
     - ''
     - ''
+    - ''
   3 Win:
   - - ''
     - ''
@@ -169,6 +172,7 @@ layers:
     - ''
     - ''
     - $$mdi:lock$$
+    - ''
   4 PNT:
   - - ''
     - ''
@@ -201,6 +205,7 @@ layers:
     - Sft+Gui+3
     - Sft+Gui+4
   - - ''
+    - ''
     - ''
     - ''
     - ''
@@ -297,6 +302,7 @@ layers:
     - BTN2
     - ''
     - ''
+    - ''
   6 Txt:
   - - QK BOOT
     - '7'
@@ -333,6 +339,7 @@ layers:
     - $$mdi:lock$$
     - ''
     - ''
+    - ''
   7 Fun:
   - - QK BOOT
     - '8'
@@ -366,6 +373,7 @@ layers:
     - ''
   - - $$mdi:lock$$
     - *id002
+    - ''
     - ''
     - ''
     - ''
@@ -405,3 +413,4 @@ layers:
     - ''
     - ''
     - "\u21BB"
+    - ''
