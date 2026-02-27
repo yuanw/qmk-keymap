@@ -260,6 +260,10 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return A(KC_I);
             case KC_I:
                 return A(KC_N);
+            case KC_F: return A(KC_B); // forward-word       <-> backward-word
+            case KC_B: return A(KC_F);
+            case KC_LABK: return A(KC_RABK); // beginning-of-buffer <-> end-of-buffer
+            case KC_RABK: return A(KC_LABK);
         }
     } else if (mods == MOD_BIT_LCTL) {
         // Emacs navigation: toggle between opposite directions.
@@ -547,7 +551,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 MAGIC_STRING(/*q*/ "ue", KC_N);
                 break;
             case T_ION:
-                MAGIC_STRING(/*t*/ "io", KC_S);
+                MAGIC_STRING(/*t*/ "ion", KC_S);
                 break;
             case M_SON:
                 MAGIC_STRING(/*s*/ "on", KC_S);
