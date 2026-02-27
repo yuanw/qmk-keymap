@@ -225,6 +225,13 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 //     E * @ -> EUN             (like "reunite")
 //     O * @ -> OAN             (like "loan")
 //
+// Emacs navigation (with Ctrl held): toggles opposite direction.
+//
+//     Ctrl-F * -> Ctrl-B     (forward-char  <-> backward-char)
+//     Ctrl-N * -> Ctrl-P     (next-line     <-> previous-line)
+//     Ctrl-A * -> Ctrl-E     (beginning-of-line  <-> end-of-line)
+//     Ctrl-S * -> Ctrl-R     (isearch-forward    <-> isearch-backward)
+//
 // Other patterns:
 //
 //     spc * @ -> THEN
@@ -253,6 +260,18 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return A(KC_I);
             case KC_I:
                 return A(KC_N);
+        }
+    } else if (mods == MOD_BIT_LCTL) {
+        // Emacs navigation: toggle between opposite directions.
+        switch (keycode) {
+            case KC_F: return C(KC_B); // forward-char  <-> backward-char
+            case KC_B: return C(KC_F);
+            case KC_N: return C(KC_P); // next-line     <-> previous-line
+            case KC_P: return C(KC_N);
+            case KC_A: return C(KC_E); // beginning-of-line <-> end-of-line
+            case KC_E: return C(KC_A);
+            case KC_S: return C(KC_R); // isearch-forward   <-> isearch-backward
+            case KC_R: return C(KC_S);
         }
     } else if ((mods & ~MOD_MASK_SHIFT) == 0) {
         // This is where most of the "magic" for the MAGIC key is implemented.
