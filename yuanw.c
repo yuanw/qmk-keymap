@@ -213,7 +213,7 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 //     A * -> AO     L * -> LK      S * -> SON
 //     C * -> CO     M * -> MENT    T * >  TION
 //     D * -> DY     O * -> OA      U * -> UE
-//     E * -> EU     P * -> PN      Y * -> YP
+//     E * -> EU     P * -> PH     Y * -> YP
 //     G * -> GY     Q * -> QUEN    w * -> h
 //     I * -> ION    R * -> RL      spc * -> the
 //
@@ -263,13 +263,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case SPC_NAV:
                 return M_THE;
 
-            // For navigating next/previous search results in Vim:
-            // N -> Shift + N, Shift + N -> N.
+                // n -> '
             case KC_N:
-                if ((mods & MOD_MASK_SHIFT) == 0) {
-                    return S(KC_N);
-                }
-                return KC_N;
+                return KC_QUOT;
 
             // Fix SFBs and awkward strokes.
             case KC_A:
@@ -296,11 +292,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_C:
                 return KC_O; // C -> O
             case KC_D:
-                return KC_Y; // D -> Y
+                return KC_G; // D -> G
             case KC_G:
                 return KC_Y; // G -> Y
             case KC_P:
-                return KC_N; // P -> N
+                return KC_H; // P -> H
             case KC_Y:
                 return KC_P; // Y -> P
 
@@ -492,7 +488,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             return false;
         case RDO:
             if (record->event.pressed) {
-                switch (detected_host_os()) {
+                 switch (detected_host_os()) {
                     case OS_MACOS:
                     case OS_IOS:
                         tap_code16(LCMD(KC_Z));
@@ -529,10 +525,10 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 MAGIC_STRING(/*m*/ "ent", KC_S);
                 break;
             case M_QUEN:
-                MAGIC_STRING(/*q*/ "uen", KC_C);
+                MAGIC_STRING(/*q*/ "ue", KC_N);
                 break;
             case T_ION:
-                MAGIC_STRING(/*t*/ "ion", KC_S);
+                MAGIC_STRING(/*t*/ "io", KC_S);
                 break;
             case M_SON:
                 MAGIC_STRING(/*s*/ "on", KC_S);
