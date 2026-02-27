@@ -265,7 +265,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_LABK: return A(KC_RABK); // beginning-of-buffer <-> end-of-buffer
             case KC_RABK: return A(KC_LABK);
         }
-    } else if (mods == MOD_BIT_LCTL) {
+    } else if (mods == MOD_BIT_LCTRL) {
         // Emacs navigation: toggle between opposite directions.
         switch (keycode) {
             case KC_F: return C(KC_B); // forward-char  <-> backward-char
