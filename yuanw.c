@@ -75,9 +75,17 @@ const uint16_t PROGMEM combo_rep_thumb[]  = {KC_SCLN, LR_DOT, COMBO_END};
 const uint16_t PROGMEM combo_rep_top[]    = {KC_M, LR_G, COMBO_END};
 const uint16_t PROGMEM combo_arep_bot[]   = {KC_M, LR_G, COMBO_END};
 const uint16_t PROGMEM combo_arep_thumb[] = {R_NUM, SPC_NAV, COMBO_END};
+#ifdef KEYBOARD_5_THUMBS
+// No physical BSPC_FUN key: reach it via combo.
 const uint16_t PROGMEM combo_bspc_thumb[] = {R_NUM, REP_TXT, COMBO_END};
-combo_t                key_combos[]       = {
-    COMBO(combo_rep_thumb, KC_B), COMBO(combo_rep_top, KC_W), COMBO(combo_arep_thumb, KC_BSPC), COMBO(combo_bspc_thumb, KC_BSPC),
+#endif
+combo_t key_combos[] = {
+    COMBO(combo_rep_thumb, KC_B),
+    COMBO(combo_rep_top, KC_W),
+    COMBO(combo_arep_thumb, KC_BSPC),
+#ifdef KEYBOARD_5_THUMBS
+    COMBO(combo_bspc_thumb, BSPC_FUN),
+#endif
 };
 
 // clang-format off
@@ -85,77 +93,78 @@ combo_t                key_combos[]       = {
 // Keymaps using LAYOUT_LR() abstraction
 // LAYOUT_LR is designed for 3x5 split layout:
 //   - 5 columns left, 5 columns right for rows 0-2 (3 rows)
-//   - 3 left thumb keys, 2 right thumb keys
+//   - 3 left thumb keys, 3 right thumb keys
+//   - KEYBOARD_5_THUMBS: RT2 is ignored (e.g. Charybdis, which has only 2 right thumbs)
 //
 // Layout diagram:
 //   L00 L01 L02 L03 L04    R00 R01 R02 R03 R04   <- Row 0
 //   L10 L11 L12 L13 L14    R10 R11 R12 R13 R14   <- Row 1
 //   L20 L21 L22 L23 L24    R20 R21 R22 R23 R24   <- Row 2
-//             LT0 LT1 LT2       RT0 RT1          <- Thumbs (3 left, 2 right)
+//             LT0 LT1 LT2       RT0 RT1 RT2      <- Thumbs (3 left, 3 right)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [BASE] = LAYOUT_LR(
         KC_Q,    KC_Y,    KC_O,   KC_U,    KC_EQL,                         KC_X,    KC_L,    KC_D,    KC_P,    KC_Z,
         HRM_C,   HRM_I,   HRM_A,  HRM_E,   KC_MINS,                        KC_K,    HRM_H,   HRM_T,   HRM_N,   HRM_S,
-         KC_QUOT, KC_COMM, LR_DOT, KC_SCLN, KC_SLASH,                      KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
-                                   ESC_WIN, SPC_NAV, ARCANE,               R_NUM, REP_TXT
+        KC_QUOT, KC_COMM, LR_DOT, KC_SCLN, KC_SLASH,                      KC_J,    KC_M,    LR_G,    KC_F,    KC_V,
+                              ESC_WIN, SPC_NAV, ARCANE,                REP_TXT, R_NUM, BSPC_FUN
     ),
 
     [SYM] = LAYOUT_LR(
          KC_GRV,  KC_AMPR, KC_PERC, KC_PAST, XXXXXXX,                       XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR,  ARROW,
         KC_EXLM, KC_LABK, KC_RABK, EMAIL_1, XXXXXXX,                       XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,   KC_CIRC,
         KC_TILD, KC_BSLS, KC_SCLN, KC_PIPE, KC_BSLS,                       XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX
+                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [FUN] = LAYOUT_LR(
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX
+                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NAV] = LAYOUT_LR(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       RDO,     PST,     CPY,     CUT,     UND,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, QK_LLCK
+                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, QK_LLCK, XXXXXXX
      ),
 
     [WIN] = LAYOUT_LR(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, LAG(KC_1), LAG(KC_2), LAG(KC_3), LAG(KC_4),
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, LSG(KC_1), LSG(KC_2), LSG(KC_3), LSG(KC_4),
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX
+                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,   XXXXXXX
     ),
 
     [PNT] = LAYOUT_LR(
         _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
         _______, _______, QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,                       _______, _______, _______, _______, _______,
-                                   QK_LLCK, KC_BTN1, KC_BTN2,              XXXXXXX, XXXXXXX
+                                   QK_LLCK, KC_BTN1, KC_BTN2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_LR(
         QK_BOOT, KC_7,    KC_8,    KC_9,    KC_PAST,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   XXXXXXX, KC_0,    QK_LLCK,              XXXXXXX, XXXXXXX
+                                   XXXXXXX, KC_0,    QK_LLCK,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [TXT] = LAYOUT_LR(
         QK_BOOT,    KC_8,    KC_9, KC_SECRET_1, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         SELWORD, SELWBAK, SELLINE, KC_SECRET_2, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_1,    KC_2,    KC_3,    XXXXXXX,     XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   QK_LLCK, KC_MINS, XXXXXXX,              XXXXXXX, XXXXXXX
+                                   QK_LLCK, KC_MINS, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [REP] = LAYOUT_LR(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, QK_AREP, KC_LSFT, XXXXXXX,                       XXXXXXX, KC_LSFT, QK_AREP, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   XXXXXXX, QK_REP,  XXXXXXX,              XXXXXXX, QK_REP
+                                   XXXXXXX, QK_REP,  XXXXXXX,              XXXXXXX, QK_REP,  XXXXXXX
     ),
 };
 // clang-format on
