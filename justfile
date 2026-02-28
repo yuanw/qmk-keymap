@@ -136,11 +136,13 @@ keymap target:
     qmk -v c2json --no-cpp -kb "$kb" -km yuanw ./yuanw.c > $outdir/{{ target }}.json
 
     if [ "{{ target }}" = "imprint" ]; then
-      # Expand LAYOUT_LR (35 keys) to LAYOUT_let_no_bottom_row (48 keys)
+      # Expand LAYOUT_LR (36 keys) to LAYOUT_let_no_bottom_row (48 keys)
       python $outdir/expand_layout.py $outdir/{{ target }}.json
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
-      keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/info.json > $outdir/{{ target }}.svg
+      # Generate custom layout with thumb keys positioned to match physical keyboard
+      python $outdir/generate_imprint_layout.py
+      keymap draw $outdir/{{ target }}_output.yaml -j $outdir/imprint_layout.json > $outdir/{{ target }}.svg
       python $outdir/hide_empty_keys.py $outdir/{{ target }}.svg
     elif [ "{{ target }}" = "charybdis" ]; then
       # Charybdis LAYOUT_LR maps 1:1 to LAYOUT, just fix the layout name
