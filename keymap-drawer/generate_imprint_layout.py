@@ -28,9 +28,9 @@ THUMB_OVERRIDES = {
     36: {"x": 4,  "y": 4.5},  # LT0 = ESC_WIN  (outer left)
     37: {"x": 5,  "y": 4.7},  # LT1 = SPC_NAV  (middle left)
     38: {"x": 6,  "y": 4.9},   # LT2 = ARCANE   (inner left,  slightly higher)
-    39: {"x": 10, "y": 4.5},   # RT0 = REP_TXT  (inner right, slightly higher)
+    39: {"x": 10, "y": 4.9},   # RT0 = REP_TXT  (inner right, slightly higher)
     40: {"x": 11, "y": 4.7},  # RT1 = R_NUM    (middle right)
-    41: {"x": 12, "y": 4.9},  # RT2 = BSPC_FUN (outer right)
+    41: {"x": 12, "y": 4.5},  # RT2 = BSPC_FUN (outer right)
 }
 
 
