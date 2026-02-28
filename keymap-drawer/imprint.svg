@@ -299,56 +299,56 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-42" transform="translate(392, 252)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">Esc</text>
 <text class="key hold" x="0" y="24">Win</text>
 <text class="key shifted" x="0" y="-24">Enter</text>
 </g>
-<g class="key ghost keypos-43" transform="translate(448, 252)">
+<g class="key ghost keypos-37" transform="translate(336, 168)">
 <rect class="key ghost" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key ghost tap" x="0" y="0">Spc</text>
 <text class="key ghost hold" x="0" y="24">Nav</text>
 <text class="key ghost shifted" x="0" y="-24">Tab</text>
 </g>
-<g class="key keypos-44" transform="translate(448, 196)">
+<g class="key keypos-38" transform="translate(392, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">ARCANE</text>
 </g>
-<g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">
-<tspan dy="-0.6em" x="0">BSPC</tspan><tspan dy="1.2em" x="0">FUN</tspan>
-</text>
-</g>
-<g class="key keypos-46" transform="translate(532, 252)">
+<g class="key keypos-39" transform="translate(588, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">
 <tspan dy="-0.6em" x="0">REP</tspan><tspan dy="1.2em" x="0">TXT</tspan>
 </text>
 </g>
-<g class="key keypos-47" transform="translate(588, 252)">
+<g class="key keypos-40" transform="translate(644, 168)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">
 <tspan dy="-0.6em" x="0">R</tspan><tspan dy="1.2em" x="0">NUM</tspan>
 </text>
+</g>
+<g class="key keypos-41" transform="translate(700, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">
+<tspan dy="-0.6em" x="0">BSPC</tspan><tspan dy="1.2em" x="0">FUN</tspan>
+</text>
+</g>
+<g class="key keypos-42" transform="translate(392, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-43" transform="translate(448, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-44" transform="translate(448, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-45" transform="translate(532, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-46" transform="translate(532, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-47" transform="translate(588, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -493,40 +493,40 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-42" transform="translate(392, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-43" transform="translate(448, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-44" transform="translate(448, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -647,40 +647,40 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-42" transform="translate(392, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-43" transform="translate(448, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-44" transform="translate(448, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -817,41 +817,41 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-42" transform="translate(392, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-43" transform="translate(448, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-44" transform="translate(448, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-47" transform="translate(588, 252)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
+</g>
+<g class="key keypos-41" transform="translate(700, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-42" transform="translate(392, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-43" transform="translate(448, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-44" transform="translate(448, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-45" transform="translate(532, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-46" transform="translate(532, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-47" transform="translate(588, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -987,40 +987,40 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-42" transform="translate(392, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-43" transform="translate(448, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-44" transform="translate(448, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -1172,43 +1172,43 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-42" transform="translate(392, 252)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
 </g>
-<g class="key keypos-43" transform="translate(448, 252)">
+<g class="key keypos-37" transform="translate(336, 168)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">BTN1</text>
 </g>
-<g class="key keypos-44" transform="translate(448, 196)">
+<g class="key keypos-38" transform="translate(392, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">BTN2</text>
 </g>
-<g class="key keypos-45" transform="translate(532, 196)">
+<g class="key keypos-39" transform="translate(588, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-40" transform="translate(644, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-41" transform="translate(700, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-42" transform="translate(392, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-43" transform="translate(448, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-44" transform="translate(448, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-45" transform="translate(532, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -1339,42 +1339,42 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-42" transform="translate(392, 252)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
-<g class="key keypos-43" transform="translate(448, 252)">
+<g class="key keypos-37" transform="translate(336, 168)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">0</text>
 </g>
-<g class="key keypos-44" transform="translate(448, 196)">
+<g class="key keypos-38" transform="translate(392, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
 </g>
-<g class="key keypos-45" transform="translate(532, 196)">
+<g class="key keypos-39" transform="translate(588, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-40" transform="translate(644, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-41" transform="translate(700, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-42" transform="translate(392, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-43" transform="translate(448, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-44" transform="translate(448, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-45" transform="translate(532, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -1509,43 +1509,43 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
-</g>
-<g class="key keypos-42" transform="translate(392, 252)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
 </g>
-<g class="key keypos-43" transform="translate(448, 252)">
+<g class="key keypos-37" transform="translate(336, 168)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 <text class="key tap" x="0" y="0">-</text>
 <text class="key shifted" x="0" y="-24">_</text>
 </g>
-<g class="key keypos-44" transform="translate(448, 196)">
+<g class="key keypos-38" transform="translate(392, 196)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-39" transform="translate(588, 196)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-40" transform="translate(644, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-41" transform="translate(700, 168)">
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-42" transform="translate(392, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-43" transform="translate(448, 252)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+</g>
+<g class="key keypos-44" transform="translate(448, 196)">
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>
@@ -1667,42 +1667,42 @@ path.combo {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-36" transform="translate(280, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-37" transform="translate(336, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">↻</text>
 </g>
 <g class="key keypos-38" transform="translate(392, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-39" transform="translate(588, 196)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-40" transform="translate(644, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">↻</text>
 </g>
 <g class="key keypos-41" transform="translate(700, 168)">
-<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-42" transform="translate(392, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-43" transform="translate(448, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">↻</text>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-44" transform="translate(448, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-45" transform="translate(532, 196)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-46" transform="translate(532, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key keypos-47" transform="translate(588, 252)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">↻</text>
+<rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 </g>
 </g>

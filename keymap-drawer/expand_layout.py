@@ -18,8 +18,11 @@ def expand_layer(layer_36):
       X   L00 L01 L02 L03 L04    R00 R01 R02 R03 R04 X    <- Row 0 (12 keys)
       B   L10 L11 L12 L13 L14    R10 R11 R12 R13 R14 W    <- Row 1 (12 keys)
       X   L20 L21 L22 L23 L24    R20 R21 R22 R23 R24 X    <- Row 2 (12 keys)
-                    X   X   X         X   X   X           <- Top thumbs (6 keys)
-                  LT0 LT1 LT2      RT2 RT0 RT1            <- Bottom thumbs (6 keys)
+                  LT0 LT1 LT2    RT0 RT1 RT2              <- Top thumbs: active arc (6 keys)
+                    X   X   X         X   X   X           <- Bottom thumbs: hidden (6 keys)
+
+    The top arc positions form a natural diagonal arc matching the physical keyboard.
+    Bottom cluster positions are left empty and hidden by hide_empty_keys.py.
     """
     layer_48 = []
 
@@ -41,13 +44,17 @@ def expand_layer(layer_36):
     layer_48.extend(layer_36[25:30])  # R20-R24
     layer_48.append("KC_NO")
 
-    # Top thumbs: 6 X's
-    layer_48.extend(["KC_NO"] * 6)
+    # Top thumbs (indices 36-41): active arc — LT0 LT1 LT2 on left, RT0 RT1 RT2 on right.
+    # Physical positions form a natural diagonal arc matching the keyboard image.
+    #   Left:  x=4.5 (outer/ESC) → x=5.5 (mid/SPC) → x=6.5 (inner/ARCANE)
+    #   Right: x=10  (inner/REP) → x=11  (mid/NUM)  → x=12  (outer/BSPC)
+    layer_48.extend(layer_36[30:33])  # LT0, LT1, LT2 → indices 36, 37, 38
+    layer_48.append(layer_36[33])     # RT0 → index 39 (inner right)
+    layer_48.append(layer_36[34])     # RT1 → index 40 (middle right)
+    layer_48.append(layer_36[35])     # RT2 → index 41 (outer right)
 
-    # Bottom thumbs: LT0 LT1 LT2 + RT2 + RT0 RT1
-    layer_48.extend(layer_36[30:33])  # LT0-LT2
-    layer_48.append(layer_36[35])     # RT2 (inner-most right thumb)
-    layer_48.extend(layer_36[33:35])  # RT0-RT1
+    # Bottom cluster (indices 42-47): hidden by hide_empty_keys.py
+    layer_48.extend(["KC_NO"] * 6)
 
     return layer_48
 
