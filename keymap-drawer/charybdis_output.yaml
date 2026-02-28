@@ -99,7 +99,7 @@ layers:
     - ''
     - ''
     - ''
-  2 Nav:
+  2 Fun:
   - - QK BOOT
     - ''
     - ''
@@ -136,7 +136,7 @@ layers:
     - ''
     - ''
     - ''
-  3 Win:
+  3 Nav:
   - - ''
     - ''
     - ''
@@ -173,7 +173,7 @@ layers:
     - ''
     - $$mdi:lock$$
     - ''
-  4 PNT:
+  4 Win:
   - - ''
     - ''
     - ''
@@ -210,7 +210,7 @@ layers:
     - ''
     - ''
     - ''
-  5 Num:
+  5 Pnt:
   - - h: ''
       t: "\u25BD"
       type: trans
@@ -303,7 +303,7 @@ layers:
     - ''
     - ''
     - ''
-  6 Txt:
+  6 Num:
   - - QK BOOT
     - '7'
     - '8'
@@ -340,7 +340,7 @@ layers:
     - ''
     - ''
     - ''
-  7 Fun:
+  7 Txt:
   - - QK BOOT
     - '8'
     - '9'
