@@ -530,8 +530,8 @@ path.combo {
 </g>
 </g>
 </g>
-<g class="layer-2 Nav" transform="translate(30, 672)">
-<text class="label" id="Nav" x="0" y="28">2 Nav:</text>
+<g class="layer-2 Fun" transform="translate(30, 672)">
+<text class="label" id="Fun" x="0" y="28">2 Fun:</text>
 <g transform="translate(0, 56)">
 <g class="key keypos-0" transform="translate(28, 28)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
@@ -684,8 +684,8 @@ path.combo {
 </g>
 </g>
 </g>
-<g class="layer-3 Win" transform="translate(30, 1008)">
-<text class="label" id="Win" x="0" y="28">3 Win:</text>
+<g class="layer-3 Nav" transform="translate(30, 1008)">
+<text class="label" id="Nav" x="0" y="28">3 Nav:</text>
 <g transform="translate(0, 56)">
 <g class="key keypos-0" transform="translate(28, 28)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
@@ -855,8 +855,8 @@ path.combo {
 </g>
 </g>
 </g>
-<g class="layer-4 PNT" transform="translate(30, 1344)">
-<text class="label" id="PNT" x="0" y="28">4 PNT:</text>
+<g class="layer-4 Win" transform="translate(30, 1344)">
+<text class="label" id="Win" x="0" y="28">4 Win:</text>
 <g transform="translate(0, 56)">
 <g class="key keypos-0" transform="translate(28, 28)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
@@ -1024,8 +1024,8 @@ path.combo {
 </g>
 </g>
 </g>
-<g class="layer-5 Num" transform="translate(30, 1680)">
-<text class="label" id="Num" x="0" y="28">5 Num:</text>
+<g class="layer-5 Pnt" transform="translate(30, 1680)">
+<text class="label" id="Pnt" x="0" y="28">5 Pnt:</text>
 <g transform="translate(0, 56)">
 <g class="key keypos-0" transform="translate(28, 28)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
@@ -1212,8 +1212,8 @@ path.combo {
 </g>
 </g>
 </g>
-<g class="layer-6 Txt" transform="translate(30, 2016)">
-<text class="label" id="Txt" x="0" y="28">6 Txt:</text>
+<g class="layer-6 Num" transform="translate(30, 2016)">
+<text class="label" id="Num" x="0" y="28">6 Num:</text>
 <g transform="translate(0, 56)">
 <g class="key keypos-0" transform="translate(28, 28)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
@@ -1378,8 +1378,8 @@ path.combo {
 </g>
 </g>
 </g>
-<g class="layer-7 Fun" transform="translate(30, 2352)">
-<text class="label" id="Fun" x="0" y="28">7 Fun:</text>
+<g class="layer-7 Txt" transform="translate(30, 2352)">
+<text class="label" id="Txt" x="0" y="28">7 Txt:</text>
 <g transform="translate(0, 56)">
 <g class="key keypos-0" transform="translate(28, 28)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>

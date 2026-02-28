@@ -8,16 +8,16 @@ except ImportError:
 
 Point = namedtuple('Point', ['layer', 'row', 'key'])
 # hardcode layer list
-# Layer order from yuanw.c: enum layers { BASE, SYM, NAV, WIN, PNT, NUM, TXT, FUN, REP }
+# Layer order from yuanw.c: enum layers { BASE, SYM, FUN, NAV, WIN, PNT, NUM, TXT,  REP }
 layer_dict = {
     "L0": "0 Base",
     "L1": "1 Sym",
-    "L2": "2 Nav",
-    "L3": "3 Win",
-    "L4": "4 PNT",
-    "L5": "5 Num",
-    "L6": "6 Txt",
-    "L7": "7 Fun",
+    "L2": "2 Fun",
+    "L3": "3 Nav",
+    "L4": "4 Win",
+    "L5": "5 Pnt",
+    "L6": "6 Num",
+    "L7": "7 Txt",
     "L8": "8 Rep"}
 
 layer_key_dict = {
