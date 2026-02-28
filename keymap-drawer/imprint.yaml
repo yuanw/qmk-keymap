@@ -1,32 +1,49 @@
 layout: {qmk_keyboard: cyboard/imprint/imprint_letters_only_no_bottom_row, layout_name: LAYOUT_let_no_bottom_row}
 layers:
   L0:
-  - [Q, Y, O, U, '=', X, L, D, P, Z]
-  - [HRM C, HRM I, HRM A, HRM E, '-', K, HRM H, HRM T, HRM N, HRM S]
-  - ['''', ',', LR DOT, ;, /, J, M, LR G, F, V]
-  - [ESC WIN, SPC NAV, ARCANE, REP TXT, R NUM, BSPC FUN]
+  - ['', Q, Y, O, U, '=', X, L, D, P]
+  - [Z, '', B, HRM C, HRM I, HRM A, HRM E, '-', K, HRM H]
+  - [HRM T, HRM N, HRM S, W, '', '''', ',', LR DOT, ;, /]
+  - [J, M, LR G, F, V, '', '', '', '', '']
+  - ['', '', ESC WIN, SPC NAV, ARCANE, BSPC FUN, REP TXT, R NUM]
   L1:
-  - ['`', '&', '%', PAST, '', '', '{', '}', $, ARROW]
-  - ['!', <, '>', EMAIL 1, '', '', (, ), '@', ^]
-  - ['~', \, ;, '|', \, '', '[', ']', '#', '']
-  - ['', '', '', '', '', '']
+  - ['', '`', '&', '%', PAST, '', '', '{', '}', $]
+  - [ARROW, '', B, '!', <, '>', EMAIL 1, '', '', (]
+  - [), '@', ^, W, '', '~', \, ;, '|', \]
+  - ['', '[', ']', '#', '', '', '', '', '', '']
+  - ['', '', '', '', '', '', '', '']
   L2:
-  - [QK BOOT, '', '', '', '', '', '', '', '', '']
+  - ['', QK BOOT, '', '', '', '', '', '', '', '']
+  - ['', '', B, '', '', '', '', '', '', '']
+  - ['', '', '', W, '', '', '', '', '', '']
   - ['', '', '', '', '', '', '', '', '', '']
-  - ['', '', '', '', '', '', '', '', '', '']
-  - ['', '', '', '', '', '']
+  - ['', '', '', '', '', '', '', '']
   L3:
+<<<<<<< HEAD
   - ['', '', '', '', '', PGUP, HOME, UP, END, APP SWCH]
   - ['', '', '', APP SWCH, '', PGDN, LEFT, DOWN, RIGHT, '']
   - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
   - ['', '', '', '', QK LLCK, '']
+||||||| parent of d70b8b3 (wip)
+  - ['', '', '', '', '', PGUP, HOME, UP, END, '']
+  - ['', '', '', '', '', PGDN, LEFT, DOWN, RIGHT, '']
+  - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
+  - ['', '', '', '', QK LLCK, '']
+=======
+  - ['', '', '', '', '', '', PGUP, HOME, UP, END]
+  - [APP SWCH, '', B, '', '', '', APP SWCH, '', PGDN, LEFT]
+  - [DOWN, RIGHT, '', W, '', '', '', '', '', '']
+  - [RDO, PST, CPY, CUT, UND, '', '', '', '', '']
+  - ['', '', '', '', '', '', '', QK LLCK]
+>>>>>>> d70b8b3 (wip)
   L4:
   - ['', '', '', '', '', '', '', '', '', '']
-  - ['', '', '', '', '', '', Alt+Gui+1, Alt+Gui+2, Alt+Gui+3, Alt+Gui+4]
-  - ['', '', '', '', '', '', Sft+Gui+1, Sft+Gui+2, Sft+Gui+3, Sft+Gui+4]
-  - ['', '', '', '', '', '']
+  - ['', '', B, '', '', '', '', '', '', Alt+Gui+1]
+  - [Alt+Gui+2, Alt+Gui+3, Alt+Gui+4, W, '', '', '', '', '', '']
+  - ['', Sft+Gui+1, Sft+Gui+2, Sft+Gui+3, Sft+Gui+4, '', '', '', '', '']
+  - ['', '', '', '', '', '', '', '']
   L5:
-  - - {t: ▽, type: trans}
+  - - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -37,8 +54,8 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - ''
+    - B
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -47,28 +64,41 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - W
+    - ''
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - QK MOUSE WHEEL UP
     - QK MOUSE WHEEL DOWN
     - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - [QK LLCK, BTN1, BTN2, '', '', '']
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - ['', '', QK LLCK, BTN1, BTN2, '', '', '']
   L6:
-  - [QK BOOT, '7', '8', '9', PAST, '', '', '', '', '']
-  - ['', '4', '5', '6', '', '', '', '', '', '']
-  - ['', '1', '2', '3', '', '', '', '', '', '']
-  - ['', '0', QK LLCK, '', '', '']
+  - ['', QK BOOT, '7', '8', '9', PAST, '', '', '', '']
+  - ['', '', B, '', '4', '5', '6', '', '', '']
+  - ['', '', '', W, '', '', '1', '2', '3', '']
+  - ['', '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '0', QK LLCK, '', '', '']
   L7:
-  - [QK BOOT, '8', '9', SECRET 1, '', '', '', '', '', '']
-  - [SELWORD, SELWBAK, SELLINE, SECRET 2, '', '', '', '', '', '']
-  - ['1', '2', '3', '', '', '', '', '', '', '']
-  - [QK LLCK, '-', '', '', '', '']
+  - ['', QK BOOT, '8', '9', SECRET 1, '', '', '', '', '']
+  - ['', '', B, SELWORD, SELWBAK, SELLINE, SECRET 2, '', '', '']
+  - ['', '', '', W, '', '1', '2', '3', '', '']
+  - ['', '', '', '', '', '', '', '', '', '']
+  - ['', '', QK LLCK, '-', '', '', '', '']
   L8:
   - ['', '', '', '', '', '', '', '', '', '']
-  - ['', '', QK AREP, LSFT, '', '', LSFT, QK AREP, '', '']
+  - ['', '', B, '', '', QK AREP, LSFT, '', '', LSFT]
+  - [QK AREP, '', '', W, '', '', '', '', '', '']
   - ['', '', '', '', '', '', '', '', '', '']
-  - ['', QK REP, '', '', QK REP, '']
+  - ['', '', '', QK REP, '', '', '', QK REP]

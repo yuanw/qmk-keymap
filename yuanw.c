@@ -181,7 +181,7 @@ static bool     g_last_key_on_right    = false;
 static bool     g_app_switcher_active  = false;
 static uint16_t g_app_switcher_timer   = 0;
 
-void matrix_scan_user(void) {
+static void app_switcher_task(void) {
     if (g_app_switcher_active && timer_elapsed(g_app_switcher_timer) > 750) {
         unregister_mods(MOD_BIT(KC_LGUI));
         g_app_switcher_active = false;

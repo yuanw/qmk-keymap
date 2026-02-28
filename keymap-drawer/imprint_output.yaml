@@ -1,6 +1,7 @@
 layers:
   0 Base:
-  - - Q
+  - - ''
+    - Q
     - Y
     - O
     - U
@@ -10,8 +11,10 @@ layers:
     - L
     - D
     - P
-    - Z
-  - - h: Meta
+  - - Z
+    - ''
+    - B
+    - h: Meta
       t: C
     - h: $$mdi:apple-keyboard-option$$
       t: I
@@ -27,13 +30,15 @@ layers:
     - h: $$mdi:apple-keyboard-shift$$
       t: H
       type: ghost
-    - h: $$mdi:apple-keyboard-control$$
+  - - h: $$mdi:apple-keyboard-control$$
       t: T
     - h: $$mdi:apple-keyboard-option$$
       t: N
     - h: Meta
       t: S
-  - - s: '"'
+    - W
+    - ''
+    - s: '"'
       t: ''''
     - s: <
       t: ','
@@ -45,13 +50,20 @@ layers:
       t: ;
     - s: '?'
       t: /
-    - J
+  - - J
     - M
     - h: Sym
       t: G
     - F
     - V
-  - - h: Win
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - h: Win
       s: Enter
       t: Esc
     - h: Nav
@@ -59,11 +71,12 @@ layers:
       t: Spc
       type: ghost
     - ARCANE
+    - BSPC FUN
     - REP TXT
     - R NUM
-    - BSPC FUN
   1 Sym:
-  - - '`'
+  - - ''
+    - '`'
     - '&'
     - '%'
     - PAST
@@ -72,38 +85,69 @@ layers:
     - '{'
     - '}'
     - $
-    - ARROW
-  - - '!'
+  - - ARROW
+    - ''
+    - B
+    - '!'
     - <
     - '>'
     - EMAIL 1
     - ''
     - ''
     - (
-    - )
+  - - )
     - '@'
     - ^
-  - - '~'
+    - W
+    - ''
+    - '~'
     - \
     - *id001
     - '|'
     - \
-    - ''
+  - - ''
     - '['
     - ']'
     - '#'
     - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   - - ''
+    - ''
+    - ''
     - ''
     - ''
     - ''
     - ''
     - ''
   2 Nav:
-  - - QK BOOT
+  - - ''
+    - QK BOOT
     - ''
     - ''
     - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - B
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - W
     - ''
     - ''
     - ''
@@ -123,14 +167,6 @@ layers:
   - - ''
     - ''
     - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
-  - - ''
     - ''
     - ''
     - ''
@@ -142,37 +178,62 @@ layers:
     - ''
     - ''
     - ''
+    - ''
     - PGUP
     - HOME
     - "\u25B3"
     - END
+<<<<<<< HEAD
     - APP SWCH
   - - ''
+||||||| parent of d70b8b3 (wip)
+    - ''
+  - - ''
+=======
+  - - APP SWCH
+    - ''
+    - B
+>>>>>>> d70b8b3 (wip)
     - ''
     - ''
+<<<<<<< HEAD
+||||||| parent of d70b8b3 (wip)
+    - ''
+=======
+    - ''
+>>>>>>> d70b8b3 (wip)
     - APP SWCH
     - ''
     - PGDN
     - "\u25C1"
-    - Down
+  - - Down
     - RIGHT
     - ''
-  - - ''
+    - W
     - ''
     - ''
     - ''
     - ''
-    - RDO
+    - ''
+    - ''
+  - - RDO
     - PST
     - CPY
     - CUT
     - UND
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   - - ''
     - ''
     - ''
     - ''
-    - $$mdi:lock$$
     - ''
+    - ''
+    - ''
+    - $$mdi:lock$$
   4 PNT:
   - - ''
     - ''
@@ -186,34 +247,44 @@ layers:
     - ''
   - - ''
     - ''
+    - B
+    - ''
+    - ''
     - ''
     - ''
     - ''
     - ''
     - "\u2318\u23251"
-    - "\u2318\u23252"
+  - - "\u2318\u23252"
     - "\u2318\u23253"
     - Alt+Gui+4
+    - W
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   - - ''
-    - ''
-    - ''
-    - ''
-    - ''
-    - ''
     - Sft+Gui+1
     - Sft+Gui+2
     - Sft+Gui+3
     - Sft+Gui+4
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
   - - ''
+    - ''
+    - ''
     - ''
     - ''
     - ''
     - ''
     - ''
   5 Num:
-  - - h: ''
-      t: "\u25BD"
-      type: trans
+  - - ''
     - h: ''
       t: "\u25BD"
       type: trans
@@ -244,12 +315,8 @@ layers:
   - - h: ''
       t: "\u25BD"
       type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
+    - ''
+    - B
     - h: ''
       t: "\u25BD"
       type: trans
@@ -272,6 +339,17 @@ layers:
       t: "\u25BD"
       type: trans
   - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - W
+    - ''
+    - h: ''
       t: "\u25BD"
       type: trans
     - h: ''
@@ -282,7 +360,7 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - h: ''
+  - - h: ''
       t: "\u25BD"
       type: trans
     - h: ''
@@ -297,14 +375,22 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-  - - $$mdi:lock$$
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - $$mdi:lock$$
     - BTN1
     - BTN2
     - ''
     - ''
     - ''
   6 Txt:
-  - - QK BOOT
+  - - ''
+    - QK BOOT
     - '7'
     - '8'
     - '9'
@@ -313,35 +399,47 @@ layers:
     - ''
     - ''
     - ''
-    - ''
   - - ''
+    - ''
+    - B
+    - ''
     - '4'
     - '5'
     - '6'
     - ''
     - ''
     - ''
-    - ''
-    - ''
-    - ''
   - - ''
+    - ''
+    - ''
+    - W
+    - ''
+    - ''
     - '1'
     - '2'
     - '3'
     - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
     - ''
     - ''
     - ''
     - ''
     - ''
   - - ''
+    - ''
+    - ''
     - '0'
     - $$mdi:lock$$
     - ''
     - ''
     - ''
   7 Fun:
-  - - QK BOOT
+  - - ''
+    - QK BOOT
     - '8'
     - '9'
     - SECRET 1
@@ -350,28 +448,39 @@ layers:
     - ''
     - ''
     - ''
+  - - ''
     - ''
-  - - SELWORD
+    - B
+    - SELWORD
     - SELWBAK
     - SELLINE
     - SECRET 2
     - ''
     - ''
     - ''
+  - - ''
     - ''
     - ''
+    - W
     - ''
-  - - '1'
+    - '1'
     - '2'
     - '3'
     - ''
     - ''
+  - - ''
     - ''
     - ''
     - ''
     - ''
     - ''
-  - - $$mdi:lock$$
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - $$mdi:lock$$
     - *id002
     - ''
     - ''
@@ -390,12 +499,22 @@ layers:
     - ''
   - - ''
     - ''
+    - B
+    - ''
+    - ''
     - '*'
     - "\u21E7"
     - ''
     - ''
     - "\u21E7"
-    - '*'
+  - - '*'
+    - ''
+    - ''
+    - W
+    - ''
+    - ''
+    - ''
+    - ''
     - ''
     - ''
   - - ''
@@ -409,8 +528,10 @@ layers:
     - ''
     - ''
   - - ''
-    - "\u21BB"
     - ''
     - ''
     - "\u21BB"
     - ''
+    - ''
+    - ''
+    - "\u21BB"
