@@ -19,23 +19,11 @@ layers:
   - ['', '', '', '', '', '', '', '', '', '']
   - ['', '', '', '', '', '', '', '']
   L3:
-<<<<<<< HEAD
-  - ['', '', '', '', '', PGUP, HOME, UP, END, APP SWCH]
-  - ['', '', '', APP SWCH, '', PGDN, LEFT, DOWN, RIGHT, '']
-  - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
-  - ['', '', '', '', QK LLCK, '']
-||||||| parent of d70b8b3 (wip)
-  - ['', '', '', '', '', PGUP, HOME, UP, END, '']
-  - ['', '', '', '', '', PGDN, LEFT, DOWN, RIGHT, '']
-  - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
-  - ['', '', '', '', QK LLCK, '']
-=======
   - ['', '', '', '', '', '', PGUP, HOME, UP, END]
   - [APP SWCH, '', B, '', '', '', APP SWCH, '', PGDN, LEFT]
   - [DOWN, RIGHT, '', W, '', '', '', '', '', '']
   - [RDO, PST, CPY, CUT, UND, '', '', '', '', '']
   - ['', '', '', '', '', '', '', QK LLCK]
->>>>>>> d70b8b3 (wip)
   L4:
   - ['', '', '', '', '', '', '', '', '', '']
   - ['', '', B, '', '', '', '', '', '', Alt+Gui+1]
