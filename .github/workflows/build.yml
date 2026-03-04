@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        keyboard: [imprint, charybdis]
+        keyboard: [imprint, charybdis, spankbd]
 
     steps:
       - name: Checkout
