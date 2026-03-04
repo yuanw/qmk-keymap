@@ -1,0 +1,24 @@
+#pragma once
+
+#include "../../../../../config_yuanw.h"
+
+// RP2040 double-tap reset support
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
+
+// Split serial (RP2040 USART on GP1)
+#define SERIAL_USART_TX_PIN GP1
+#define SPLIT_WATCHDOG_ENABLE
+#define SPLIT_WATCHDOG_TIMEOUT 3000
+
+// Extended reports for better precision
+#define MOUSE_EXTENDED_REPORT
+#define WHEEL_EXTENDED_REPORT
+
+// Dual TPS43 config (no rotation needed when both sides have TPS43)
+#define AZOTEQ_IQS5XX_TPS43
+#define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
+
+// PNT layer auto-activation timeout and threshold
+#define SPANKBD_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
+#define SPANKBD_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 8
