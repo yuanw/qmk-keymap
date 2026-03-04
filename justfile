@@ -16,12 +16,26 @@ list:
 build target:
     #!/usr/bin/env bash
     just setup $(just _submodule {{ target }})
-    qmk compile -kb $(just _keyboard {{ target }}) -km yuanw
+    if [ "{{ target }}" = "spankbd" ]; then
+      qmk compile -kb $(just _keyboard {{ target }}) -km yuanw -e SIDE=left  -e TARGET=holykeebs_spankbd_yuanw_left
+      qmk compile -kb $(just _keyboard {{ target }}) -km yuanw -e SIDE=right -e TARGET=holykeebs_spankbd_yuanw_right
+    else
+      qmk compile -kb $(just _keyboard {{ target }}) -km yuanw
+    fi
 
-flash target:
+# side is required for spankbd (left|right), unused for other keyboards
+flash target side="":
     #!/usr/bin/env bash
     just setup $(just _submodule {{ target }})
-    qmk flash -kb $(just _keyboard {{ target }}) -km yuanw
+    if [ "{{ target }}" = "spankbd" ]; then
+      if [ -z "{{ side }}" ]; then
+        echo "Usage: just flash spankbd left|right"
+        exit 1
+      fi
+      qmk flash -kb $(just _keyboard {{ target }}) -km yuanw -e SIDE={{ side }}
+    else
+      qmk flash -kb $(just _keyboard {{ target }}) -km yuanw
+    fi
 
 
 # Setup submodule and link directories to submodules
