@@ -112,6 +112,7 @@ _keyboard keyboard:
       echo "{{ spankbdNS }}"
     else
       printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
+      exit 1
     fi
 
 # Returns the submodule directory for a keyboard
@@ -125,6 +126,7 @@ _submodule keyboard:
       echo "holykeebs_qmk"
     else
       printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
+      exit 1
     fi
 
 # Generate keymap SVG visualization
