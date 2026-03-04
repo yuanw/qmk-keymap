@@ -23,6 +23,9 @@
 #define AZOTEQ_IQS5XX_TPS43
 #define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
 
-// PNT layer auto-activation timeout and threshold
+// PNT layer auto-activation timeout and threshold (right side cursor only)
 #define SPANKBD_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
 #define SPANKBD_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 8
+
+// Left TPS43 scroll: divisor to convert raw movement to scroll ticks
+#define SPANKBD_SCROLL_DIVISOR 8
