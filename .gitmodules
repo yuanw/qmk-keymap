@@ -13,3 +13,6 @@
 	path = svalboard
 	url = https://github.com/svalboard/vial-qmk.git
 	branch = vial
+[submodule "holykeebs_qmk"]
+	path = holykeebs_qmk
+	url = https://github.com/holykeebs/qmk_firmware.git
