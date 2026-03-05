@@ -7,6 +7,7 @@ yellow := '\033[1;33m'
 blue := '\033[1;34m'
 charybdisNS := "bastardkb/charybdis/3x5"
 imprintNS := "cyboard/imprint/imprint_letters_only_no_bottom_row"
+spankbdNS := "holykeebs/spankbd"
 
 list:
     @just --list
@@ -14,13 +15,27 @@ list:
 # build with target parameter
 build target:
     #!/usr/bin/env bash
-    just setup {{ target }}
-    qmk compile -kb $(just _keyboard {{ target }}) -km yuanw
+    just setup $(just _submodule {{ target }})
+    if [ "{{ target }}" = "spankbd" ]; then
+      qmk compile -kb $(just _keyboard {{ target }}) -km yuanw -e SIDE=left  -e TARGET=holykeebs_spankbd_yuanw_left
+      qmk compile -kb $(just _keyboard {{ target }}) -km yuanw -e SIDE=right -e TARGET=holykeebs_spankbd_yuanw_right
+    else
+      qmk compile -kb $(just _keyboard {{ target }}) -km yuanw
+    fi
 
-flash target:
+# side is required for spankbd (left|right), unused for other keyboards
+flash target side="":
     #!/usr/bin/env bash
-    just setup {{ target }}
-    qmk flash -kb $(just _keyboard {{ target }}) -km yuanw
+    just setup $(just _submodule {{ target }})
+    if [ "{{ target }}" = "spankbd" ]; then
+      if [ -z "{{ side }}" ]; then
+        echo "Usage: just flash spankbd left|right"
+        exit 1
+      fi
+      qmk flash -kb $(just _keyboard {{ target }}) -km yuanw -e SIDE={{ side }}
+    else
+      qmk flash -kb $(just _keyboard {{ target }}) -km yuanw
+    fi
 
 
 # Setup submodule and link directories to submodules
@@ -35,6 +50,9 @@ init:
     fi
     if [ "$(git config submodule.svalboard.ignore)" != "all" ]; then
     git config submodule.svalboard.ignore all
+    fi
+    if [ "$(git config submodule.holykeebs_qmk.ignore)" != "all" ]; then
+    git config submodule.holykeebs_qmk.ignore all
     fi
 
 # Update svalboard git submodule
@@ -104,8 +122,11 @@ _keyboard keyboard:
       echo "{{ imprintNS }}"
     elif [ "{{ keyboard }}" = "charybdis" ]; then
       echo "{{ charybdisNS }}"
+    elif [ "{{ keyboard }}" = "spankbd" ]; then
+      echo "{{ spankbdNS }}"
     else
       printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
+      exit 1
     fi
 
 # Returns the submodule directory for a keyboard
@@ -115,8 +136,11 @@ _submodule keyboard:
       echo "imprint"
     elif [ "{{ keyboard }}" = "charybdis" ]; then
       echo "charybdis"
+    elif [ "{{ keyboard }}" = "spankbd" ]; then
+      echo "holykeebs_qmk"
     else
       printf "{{ red }}Failed: Unknown keyboard: {{ keyboard }}\n"
+      exit 1
     fi
 
 # Generate keymap SVG visualization
@@ -125,9 +149,10 @@ keymap target:
     if [ "{{ target }}" = "all" ]; then
       just keymap imprint
       just keymap charybdis
+      just keymap spankbd
       exit 0
     fi
-    just setup {{ target }}
+    just setup $(just _submodule {{ target }})
     kb=$(just _keyboard {{ target }})
     submod=$(just _submodule {{ target }})
     outdir="keymap-drawer"
@@ -150,15 +175,21 @@ keymap target:
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
       keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
+    elif [ "{{ target }}" = "spankbd" ]; then
+      # Span LAYOUT_LR maps 1:1 to LAYOUT_split_3x5_3, just fix the layout name
+      sed -i 's/"LAYOUT_LR"/"LAYOUT_split_3x5_3"/' $outdir/{{ target }}.json
+      KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
+      python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
+      keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
     fi
     echo "{{ green }}Generated $outdir/{{ target }}.svg{{ reset }}"
 
 # Generate compile_commands.json for clangd LSP
 compiledb target:
     #!/usr/bin/env bash
-    just setup {{ target }}
+    just setup $(just _submodule {{ target }})
     qmk compile --compiledb -kb $(just _keyboard {{ target }}) -km yuanw
-    cp {{ target }}/compile_commands.json .
+    cp $(just _submodule {{ target }})/compile_commands.json .
 
 # Format C files under keyboards directory
 format:
