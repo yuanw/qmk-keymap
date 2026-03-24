@@ -377,7 +377,7 @@ layers:
     - ''
   6 Num:
   - - ''
-    - QK BOOT
+    - ''
     - '7'
     - '8'
     - '9'
@@ -426,7 +426,7 @@ layers:
     - ''
   7 Txt:
   - - ''
-    - QK BOOT
+    - ''
     - '8'
     - '9'
     - SECRET 1
@@ -435,7 +435,7 @@ layers:
     - ''
     - ''
     - ''
-  - - ''
+  - - QK BOOT
     - ''
     - B
     - SELWORD
