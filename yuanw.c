@@ -79,6 +79,8 @@ const uint16_t PROGMEM combo_arep_thumb[] = {R_NUM, SPC_NAV, COMBO_END};
 // No physical BSPC_FUN key: reach it via combo.
 const uint16_t PROGMEM combo_bspc_thumb[] = {R_NUM, REP_TXT, COMBO_END};
 #endif
+// K and H => one-shot FUN layer (mirrors getreuer's F+N => OSL(FUN))
+const uint16_t PROGMEM combo_k_h[] = {KC_K, HRM_H, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_rep_thumb, KC_B),
     COMBO(combo_rep_top, KC_W),
@@ -86,6 +88,7 @@ combo_t key_combos[] = {
 #ifdef KEYBOARD_5_THUMBS
     COMBO(combo_bspc_thumb, BSPC_FUN),
 #endif
+    COMBO(combo_k_h, OSL(FUN)),
 };
 
 // clang-format off
@@ -119,10 +122,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [FUN] = LAYOUT_LR(
-        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
+        QK_BOOT, KC_F7,   KC_F8,   KC_F9,   KC_F10,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                   KC_ESC,  GLOBE_SPC, MY_GLOBE,           XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NAV] = LAYOUT_LR(
@@ -473,6 +476,22 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
         // switcher; each subsequent press taps Tab to cycle. After 750ms of
         // inactivity Cmd is released (via matrix_scan_user), confirming the
         // selected app.
+        case MY_GLOBE:
+            if (record->event.pressed) {
+                host_consumer_send(0x29D);
+            } else {
+                host_consumer_send(0);
+            }
+            return false;
+
+        case GLOBE_SPC:
+            if (record->event.pressed) {
+                host_consumer_send(0x29D);
+                tap_code(KC_SPC);
+                host_consumer_send(0);
+            }
+            return false;
+
         case APP_SWCH:
             if (record->event.pressed) {
                 if (!g_app_switcher_active) {

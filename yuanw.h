@@ -29,5 +29,7 @@ enum my_keycodes {
     M_NOOP,
     M_SON,
     ARCANE,
-    APP_SWCH
+    APP_SWCH,
+    MY_GLOBE,
+    GLOBE_SPC
 };
