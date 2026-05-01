@@ -307,9 +307,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case SPC_NAV:
                 return M_THE;
 
-                // n -> '
+                // n -> n't
             case KC_N:
-                return KC_QUOT;
+                return M_NT;
 
             // Fix SFBs and awkward strokes.
             case KC_A:
@@ -607,6 +607,9 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 break;
             case M_SON:
                 MAGIC_STRING(/*s*/ "on", KC_S);
+                break;
+            case M_NT:
+                MAGIC_STRING("n't", KC_T);
                 break;
             case M_UPDIR:
                 MAGIC_STRING(/*.*/ "./", UPDIR);

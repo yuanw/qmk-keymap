@@ -28,6 +28,7 @@ enum my_keycodes {
     M_NBSP,
     M_NOOP,
     M_SON,
+    M_NT,
     ARCANE,
     APP_SWCH,
     MY_GLOBE,
