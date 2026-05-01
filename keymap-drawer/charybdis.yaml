@@ -16,8 +16,8 @@ layers:
   - ['', F1, F2, F3, F12, '', '', '', '', '']
   - [ESC, GLOBE SPC, MY GLOBE, '', '', '']
   L3:
-  - ['', '', '', '', '', PGUP, HOME, UP, END, APP SWCH]
-  - ['', '', '', APP SWCH, '', PGDN, LEFT, DOWN, RIGHT, '']
+  - ['', '', '', '', '', PGUP, HOME, UP, END, Gui+TAB]
+  - ['', '', '', Gui+TAB, '', PGDN, LEFT, DOWN, RIGHT, '']
   - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
   - ['', '', '', '', QK LLCK, '']
   L4:

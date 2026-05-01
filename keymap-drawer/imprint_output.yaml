@@ -183,13 +183,13 @@ layers:
     - HOME
     - "\u25B3"
     - END
-  - - APP SWCH
+  - - Gui+TAB
     - ''
     - B
     - ''
     - ''
     - ''
-    - APP SWCH
+    - Gui+TAB
     - ''
     - PGDN
     - "\u25C1"

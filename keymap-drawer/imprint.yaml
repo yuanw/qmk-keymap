@@ -20,7 +20,7 @@ layers:
   - ['', '', '', '', '', '', '', '']
   L3:
   - ['', '', '', '', '', '', PGUP, HOME, UP, END]
-  - [APP SWCH, '', B, '', '', '', APP SWCH, '', PGDN, LEFT]
+  - [Gui+TAB, '', B, '', '', '', Gui+TAB, '', PGDN, LEFT]
   - [DOWN, RIGHT, '', W, '', '', '', '', '', '']
   - [RDO, PST, CPY, CUT, UND, '', '', '', '', '']
   - [QK LLCK, '', '', '', '', '', '', '']
