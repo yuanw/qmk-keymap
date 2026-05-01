@@ -12,6 +12,9 @@ spankbdNS := "holykeebs/spankbd"
 list:
     @just --list
 
+clean:
+    rm -rf imprint/.build charybdis/.build holykeebs_qmk/.build svalboard/.build
+
 # build with target parameter
 build target:
     #!/usr/bin/env bash
