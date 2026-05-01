@@ -30,6 +30,5 @@ void matrix_scan_user(void) {
         auto_pointer_layer_timer = 0;
         layer_off(PNT);
     }
-    app_switcher_task();
 }
 #endif

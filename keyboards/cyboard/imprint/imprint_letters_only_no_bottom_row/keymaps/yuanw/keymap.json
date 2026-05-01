@@ -1,6 +1,7 @@
 {
   "modules": [
       "getreuer/select_word",
-      "getreuer/custom_shift_keys"
+      "getreuer/custom_shift_keys",
+      "getreuer/cyclotab"
   ]
 }
