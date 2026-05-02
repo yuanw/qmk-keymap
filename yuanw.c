@@ -129,16 +129,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [NAV] = LAYOUT_LR(
-                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  LCMD(KC_TAB),
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  LCMD(KC_TAB),
         XXXXXXX, XXXXXXX, XXXXXXX, LCMD(KC_TAB), XXXXXXX,                    KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       RDO,     PST,     CPY,     CUT,     UND,
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, QK_LLCK, XXXXXXX
      ),
 
     [WIN] = LAYOUT_LR(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, LAG(KC_1), LAG(KC_2), LAG(KC_3), LAG(KC_4),
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, LSG(KC_1), LSG(KC_2), LSG(KC_3), LSG(KC_4),
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       C(A(1)), XXXXXXX,   XXXXXXX,   XXXXXXX,   G(KC_X),
+        XXXXXXX, XXXXXXX, KC_RCTL, KC_RSFT, XXXXXXX,                       C(A(2)), G(KC_4), G(KC_5), G(KC_6), G(KC_Z),
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       C(A(3)), G(KC_1), G(KC_2), G(KC_3), G(KC_C),
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,   XXXXXXX
     ),
 
