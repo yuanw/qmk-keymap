@@ -590,7 +590,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                 MAGIC_STRING(/*s*/ "on", KC_S);
                 break;
             case M_NT:
-                MAGIC_STRING("n't", KC_T);
+                MAGIC_STRING("'t", KC_T);
                 break;
             case M_UPDIR:
                 MAGIC_STRING(/*.*/ "./", UPDIR);
