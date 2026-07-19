@@ -78,6 +78,9 @@ const uint16_t PROGMEM combo_arep_thumb[] = {R_NUM, SPC_NAV, COMBO_END};
 #ifdef KEYBOARD_5_THUMBS
 // No physical BSPC_FUN key: reach it via combo.
 const uint16_t PROGMEM combo_bspc_thumb[] = {R_NUM, REP_TXT, COMBO_END};
+#    ifdef KEYBOARD_CHARYBDIS
+const uint16_t PROGMEM combo_j_k_bspc[] = {KC_J, KC_K, COMBO_END};
+#    endif
 #endif
 // K and H => one-shot FUN layer (mirrors getreuer's F+N => OSL(FUN))
 const uint16_t PROGMEM combo_k_h[] = {KC_K, HRM_H, COMBO_END};
@@ -87,6 +90,9 @@ combo_t key_combos[] = {
     COMBO(combo_arep_thumb, KC_BSPC),
 #ifdef KEYBOARD_5_THUMBS
     COMBO(combo_bspc_thumb, BSPC_FUN),
+#    ifdef KEYBOARD_CHARYBDIS
+    COMBO(combo_j_k_bspc, KC_BSPC),
+#    endif
 #endif
     COMBO(combo_k_h, OSL(FUN)),
 };
@@ -176,9 +182,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     {SPC_NAV, KC_TAB},  // Shift SPC is tab.
     {ESC_WIN, KC_ENT},  // Shift esc is enter.
     {BSPC_FUN, KC_DEL}, // Shift BSPC is DEL
-#ifdef KEYBOARD_CHARYBDIS
-    {QK_REP, KC_BSPC},  // Shift Repeat is Backspace.
-#endif
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
