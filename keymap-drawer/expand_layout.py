@@ -16,7 +16,7 @@ def expand_layer(layer_36):
 
     LAYOUT_let_no_bottom_row output (48 keys):
       X   L00 L01 L02 L03 L04    R00 R01 R02 R03 R04 X    <- Row 0 (12 keys)
-      B   L10 L11 L12 L13 L14    R10 R11 R12 R13 R14 W    <- Row 1 (12 keys)
+      X   L10 L11 L12 L13 L14    R10 R11 R12 R13 R14 X    <- Row 1 (12 keys)
       X   L20 L21 L22 L23 L24    R20 R21 R22 R23 R24 X    <- Row 2 (12 keys)
                   LT0 LT1 LT2    RT0 RT1 RT2              <- Top thumbs: active arc (6 keys)
                     X   X   X         X   X   X           <- Bottom thumbs: hidden (6 keys)
@@ -32,11 +32,11 @@ def expand_layer(layer_36):
     layer_48.extend(layer_36[5:10])  # R00-R04
     layer_48.append("KC_NO")
 
-    # Row 1: B + L10-L14 + R10-R14 + W
-    layer_48.append("KC_B")
+    # Row 1: X + L10-L14 + R10-R14 + X
+    layer_48.append("KC_NO")
     layer_48.extend(layer_36[10:15])  # L10-L14
     layer_48.extend(layer_36[15:20])  # R10-R14
-    layer_48.append("KC_W")
+    layer_48.append("KC_NO")
 
     # Row 2: X + L20-L24 + R20-R24 + X
     layer_48.append("KC_NO")
