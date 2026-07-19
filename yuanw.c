@@ -176,6 +176,9 @@ const custom_shift_key_t custom_shift_keys[] = {
     {SPC_NAV, KC_TAB},  // Shift SPC is tab.
     {ESC_WIN, KC_ENT},  // Shift esc is enter.
     {BSPC_FUN, KC_DEL}, // Shift BSPC is DEL
+#ifdef KEYBOARD_CHARYBDIS
+    {QK_REP, KC_BSPC},  // Shift Repeat is Backspace.
+#endif
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
