@@ -170,6 +170,8 @@ keymap target:
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
       # Generate custom layout with thumb keys positioned to match physical keyboard
       python $outdir/generate_imprint_layout.py
+      # Add a drawing-only virtual trackball in the center gap.
+      python $outdir/add_imprint_trackball.py
       keymap draw $outdir/{{ target }}_output.yaml -j $outdir/imprint_layout.json > $outdir/{{ target }}.svg
       python $outdir/hide_empty_keys.py $outdir/{{ target }}.svg
     elif [ "{{ target }}" = "charybdis" ]; then

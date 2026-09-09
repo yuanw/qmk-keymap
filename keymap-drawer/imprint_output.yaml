@@ -73,6 +73,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   1 Sym:
   - - ''
     - '`'
@@ -122,6 +128,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   2 Fun:
   - - ''
     - QK BOOT
@@ -171,6 +183,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   3 Nav:
   - - ''
     - ''
@@ -180,7 +198,7 @@ layers:
     - ''
     - PGUP
     - HOME
-    - "\u25B3"
+    - △
     - END
   - - Gui+TAB
     - ''
@@ -191,7 +209,7 @@ layers:
     - Gui+TAB
     - ''
     - PGDN
-    - "\u25C1"
+    - ◁
   - - Down
     - RIGHT
     - ''
@@ -220,6 +238,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   4 Win:
   - - ''
     - ''
@@ -236,8 +260,8 @@ layers:
     - ''
     - ''
     - ''
-    - "\u2303"
-    - "\u21E7"
+    - ⌃
+    - ⇧
     - ''
     - Ctl+Alt+2
     - Gui+4
@@ -269,97 +293,103 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   5 Pnt:
   - - ''
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
   - - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - ''
     - ''
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
   - - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - ''
     - ''
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - QK MOUSE WHEEL UP
     - QK MOUSE WHEEL DOWN
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
   - - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - h: ''
-      t: "\u25BD"
+      t: ▽
       type: trans
     - ''
     - $$mdi:lock$$
@@ -374,6 +404,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   6 Num:
   - - ''
     - ''
@@ -423,6 +459,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   7 Txt:
   - - ''
     - ''
@@ -472,6 +514,12 @@ layers:
     - ''
     - ''
     - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
   8 Rep:
   - - ''
     - ''
@@ -489,10 +537,10 @@ layers:
     - ''
     - ''
     - '*'
-    - "\u21E7"
+    - ⇧
     - ''
     - ''
-    - "\u21E7"
+    - ⇧
   - - '*'
     - ''
     - ''
@@ -510,14 +558,24 @@ layers:
     - ''
     - ''
     - ''
-    - "\u21BB"
+    - ↻
     - ''
     - ''
-  - - "\u21BB"
-    - ''
-    - ''
-    - ''
+  - - ↻
     - ''
     - ''
     - ''
     - ''
+    - ''
+    - ''
+    - ''
+    - t: Trackball
+      h: Left
+      type: trackball
+    - t: Trackball
+      h: Right
+      type: trackball
+draw_config:
+  svg_extra_style: "rect.trackball {\n    fill: #b32020;\n    rx: 999;\n    ry: 999;\n\
+    }\ntext.trackball {\n    fill: white;\n    stroke: #24292e;\n    stroke-width:\
+    \ 3px;\n    paint-order: stroke;\n}\n"
