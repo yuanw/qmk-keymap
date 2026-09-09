@@ -68,6 +68,26 @@ enum keycode_aliases {
 
     LR_DOT = LT(SYM, KC_DOT),
     LR_G   = LT(SYM, KC_G),
+
+#ifdef KEYBOARD_IMPRINT
+    L_DPI_DN = LEFT_POINTER_DEFAULT_DPI_REVERSE,
+    L_DPI_UP = LEFT_POINTER_DEFAULT_DPI_FORWARD,
+    L_SNP    = LEFT_SNIPING_MODE,
+    L_DRG_TG = LEFT_DRAGSCROLL_MODE_TOGGLE,
+    R_DRG_TG = RIGHT_DRAGSCROLL_MODE_TOGGLE,
+    R_SNP    = RIGHT_SNIPING_MODE,
+    R_DPI_UP = RIGHT_POINTER_DEFAULT_DPI_FORWARD,
+    R_DPI_DN = RIGHT_POINTER_DEFAULT_DPI_REVERSE,
+#else
+    L_DPI_DN = KC_NO,
+    L_DPI_UP = KC_NO,
+    L_SNP    = KC_NO,
+    L_DRG_TG = KC_NO,
+    R_DRG_TG = KC_NO,
+    R_SNP    = KC_NO,
+    R_DPI_UP = KC_NO,
+    R_DPI_DN = KC_NO,
+#endif
 };
 
 // Shared combos for QK_REP and QK_AREP access
@@ -128,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [FUN] = LAYOUT_LR(
-        QK_BOOT, KC_F7,   KC_F8,   KC_F9,   KC_F10,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        QK_BOOT, KC_F7,   KC_F8,   KC_F9,   KC_F10,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,
         XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    KC_ESC,  GLOBE_SPC, MY_GLOBE,           XXXXXXX, XXXXXXX, XXXXXXX
@@ -149,9 +169,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [PNT] = LAYOUT_LR(
-        _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______,
-        _______, _______, QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,                       _______, _______, _______, _______, _______,
+        L_DPI_DN, L_DPI_UP, L_SNP,    L_DRG_TG, _______,                 _______, R_DRG_TG, R_SNP,    R_DPI_UP, R_DPI_DN,
+        _______,  _______,  _______,  _______,  _______,                 _______, _______,  _______,  _______,  _______,
+        _______,  _______,  QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,      _______, _______,  _______,  _______,  _______,
                                    QK_LLCK, KC_BTN1, KC_BTN2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
