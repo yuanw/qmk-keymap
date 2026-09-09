@@ -14,7 +14,7 @@ layers:
   - ['', '', '', '', '', '', '', '']
   L2:
   - ['', QK BOOT, F7, F8, F9, F10, '', '', '', '']
-  - ['', '', '', '', F4, F5, F6, F11, '', '']
+  - [EE CLR, '', '', '', F4, F5, F6, F11, '', '']
   - ['', '', '', '', '', '', F1, F2, F3, F12]
   - ['', '', '', '', '', '', ESC, GLOBE SPC, MY GLOBE, '']
   - ['', '', '', '', '', '', '', '']
@@ -32,16 +32,16 @@ layers:
   - ['', '', '', '', '', '', '', '']
   L5:
   - - ''
+    - L DPI DN
+    - L DPI UP
+    - L SNP
+    - L DRG TG
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
+    - R DRG TG
+    - R SNP
+    - R DPI UP
+  - - R DPI DN
     - ''
     - ''
     - {t: ▽, type: trans}
