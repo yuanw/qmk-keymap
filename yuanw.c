@@ -427,9 +427,9 @@ static void handle_arcane(keyrecord_t *record) {
         g_arcane_is_repeat = (arcane_on_right != g_last_key_on_right);
     }
     if (g_arcane_is_repeat) {
-        repeat_key_invoke(&record->event);     // same hand → repeat
+        repeat_key_invoke(&record->event);     // opposite hand → repeat
     } else {
-        alt_repeat_key_invoke(&record->event); // opposite hand → magic
+        alt_repeat_key_invoke(&record->event); // same hand → magic
     }
 }
 
@@ -553,7 +553,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
                  switch (detected_host_os()) {
                     case OS_MACOS:
                     case OS_IOS:
-                        tap_code16(LCMD(KC_Z));
+                        tap_code16(SCMD(KC_Z));
                         break;
                     default:
                         tap_code16(KC_AGIN);
