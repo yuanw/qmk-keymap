@@ -8,9 +8,10 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
-# Key positions to hide: outer edge columns (0,11,24,35) and bottom thumb
-# cluster (42-47) which is empty — active thumb keys are in the top arc (36-41).
-HIDDEN_KEYPOS = {0, 11, 24, 35, 42, 43, 44, 45, 46, 47}
+# Key positions to hide: outer edge columns that are blank on the Imprint
+# (0, 11, 12, 23, 24, 35) and the bottom thumb cluster (42-47), which is
+# empty — active thumb keys are in the top arc (36-41).
+HIDDEN_KEYPOS = {0, 11, 12, 23, 24, 35, 42, 43, 44, 45, 46, 47}
 
 
 def process_svg(svg_content: str, hidden_positions: set[int] = HIDDEN_KEYPOS) -> str:
@@ -50,7 +51,7 @@ def main():
     parser.add_argument(
         "--positions",
         type=str,
-        help="Comma-separated list of keypos numbers to hide (default: 0,11,24,35,36-41)",
+        help="Comma-separated list of keypos numbers to hide (default: 0,11,12,23,24,35,42-47)",
     )
 
     args = parser.parse_args()
