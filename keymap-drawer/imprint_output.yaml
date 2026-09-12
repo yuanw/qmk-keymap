@@ -306,18 +306,14 @@ layers:
     - L DPI-
     - L DPI+
     - L Snipe
-    - 'L Scroll
-
-      Toggle'
+    - ''
     - h: ''
       t: ▽
       type: trans
     - h: ''
       t: ▽
       type: trans
-    - 'R Scroll
-
-      Toggle'
+    - ''
     - R Snipe
     - R DPI+
   - - R DPI-
@@ -383,8 +379,8 @@ layers:
       type: trans
     - ''
     - $$mdi:lock$$
-    - BTN1
-    - BTN2
+    - QK MOUSE BUTTON 1
+    - QK MOUSE BUTTON 2
     - ''
   - - ''
     - ''
@@ -462,7 +458,9 @@ layers:
     - '9'
     - SECRET 1
     - ''
-    - ''
+    - 'EEPROM
+
+      Clear'
     - ''
     - ''
     - ''

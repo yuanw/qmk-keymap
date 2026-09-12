@@ -35,10 +35,10 @@ layers:
     - L DPI DN
     - L DPI UP
     - L SNP
-    - L DRG TG
+    - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - R DRG TG
+    - ''
     - R SNP
     - R DPI UP
   - - R DPI DN
@@ -68,8 +68,8 @@ layers:
     - {t: ▽, type: trans}
     - ''
     - QK LLCK
-    - BTN1
-    - BTN2
+    - QK MOUSE BUTTON 1
+    - QK MOUSE BUTTON 2
     - ''
   - ['', '', '', '', '', '', '', '']
   L6:
@@ -79,7 +79,7 @@ layers:
   - ['', '', '', '', '', '', '', '0', QK LLCK, '']
   - ['', '', '', '', '', '', '', '']
   L7:
-  - ['', '', '8', '9', SECRET 1, '', '', '', '', '']
+  - ['', '', '8', '9', SECRET 1, '', EE CLR, '', '', '']
   - [QK BOOT, '', '', SELWORD, SELWBAK, SELLINE, SECRET 2, '', '', '']
   - ['', '', '', '', '', '1', '2', '3', '', '']
   - ['', '', '', '', '', '', QK LLCK, '-', '', '']

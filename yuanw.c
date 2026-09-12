@@ -53,7 +53,7 @@ enum keycode_aliases {
 
     ESC_WIN  = LT(WIN, KC_ESC),
     SPC_NAV  = LT(NAV, KC_SPC),
-    BSPC_FUN = LT(TXT, KC_BSPC),
+    BSPC_FUN = LT(FUN, KC_BSPC),
     ENT_SYM  = LT(SYM, KC_ENT),
     R_NUM    = LT(NUM, KC_R),
     // https://getreuer.info/posts/keyboards/faqs/index.html#layer-tap-repeat-key
@@ -169,10 +169,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [PNT] = LAYOUT_LR(
-        L_DPI_DN, L_DPI_UP, L_SNP,    L_DRG_TG, _______,                 _______, R_DRG_TG, R_SNP,    R_DPI_UP, R_DPI_DN,
+        L_DPI_DN, L_DPI_UP, L_SNP,    XXXXXXX, _______,                 _______, XXXXXXX, R_SNP,    R_DPI_UP, R_DPI_DN,
         _______,  _______,  _______,  _______,  _______,                 _______, _______,  _______,  _______,  _______,
         _______,  _______,  QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,      _______, _______,  _______,  _______,  _______,
-                                   QK_LLCK, KC_BTN1, KC_BTN2,              XXXXXXX, XXXXXXX, XXXXXXX
+                                   QK_LLCK, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_LR(
@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [TXT] = LAYOUT_LR(
-        XXXXXXX,    KC_8,    KC_9, KC_SECRET_1, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+        XXXXXXX,    KC_8,    KC_9, KC_SECRET_1, XXXXXXX,                   EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
         SELWORD, SELWBAK, SELLINE, KC_SECRET_2, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_1,    KC_2,    KC_3,    XXXXXXX,     XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    QK_LLCK, KC_MINS, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
@@ -429,10 +429,10 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     }
 
     switch (keycode) {
-        case KC_WH_U:
-            return KC_WH_D;
-        case KC_WH_D:
-            return KC_WH_U;
+        case QK_MOUSE_WHEEL_UP:
+            return QK_MOUSE_WHEEL_DOWN;
+        case QK_MOUSE_WHEEL_DOWN:
+            return QK_MOUSE_WHEEL_UP;
         case SELWBAK:
             return SELWORD;
         case SELWORD:

@@ -19,9 +19,13 @@
 #define SPLIT_POINTING_ENABLE
 #define POINTING_DEVICE_COMBINED
 
-// Dual TPS43 config (no rotation needed when both sides have TPS43)
+// Dual TPS43 config. Disable touch gestures so clicks come only from
+// explicit mouse button keys; raw motion is still used for cursor/scroll.
 #define AZOTEQ_IQS5XX_TPS43
-#define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE true
+#define AZOTEQ_IQS5XX_TAP_ENABLE false
+#define AZOTEQ_IQS5XX_PRESS_AND_HOLD_ENABLE false
+#define AZOTEQ_IQS5XX_TWO_FINGER_TAP_ENABLE false
+#define AZOTEQ_IQS5XX_SCROLL_ENABLE false
 
 // PNT layer auto-activation timeout and threshold (right side cursor only)
 #define SPANKBD_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000

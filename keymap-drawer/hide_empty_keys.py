@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
 Script to add visibility="hidden" to SVG rect elements for specific key positions.
+
+Also rounds drawing-only virtual trackball keys so they render as balls rather
+than trackpad-like rounded rectangles.
 """
 
 import sys
@@ -34,6 +37,16 @@ def process_svg(svg_content: str, hidden_positions: set[int] = HIDDEN_KEYPOS) ->
             rect = g.find("rect")
             if rect and not rect.get("visibility"):
                 rect["visibility"] = "hidden"
+
+    # Make virtual trackball keys circular. Some SVG renderers do not honor the
+    # CSS rx/ry override when keymap-drawer also emits rx/ry attributes.
+    for g in soup.find_all("g", class_=lambda c: c and "trackball" in c):
+        rect = g.find("rect")
+        if rect:
+            width = float(rect.get("width", 0))
+            radius = str(int(width / 2)) if width else "999"
+            rect["rx"] = radius
+            rect["ry"] = radius
 
     return str(soup.svg)
 

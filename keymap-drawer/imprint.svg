@@ -361,12 +361,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -547,12 +547,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -731,12 +731,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -906,12 +906,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -1085,12 +1085,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -1122,9 +1122,6 @@ text.trackball {
 </g>
 <g class="key keypos-4" transform="translate(252, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">
-<tspan dy="-1.2em" x="0">L</tspan><tspan dy="1.2em" x="0">Scroll</tspan><tspan dy="1.2em" x="0">Toggle</tspan>
-</text>
 </g>
 <g class="key trans keypos-5" transform="translate(308, 28)">
 <rect class="key trans" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1136,9 +1133,6 @@ text.trackball {
 </g>
 <g class="key keypos-7" transform="translate(672, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">
-<tspan dy="-1.2em" x="0">R</tspan><tspan dy="1.2em" x="0">Scroll</tspan><tspan dy="1.2em" x="0">Toggle</tspan>
-</text>
 </g>
 <g class="key keypos-8" transform="translate(728, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1263,11 +1257,15 @@ text.trackball {
 </g>
 <g class="key keypos-37" transform="translate(308, 235)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">BTN1</text>
+<text class="key tap" x="0" y="0">
+<tspan dy="-1.2em" x="0">QK</tspan><tspan dy="1.2em" x="0">MOUSE</tspan><tspan dy="1.2em" x="0">…</tspan>
+</text>
 </g>
 <g class="key keypos-38" transform="translate(364, 246)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<text class="key tap" x="0" y="0">BTN2</text>
+<text class="key tap" x="0" y="0">
+<tspan dy="-1.2em" x="0">QK</tspan><tspan dy="1.2em" x="0">MOUSE</tspan><tspan dy="1.2em" x="0">…</tspan>
+</text>
 </g>
 <g class="key keypos-39" transform="translate(588, 246)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1297,12 +1295,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -1468,12 +1466,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -1507,6 +1505,9 @@ text.trackball {
 </g>
 <g class="key keypos-6" transform="translate(616, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">
+<tspan dy="-0.6em" x="0">EEPROM</tspan><tspan dy="1.2em" x="0">Clear</tspan>
+</text>
 </g>
 <g class="key keypos-7" transform="translate(672, 28)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1647,12 +1648,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
@@ -1812,12 +1813,12 @@ text.trackball {
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
 <g class="key trackball keypos-48" transform="translate(431, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Left</text>
 </g>
 <g class="key trackball keypos-49" transform="translate(543, 126)">
-<rect class="key trackball" height="97" rx="6" ry="6" width="97" x="-48" y="-48"/>
+<rect class="key trackball" height="97" rx="48" ry="48" width="97" x="-48" y="-48"/>
 <text class="key trackball tap" x="0" y="0"><tspan style="font-size: 78%">Trackball</tspan></text>
 <text class="key trackball hold" x="0" y="46">Right</text>
 </g>
