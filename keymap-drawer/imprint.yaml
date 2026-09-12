@@ -14,7 +14,7 @@ layers:
   - ['', '', '', '', '', '', '', '']
   L2:
   - ['', QK BOOT, F7, F8, F9, F10, '', '', '', '']
-  - ['', '', '', '', F4, F5, F6, F11, '', '']
+  - [EE CLR, '', '', '', F4, F5, F6, F11, '', '']
   - ['', '', '', '', '', '', F1, F2, F3, F12]
   - ['', '', '', '', '', '', ESC, GLOBE SPC, MY GLOBE, '']
   - ['', '', '', '', '', '', '', '']
@@ -32,16 +32,16 @@ layers:
   - ['', '', '', '', '', '', '', '']
   L5:
   - - ''
+    - L DPI DN
+    - L DPI UP
+    - L SNP
+    - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
+    - ''
+    - R SNP
+    - R DPI UP
+  - - R DPI DN
     - ''
     - ''
     - {t: ▽, type: trans}
@@ -68,8 +68,8 @@ layers:
     - {t: ▽, type: trans}
     - ''
     - QK LLCK
-    - BTN1
-    - BTN2
+    - QK MOUSE BUTTON 1
+    - QK MOUSE BUTTON 2
     - ''
   - ['', '', '', '', '', '', '', '']
   L6:
@@ -79,7 +79,7 @@ layers:
   - ['', '', '', '', '', '', '', '0', QK LLCK, '']
   - ['', '', '', '', '', '', '', '']
   L7:
-  - ['', '', '8', '9', SECRET 1, '', '', '', '', '']
+  - ['', '', '8', '9', SECRET 1, '', EE CLR, '', '', '']
   - [QK BOOT, '', '', SELWORD, SELWBAK, SELLINE, SECRET 2, '', '', '']
   - ['', '', '', '', '', '1', '2', '3', '', '']
   - ['', '', '', '', '', '', QK LLCK, '-', '', '']

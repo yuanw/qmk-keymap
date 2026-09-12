@@ -5,12 +5,16 @@
 
 #ifdef POINTING_DEVICE_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
+static int16_t  left_scroll_remainder   = 0;
 
 report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
-    // Left TPS43: scroll only — convert Y movement to vertical scroll, suppress cursor
-    left_report.v = -left_report.y / SPANKBD_SCROLL_DIVISOR;
-    left_report.x = 0;
-    left_report.y = 0;
+    // Left TPS43: scroll only — convert Y movement to vertical scroll, suppress cursor.
+    // Accumulate sub-tick movement so slow scroll gestures are not dropped.
+    int16_t left_scroll_delta = -left_report.y + left_scroll_remainder;
+    left_report.v            = left_scroll_delta / SPANKBD_SCROLL_DIVISOR;
+    left_scroll_remainder    = left_scroll_delta % SPANKBD_SCROLL_DIVISOR;
+    left_report.x            = 0;
+    left_report.y            = 0;
 
     // Right TPS43: cursor only — activate PNT layer on movement
     if (abs(right_report.x) > SPANKBD_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD ||
