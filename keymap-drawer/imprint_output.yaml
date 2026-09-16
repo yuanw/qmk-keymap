@@ -232,8 +232,8 @@ layers:
     - ''
     - ''
     - ''
-  - - $$mdi:lock$$
-    - ''
+  - - Gui+S
+    - Sft+Gui+S
     - ''
     - ''
     - ''
@@ -378,7 +378,7 @@ layers:
       t: ▽
       type: trans
     - ''
-    - $$mdi:lock$$
+    - ''
     - QK MOUSE BUTTON 1
     - QK MOUSE BUTTON 2
     - ''
@@ -435,7 +435,7 @@ layers:
     - ''
     - ''
     - '0'
-    - $$mdi:lock$$
+    - ''
     - ''
   - - ''
     - ''
@@ -490,7 +490,7 @@ layers:
     - ''
     - ''
     - ''
-    - $$mdi:lock$$
+    - ''
     - *id001
     - ''
     - ''

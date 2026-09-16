@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  LCMD(KC_TAB),
         XXXXXXX, XXXXXXX, XXXXXXX, LCMD(KC_TAB), XXXXXXX,                    KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       RDO,     PST,     CPY,     CUT,     UND,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, QK_LLCK, XXXXXXX
+                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, LCMD(KC_S), SCMD(KC_S)
      ),
 
     [WIN] = LAYOUT_LR(
@@ -172,21 +172,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         L_DPI_DN, L_DPI_UP, L_SNP,    XXXXXXX, _______,                 _______, XXXXXXX, R_SNP,    R_DPI_UP, R_DPI_DN,
         _______,  _______,  _______,  _______,  _______,                 _______, _______,  _______,  _______,  _______,
         _______,  _______,  QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,      _______, _______,  _______,  _______,  _______,
-                                   QK_LLCK, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
+                                   XXXXXXX, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_LR(
         XXXXXXX, KC_7,    KC_8,    KC_9,    KC_PAST,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_4,    KC_5,    KC_6,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_1,    KC_2,    KC_3,    XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   XXXXXXX, KC_0,    QK_LLCK,              XXXXXXX, XXXXXXX, XXXXXXX
+                                   XXXXXXX, KC_0,    XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [TXT] = LAYOUT_LR(
         XXXXXXX,    KC_8,    KC_9, KC_SECRET_1, XXXXXXX,                   EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
         SELWORD, SELWBAK, SELLINE, KC_SECRET_2, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_1,    KC_2,    KC_3,    XXXXXXX,     XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                   QK_LLCK, KC_MINS, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
+                                   XXXXXXX, KC_MINS, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [REP] = LAYOUT_LR(
