@@ -176,13 +176,13 @@ keymap target:
       python $outdir/hide_empty_keys.py $outdir/{{ target }}.svg
     elif [ "{{ target }}" = "charybdis" ]; then
       # Charybdis LAYOUT_LR maps 1:1 to LAYOUT, just fix the layout name
-      sed -i 's/"LAYOUT_LR"/"LAYOUT"/' $outdir/{{ target }}.json
+      python -c 'from pathlib import Path; p=Path("'$outdir'/{{ target }}.json"); p.write_text(p.read_text().replace("\"LAYOUT_LR\"", "\"LAYOUT\"", 1))'
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
       keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
     elif [ "{{ target }}" = "spankbd" ]; then
       # Span LAYOUT_LR maps 1:1 to LAYOUT_split_3x5_3, just fix the layout name
-      sed -i 's/"LAYOUT_LR"/"LAYOUT_split_3x5_3"/' $outdir/{{ target }}.json
+      python -c 'from pathlib import Path; p=Path("'$outdir'/{{ target }}.json"); p.write_text(p.read_text().replace("\"LAYOUT_LR\"", "\"LAYOUT_split_3x5_3\"", 1))'
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
       keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg

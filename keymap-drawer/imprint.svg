@@ -9,9 +9,6 @@
 <svg id="mdi:apple-keyboard-shift">
 <svg id="mdi-apple-keyboard-shift" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15,18V12H17.17L12,6.83L6.83,12H9V18H15M12,4L22,14H17V20H7V14H2L12,4Z"/></svg>
 </svg>
-<svg id="mdi:lock">
-<svg id="mdi-lock" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/></svg>
-</svg>
 </defs>/* end glyphs */
 <style>/* inherit to force styles through use tags */
 svg path {
@@ -882,10 +879,13 @@ text.trackball {
 </g>
 <g class="key keypos-40" transform="translate(644, 235)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
+<text class="key tap" x="0" y="0">Gui+S</text>
 </g>
 <g class="key keypos-41" transform="translate(700, 224)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">
+<tspan dy="-0.6em" x="0">Sft+Gui</tspan><tspan dy="1.2em" x="0">+S</tspan>
+</text>
 </g>
 <g class="key keypos-42" transform="translate(392, 252)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
@@ -1253,7 +1253,6 @@ text.trackball {
 </g>
 <g class="key keypos-36" transform="translate(252, 224)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
 </g>
 <g class="key keypos-37" transform="translate(308, 235)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1436,7 +1435,6 @@ text.trackball {
 </g>
 <g class="key keypos-38" transform="translate(364, 246)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
 </g>
 <g class="key keypos-39" transform="translate(588, 246)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1610,7 +1608,6 @@ text.trackball {
 </g>
 <g class="key keypos-36" transform="translate(252, 224)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
-<use class="key tap glyph mdi:lock" height="14" href="#mdi:lock" width="14.0" x="-7" xlink:href="#mdi:lock" y="-7"/>
 </g>
 <g class="key keypos-37" transform="translate(308, 235)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
