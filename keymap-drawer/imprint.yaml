@@ -23,7 +23,7 @@ layers:
   - [Gui+TAB, '', '', '', '', '', Gui+TAB, '', PGDN, LEFT]
   - [DOWN, RIGHT, '', '', '', '', '', '', '', '']
   - [RDO, PST, CPY, CUT, UND, '', '', '', '', '']
-  - [Gui+S, Sft+Gui+S, '', '', '', '', '', '']
+  - [F11, F12, '', '', '', '', '', '']
   L4:
   - ['', '', '', '', '', '', Ctl+Alt+1, '', '', '']
   - [Gui+X, '', '', '', '', RCTL, RSFT, '', Ctl+Alt+2, Gui+4]
