@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_PGUP, KC_HOME, KC_UP,   KC_END,  LCMD(KC_TAB),
         XXXXXXX, XXXXXXX, XXXXXXX, LCMD(KC_TAB), XXXXXXX,                    KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT,XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       RDO,     PST,     CPY,     CUT,     UND,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, LCMD(KC_S), SCMD(KC_S)
+                                   XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, KC_F11, KC_F12
      ),
 
     [WIN] = LAYOUT_LR(

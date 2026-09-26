@@ -23,7 +23,7 @@ jobs:
 
       - uses: cachix/cachix-action@v17
         with:
-          name: yuanwang-wf
+          name: yuanw-nix-home-macos
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Generate keymap
