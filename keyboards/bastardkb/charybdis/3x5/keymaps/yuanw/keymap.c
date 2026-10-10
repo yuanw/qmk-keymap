@@ -55,6 +55,8 @@ void matrix_scan_user(void) {
 #    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
 layer_state_t layer_state_set_user(layer_state_t state) {
     charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
+    // On NUM the trackball scrolls instead of moving the pointer.
+    charybdis_set_pointer_dragscroll_enabled(layer_state_cmp(state, NUM));
     return state;
 }
 #    endif // CHARYBDIS_AUTO_SNIPING_ON_LAYER
