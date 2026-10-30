@@ -1,0 +1,74 @@
+layout: {qmk_keyboard: bastardkb/dilemma/3x5_3_trackball, layout_name: LAYOUT_split_3x5_3}
+layers:
+  L0:
+  - [Q, Y, O, U, '=', X, L, D, P, Z]
+  - [HRM C, HRM I, HRM A, HRM E, '-', K, HRM H, HRM T, HRM N, HRM S]
+  - ['''', ',', LR DOT, ;, /, J, M, LR G, F, V]
+  - [ESC WIN, SPC NAV, ARCANE, REP TXT, R NUM, BSPC FUN]
+  L1:
+  - ['`', '&', '%', PAST, '', '', '{', '}', $, ARROW]
+  - ['!', <, '>', EMAIL 1, '', '', (, ), '@', ^]
+  - [B, '~', \, '|', \, '', '[', ']', '#', W]
+  - ['', '', '', '', '', '']
+  L2:
+  - [QK BOOT, F7, F8, F9, F10, '', '', '', '', EE CLR]
+  - ['', F4, F5, F6, F11, '', '', '', '', '']
+  - ['', F1, F2, F3, F12, '', '', '', '', '']
+  - [ESC, GLOBE SPC, MY GLOBE, '', '', '']
+  L3:
+  - ['', '', '', '', '', PGUP, HOME, UP, END, Gui+TAB]
+  - ['', '', '', Gui+TAB, '', PGDN, LEFT, DOWN, RIGHT, '']
+  - ['', '', '', '', '', RDO, PST, CPY, CUT, UND]
+  - ['', '', '', '', F11, F12]
+  L4:
+  - ['', '', '', '', '', Ctl+Alt+1, '', '', '', Gui+X]
+  - ['', '', RCTL, RSFT, '', Ctl+Alt+2, Gui+4, Gui+5, Gui+6, Gui+Z]
+  - ['', '', '', '', '', Ctl+Alt+3, Gui+1, Gui+2, Gui+3, Gui+C]
+  - ['', '', '', '', '', '']
+  L5:
+  - - L DPI DN
+    - L DPI UP
+    - L SNP
+    - ''
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
+    - R SNP
+    - R DPI UP
+    - R DPI DN
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - QK MOUSE WHEEL UP
+    - QK MOUSE WHEEL DOWN
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - ['', QK MOUSE BUTTON 1, QK MOUSE BUTTON 2, '', '', '']
+  L6:
+  - ['', '7', '8', '9', PAST, '', '', '', '', '']
+  - ['', '4', '5', '6', '', '', '', '', '', '']
+  - ['', '1', '2', '3', '', '', '', '', '', '']
+  - ['', '0', '', '', '', '']
+  L7:
+  - ['', '8', '9', SECRET 1, '', EE CLR, '', '', '', QK BOOT]
+  - [SELWORD, SELWBAK, SELLINE, SECRET 2, '', '', '', '', '', '']
+  - ['1', '2', '3', '', '', '', '', '', '', '']
+  - ['', '-', '', '', '', '']
+  L8:
+  - ['', '', '', '', '', '', '', '', '', '']
+  - ['', '', QK AREP, LSFT, '', '', LSFT, QK AREP, '', '']
+  - ['', '', '', '', '', '', '', '', '', '']
+  - ['', QK REP, '', '', QK REP, '']

@@ -78,6 +78,16 @@ enum keycode_aliases {
     R_SNP    = RIGHT_SNIPING_MODE,
     R_DPI_UP = RIGHT_POINTER_DEFAULT_DPI_FORWARD,
     R_DPI_DN = RIGHT_POINTER_DEFAULT_DPI_REVERSE,
+#elif defined(YUANW_BKB_POINTING)
+    // Charybdis / Dilemma: single sensor on the right half, DPI keys there.
+    L_DPI_DN = KC_NO,
+    L_DPI_UP = KC_NO,
+    L_SNP    = KC_NO,
+    L_DRG_TG = KC_NO,
+    R_DRG_TG = KC_NO,
+    R_SNP    = KC_NO,
+    R_DPI_UP = DPI_UP,
+    R_DPI_DN = DPI_DOWN,
 #else
     L_DPI_DN = KC_NO,
     L_DPI_UP = KC_NO,
@@ -103,11 +113,9 @@ const uint16_t PROGMEM combo_j_k_bspc[] = {KC_J, KC_K, COMBO_END};
 #    endif
 #endif
 // K and H => one-shot FUN layer (mirrors getreuer's F+N => OSL(FUN))
-const uint16_t PROGMEM combo_k_h[] = {KC_K, HRM_H, COMBO_END};
-combo_t key_combos[] = {
-    COMBO(combo_rep_thumb, KC_B),
-    COMBO(combo_rep_top, KC_W),
-    COMBO(combo_arep_thumb, KC_BSPC),
+const uint16_t PROGMEM combo_k_h[]  = {KC_K, HRM_H, COMBO_END};
+combo_t                key_combos[] = {
+    COMBO(combo_rep_thumb, KC_B),      COMBO(combo_rep_top, KC_W), COMBO(combo_arep_thumb, KC_BSPC),
 #ifdef KEYBOARD_5_THUMBS
     COMBO(combo_bspc_thumb, BSPC_FUN),
 #    ifdef KEYBOARD_CHARYBDIS
@@ -206,9 +214,9 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
-static bool     g_last_key_on_right    = false;
+static bool g_last_key_on_right = false;
 
-static bool g_arcane_is_repeat  = false;
+static bool g_arcane_is_repeat = false;
 
 bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
     switch (keycode) {
@@ -299,22 +307,34 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return A(KC_I);
             case KC_I:
                 return A(KC_N);
-            case KC_F: return A(KC_B); // forward-word       <-> backward-word
-            case KC_B: return A(KC_F);
-            case KC_LABK: return A(KC_RABK); // beginning-of-buffer <-> end-of-buffer
-            case KC_RABK: return A(KC_LABK);
+            case KC_F:
+                return A(KC_B); // forward-word       <-> backward-word
+            case KC_B:
+                return A(KC_F);
+            case KC_LABK:
+                return A(KC_RABK); // beginning-of-buffer <-> end-of-buffer
+            case KC_RABK:
+                return A(KC_LABK);
         }
     } else if (mods == MOD_BIT_LCTRL) {
         // Emacs navigation: toggle between opposite directions.
         switch (keycode) {
-            case KC_F: return C(KC_B); // forward-char  <-> backward-char
-            case KC_B: return C(KC_F);
-            case KC_N: return C(KC_P); // next-line     <-> previous-line
-            case KC_P: return C(KC_N);
-            case KC_A: return C(KC_E); // beginning-of-line <-> end-of-line
-            case KC_E: return C(KC_A);
-            case KC_S: return C(KC_R); // isearch-forward   <-> isearch-backward
-            case KC_R: return C(KC_S);
+            case KC_F:
+                return C(KC_B); // forward-char  <-> backward-char
+            case KC_B:
+                return C(KC_F);
+            case KC_N:
+                return C(KC_P); // next-line     <-> previous-line
+            case KC_P:
+                return C(KC_N);
+            case KC_A:
+                return C(KC_E); // beginning-of-line <-> end-of-line
+            case KC_E:
+                return C(KC_A);
+            case KC_S:
+                return C(KC_R); // isearch-forward   <-> isearch-backward
+            case KC_R:
+                return C(KC_S);
         }
     } else if ((mods & ~MOD_MASK_SHIFT) == 0) {
         // This is where most of the "magic" for the MAGIC key is implemented.
@@ -369,8 +389,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 
             case KC_R:
                 return KC_L; // R -> L
-        case KC_W:
-            return KC_H; // W -> H
+            case KC_W:
+                return KC_H; // W -> H
             case KC_DOT:
                 if ((mods & MOD_MASK_SHIFT) == 0) {
                     return M_UPDIR; // . -> ./
@@ -443,15 +463,108 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 
 static void handle_arcane(keyrecord_t *record) {
     if (record->event.pressed) {
-        bool arcane_on_right  = (record->event.key.row >= MATRIX_ROWS / 2);
-        g_arcane_is_repeat = (arcane_on_right != g_last_key_on_right);
+        bool arcane_on_right = (record->event.key.row >= MATRIX_ROWS / 2);
+        g_arcane_is_repeat   = (arcane_on_right != g_last_key_on_right);
     }
     if (g_arcane_is_repeat) {
-        repeat_key_invoke(&record->event);     // opposite hand → repeat
+        repeat_key_invoke(&record->event); // opposite hand → repeat
     } else {
         alt_repeat_key_invoke(&record->event); // same hand → magic
     }
 }
+
+// ── BastardKB trackball handling (Charybdis 3x5, Dilemma 3x5+3) ─────────────
+// Enabled by YUANW_BKB_POINTING in the keyboard's layout.h. The sensor lives on
+// the right half; QMK's split pointing sync forwards CPI changes to that side.
+#ifdef YUANW_BKB_POINTING
+#    include "timer.h"
+
+#    ifndef YUANW_POINTER_CPI_DEFAULT
+#        define YUANW_POINTER_CPI_DEFAULT 1000
+#    endif
+#    ifndef YUANW_POINTER_CPI_MIN
+#        define YUANW_POINTER_CPI_MIN 400
+#    endif
+#    ifndef YUANW_POINTER_CPI_MAX
+#        define YUANW_POINTER_CPI_MAX 3200
+#    endif
+#    ifndef YUANW_POINTER_CPI_STEP
+#        define YUANW_POINTER_CPI_STEP 200
+#    endif
+// Slower CPI while the PNT layer is up, for aiming.
+#    ifndef YUANW_POINTER_SNIPING_CPI
+#        define YUANW_POINTER_SNIPING_CPI 200
+#    endif
+#    ifndef YUANW_POINTER_LAYER_TIMEOUT_MS
+#        define YUANW_POINTER_LAYER_TIMEOUT_MS 1000
+#    endif
+#    ifndef YUANW_POINTER_LAYER_TRIGGER_THRESHOLD
+#        define YUANW_POINTER_LAYER_TRIGGER_THRESHOLD 8
+#    endif
+// Ball movement while NAV is held becomes scrolling: this many units of motion
+// per wheel click (same scale as the Span's trackpad scroll).
+#    ifndef YUANW_SCROLL_DIVISOR
+#        define YUANW_SCROLL_DIVISOR 8
+#    endif
+
+static uint16_t g_pointer_cpi         = YUANW_POINTER_CPI_DEFAULT;
+static uint16_t g_pointer_layer_timer = 0;
+static int16_t  g_scroll_x            = 0;
+static int16_t  g_scroll_y            = 0;
+
+static void pointer_apply_cpi(void) {
+    // shortcut: DPI is per-boot only, no EEPROM, unlike the old BKB keyboard code.
+    pointing_device_set_cpi(layer_state_is(PNT) ? YUANW_POINTER_SNIPING_CPI : g_pointer_cpi);
+}
+
+void pointing_device_init_user(void) {
+    pointer_apply_cpi();
+}
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (layer_state_is(NAV)) {
+        // NAV: drag-scroll the ball instead of moving the cursor. Positive v/h
+        // = content moves with the ball, matching the old BKB drag-scroll mode.
+        g_scroll_x += mouse_report.x;
+        g_scroll_y += mouse_report.y;
+        mouse_report.x = mouse_report.y = 0;
+        mouse_report.h                  = g_scroll_x / YUANW_SCROLL_DIVISOR;
+        mouse_report.v                  = g_scroll_y / YUANW_SCROLL_DIVISOR;
+        g_scroll_x %= YUANW_SCROLL_DIVISOR;
+        g_scroll_y %= YUANW_SCROLL_DIVISOR;
+        return mouse_report;
+    }
+    g_scroll_x = 0;
+    g_scroll_y = 0;
+    if (abs(mouse_report.x) > YUANW_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > YUANW_POINTER_LAYER_TRIGGER_THRESHOLD) {
+        if (g_pointer_layer_timer == 0) {
+            layer_on(PNT);
+            pointer_apply_cpi();
+#    ifdef RGB_MATRIX_ENABLE
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
+            rgb_matrix_sethsv_noeeprom(HSV_GREEN);
+#    endif // RGB_MATRIX_ENABLE
+        }
+        g_pointer_layer_timer = timer_read();
+    }
+    return mouse_report;
+}
+
+// Declared in rgb_matrix.h, but yuanw.c doesn't always see it.
+void rgb_matrix_update_pwm_buffers(void);
+
+void matrix_scan_user(void) {
+    if (g_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), g_pointer_layer_timer) >= YUANW_POINTER_LAYER_TIMEOUT_MS) {
+        g_pointer_layer_timer = 0;
+        layer_off(PNT);
+        pointer_apply_cpi();
+#    ifdef RGB_MATRIX_ENABLE
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
+        rgb_matrix_update_pwm_buffers();
+#    endif // RGB_MATRIX_ENABLE
+    }
+}
+#endif // YUANW_BKB_POINTING
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
@@ -475,6 +588,20 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
         set_last_mods(0);
     }
     switch (keycode) {
+#ifdef YUANW_BKB_POINTING
+        case DPI_UP:
+            if (record->event.pressed) {
+                g_pointer_cpi = MIN(g_pointer_cpi + YUANW_POINTER_CPI_STEP, YUANW_POINTER_CPI_MAX);
+                pointer_apply_cpi();
+            }
+            return false;
+        case DPI_DOWN:
+            if (record->event.pressed) {
+                g_pointer_cpi = MAX(g_pointer_cpi - YUANW_POINTER_CPI_STEP, YUANW_POINTER_CPI_MIN);
+                pointer_apply_cpi();
+            }
+            return false;
+#endif // YUANW_BKB_POINTING
         case ARROW:
             if (record->event.pressed) {
                 clear_weak_mods();
@@ -570,7 +697,7 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
             return false;
         case RDO:
             if (record->event.pressed) {
-                 switch (detected_host_os()) {
+                switch (detected_host_os()) {
                     case OS_MACOS:
                     case OS_IOS:
                         tap_code16(SCMD(KC_Z));

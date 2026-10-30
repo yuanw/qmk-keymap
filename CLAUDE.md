@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a QMK userspace repository containing custom keymaps for multiple split keyboards:
 - **Cyboard Imprint** (3-row, no bottom row) - primary keyboard
 - **BastardKB Charybdis 3x5** - trackball-equipped split keyboard
+- **BastardKB Dilemma 3x5+3 (trackball)** - RP2040 split, one encoder per half
 - **Holykeebs Span** (spankbd) - dual TPS43 touchpad split keyboard
 - **Svalboard**
 
@@ -21,16 +22,19 @@ just init
 # Build firmware for a keyboard
 just build imprint      # Cyboard Imprint
 just build charybdis    # BastardKB Charybdis 3x5
+just build dilemma      # BastardKB Dilemma 3x5+3 trackball
 just build spankbd      # Holykeebs Span (builds TWO uf2 files: left and right)
 
 # Flash firmware to keyboard
 just flash imprint
 just flash charybdis
+just flash dilemma
 just flash spankbd left   # Flash left half
 just flash spankbd right  # Flash right half
 
 # Generate keymap visualization
 just keymap charybdis   # Outputs charybdis.svg
+just keymap dilemma     # Outputs dilemma.svg
 just keymap imprint     # Outputs imprint.svg
 just keymap spankbd     # Outputs spankbd.svg
 
@@ -44,7 +48,7 @@ just format
 ## Architecture
 
 ### Git Submodules
-- `charybdis/` - BastardKB QMK fork (bkb-master branch)
+- `charybdis/` - BastardKB QMK fork (main branch)
 - `imprint/` - Cyboard Vial-QMK fork (cyboard branch)
 - `holykeebs_qmk/` - Holykeebs QMK fork (main branch)
 - `svalboard/` - Svalboard Vial-QMK fork
@@ -68,6 +72,23 @@ Keymaps are in `keyboards/<vendor>/<keyboard>/keymaps/yuanw/`:
 
 ### Layers
 BASE, SYM, NAV, WIN, PNT (pointer/mouse), NUM, TXT, FUN, REP
+
+## BastardKB (Charybdis / Dilemma) Notes
+
+- The fork's `main` branch is the current line; keyboard targets carry a board
+  revision suffix: `bastardkb/charybdis/3x5/splinktegrated_rev1` (rev3 targets
+  exist for newer controllers). Dilemma targets: `bastardkb/dilemma/3x5_3_trackball`
+  (PMW3360 ball), `3x5_3` (Cirque trackpad), `3x5_3_procyon` (MaxTouch digitizer).
+- On `main` the keyboard-level code (`charybdis.c`, `dilemma.c`) is an empty stub —
+  the DPI / sniping / drag-scroll / auto-mouse-layer helpers moved out to the
+  `modules/bastardkb` pointing module, which is not vendored here. The trackball
+  behaviour both boards need (auto PNT layer on motion, sniping CPI while PNT is
+  up, `DPI_UP`/`DPI_DOWN` keys) lives in the `YUANW_BKB_POINTING` block of `yuanw.c`.
+- The ball is on the right half (`POINTING_DEVICE_RIGHT`); `pointing_device_set_cpi()`
+  on the master is synced to that side by QMK.
+- `just format` collapses the multi-line `LAYOUT_LR` macros in layout.h — wrap them
+  in `// clang-format off` / `on` (done in the BastardKB layout.h files) or review
+  the diff after running it.
 
 ## Holykeebs Span (spankbd) Notes
 

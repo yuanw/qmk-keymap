@@ -5,7 +5,8 @@ red := '\033[1;31m'
 green := '\033[1;32m'
 yellow := '\033[1;33m'
 blue := '\033[1;34m'
-charybdisNS := "bastardkb/charybdis/3x5"
+charybdisNS := "bastardkb/charybdis/3x5/splinktegrated_rev1"
+dilemmaNS := "bastardkb/dilemma/3x5_3_trackball"
 imprintNS := "cyboard/imprint/imprint_letters_only_no_bottom_row"
 spankbdNS := "holykeebs/spankbd"
 
@@ -125,6 +126,8 @@ _keyboard keyboard:
       echo "{{ imprintNS }}"
     elif [ "{{ keyboard }}" = "charybdis" ]; then
       echo "{{ charybdisNS }}"
+    elif [ "{{ keyboard }}" = "dilemma" ]; then
+      echo "{{ dilemmaNS }}"
     elif [ "{{ keyboard }}" = "spankbd" ]; then
       echo "{{ spankbdNS }}"
     else
@@ -139,6 +142,8 @@ _submodule keyboard:
       echo "imprint"
     elif [ "{{ keyboard }}" = "charybdis" ]; then
       echo "charybdis"
+    elif [ "{{ keyboard }}" = "dilemma" ]; then
+      echo "charybdis"
     elif [ "{{ keyboard }}" = "spankbd" ]; then
       echo "holykeebs_qmk"
     else
@@ -152,6 +157,7 @@ keymap target:
     if [ "{{ target }}" = "all" ]; then
       just keymap imprint
       just keymap charybdis
+      just keymap dilemma
       just keymap spankbd
       exit 0
     fi
@@ -176,12 +182,13 @@ keymap target:
       python $outdir/hide_empty_keys.py $outdir/{{ target }}.svg
     elif [ "{{ target }}" = "charybdis" ]; then
       # Charybdis LAYOUT_LR maps 1:1 to LAYOUT, just fix the layout name
-      python -c 'from pathlib import Path; p=Path("'$outdir'/{{ target }}.json"); p.write_text(p.read_text().replace("\"LAYOUT_LR\"", "\"LAYOUT\"", 1))'
+      # Charybdis LAYOUT_LR drops the unused 6th thumb (RT2) and renames the layout
+      python -c 'import json,sys; p=sys.argv[1]; d=json.load(open(p)); d["layout"]="LAYOUT"; d["layers"]=[k[:-1] for k in d["layers"]]; json.dump(d, open(p, "w"))' $outdir/{{ target }}.json
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml
-      keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$kb/keyboard.json > $outdir/{{ target }}.svg
-    elif [ "{{ target }}" = "spankbd" ]; then
-      # Span LAYOUT_LR maps 1:1 to LAYOUT_split_3x5_3, just fix the layout name
+      keymap draw $outdir/{{ target }}_output.yaml -j ./$submod/keyboards/$(dirname $kb)/info.json > $outdir/{{ target }}.svg
+    elif [ "{{ target }}" = "spankbd" ] || [ "{{ target }}" = "dilemma" ]; then
+      # Span and Dilemma LAYOUT_LR map 1:1 to LAYOUT_split_3x5_3, just fix the layout name
       python -c 'from pathlib import Path; p=Path("'$outdir'/{{ target }}.json"); p.write_text(p.read_text().replace("\"LAYOUT_LR\"", "\"LAYOUT_split_3x5_3\"", 1))'
       KEYMAP_raw_binding_map='{"&bootloader": "BOOT"}' keymap parse -c 10 -q $outdir/{{ target }}.json > $outdir/{{ target }}.yaml
       python $outdir/process.py $outdir/{{ target }}.yaml $outdir/{{ target }}_output.yaml

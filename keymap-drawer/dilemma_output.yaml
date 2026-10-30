@@ -1,0 +1,403 @@
+layers:
+  0 Base:
+  - - Q
+    - Y
+    - O
+    - U
+    - s: +
+      t: '='
+    - X
+    - L
+    - D
+    - P
+    - Z
+  - - h: Meta
+      t: C
+    - h: $$mdi:apple-keyboard-option$$
+      t: I
+    - h: '$$mdi:apple-keyboard-shift$$ '
+      t: A
+    - h: $$mdi:apple-keyboard-control$$
+      t: E
+      type: ghost
+    - &id001
+      s: _
+      t: '-'
+    - K
+    - h: $$mdi:apple-keyboard-shift$$
+      t: H
+      type: ghost
+    - h: $$mdi:apple-keyboard-control$$
+      t: T
+    - h: $$mdi:apple-keyboard-option$$
+      t: N
+    - h: Meta
+      t: S
+  - - s: '"'
+      t: ''''
+    - s: <
+      t: ','
+    - h: Sym
+      s: '>'
+      t: .
+    - s: ':'
+      t: ;
+    - s: '?'
+      t: /
+    - J
+    - M
+    - h: Sym
+      t: G
+    - F
+    - V
+  - - h: Win
+      s: Enter
+      t: Esc
+    - h: Nav
+      s: Tab
+      t: Spc
+      type: ghost
+    - ARCANE
+    - REP TXT
+    - R NUM
+    - BSPC FUN
+  1 Sym:
+  - - '`'
+    - '&'
+    - '%'
+    - PAST
+    - ''
+    - ''
+    - '{'
+    - '}'
+    - $
+    - ARROW
+  - - '!'
+    - <
+    - '>'
+    - EMAIL 1
+    - ''
+    - ''
+    - (
+    - )
+    - '@'
+    - ^
+  - - B
+    - '~'
+    - \
+    - '|'
+    - \
+    - ''
+    - '['
+    - ']'
+    - '#'
+    - W
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  2 Fun:
+  - - QK BOOT
+    - F7
+    - F8
+    - F9
+    - F10
+    - ''
+    - ''
+    - ''
+    - ''
+    - 'EEPROM
+
+      Clear'
+  - - ''
+    - F4
+    - F5
+    - F6
+    - F11
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - F1
+    - F2
+    - F3
+    - F12
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ESC
+    - GLOBE SPC
+    - MY GLOBE
+    - ''
+    - ''
+    - ''
+  3 Nav:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - PGUP
+    - HOME
+    - "\u25B3"
+    - END
+    - Gui+TAB
+  - - ''
+    - ''
+    - ''
+    - Gui+TAB
+    - ''
+    - PGDN
+    - "\u25C1"
+    - Down
+    - RIGHT
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - RDO
+    - PST
+    - CPY
+    - CUT
+    - UND
+  - - ''
+    - ''
+    - ''
+    - ''
+    - F11
+    - F12
+  4 Win:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - Ctl+Alt+1
+    - ''
+    - ''
+    - ''
+    - Gui+X
+  - - ''
+    - ''
+    - "\u2303"
+    - "\u21E7"
+    - ''
+    - Ctl+Alt+2
+    - Gui+4
+    - Gui+5
+    - Gui+6
+    - Gui+Z
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - Ctl+Alt+3
+    - Gui+1
+    - Gui+2
+    - Gui+3
+    - Gui+C
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  5 Pnt:
+  - - L DPI-
+    - L DPI+
+    - L Snipe
+    - ''
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - ''
+    - R Snipe
+    - R DPI+
+    - R DPI-
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - QK MOUSE WHEEL UP
+    - QK MOUSE WHEEL DOWN
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - ''
+    - QK MOUSE BUTTON 1
+    - QK MOUSE BUTTON 2
+    - ''
+    - ''
+    - ''
+  6 Num:
+  - - ''
+    - '7'
+    - '8'
+    - '9'
+    - PAST
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - '4'
+    - '5'
+    - '6'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - '1'
+    - '2'
+    - '3'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - '0'
+    - ''
+    - ''
+    - ''
+    - ''
+  7 Txt:
+  - - ''
+    - '8'
+    - '9'
+    - SECRET 1
+    - ''
+    - 'EEPROM
+
+      Clear'
+    - ''
+    - ''
+    - ''
+    - QK BOOT
+  - - SELWORD
+    - SELWBAK
+    - SELLINE
+    - SECRET 2
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - '1'
+    - '2'
+    - '3'
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - *id001
+    - ''
+    - ''
+    - ''
+    - ''
+  8 Rep:
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - ''
+    - '*'
+    - "\u21E7"
+    - ''
+    - ''
+    - "\u21E7"
+    - '*'
+    - ''
+    - ''
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - - ''
+    - "\u21BB"
+    - ''
+    - ''
+    - "\u21BB"
+    - ''

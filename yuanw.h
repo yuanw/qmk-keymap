@@ -31,5 +31,8 @@ enum my_keycodes {
     M_NT,
     ARCANE,
     MY_GLOBE,
-    GLOBE_SPC
+    GLOBE_SPC,
+    // Trackball DPI stepping (BastardKB boards, sensor on the right half).
+    DPI_UP,
+    DPI_DOWN
 };
