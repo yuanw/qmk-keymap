@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ),
 
     [WIN] = LAYOUT_LR(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       C(A(1)), XXXXXXX,   XXXXXXX,   XXXXXXX,   G(KC_X),
+        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       C(A(1)), XXXXXXX,   XXXXXXX,   XXXXXXX,   G(KC_X),
         XXXXXXX, XXXXXXX, KC_RCTL, KC_RSFT, XXXXXXX,                       C(A(2)), G(KC_4), G(KC_5), G(KC_6), G(KC_Z),
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       C(A(3)), G(KC_1), G(KC_2), G(KC_3), G(KC_C),
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,   XXXXXXX
