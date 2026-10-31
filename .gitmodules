@@ -1,7 +1,8 @@
 [submodule "charybdis"]
 	path = charybdis
 	url = https://github.com/bastardkb/bastardkb-qmk
-    branch = bkb-master
+# upstream renamed bkb-master -> bkb-master-archive (same tip); keep --remote working
+    branch = bkb-master-archive
 [submodule "modules/getreuer"]
 	path = modules/getreuer
 	url = https://github.com/getreuer/qmk-modules.git
