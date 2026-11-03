@@ -151,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYM] = LAYOUT_LR(
          KC_GRV,  KC_AMPR, KC_PERC, KC_PAST, XXXXXXX,                       XXXXXXX, KC_LCBR, KC_RCBR, KC_DLR,  ARROW,
         KC_EXLM, KC_LABK, KC_RABK, EMAIL_1, XXXXXXX,                       XXXXXXX, KC_LPRN, KC_RPRN, KC_AT,   KC_CIRC,
-         KC_B, KC_TILD, KC_BSLS,  KC_PIPE, KC_BSLS,                       XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, KC_W,
+         KC_B, KC_TILD, KC_BSLS,  KC_PIPE, KC_BSLS,                       XXXXXXX, KC_LBRC, KC_RBRC, KC_HASH, KC_BSPC,
                                    XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
@@ -177,9 +177,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [PNT] = LAYOUT_LR(
-        L_DPI_DN, L_DPI_UP, L_SNP,    XXXXXXX, _______,                 _______, XXXXXXX, R_SNP,    R_DPI_UP, R_DPI_DN,
-        _______,  _______,  _______,  _______,  _______,                 _______, _______,  _______,  _______,  _______,
-        _______,  _______,  QK_MOUSE_WHEEL_UP, QK_MOUSE_WHEEL_DOWN, _______,      _______, _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
                                    XXXXXXX, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
