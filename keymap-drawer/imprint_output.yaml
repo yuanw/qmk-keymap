@@ -114,7 +114,7 @@ layers:
     - '['
     - ']'
     - '#'
-    - W
+    - ⌫
     - ''
     - ''
     - ''
@@ -303,20 +303,36 @@ layers:
       type: trackball
   5 Pnt:
   - - ''
-    - L DPI-
-    - L DPI+
-    - L Snipe
-    - ''
     - h: ''
       t: ▽
       type: trans
     - h: ''
       t: ▽
       type: trans
-    - ''
-    - R Snipe
-    - R DPI+
-  - - R DPI-
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
+  - - h: ''
+      t: ▽
+      type: trans
     - ''
     - ''
     - h: ''
@@ -357,8 +373,12 @@ layers:
     - h: ''
       t: ▽
       type: trans
-    - QK MOUSE WHEEL UP
-    - QK MOUSE WHEEL DOWN
+    - h: ''
+      t: ▽
+      type: trans
+    - h: ''
+      t: ▽
+      type: trans
     - h: ''
       t: ▽
       type: trans

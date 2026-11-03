@@ -90,7 +90,7 @@ layers:
     - '['
     - ']'
     - '#'
-    - W
+    - "\u232B"
   - - ''
     - ''
     - ''
@@ -207,20 +207,6 @@ layers:
     - ''
     - ''
   5 Pnt:
-  - - L DPI-
-    - L DPI+
-    - L Snipe
-    - ''
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - h: ''
-      t: "\u25BD"
-      type: trans
-    - ''
-    - R Snipe
-    - R DPI+
-    - R DPI-
   - - h: ''
       t: "\u25BD"
       type: trans
@@ -257,8 +243,42 @@ layers:
     - h: ''
       t: "\u25BD"
       type: trans
-    - QK MOUSE WHEEL UP
-    - QK MOUSE WHEEL DOWN
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+  - - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
+    - h: ''
+      t: "\u25BD"
+      type: trans
     - h: ''
       t: "\u25BD"
       type: trans

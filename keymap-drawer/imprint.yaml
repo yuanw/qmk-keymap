@@ -10,7 +10,7 @@ layers:
   - ['', '`', '&', '%', PAST, '', '', '{', '}', $]
   - [ARROW, '', '', '!', <, '>', EMAIL 1, '', '', (]
   - [), '@', ^, '', '', B, '~', \, '|', \]
-  - ['', '[', ']', '#', W, '', '', '', '', '']
+  - ['', '[', ']', '#', BSPC, '', '', '', '', '']
   - ['', '', '', '', '', '', '', '']
   L2:
   - ['', QK BOOT, F7, F8, F9, F10, '', '', '', '']
@@ -32,16 +32,16 @@ layers:
   - ['', '', '', '', '', '', '', '']
   L5:
   - - ''
-    - L DPI DN
-    - L DPI UP
-    - L SNP
-    - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - ''
-    - R SNP
-    - R DPI UP
-  - - R DPI DN
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
     - ''
     - ''
     - {t: ▽, type: trans}
@@ -58,8 +58,8 @@ layers:
     - ''
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - QK MOUSE WHEEL UP
-    - QK MOUSE WHEEL DOWN
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
