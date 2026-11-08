@@ -9,6 +9,20 @@ https://sunaku.github.io/enthium-keyboard-layout.html
 
 symbol based on https://github.com/getreuer/qmk-keymap
 
+** Trainer
+
+#+begin_example
+just trainer charybdis   # or imprint / dilemma / spankbd
+#+end_example
+
+Reuses the keymap-drawer YAML and the QMK geometry to write a self-contained
+HTML page (keymap-drawer/<target>_trainer.html), served at
+http://127.0.0.1:8765/... because LibreWolf refuses to read file:// URLs from
+the repo. Type the highlighted key on the
+real keyboard, get wpm/accuracy and a list of keys that need work. Practice
+flows through text, Drill quizzes single keys weighted by your mistakes,
+Explore lights up whatever you press.
+
 
 ** [[https://github.com/Cyboard-DigitalTailor/vial-qmk/tree/cyboard/keyboards/cyboard/imprint/imprint_number_row][Cyboard imprint (3 rows no bottom row)]]
 [[/img/imprint.jpeg]]

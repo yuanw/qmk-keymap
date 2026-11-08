@@ -41,6 +41,10 @@ just keymap spankbd     # Outputs spankbd.svg
 # Generate mouseless grid configuration (from keymap)
 just mouseless          # Outputs mouseless_grid_config.yaml
 
+# Generate + open the browser keymap trainer (practice / drill / explore)
+just trainer charybdis   # Outputs keymap-drawer/charybdis_trainer.html
+python scripts/test_generate_trainer.py   # self-check for the trainer generator
+
 # Format C code
 just format
 ```
@@ -72,6 +76,17 @@ Keymaps are in `keyboards/<vendor>/<keyboard>/keymaps/yuanw/`:
 
 ### Layers
 BASE, SYM, NAV, WIN, PNT (pointer/mouse), NUM, TXT, FUN, REP
+
+### Trainer
+`just trainer <target>` regenerates the keymap SVG, then `scripts/generate_trainer.py`
+bakes the processed keymap-drawer YAML (`keymap-drawer/<target>_output.yaml`) plus the
+QMK geometry into a dependency-free page. It reads key presses from browser keydown
+events, so layers are inferred from the typed character, not from firmware state.
+What a key taps out (`r` = tap `R_NUM`) and the combos (`b` = `;`+`.`, `w` = `m`+`g`) are
+read from the raw `keymap-drawer/<target>.json` and `yuanw.c` — the drawn labels lack them.
+`scripts/serve_trainer.py` opens it at `http://127.0.0.1:8765/...` (LibreWolf's sandbox
+refuses to read files outside the user dirs, so `file://` will not load); the server is
+reused between runs and exits after 30 idle minutes.
 
 ## BastardKB (Charybdis / Dilemma) Notes
 

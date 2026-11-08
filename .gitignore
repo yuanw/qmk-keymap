@@ -14,3 +14,6 @@ compile_commands.json
 *.uf2
 secrets.h
 .cache
+
+# Generated trainer pages
+keymap-drawer/*_trainer.html

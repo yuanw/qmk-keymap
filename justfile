@@ -196,6 +196,25 @@ keymap target:
     fi
     echo "{{ green }}Generated $outdir/{{ target }}.svg{{ reset }}"
 
+# Generate a browser keymap trainer (practice / drill / explore) and open it
+trainer target="charybdis":
+    #!/usr/bin/env bash
+    just keymap {{ target }}
+    outdir="keymap-drawer"
+    kb=$(just _keyboard {{ target }})
+    submod=$(just _submodule {{ target }})
+    if [ "{{ target }}" = "imprint" ]; then
+      geom="$outdir/imprint_layout.json"; layout="LAYOUT_let_no_bottom_row"
+    elif [ "{{ target }}" = "charybdis" ]; then
+      geom="$submod/keyboards/$(dirname $kb)/info.json"; layout="LAYOUT"
+    else
+      geom="$submod/keyboards/$kb/keyboard.json"; layout="LAYOUT_split_3x5_3"
+    fi
+    python scripts/generate_trainer.py {{ target }} \
+      --yaml $outdir/{{ target }}_output.yaml --geom $geom --layout $layout \
+      --out $outdir/{{ target }}_trainer.html
+    python scripts/serve_trainer.py $outdir/{{ target }}_trainer.html
+
 # Generate compile_commands.json for clangd LSP
 compiledb target:
     #!/usr/bin/env bash
