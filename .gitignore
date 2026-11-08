@@ -17,3 +17,6 @@ secrets.h
 
 # Generated trainer pages
 keymap-drawer/*_trainer.html
+
+# Python
+__pycache__/
