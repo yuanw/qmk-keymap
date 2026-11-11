@@ -57,6 +57,55 @@ KC_CHARS = {
 }
 for _i in range(26):
     KC_CHARS[f"KC_{chr(65 + _i)}"] = chr(97 + _i)
+
+# Practice text, by level. The useful knob here is which characters you have to
+# reach, not how big your vocabulary is: "numbers" sends you to the Num layer and
+# "code" to Sym, which is what makes them harder. Kept lowercase — the page reads
+# event.key lowercased, so capitals would be unreachable prompts.
+_EASY = """the be to of and a in it is for on with he as you do at but by from they we
+or an will my one all would there their what so up out if who get go me when can like
+time no just him know take into year your good some see than then now look only come
+over back after use two how our work way even new want any give day most us said man
+old big small long little own other many first last next best high low right left near
+far away again still once here where why while while not all""".split()
+
+_COMMON = _EASY + """because people water number part should between under again around
+without always sometimes things place point fact home area book letter house answer study
+plant food earth light country music art mother father family friend child school student
+power city farm story door group country begin keep find give tell ask seem mean let help
+move live play run walk sit stand hear speak buy drink sit need try call turn show follow
+carry hold write provide happen bring change close remember grow draw think watch count
+""".split()
+
+_HARD = """absolutely according actually although altogether analysis anything appearance
+approximately argument assembled associate authority available beautiful beginning believe
+completely complicated comprehensive consequently consideration consistent constant
+container continuing controlled convenient correction corresponding criticism deliberately
+difference difficult disadvantage disappointment discussion distinction effectively
+elsewhere emergency emotionally equivalent especially existence experience explanation
+extremely frequently government gradually impossible individual industrial intelligence
+interesting interpretation involvement knowledge laboratory literature maintenance
+manufactured marriage material mathematics meanwhile miserable modification momentum
+understanding university usually whether wonderful although language different important
+national children example question education community history however something
+""".split()
+
+WORDS = {"easy": _EASY, "common": _COMMON, "hard": _HARD}
+
+# Symbol soup for the two top levels; every one of these is checked to be typeable
+# on every board by scripts/test_generate_trainer.py.
+MARKS = [",", ".", "?", "!", ";", ":", "'", "-"]
+CODE = ["->", "==", "!=", "&&", "||", "<", ">", "{", "}", "[", "]", "(", ")", "+", "-",
+        "*", "/", "\\", "%", "#", "@", "$", "&", "|", "~", "^", "_", ";", ":", "=", "?", "!"]
+
+LEVELS = {
+    "easy": {"list": "easy", "label": "easy words"},
+    "common": {"list": "common", "label": "common words"},
+    "hard": {"list": "hard", "label": "long words"},
+    "punctuation": {"list": "common", "label": "words + punctuation", "marks": MARKS},
+    "numbers": {"list": "common", "label": "words + numbers", "marks": MARKS, "numbers": 0.15},
+    "code": {"list": "common", "label": "code", "marks": MARKS, "numbers": 0.1, "code": 0.25},
+}
 for _i in range(10):
     KC_CHARS[f"KC_{_i}"] = str(_i)
 for _i in range(1, 25):
@@ -259,6 +308,12 @@ def build_data(target, yaml_path, geom_path, layout_name, qmk_json, firmware):
                 "layerName": name,
             }
             targets.setdefault(out, []).append(entry)
+            # Shifted output is its own prompt: ? + " _ are only reachable that way,
+            # and a drill that never asks for them teaches half the symbol layer.
+            sh = typable(c["s"])
+            if sh and sh != out:
+                targets.setdefault(sh, []).append(
+                    {**entry, "char": sh, "label": c["s"], "shifted": True, "base": c["t"]})
 
     # Combos are not grid keys, so they stay in their own bucket: {char: [entry]}.
     combo_entries = {
@@ -324,27 +379,36 @@ def build_data(target, yaml_path, geom_path, layout_name, qmk_json, firmware):
     return data
 
 
+REPO = Path(__file__).parents[1]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("target")
-    ap.add_argument("--yaml", required=True)
-    ap.add_argument("--geom", required=True)
-    ap.add_argument("--layout", required=True)
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--raw", help="raw keymap json (default: <target>.json next to --yaml)")
-    ap.add_argument("--src", default=str(Path(__file__).parents[1] / "yuanw.c"),
+    ap.add_argument("--yaml", help="default: keymap-drawer/<target>_output.yaml")
+    ap.add_argument("--geom", help="default: keymap-drawer/<target>_layout.json")
+    ap.add_argument("--layout", help="default: the only layout in --geom")
+    ap.add_argument("--out", help="default: keymap-drawer/<target>_trainer.html")
+    ap.add_argument("--raw", help="default: keymap-drawer/<target>.json")
+    ap.add_argument("--src", default=str(REPO / "yuanw.c"),
                     help="keymap source with the LT()/combo definitions")
     args = ap.parse_args()
 
-    raw_json = args.raw or Path(args.yaml).with_name(f"{args.target}.json")
-    raw_json = raw_json if Path(raw_json).exists() else None
-    data = build_data(args.target, args.yaml, args.geom, args.layout, raw_json, args.src)
+    # Defaults are all committed files, so the pages can be built without the
+    # firmware submodules — that is what lets flake.nix package the site.
+    yaml = Path(args.yaml or REPO / "keymap-drawer" / f"{args.target}_output.yaml")
+    geom = Path(args.geom or REPO / "keymap-drawer" / f"{args.target}_layout.json")
+    out = Path(args.out or REPO / "keymap-drawer" / f"{args.target}_trainer.html")
+    raw_json = Path(args.raw or yaml.with_name(f"{args.target}.json"))
+    raw_json = raw_json if raw_json.exists() else None
+    data = build_data(args.target, yaml, geom, args.layout, raw_json, args.src)
     html = (
         Path(__file__).with_name("trainer_template.html").read_text()
         .replace("__TITLE__", f"{args.target} layout trainer")
         .replace("__DATA__", json.dumps(data, ensure_ascii=False))
+        .replace("__WORDS__", json.dumps({"words": WORDS, "levels": LEVELS, "code": CODE},
+                                         ensure_ascii=False))
     )
-    out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html)
     print(f"wrote {out} ({len(data['targets'])} typeable keys, {len(data['layers'])} layers, "

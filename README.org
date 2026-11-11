@@ -27,7 +27,25 @@ The target key is lit, the layer key you must hold is outlined dashed, and a red
 dot marks keys you keep missing. When a character has several ways (b as the
 combo or on Sym) Explore lists them and remembers the one you prefer; routes are
 ranked base press, then combo, then a layered reach, preferring a layer key on
-the other hand.
+the other hand. Shifted characters (? + " _) are their own prompts.
+
+The dropdown by /new text/ picks the practice text: easy, common or long words,
+then words + punctuation, words + numbers, code. The difficulty that matters here
+is which characters you have to reach for, since numbers send you to Num and code
+symbols to Sym.
+
+*** As a package
+
+#+begin_example
+nix build .#trainer
+./result/bin/keymap-trainer              # index page of the four boards
+./result/bin/keymap-trainer charybdis
+#+end_example
+
+It builds from committed files only (keymap-drawer/<target>.json, _output.yaml and
+_layout.json) because a flake source carries no git submodules. After a board
+change, refresh the geometry copies with just layouts; the test script fails if
+they go stale.
 
 *** Limits
 
@@ -43,8 +61,6 @@ the other hand.
 
 *** Follow-ups
 
-- Word lists by level (short high-frequency words, common, advanced) plus
-  punctuation / numbers / code sets, as a selector next to /new text/.
 - Finger hints and homing bars, derived from the geometry the way
   https://github.com/GordonMohrin/split-keyboard-for-monkeytype does it.
 

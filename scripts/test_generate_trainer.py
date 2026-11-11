@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Self-check for the trainer generator: run `python scripts/test_generate_trainer.py`."""
 
+import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from generate_trainer import build_data  # noqa: E402
+from generate_trainer import build_data, WORDS, LEVELS, CODE  # noqa: E402
 
 ROOT = Path(__file__).parents[1]
 GEOM = {
@@ -49,6 +50,21 @@ for target, (geom, layout) in GEOM.items():
     assert d["hand"][sym[0]] != d["hand"][sym[1]], "reach SYM with either hand"
     assert d["holdKeys"]["6 Num"] == [t["r"][0]["keys"][0]]
     assert set(d["hand"]) == {0, 1}
+    # Shifted output has to be its own prompt, or the page never asks for ? + " _
+    for ch in '?+"_':
+        assert ch in t, f"{target}: shifted {ch!r} is not drillable"
+        assert any(e["shifted"] for e in t[ch]), f"{target}: {ch!r} has no shift route"
+    # Practice text must be reachable: the page skips characters the keymap
+    # cannot produce, so an unreachable prompt would just vanish silently.
+    reach = set(t) | set(d["combos"])
+    letters = {c for words in WORDS.values() for word in words for c in word}
+    assert not letters - reach, f"{target}: no key types {sorted(letters - reach)}"
+    for name, lv in LEVELS.items():
+        assert lv["list"] in WORDS, name
+        for c in lv.get("marks", []):
+            assert c in reach, f"{target}: punctuation {c!r} unreachable in {name}"
+    for token in CODE + [str(i) for i in range(10)]:
+        assert set(token) <= reach, f"{target}: {token!r} unreachable in the code level"
     # Anything the browser cannot report as event.key must stay out of the drills.
     for ch in list(t) + list(d["combos"]):
         assert ch.startswith("F") or ch in (
@@ -56,5 +72,17 @@ for target, (geom, layout) in GEOM.items():
             "PageDown", "Home", "End", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown",
         ) or all(32 <= ord(c) <= 126 for c in ch), f"unmatchable drill target: {ch!r}"
     print(f"{target}: {n} keys, {len(t)} typeable — ok")
+
+# keymap-drawer/<target>_layout.json is what flake.nix builds the pages against
+# (a flake source carries no submodules), so keep the copies honest.
+for target, (geom, layout) in GEOM.items():
+    committed = ROOT / "keymap-drawer" / f"{target}_layout.json"
+    assert committed.exists(), f"{target}: no {committed.name}, run `just layouts`"
+    mine = json.load(open(committed))["layouts"][layout]["layout"]
+    assert len(mine) >= 30, f"{target}: {committed.name} looks empty"
+    src = ROOT / geom
+    if src.exists():
+        assert mine == json.load(open(src))["layouts"][layout]["layout"], \
+            f"{target}: {committed.name} is stale, run `just layouts`"
 
 print("all good")

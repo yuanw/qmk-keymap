@@ -14,7 +14,7 @@ body { margin: 0; padding: 18px 22px 40px; background: var(--bg); color: var(--f
 h1 { font-size: 17px; margin: 0 0 12px; font-weight: 600; }
 h1 span { color: var(--dim); font-weight: 400; font-size: 13px; }
 header { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-bottom: 14px; }
-button, .chip { background: var(--chip); color: var(--fg); border: 1px solid var(--keyline);
+button, .chip, select { background: var(--chip); color: var(--fg); border: 1px solid var(--keyline);
   border-radius: 6px; padding: 4px 10px; font: inherit; font-size: 13px; cursor: pointer; }
 button.on { background: var(--hi); color: #17181c; border-color: var(--hi); font-weight: 600; }
 .chip { opacity: .55; } .chip.on { opacity: 1; }
@@ -66,6 +66,7 @@ button.on { background: var(--hi); color: #17181c; border-color: var(--hi); font
   <button id="labels">labels on</button>
   <button id="hints">hints on</button>
   <button id="refill">new text</button>
+  <select id="level" title="practice text"></select>
   <button id="edit">edit text</button>
   <span id="layers"></span>
   <span id="stats"></span>
@@ -84,12 +85,13 @@ button.on { background: var(--hi); color: #17181c; border-color: var(--hi); font
 
 <script>
 const D = __DATA__;
+const W = __WORDS__;
 const U = 34, GAP = 3;
 const $ = (s) => document.querySelector(s);
 const base = D.layers[0];
 const store = "trainer:" + D.target;
 
-let S = Object.assign({ correct: 0, wrong: 0, errors: {}, pref: {}, t0: null },
+let S = Object.assign({ correct: 0, wrong: 0, errors: {}, pref: {}, level: "common", t0: null },
                       JSON.parse(localStorage.getItem(store) || "{}"));
 const save = () => localStorage.setItem(store, JSON.stringify(S));
 
@@ -110,6 +112,7 @@ const cellOf = (li, i) => {
 const sigOf = (t) => t.layerName + ":" + t.keys.join(",");
 function rank(t) {
   let r = t.layerName === "Combo" ? 1 : t.layer ? 2 : 0;
+  if (t.shifted) r += 0.5;                          // a plain press beats a shifted one
   if (S.pref[t.char] === sigOf(t)) r -= 4;
   if (t.layer && t.keys.length === 1) {
     const hk = D.holdKeys[t.layerName] || [];
@@ -128,9 +131,17 @@ const isModifier = (e) => e.ctrlKey || e.metaKey || e.altKey;
 const isModifierKey = (k) => ["Shift","Control","Alt","Meta","CapsLock"].includes(k);
 
 function words(n) {
-  const w = "the be to of and a in that have i it for not on with he as you do at this but his by from they we say her she or an will my one all would there their what so up out if about who get which go me when make can like time no just him know take into year your good some could them see other than then now look only come its over think also back after use two how our work first well way even new want because any these give day most us is are was were been has had did . , ? ! ; : -".split(" ");
-  let out = [];
-  for (let i = 0; i < n; i++) out.push(w[Math.floor(Math.random() * w.length)]);
+  const lv = W.levels[S.level] || W.levels.common;
+  const list = W.words[lv.list];
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    let t = pick(list);
+    if (lv.marks && Math.random() < 0.2) t += pick(lv.marks);
+    if (lv.numbers && Math.random() < lv.numbers) t = String(Math.floor(Math.random() * 1000));
+    if (lv.code && Math.random() < lv.code) t = pick(W.code);
+    out.push(t);
+  }
   return out.join(" ");
 }
 
@@ -194,6 +205,7 @@ function routeText(t) {
   if (!t) return "";
   if (t.layerName === "Combo")
     return `<b>combo</b> — press <b>${t.keys.map((k) => cellOf(0, k).t || "?").join("</b> + <b>")}</b>`;
+  if (t.shifted) return `<b>Base</b> — hold <b>Shift</b>, tap <b>${t.base}</b>`;
   if (!t.layer) return `<b>Base</b> — press <b>${t.label}</b>` + (t.shift ? ` (shift for ${t.shift})` : "");
   const hold = D.holds[t.layerName.split(" ").pop()];
   return `<b>${t.layerName}</b> — hold <b>${hold || t.layerName}</b>, tap <b>${t.label}</b>`;
@@ -363,7 +375,12 @@ $("#hints").onclick = () => {
   $("#hints").textContent = hints ? "hints on" : "hints off";
   if (cur) mark("hit", cur.keys, false, holdKeysFor(cur)); else mark(null, []);
 };
-$("#refill").onclick = () => { $("#text").value = words(45); buildQueue($("#text").value); nextPractice(); };
+const newText = () => { $("#text").value = words(45); buildQueue($("#text").value); nextPractice(); };
+$("#refill").onclick = newText;
+const sel = $("#level");
+sel.innerHTML = Object.entries(W.levels).map(([k, v]) =>
+  `<option value="${k}"${k === S.level ? " selected" : ""}>${v.label}</option>`).join("");
+sel.onchange = () => { S.level = sel.value; save(); newText(); };
 $("#edit").onclick = () => {
   editing = !editing;
   $("#edit").textContent = editing ? "done" : "edit text";

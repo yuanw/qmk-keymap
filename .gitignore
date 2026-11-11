@@ -20,3 +20,5 @@ keymap-drawer/*_trainer.html
 
 # Python
 __pycache__/
+result
+result-*

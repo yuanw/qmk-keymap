@@ -200,20 +200,20 @@ keymap target:
 trainer target="charybdis":
     #!/usr/bin/env bash
     just keymap {{ target }}
-    outdir="keymap-drawer"
-    kb=$(just _keyboard {{ target }})
-    submod=$(just _submodule {{ target }})
-    if [ "{{ target }}" = "imprint" ]; then
-      geom="$outdir/imprint_layout.json"; layout="LAYOUT_let_no_bottom_row"
-    elif [ "{{ target }}" = "charybdis" ]; then
-      geom="$submod/keyboards/$(dirname $kb)/info.json"; layout="LAYOUT"
-    else
-      geom="$submod/keyboards/$kb/keyboard.json"; layout="LAYOUT_split_3x5_3"
-    fi
-    python scripts/generate_trainer.py {{ target }} \
-      --yaml $outdir/{{ target }}_output.yaml --geom $geom --layout $layout \
-      --out $outdir/{{ target }}_trainer.html
-    python scripts/serve_trainer.py $outdir/{{ target }}_trainer.html
+    python scripts/generate_trainer.py {{ target }}
+    python scripts/serve_trainer.py keymap-drawer/{{ target }}_trainer.html
+
+# Refresh the committed board geometry that the trainer pages (and nix build) use.
+# imprint_layout.json is written by `just keymap imprint` instead.
+layouts:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    python scripts/extract_layout.py charybdis/keyboards/bastardkb/charybdis/3x5/info.json \
+      LAYOUT keymap-drawer/charybdis_layout.json
+    python scripts/extract_layout.py charybdis/keyboards/bastardkb/dilemma/3x5_3_trackball/keyboard.json \
+      LAYOUT_split_3x5_3 keymap-drawer/dilemma_layout.json
+    python scripts/extract_layout.py holykeebs_qmk/keyboards/holykeebs/spankbd/keyboard.json \
+      LAYOUT_split_3x5_3 keymap-drawer/spankbd_layout.json
 
 # Generate compile_commands.json for clangd LSP
 compiledb target:

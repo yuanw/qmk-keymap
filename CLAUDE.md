@@ -45,6 +45,12 @@ just mouseless          # Outputs mouseless_grid_config.yaml
 just trainer charybdis   # Outputs keymap-drawer/charybdis_trainer.html
 python scripts/test_generate_trainer.py   # self-check for the trainer generator
 
+# Refresh the committed board geometry the trainer builds against
+just layouts
+
+# The trainer site as a package (index page + one page per board)
+nix build .#trainer && ./result/bin/keymap-trainer [target]
+
 # Format C code
 just format
 ```
@@ -84,14 +90,20 @@ QMK geometry into a dependency-free page. It reads key presses from browser keyd
 events, so layers are inferred from the typed character, not from firmware state.
 What a key taps out (`r` = tap `R_NUM`) and the combos (`b` = `;`+`.`, `w` = `m`+`g`) are
 read from the raw `keymap-drawer/<target>.json` and `yuanw.c` — the drawn labels lack them.
+Geometry comes from `keymap-drawer/<target>_layout.json` — committed copies of the
+keyboard `layouts` block (`just layouts`, `scripts/extract_layout.py`) — so the pages
+and `nix build .#trainer` need no submodules; the test script fails if a copy goes stale.
 `scripts/serve_trainer.py` opens it at `http://127.0.0.1:8765/...` (LibreWolf's sandbox
 refuses to read files outside the user dirs, so `file://` will not load); the server is
-reused between runs and exits after 30 idle minutes.
+reused between runs and exits after 30 idle minutes. Set `TRAINER_ROOT` to serve another
+directory (the nix package does). Practice text comes from `WORDS`/`LEVELS` in the
+generator: word list plus optional punctuation, numbers and code symbols, so each level
+forces different layers.
 
 Limits: only characters and modifiers reach the page, so keys that send nothing
 (held MO/LT, macros, mouse, DPI) are drawn but never drilled, and combos are judged
-by their output character. Follow-ups (word lists by level, finger hints) live in
-README.org.
+by their output character. Prompts are lowercase — the page reads `event.key`
+lowercased. Follow-ups (finger hints) live in README.org.
 
 ## BastardKB (Charybdis / Dilemma) Notes
 
