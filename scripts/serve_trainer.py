@@ -11,6 +11,7 @@ hands the browser a localhost URL. The server quits after an idle while.
 """
 
 import http.server
+import os
 import socket
 import subprocess
 import sys
@@ -19,7 +20,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).parents[1]
+# Repo root by default; the nix package points this at its own pages dir.
+ROOT = Path(os.environ.get("TRAINER_ROOT", Path(__file__).parents[1]))
 PORT_START = 8765
 IDLE_TIMEOUT = 1800  # seconds
 
@@ -64,7 +66,7 @@ def main():
         return
 
     if len(sys.argv) < 2:
-        raise SystemExit("usage: serve_trainer.py <page.html relative to the repo>")
+        raise SystemExit("usage: serve_trainer.py <page.html relative to the served root>")
     page = sys.argv[1]
 
     candidates = range(PORT_START, PORT_START + 20)
@@ -84,7 +86,8 @@ def main():
 
     url = f"http://127.0.0.1:{port}/{urllib.parse.quote(page)}"
     print(url)
-    subprocess.run(["open", url], check=False)
+    opener = "open" if sys.platform == "darwin" else "xdg-open"
+    subprocess.run([opener, url], check=False)
 
 
 if __name__ == "__main__":

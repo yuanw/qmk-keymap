@@ -32,6 +32,32 @@
         {
           packages.drawer = pkgs.python3Packages.callPackage ./nix/keymap-drawer.nix { };
 
+          # The trainer site, buildable anywhere: nix build .#trainer && ./result/bin/keymap-trainer [target]
+          # Every input it reads is committed under keymap-drawer/ — a flake source
+          # carries no git submodules, so the firmware trees are not available here.
+          packages.trainer =
+            let
+              targets = [ "charybdis" "dilemma" "imprint" "spankbd" ];
+              python3 = pkgs.python3.withPackages (ps: [ ps.pyyaml ]);
+              gen = t: ''
+                python3 ${./scripts}/generate_trainer.py ${t} --yaml ${./keymap-drawer}/${t}_output.yaml --geom ${./keymap-drawer}/${t}_layout.json --raw ${./keymap-drawer}/${t}.json --src ${./yuanw.c} --out $out/pages/${t}.html
+              '';
+              links = lib.concatMapStrings (t: ''<li><a href="${t}.html">${t}</a></li>'') targets;
+              pages = pkgs.runCommand "keymap-trainer-pages" { nativeBuildInputs = [ python3 ]; } ''
+                mkdir -p $out/pages
+                ${lib.concatStrings (map gen targets)}
+                echo '<!doctype html><meta charset=utf-8><title>keymap trainers</title><style>body{font:16px ui-sans-serif,system-ui;background:#17181c;color:#e6e6e6;padding:2rem}a{color:#e0a96d}li{margin:.3rem 0}</style><h1>keymap trainers</h1><ul>${links}</ul>' > $out/pages/index.html
+              '';
+            in
+            pkgs.writeShellApplication {
+              name = "keymap-trainer";
+              runtimeInputs = [ python3 ];
+              text = ''
+                # keymap-trainer [target] — serve the pages on 127.0.0.1 (no target: the index)
+                exec env TRAINER_ROOT=${pages}/pages python3 ${./scripts}/serve_trainer.py "''${1:-index}.html"
+              '';
+            };
+
           treefmt.config = {
             inherit (config.flake-root) projectRootFile;
             package = pkgs.treefmt;
@@ -59,7 +85,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               clang-tools
-              (python3.withPackages (ps: [ ps.pyyaml ps.beautifulsoup4 ps.lxml]))
+              (python3.withPackages (ps: [ ps.pyyaml ps.beautifulsoup4 ps.lxml ]))
               config.packages.drawer
               qmk
               just
