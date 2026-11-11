@@ -88,6 +88,11 @@ read from the raw `keymap-drawer/<target>.json` and `yuanw.c` — the drawn labe
 refuses to read files outside the user dirs, so `file://` will not load); the server is
 reused between runs and exits after 30 idle minutes.
 
+Limits: only characters and modifiers reach the page, so keys that send nothing
+(held MO/LT, macros, mouse, DPI) are drawn but never drilled, and combos are judged
+by their output character. Follow-ups (word lists by level, finger hints) live in
+README.org.
+
 ## BastardKB (Charybdis / Dilemma) Notes
 
 - The fork's `main` branch is the current line; keyboard targets carry a board

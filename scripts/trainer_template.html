@@ -47,6 +47,10 @@ button.on { background: var(--hi); color: #17181c; border-color: var(--hi); font
 #board g.ok text, #board g.ok text.sub,
 #board g.found text, #board g.found text.sub { fill: #17181c; }
 #board g.bad rect.face { fill: var(--bad); stroke: var(--bad); }
+#board g.hold rect.face { stroke: var(--hi); stroke-dasharray: 5 4; }
+#board g.hold text.sub { fill: var(--hi); }
+#board circle.heat { fill: var(--bad); pointer-events: none; }
+#board g.hit circle.heat, #board g.found circle.heat, #board g.ok circle.heat { opacity: 0 !important; }
 #hint { text-align: center; color: var(--dim); font-size: 13px; min-height: 20px; margin-top: 6px; }
 #weak { margin-top: 18px; color: var(--dim); font-size: 13px; }
 #weak b { color: var(--fg); font-family: ui-monospace, monospace; }
@@ -85,7 +89,7 @@ const $ = (s) => document.querySelector(s);
 const base = D.layers[0];
 const store = "trainer:" + D.target;
 
-let S = Object.assign({ correct: 0, wrong: 0, errors: {}, t0: null },
+let S = Object.assign({ correct: 0, wrong: 0, errors: {}, pref: {}, t0: null },
                       JSON.parse(localStorage.getItem(store) || "{}"));
 const save = () => localStorage.setItem(store, JSON.stringify(S));
 
@@ -99,12 +103,24 @@ const cellOf = (li, i) => {
   if (li && (!c.t || c.trans)) { const b = D.cells[base][i]; if (b.t) return b; }
   return c;
 };
-// Combos live apart from grid keys; a base-layer press beats a combo, which
-// beats reaching into another layer.
-const rank = (t) => (t.layerName === "Combo" ? 1 : t.layer ? 2 : 0);
+// Base press beats a combo beats a layered reach; a route you picked yourself
+// beats all of them, and a layered reach is worth less when the layer key sits
+// on the same hand as the target (reaching across with one hand is the harder
+// move, so prefer the layer key on the other hand).
+const sigOf = (t) => t.layerName + ":" + t.keys.join(",");
+function rank(t) {
+  let r = t.layerName === "Combo" ? 1 : t.layer ? 2 : 0;
+  if (S.pref[t.char] === sigOf(t)) r -= 4;
+  if (t.layer && t.keys.length === 1) {
+    const hk = D.holdKeys[t.layerName] || [];
+    if (hk.length && hk.every((k) => D.hand[k] === D.hand[t.keys[0]])) r += 1.5;
+  }
+  return r;
+}
 const allFor = (ch) => (D.targets[ch] || []).concat(D.combos[ch] || []);
 const has = (ch) => allFor(ch).length > 0;
 const best = (ch) => allFor(ch).sort((a, b) => rank(a) - rank(b))[0];
+const holdKeysFor = (t) => (t && t.layer ? D.holdKeys[t.layerName] || [] : []);
 // Prompt the character you should end up with, not the key's printed label
 // (the r on the thumb reads "R NUM" on the board).
 const glyphText = (t) => (t.char === " " ? "␣" : t.char.length === 1 ? t.char.toUpperCase() : t.label);
@@ -135,6 +151,11 @@ function renderBoard() {
     r.setAttribute("width", k.w * U - GAP); r.setAttribute("height", k.h * U - GAP);
     r.setAttribute("rx", 6);
     g.appendChild(r);
+    const heat = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    heat.setAttribute("class", "heat");
+    heat.setAttribute("cx", k.x * U + GAP / 2 + 8); heat.setAttribute("cy", (k.y + k.h) * U - GAP / 2 - 8);
+    heat.setAttribute("r", 5); heat.setAttribute("opacity", 0);
+    g.appendChild(heat);
     const cx = (k.x + k.w / 2) * U, cy = (k.y + k.h / 2) * U;
     const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
     t.setAttribute("x", cx); t.setAttribute("y", cy); t.textContent = c.t;
@@ -151,16 +172,19 @@ function renderBoard() {
     svg.appendChild(g);
   });
   $("#board").classList.toggle("hide-labels", !showLabels);
+  paintHeat();
 }
 const node = (i) => $(`#board g[data-idx="${i}"]`);
 function flash(i, cls, ms = 220) {
   const g = node(i); if (!g) return;
   g.classList.add(cls); setTimeout(() => g.classList.remove(cls), ms);
 }
-function mark(cls, hits, force) {
-  document.querySelectorAll("#board g").forEach((g) => g.classList.remove("dim", "hit", "found"));
+function mark(cls, hits, force, holds) {
+  document.querySelectorAll("#board g").forEach((g) =>
+    g.classList.remove("dim", "hit", "found", "hold"));
   if (!hints && !force && mode !== "explore") return;
   if (cls) document.querySelectorAll("#board g").forEach((g) => g.classList.add("dim"));
+  for (const i of holds || []) { const g = node(i); if (g) { g.classList.remove("dim"); g.classList.add("hold"); } }
   for (const i of hits || []) { const g = node(i); if (g) { g.classList.remove("dim"); g.classList.add(cls || "hit"); } }
 }
 
@@ -178,7 +202,7 @@ function showTarget(t) {
   cur = t;
   $("#glyph").textContent = t ? glyphText(t) : "";
   $("#route").innerHTML = routeText(t);
-  if (t) { setLayer(t.layer); mark("hit", t.keys); } else mark(null, []);
+  if (t) { setLayer(t.layer); mark("hit", t.keys, false, holdKeysFor(t)); } else mark(null, []);
 }
 function syncChips() {
   document.querySelectorAll("#layers .chip").forEach((c, i) =>
@@ -223,6 +247,49 @@ function inspect(i) {
   mark("hit", [i], true);
 }
 
+// ---- error heat ----------------------------------------------------------
+function heatMap() {
+  const counts = new Map();
+  for (const [ch, n] of Object.entries(S.errors)) {
+    const t = best(ch);
+    if (t) for (const k of t.keys) counts.set(k, (counts.get(k) || 0) + n);
+  }
+  const max = Math.max(1, ...counts.values());
+  return new Map([...counts].map(([k, n]) => [k, 0.2 + 0.55 * (n / max)]));
+}
+function paintHeat() {
+  const heat = heatMap();
+  document.querySelectorAll("#board g").forEach((g) => {
+    const c = g.querySelector("circle.heat");
+    if (c) c.setAttribute("opacity", heat.get(+g.dataset.idx) || 0);
+  });
+}
+
+// ---- explore -------------------------------------------------------------
+function showFound(ch) {
+  const t = best(ch);
+  if (!t) {
+    $("#glyph").textContent = ch;
+    $("#route").textContent = "no key found for this press";
+    $("#hint").innerHTML = "";
+    mark(null, []);
+    return;
+  }
+  setLayer(t.layer);
+  mark("found", allFor(ch).filter((x) => x.layer === t.layer).flatMap((x) => x.keys), true, holdKeysFor(t));
+  $("#glyph").textContent = glyphText(t);
+  $("#route").innerHTML = routeText(t);
+  const alts = allFor(ch).sort((a, b) => rank(a) - rank(b));
+  $("#hint").innerHTML = alts.length < 2 ? "" : "ways to type it: " +
+    alts.map((a) => `<button data-sig="${sigOf(a)}"${sigOf(a) === sigOf(t) ? ' class="on"' : ""}>${routeText(a)}</button>`).join(" ") +
+    ` <button id="forget">forget</button>`;
+  document.querySelectorAll("#hint button[data-sig]").forEach((b) => (b.onclick = () => {
+    S.pref[ch] = b.dataset.sig; save(); showFound(ch); bumpStats();
+  }));
+  const f = $("#forget");
+  if (f) f.onclick = () => { delete S.pref[ch]; save(); showFound(ch); bumpStats(); };
+}
+
 // ---- scoring -------------------------------------------------------------
 function bumpStats() {
   const min = S.t0 ? (Date.now() - S.t0) / 60000 : 0;
@@ -230,10 +297,16 @@ function bumpStats() {
   const tot = S.correct + S.wrong;
   $("#stats").textContent = `wpm ${wpm} · acc ${tot ? Math.round((100 * S.correct) / tot) : 100}% · ${S.correct}✓ ${S.wrong}✗`;
   const top = Object.entries(S.errors).sort((a, b) => b[1] - a[1]).slice(0, 8);
-  $("#weak").innerHTML = top.length
+  const routes = Object.keys(S.pref).length;
+  $("#weak").innerHTML = (top.length
     ? "needs work: " + top.map(([c, n]) => `<b>${c === " " ? "␣" : c}</b> ${n}`).join("  ") +
-      `  <button id="reset">reset stats</button>` : "";
-  const r = $("#reset"); if (r) r.onclick = () => { S = { correct: 0, wrong: 0, errors: {}, t0: null }; save(); bumpStats(); };
+      `  <button id="reset">reset stats</button>` : "") +
+    (routes ? `  · ${routes} route${routes > 1 ? "s" : ""} remembered <button id="forgetall">forget routes</button>` : "");
+  const r = $("#reset");
+  if (r) r.onclick = () => { S = { correct: 0, wrong: 0, errors: {}, pref: S.pref, t0: null }; save(); bumpStats(); };
+  const fa = $("#forgetall");
+  if (fa) fa.onclick = () => { S.pref = {}; save(); bumpStats(); };
+  paintHeat();
 }
 function hit(t, ok, pressedChar) {
   if (!S.t0) S.t0 = Date.now();
@@ -245,7 +318,7 @@ function hit(t, ok, pressedChar) {
   }
   save(); bumpStats();
   t.keys.forEach((k) => flash(k, ok ? "ok" : "bad", ok ? 160 : 400));
-  if (!ok) setTimeout(() => { mark("hit", t.keys, true); }, 400);
+  if (!ok) setTimeout(() => { mark("hit", t.keys, true, holdKeysFor(t)); }, 400);
 }
 
 // ---- input ---------------------------------------------------------------
@@ -254,20 +327,7 @@ document.addEventListener("keydown", (e) => {
   if (isModifierKey(e.key) || isModifier(e)) return;
   const ch = e.key.length === 1 ? e.key.toLowerCase() : e.key;
   if (has(ch)) e.preventDefault();
-  if (mode === "explore") {
-    const t = best(ch);
-    if (t) {
-      setLayer(t.layer);
-      mark("found", allFor(ch).filter((x) => x.layer === t.layer).flatMap((x) => x.keys), true);
-      $("#glyph").textContent = glyphText(t);
-      $("#route").innerHTML = routeText(t);
-    } else {
-      $("#glyph").textContent = e.key;
-      $("#route").textContent = "no key found for this press";
-      mark(null, []);
-    }
-    return;
-  }
+  if (mode === "explore") { showFound(ch); return; }
   if (!cur) return;
   // A combo can leak its member presses before it fires — do not count those.
   if (cur.layerName === "Combo" && cur.keys.some((k) => D.baseChar[k] === ch)) return;
@@ -301,7 +361,7 @@ $("#labels").onclick = () => {
 $("#hints").onclick = () => {
   hints = !hints;
   $("#hints").textContent = hints ? "hints on" : "hints off";
-  if (cur) mark("hit", cur.keys); else mark(null, []);
+  if (cur) mark("hit", cur.keys, false, holdKeysFor(cur)); else mark(null, []);
 };
 $("#refill").onclick = () => { $("#text").value = words(45); buildQueue($("#text").value); nextPractice(); };
 $("#edit").onclick = () => {

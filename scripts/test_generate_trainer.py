@@ -43,6 +43,12 @@ for target, (geom, layout) in GEOM.items():
     assert "b" in d["combos"] and "w" in d["combos"], d["combos"].keys()
     assert len(d["combos"]["b"][0]["keys"]) == 2
     assert all(len(e["keys"]) > 1 for v in d["combos"].values() for e in v)
+    # Layer keys to light up while holding, and which hand each key sits under.
+    sym = d["holdKeys"]["1 Sym"]
+    assert len(sym) == 2, sym                      # '.' and 'G' both reach SYM
+    assert d["hand"][sym[0]] != d["hand"][sym[1]], "reach SYM with either hand"
+    assert d["holdKeys"]["6 Num"] == [t["r"][0]["keys"][0]]
+    assert set(d["hand"]) == {0, 1}
     # Anything the browser cannot report as event.key must stay out of the drills.
     for ch in list(t) + list(d["combos"]):
         assert ch.startswith("F") or ch in (

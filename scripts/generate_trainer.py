@@ -284,6 +284,31 @@ def build_data(target, yaml_path, geom_path, layout_name, qmk_json, firmware):
                 holds[short] = c["t"]
                 break
 
+    # What each key taps on the base layer — used to recognise the member
+    # presses a combo may leak before it fires, and to find layer keys by name.
+    base_char = [
+        typable(cells[base][i]["t"]) or (resolve(raw[0][i], aliases) if raw else None)
+        for i in range(n_keys)
+    ]
+
+    # Physical keys that activate each layer, so the board can light them too.
+    hold_keys = {}
+    for name in layers[1:]:
+        short = name.split(" ", 1)[-1]
+        found = [i for i, c in enumerate(cells[base]) if c["h"] == short]
+        if not found:
+            # Not annotated: fall back to the LAYER_HOLD hint ("R", "REP TXT ...").
+            hint = (holds.get(short) or "").split(" ")[0].strip("().").lower()
+            if hint:
+                found = [i for i, c in enumerate(cells[base])
+                         if base_char[i] == hint or c["t"].lower().split(" ")[0] == hint]
+        if found:
+            hold_keys[name] = found
+
+    # Which hand a key belongs to, from the gap between the halves.
+    centre = max(k["x"] + k["w"] / 2 for k in geom) / 2
+    hand = [1 if k["x"] + k["w"] / 2 >= centre else 0 for k in geom]
+
     data = {
         "target": target,
         "layers": layers,
@@ -291,12 +316,9 @@ def build_data(target, yaml_path, geom_path, layout_name, qmk_json, firmware):
         "cells": cells,
         "targets": targets,
         "holds": holds,
-        # What each key taps on the base layer — used to recognise the member
-        # presses a combo may leak before it fires.
-        "baseChar": [
-            typable(cells[base][i]["t"]) or (resolve(raw[0][i], aliases) if raw else None)
-            for i in range(n_keys)
-        ],
+        "holdKeys": hold_keys,
+        "baseChar": base_char,
+        "hand": hand,
         "combos": combo_entries,
     }
     return data
