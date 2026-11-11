@@ -26,6 +26,7 @@ PORT_START = 8765
 IDLE_TIMEOUT = 1800  # seconds
 
 last_request = [time.time()]
+quit_requested = [False]
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -34,6 +35,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         last_request[0] = time.time()
+        # The server is detached, so you cannot Ctrl-C it: this is how `just stop`
+        # shuts it down. Loopback-only, and the worst it does is stop the server.
+        if self.path.rstrip("/") == "/__quit__":
+            self.send_response(204)
+            self.end_headers()
+            quit_requested[0] = True   # server.shutdown() only unwinds serve_forever, not this loop
+            return
         super().do_GET()
 
     def log_message(self, *args):
@@ -56,17 +64,34 @@ def free(port):
         return s.connect_ex(("127.0.0.1", port)) != 0
 
 
+def stop():
+    """Ask every server we might have started (our port range) to quit."""
+    stopped = []
+    for port in range(PORT_START, PORT_START + 20):
+        try:
+            with urllib.request.urlopen(f"http://127.0.0.1:{port}/__quit__", timeout=0.5) as r:
+                if r.status == 204:
+                    stopped.append(port)
+        except OSError:
+            pass
+    print("stopped " + ", ".join(map(str, stopped)) if stopped else "nothing running")
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--stop":
+        stop()
+        return
+
     if len(sys.argv) > 2 and sys.argv[1] == "--serve":
         port = int(sys.argv[2])
         srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), Handler)
-        while time.time() - last_request[0] < IDLE_TIMEOUT:
+        while not quit_requested[0] and time.time() - last_request[0] < IDLE_TIMEOUT:
             srv.handle_request()
         srv.server_close()
         return
 
     if len(sys.argv) < 2:
-        raise SystemExit("usage: serve_trainer.py <page.html relative to the served root>")
+        raise SystemExit("usage: serve_trainer.py [--stop | <page.html relative to the served root>]")
     page = sys.argv[1]
 
     candidates = range(PORT_START, PORT_START + 20)

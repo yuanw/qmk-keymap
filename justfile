@@ -215,6 +215,10 @@ serve target="":
       python scripts/serve_trainer.py keymap-drawer/{{ target }}_trainer.html
     fi
 
+# Stop the keymap trainer server (it also quits itself after 30 idle minutes)
+stop:
+    python scripts/serve_trainer.py --stop
+
 # Refresh the committed board geometry that the trainer pages (and nix build) use.
 # imprint_layout.json is written by `just keymap imprint` instead.
 layouts:
