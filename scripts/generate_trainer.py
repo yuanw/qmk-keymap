@@ -380,11 +380,19 @@ def build_data(target, yaml_path, geom_path, layout_name, qmk_json, firmware):
 
 
 REPO = Path(__file__).parents[1]
+BOARDS = ["charybdis", "dilemma", "imprint", "spankbd"]
+INDEX = """<!doctype html><meta charset=utf-8><title>keymap trainers</title>
+<style>body{{font:16px ui-sans-serif,system-ui;background:#17181c;color:#e6e6e6;padding:2rem}}
+a{{color:#e0a96d}}li{{margin:.3rem 0}}</style>
+<h1>keymap trainers</h1><ul>{links}</ul>
+"""
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("target")
+    ap.add_argument("target", nargs="?")
+    ap.add_argument("--index", action="store_true",
+                    help="write an index page linking every board instead of a single page")
     ap.add_argument("--yaml", help="default: keymap-drawer/<target>_output.yaml")
     ap.add_argument("--geom", help="default: keymap-drawer/<target>_layout.json")
     ap.add_argument("--layout", help="default: the only layout in --geom")
@@ -393,6 +401,16 @@ def main():
     ap.add_argument("--src", default=str(REPO / "yuanw.c"),
                     help="keymap source with the LT()/combo definitions")
     args = ap.parse_args()
+
+    if args.index:
+        out = Path(args.out or REPO / "keymap-drawer" / "index.html")
+        links = "".join(f'<li><a href="{b}_trainer.html">{b}</a></li>' for b in BOARDS)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(INDEX.format(links=links))
+        print(f"wrote {out}")
+        return
+    if not args.target:
+        ap.error("target is required unless --index")
 
     # Defaults are all committed files, so the pages can be built without the
     # firmware submodules — that is what lets flake.nix package the site.

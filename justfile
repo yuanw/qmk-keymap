@@ -203,6 +203,18 @@ trainer target="charybdis":
     python scripts/generate_trainer.py {{ target }}
     python scripts/serve_trainer.py keymap-drawer/{{ target }}_trainer.html
 
+# Serve the generated trainer pages without rebuilding. No target: the index of all boards.
+serve target="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [ -z "{{ target }}" ]; then
+      python scripts/generate_trainer.py --index > /dev/null
+      python scripts/serve_trainer.py keymap-drawer/index.html
+    else
+      [ -f keymap-drawer/{{ target }}_trainer.html ] || just trainer {{ target }}
+      python scripts/serve_trainer.py keymap-drawer/{{ target }}_trainer.html
+    fi
+
 # Refresh the committed board geometry that the trainer pages (and nix build) use.
 # imprint_layout.json is written by `just keymap imprint` instead.
 layouts:

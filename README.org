@@ -13,6 +13,8 @@ symbol based on https://github.com/getreuer/qmk-keymap
 
 #+begin_example
 just trainer charybdis   # or imprint / dilemma / spankbd
+just serve               # serve the pages as they are, index of all four boards
+just serve dilemma       # one board; builds it first if the page is missing
 #+end_example
 
 Reuses the keymap-drawer YAML and the QMK geometry to write a self-contained

@@ -43,6 +43,8 @@ just mouseless          # Outputs mouseless_grid_config.yaml
 
 # Generate + open the browser keymap trainer (practice / drill / explore)
 just trainer charybdis   # Outputs keymap-drawer/charybdis_trainer.html
+just serve               # Serve existing pages only: index of all boards (generate_trainer.py --index)
+just serve dilemma       # Serve one board, building it first if missing
 python scripts/test_generate_trainer.py   # self-check for the trainer generator
 
 # Refresh the committed board geometry the trainer builds against
