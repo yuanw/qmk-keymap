@@ -196,6 +196,37 @@ keymap target:
     fi
     echo "{{ green }}Generated $outdir/{{ target }}.svg{{ reset }}"
 
+# Generate a browser keymap trainer (practice / drill / explore) and open it
+trainer target="charybdis":
+    #!/usr/bin/env bash
+    just keymap {{ target }}
+    python scripts/generate_trainer.py {{ target }}
+    python scripts/serve_trainer.py keymap-drawer/{{ target }}_trainer.html
+
+# Serve the generated trainer pages without rebuilding. No target: the index of all boards.
+serve target="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [ -z "{{ target }}" ]; then
+      python scripts/generate_trainer.py --index > /dev/null
+      python scripts/serve_trainer.py keymap-drawer/index.html
+    else
+      [ -f keymap-drawer/{{ target }}_trainer.html ] || just trainer {{ target }}
+      python scripts/serve_trainer.py keymap-drawer/{{ target }}_trainer.html
+    fi
+
+# Refresh the committed board geometry that the trainer pages (and nix build) use.
+# imprint_layout.json is written by `just keymap imprint` instead.
+layouts:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    python scripts/extract_layout.py charybdis/keyboards/bastardkb/charybdis/3x5/info.json \
+      LAYOUT keymap-drawer/charybdis_layout.json
+    python scripts/extract_layout.py charybdis/keyboards/bastardkb/dilemma/3x5_3_trackball/keyboard.json \
+      LAYOUT_split_3x5_3 keymap-drawer/dilemma_layout.json
+    python scripts/extract_layout.py holykeebs_qmk/keyboards/holykeebs/spankbd/keyboard.json \
+      LAYOUT_split_3x5_3 keymap-drawer/spankbd_layout.json
+
 # Generate compile_commands.json for clangd LSP
 compiledb target:
     #!/usr/bin/env bash

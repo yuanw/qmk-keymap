@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<style>
+:root {
+  --bg: #14161a; --fg: #e8eaf0; --dim: #8b93a7; --key: #262a33; --keyline: #3a4050;
+  --ok: #3fbf6f; --bad: #e05252; --hi: #d9a441; --chip: #2d3340;
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 18px 22px 40px; background: var(--bg); color: var(--fg);
+       font: 15px/1.45 ui-sans-serif, system-ui, sans-serif; }
+h1 { font-size: 17px; margin: 0 0 12px; font-weight: 600; }
+h1 span { color: var(--dim); font-weight: 400; font-size: 13px; }
+header { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-bottom: 14px; }
+button, .chip, select { background: var(--chip); color: var(--fg); border: 1px solid var(--keyline);
+  border-radius: 6px; padding: 4px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+button.on { background: var(--hi); color: #17181c; border-color: var(--hi); font-weight: 600; }
+.chip { opacity: .55; } .chip.on { opacity: 1; }
+#stats { margin-left: auto; color: var(--dim); font-size: 13px; font-variant-numeric: tabular-nums; }
+#prompt { min-height: 92px; display: flex; flex-direction: column; justify-content: center;
+  align-items: center; gap: 6px; margin-bottom: 6px; }
+#glyph { font-size: 54px; font-weight: 700; line-height: 1; }
+#route { color: var(--dim); font-size: 14px; }
+#route b { color: var(--hi); font-weight: 600; }
+#text { width: 100%; max-width: 900px; margin: 0 auto 10px; display: block; background: var(--key);
+  color: var(--fg); border: 1px solid var(--keyline); border-radius: 8px; padding: 10px 12px;
+  font: 20px/1.6 ui-monospace, monospace; height: 110px; resize: vertical; }
+#para { max-width: 900px; margin: 0 auto 10px; font: 21px/1.6 ui-monospace, monospace;
+  white-space: pre-wrap; word-break: break-word; }
+#para .done { color: var(--ok); } #para .err { color: var(--bad); text-decoration: underline; }
+#para .todo { color: var(--dim); } #para .na { color: #4a5060; }
+#para .cur { background: var(--hi); color: #17181c; border-radius: 3px; }
+#board { display: block; margin: 0 auto; max-width: 1000px; width: 100%; }
+#board g { transition: opacity .1s; }
+#board rect.face { fill: var(--key); stroke: var(--keyline); stroke-width: 1.4; rx: 5; }
+#board rect.ghost { opacity: .45; }
+#board text { fill: var(--fg); font: 600 15px ui-sans-serif, system-ui, sans-serif;
+  text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+#board text.sub { fill: var(--dim); font-size: 10px; font-weight: 400; }
+#board.hide-labels text { opacity: 0; }
+#board g.dim { opacity: .3; }
+#board g.hit rect.face { fill: var(--hi); stroke: var(--hi); }
+#board g.hit text, #board g.hit text.sub { fill: #17181c; }
+#board g.ok rect.face, #board g.found rect.face { fill: var(--ok); stroke: var(--ok); }
+#board g.ok text, #board g.ok text.sub,
+#board g.found text, #board g.found text.sub { fill: #17181c; }
+#board g.bad rect.face { fill: var(--bad); stroke: var(--bad); }
+#board g.hold rect.face { stroke: var(--hi); stroke-dasharray: 5 4; }
+#board g.hold text.sub { fill: var(--hi); }
+#board circle.heat { fill: var(--bad); pointer-events: none; }
+#board g.hit circle.heat, #board g.found circle.heat, #board g.ok circle.heat { opacity: 0 !important; }
+#hint { text-align: center; color: var(--dim); font-size: 13px; min-height: 20px; margin-top: 6px; }
+#weak { margin-top: 18px; color: var(--dim); font-size: 13px; }
+#weak b { color: var(--fg); font-family: ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<h1>__TITLE__ <span>— type on the keyboard, the browser listens</span></h1>
+
+<header>
+  <button data-mode="practice">Practice</button>
+  <button data-mode="drill">Drill keys</button>
+  <button data-mode="explore">Explore</button>
+  <button id="labels">labels on</button>
+  <button id="hints">hints on</button>
+  <button id="refill">new text</button>
+  <select id="level" title="practice text"></select>
+  <button id="edit">edit text</button>
+  <span id="layers"></span>
+  <span id="stats"></span>
+</header>
+
+<div id="prompt">
+  <div id="glyph"></div>
+  <div id="route"></div>
+</div>
+
+<textarea id="text" spellcheck="false"></textarea>
+<div id="para"></div>
+<svg id="board"></svg>
+<div id="hint">click a key, or press one</div>
+<div id="weak"></div>
+
+<script>
+const D = __DATA__;
+const W = __WORDS__;
+const U = 34, GAP = 3;
+const $ = (s) => document.querySelector(s);
+const base = D.layers[0];
+const store = "trainer:" + D.target;
+
+let S = Object.assign({ correct: 0, wrong: 0, errors: {}, pref: {}, level: "common", t0: null },
+                      JSON.parse(localStorage.getItem(store) || "{}"));
+const save = () => localStorage.setItem(store, JSON.stringify(S));
+
+let mode = "practice", layer = 0, showLabels = true, hints = true, editing = false,
+    cur = null, pos = 0, queue = [];
+let poolOn = new Set([...Object.keys(D.targets), ...Object.keys(D.combos)]);
+
+// ---- helpers -------------------------------------------------------------
+const cellOf = (li, i) => {
+  const c = D.cells[D.layers[li]][i];
+  if (li && (!c.t || c.trans)) { const b = D.cells[base][i]; if (b.t) return b; }
+  return c;
+};
+// Base press beats a combo beats a layered reach; a route you picked yourself
+// beats all of them, and a layered reach is worth less when the layer key sits
+// on the same hand as the target (reaching across with one hand is the harder
+// move, so prefer the layer key on the other hand).
+const sigOf = (t) => t.layerName + ":" + t.keys.join(",");
+function rank(t) {
+  let r = t.layerName === "Combo" ? 1 : t.layer ? 2 : 0;
+  if (t.shifted) r += 0.5;                          // a plain press beats a shifted one
+  if (S.pref[t.char] === sigOf(t)) r -= 4;
+  if (t.layer && t.keys.length === 1) {
+    const hk = D.holdKeys[t.layerName] || [];
+    if (hk.length && hk.every((k) => D.hand[k] === D.hand[t.keys[0]])) r += 1.5;
+  }
+  return r;
+}
+const allFor = (ch) => (D.targets[ch] || []).concat(D.combos[ch] || []);
+const has = (ch) => allFor(ch).length > 0;
+const best = (ch) => allFor(ch).sort((a, b) => rank(a) - rank(b))[0];
+const holdKeysFor = (t) => (t && t.layer ? D.holdKeys[t.layerName] || [] : []);
+// Prompt the character you should end up with, not the key's printed label
+// (the r on the thumb reads "R NUM" on the board).
+const glyphText = (t) => (t.char === " " ? "␣" : t.char.length === 1 ? t.char.toUpperCase() : t.label);
+const isModifier = (e) => e.ctrlKey || e.metaKey || e.altKey;
+const isModifierKey = (k) => ["Shift","Control","Alt","Meta","CapsLock"].includes(k);
+
+function words(n) {
+  const lv = W.levels[S.level] || W.levels.common;
+  const list = W.words[lv.list];
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    let t = pick(list);
+    if (lv.marks && Math.random() < 0.2) t += pick(lv.marks);
+    if (lv.numbers && Math.random() < lv.numbers) t = String(Math.floor(Math.random() * 1000));
+    if (lv.code && Math.random() < lv.code) t = pick(W.code);
+    out.push(t);
+  }
+  return out.join(" ");
+}
+
+// ---- board ---------------------------------------------------------------
+function renderBoard() {
+  const svg = $("#board");
+  const maxX = Math.max(...D.keys.map((k) => k.x + k.w));
+  const maxY = Math.max(...D.keys.map((k) => k.y + k.h));
+  svg.setAttribute("viewBox", `0 0 ${maxX * U} ${(maxY + 0.3) * U}`);
+  svg.innerHTML = "";
+  D.keys.forEach((k, i) => {
+    const c = cellOf(layer, i);
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.dataset.idx = i;
+    const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    r.setAttribute("class", "face" + (c.t ? "" : " ghost"));
+    r.setAttribute("x", k.x * U + GAP / 2); r.setAttribute("y", k.y * U + GAP / 2);
+    r.setAttribute("width", k.w * U - GAP); r.setAttribute("height", k.h * U - GAP);
+    r.setAttribute("rx", 6);
+    g.appendChild(r);
+    const heat = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    heat.setAttribute("class", "heat");
+    heat.setAttribute("cx", k.x * U + GAP / 2 + 8); heat.setAttribute("cy", (k.y + k.h) * U - GAP / 2 - 8);
+    heat.setAttribute("r", 5); heat.setAttribute("opacity", 0);
+    g.appendChild(heat);
+    const cx = (k.x + k.w / 2) * U, cy = (k.y + k.h / 2) * U;
+    const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    t.setAttribute("x", cx); t.setAttribute("y", cy); t.textContent = c.t;
+    t.style.fontSize = Math.max(7, Math.min(15, (k.w * U - 8) / (0.62 * (c.t.length || 1)))) + "px";
+    g.appendChild(t);
+    const mk = (txt, x, y) => {
+      const s = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      s.setAttribute("class", "sub"); s.setAttribute("x", x); s.setAttribute("y", y);
+      s.textContent = txt; g.appendChild(s);
+    };
+    if (c.h) mk(c.h, (k.x + k.w) * U - GAP - 8, k.y * U + GAP + 9);
+    if (c.s) mk(c.s, cx, cy + 12);
+    g.addEventListener("click", () => inspect(i));
+    svg.appendChild(g);
+  });
+  $("#board").classList.toggle("hide-labels", !showLabels);
+  paintHeat();
+}
+const node = (i) => $(`#board g[data-idx="${i}"]`);
+function flash(i, cls, ms = 220) {
+  const g = node(i); if (!g) return;
+  g.classList.add(cls); setTimeout(() => g.classList.remove(cls), ms);
+}
+function mark(cls, hits, force, holds) {
+  document.querySelectorAll("#board g").forEach((g) =>
+    g.classList.remove("dim", "hit", "found", "hold"));
+  if (!hints && !force && mode !== "explore") return;
+  if (cls) document.querySelectorAll("#board g").forEach((g) => g.classList.add("dim"));
+  for (const i of holds || []) { const g = node(i); if (g) { g.classList.remove("dim"); g.classList.add("hold"); } }
+  for (const i of hits || []) { const g = node(i); if (g) { g.classList.remove("dim"); g.classList.add(cls || "hit"); } }
+}
+
+// ---- prompt / modes ------------------------------------------------------
+function setLayer(li) { if (li !== layer) { layer = li; renderBoard(); } syncChips(); }
+function routeText(t) {
+  if (!t) return "";
+  if (t.layerName === "Combo")
+    return `<b>combo</b> — press <b>${t.keys.map((k) => cellOf(0, k).t || "?").join("</b> + <b>")}</b>`;
+  if (t.shifted) return `<b>Base</b> — hold <b>Shift</b>, tap <b>${t.base}</b>`;
+  if (!t.layer) return `<b>Base</b> — press <b>${t.label}</b>` + (t.shift ? ` (shift for ${t.shift})` : "");
+  const hold = D.holds[t.layerName.split(" ").pop()];
+  return `<b>${t.layerName}</b> — hold <b>${hold || t.layerName}</b>, tap <b>${t.label}</b>`;
+}
+function showTarget(t) {
+  cur = t;
+  $("#glyph").textContent = t ? glyphText(t) : "";
+  $("#route").innerHTML = routeText(t);
+  if (t) { setLayer(t.layer); mark("hit", t.keys, false, holdKeysFor(t)); } else mark(null, []);
+}
+function syncChips() {
+  document.querySelectorAll("#layers .chip").forEach((c, i) =>
+    c.classList.toggle("on", i === layer));
+}
+function nextDrill() {
+  const pool = [...poolOn].filter(has);
+  if (!pool.length) return showTarget(null);
+  const weights = pool.map((c) => 1 + 3 * (S.errors[c] || 0));
+  let r = Math.random() * weights.reduce((a, b) => a + b, 0), j = 0;
+  for (; j < pool.length - 1; j++) { r -= weights[j]; if (r < 0) break; }
+  showTarget(best(pool[j]));
+}
+function buildQueue(text) {
+  queue = [];
+  [...text].forEach((ch, i) => { if (has(ch)) queue.push({ ch, i, state: null }); });
+  pos = 0;
+}
+function renderPara() {
+  const text = $("#text").value;
+  const html = [...text].map((ch, i) => {
+    const cls = !has(ch) ? "na" : i < pos ? "done" : "todo";
+    return `<span class="${cls}${i === pos ? " cur" : ""}">${ch.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span>`;
+  }).join("");
+  $("#para").innerHTML = html;
+}
+function nextPractice() {
+  while (pos < $("#text").value.length && !has($("#text").value[pos])) pos++;
+  if (pos >= $("#text").value.length) {                       // refill endlessly
+    $("#text").value = words(45); buildQueue($("#text").value);
+  }
+  renderPara();
+  showTarget(best($("#text").value[pos] || ""));
+}
+function inspect(i) {
+  const c = cellOf(layer, i);
+  const where = Object.entries(D.targets).filter(([, v]) => v.some((t) => t.keys.includes(i)))
+    .map(([k]) => (k === " " ? "␣" : k)).join(" ");
+  $("#glyph").textContent = c.t || "·";
+  $("#route").innerHTML = (c.h ? `hold ${c.h} · ` : "") + (c.s ? `shift → ${c.s} · ` : "") +
+    (where ? `types <b>${where}</b>` : "no typed output (macro / mouse / layer)");
+  mark("hit", [i], true);
+}
+
+// ---- error heat ----------------------------------------------------------
+function heatMap() {
+  const counts = new Map();
+  for (const [ch, n] of Object.entries(S.errors)) {
+    const t = best(ch);
+    if (t) for (const k of t.keys) counts.set(k, (counts.get(k) || 0) + n);
+  }
+  const max = Math.max(1, ...counts.values());
+  return new Map([...counts].map(([k, n]) => [k, 0.2 + 0.55 * (n / max)]));
+}
+function paintHeat() {
+  const heat = heatMap();
+  document.querySelectorAll("#board g").forEach((g) => {
+    const c = g.querySelector("circle.heat");
+    if (c) c.setAttribute("opacity", heat.get(+g.dataset.idx) || 0);
+  });
+}
+
+// ---- explore -------------------------------------------------------------
+function showFound(ch) {
+  const t = best(ch);
+  if (!t) {
+    $("#glyph").textContent = ch;
+    $("#route").textContent = "no key found for this press";
+    $("#hint").innerHTML = "";
+    mark(null, []);
+    return;
+  }
+  setLayer(t.layer);
+  mark("found", allFor(ch).filter((x) => x.layer === t.layer).flatMap((x) => x.keys), true, holdKeysFor(t));
+  $("#glyph").textContent = glyphText(t);
+  $("#route").innerHTML = routeText(t);
+  const alts = allFor(ch).sort((a, b) => rank(a) - rank(b));
+  $("#hint").innerHTML = alts.length < 2 ? "" : "ways to type it: " +
+    alts.map((a) => `<button data-sig="${sigOf(a)}"${sigOf(a) === sigOf(t) ? ' class="on"' : ""}>${routeText(a)}</button>`).join(" ") +
+    ` <button id="forget">forget</button>`;
+  document.querySelectorAll("#hint button[data-sig]").forEach((b) => (b.onclick = () => {
+    S.pref[ch] = b.dataset.sig; save(); showFound(ch); bumpStats();
+  }));
+  const f = $("#forget");
+  if (f) f.onclick = () => { delete S.pref[ch]; save(); showFound(ch); bumpStats(); };
+}
+
+// ---- scoring -------------------------------------------------------------
+function bumpStats() {
+  const min = S.t0 ? (Date.now() - S.t0) / 60000 : 0;
+  const wpm = min > 0.05 ? Math.round(S.correct / 5 / min) : 0;
+  const tot = S.correct + S.wrong;
+  $("#stats").textContent = `wpm ${wpm} · acc ${tot ? Math.round((100 * S.correct) / tot) : 100}% · ${S.correct}✓ ${S.wrong}✗`;
+  const top = Object.entries(S.errors).sort((a, b) => b[1] - a[1]).slice(0, 8);
+  const routes = Object.keys(S.pref).length;
+  $("#weak").innerHTML = (top.length
+    ? "needs work: " + top.map(([c, n]) => `<b>${c === " " ? "␣" : c}</b> ${n}`).join("  ") +
+      `  <button id="reset">reset stats</button>` : "") +
+    (routes ? `  · ${routes} route${routes > 1 ? "s" : ""} remembered <button id="forgetall">forget routes</button>` : "");
+  const r = $("#reset");
+  if (r) r.onclick = () => { S = { correct: 0, wrong: 0, errors: {}, pref: S.pref, t0: null }; save(); bumpStats(); };
+  const fa = $("#forgetall");
+  if (fa) fa.onclick = () => { S.pref = {}; save(); bumpStats(); };
+  paintHeat();
+}
+function hit(t, ok, pressedChar) {
+  if (!S.t0) S.t0 = Date.now();
+  if (ok) { S.correct++; }
+  else {
+    S.wrong++;
+    if (t) S.errors[t.char] = (S.errors[t.char] || 0) + 1;
+    if (pressedChar) allFor(pressedChar).slice(0, 1).forEach((p) => p.keys.forEach((k) => flash(k, "bad")));
+  }
+  save(); bumpStats();
+  t.keys.forEach((k) => flash(k, ok ? "ok" : "bad", ok ? 160 : 400));
+  if (!ok) setTimeout(() => { mark("hit", t.keys, true, holdKeysFor(t)); }, 400);
+}
+
+// ---- input ---------------------------------------------------------------
+document.addEventListener("keydown", (e) => {
+  if (document.activeElement === $("#text")) return;
+  if (isModifierKey(e.key) || isModifier(e)) return;
+  const ch = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  if (has(ch)) e.preventDefault();
+  if (mode === "explore") { showFound(ch); return; }
+  if (!cur) return;
+  // A combo can leak its member presses before it fires — do not count those.
+  if (cur.layerName === "Combo" && cur.keys.some((k) => D.baseChar[k] === ch)) return;
+  const ok = ch === cur.char;
+  hit(cur, ok, ch);
+  if (mode === "drill") { if (ok) setTimeout(nextDrill, 180); }
+  else if (ok) {
+    pos++; nextPractice();
+  } else renderPara();
+});
+
+// ---- wiring --------------------------------------------------------------
+document.querySelectorAll("[data-mode]").forEach((b) => (b.onclick = () => {
+  mode = b.dataset.mode;
+  document.querySelectorAll("[data-mode]").forEach((x) => x.classList.toggle("on", x === b));
+  $("#text").style.display = mode === "practice" && editing ? "block" : "none";
+  $("#para").style.display = mode === "practice" ? "block" : "none";
+  $("#prompt").style.display = mode === "practice" ? "none" : "flex";
+  $("#refill").style.display = mode === "practice" ? "inline-block" : "none";
+  $("#edit").style.display = mode === "practice" ? "inline-block" : "none";
+  $("#hint").innerHTML = mode === "explore" ? "click a key, or press one — the board shows where it lives" : "";
+  if (mode === "explore") { $("#glyph").textContent = ""; $("#route").textContent = "press a key"; }
+  if (mode === "drill") nextDrill(); else if (mode === "practice") nextPractice();
+  else mark(null, []);
+}));
+$("#labels").onclick = () => {
+  showLabels = !showLabels;
+  $("#labels").textContent = showLabels ? "labels on" : "labels off";
+  renderBoard();
+};
+$("#hints").onclick = () => {
+  hints = !hints;
+  $("#hints").textContent = hints ? "hints on" : "hints off";
+  if (cur) mark("hit", cur.keys, false, holdKeysFor(cur)); else mark(null, []);
+};
+const newText = () => { $("#text").value = words(45); buildQueue($("#text").value); nextPractice(); };
+$("#refill").onclick = newText;
+const sel = $("#level");
+sel.innerHTML = Object.entries(W.levels).map(([k, v]) =>
+  `<option value="${k}"${k === S.level ? " selected" : ""}>${v.label}</option>`).join("");
+sel.onchange = () => { S.level = sel.value; save(); newText(); };
+$("#edit").onclick = () => {
+  editing = !editing;
+  $("#edit").textContent = editing ? "done" : "edit text";
+  $("#text").style.display = editing ? "block" : "none";
+  if (editing) $("#text").focus(); else { buildQueue($("#text").value); nextPractice(); }
+};
+$("#text").oninput = () => { buildQueue($("#text").value); nextPractice(); };
+$("#board").addEventListener("mousedown", () => $("#text").blur());
+D.layers.forEach((name, i) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.textContent = name; b.onclick = () => { setLayer(i); mark(null, []); };
+  $("#layers").appendChild(b);
+});
+
+renderBoard();
+document.querySelector('[data-mode="practice"]').classList.add("on");
+$("#text").value = words(45);
+buildQueue($("#text").value);
+nextPractice();
+bumpStats();
+</script>
+</body>
+</html>

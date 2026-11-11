@@ -14,3 +14,12 @@ compile_commands.json
 *.uf2
 secrets.h
 .cache
+
+# Generated trainer pages
+keymap-drawer/*_trainer.html
+
+# Python
+__pycache__/
+result
+result-*
+keymap-drawer/index.html
