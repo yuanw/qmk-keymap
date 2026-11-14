@@ -180,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
-                                   XXXXXXX, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
+                                   _______, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_LR(
