@@ -9,6 +9,7 @@ enum my_keycodes {
     UND,
     KC_SECRET_1,
     KC_SECRET_2,
+    KC_SECRET_3,
     ARROW,
     EMAIL_1,
     EMAIL_2,
