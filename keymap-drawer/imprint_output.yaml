@@ -398,7 +398,9 @@ layers:
       t: ▽
       type: trans
     - ''
-    - ''
+    - h: ''
+      t: ▽
+      type: trans
     - QK MOUSE BUTTON 1
     - QK MOUSE BUTTON 2
     - ''
@@ -502,7 +504,7 @@ layers:
     - '1'
     - '2'
     - '3'
-    - ''
+    - SECRET 3
     - ''
   - - ''
     - ''

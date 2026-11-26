@@ -1238,8 +1238,9 @@ text.trackball {
 <g class="key keypos-35" transform="translate(896, 140)">
 <rect class="key" height="52" rx="6" ry="6" visibility="hidden" width="52" x="-26" y="-26"/>
 </g>
-<g class="key keypos-36" transform="translate(252, 224)">
-<rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<g class="key trans keypos-36" transform="translate(252, 224)">
+<rect class="key trans" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key trans tap" x="0" y="0">▽</text>
 </g>
 <g class="key keypos-37" transform="translate(308, 235)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
@@ -1571,6 +1572,9 @@ text.trackball {
 </g>
 <g class="key keypos-28" transform="translate(252, 140)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>
+<text class="key tap" x="0" y="0">
+<tspan dy="-0.6em" x="0">SECRET</tspan><tspan dy="1.2em" x="0">3</tspan>
+</text>
 </g>
 <g class="key keypos-29" transform="translate(308, 140)">
 <rect class="key" height="52" rx="6" ry="6" width="52" x="-26" y="-26"/>

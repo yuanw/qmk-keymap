@@ -67,7 +67,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - ''
-    - ''
+    - {t: ▽, type: trans}
     - QK MOUSE BUTTON 1
     - QK MOUSE BUTTON 2
     - ''
@@ -81,7 +81,7 @@ layers:
   L7:
   - ['', '', '8', '9', SECRET 1, '', EE CLR, '', '', '']
   - [QK BOOT, '', '', SELWORD, SELWBAK, SELLINE, SECRET 2, '', '', '']
-  - ['', '', '', '', '', '1', '2', '3', '', '']
+  - ['', '', '', '', '', '1', '2', '3', SECRET 3, '']
   - ['', '', '', '', '', '', '', '-', '', '']
   - ['', '', '', '', '', '', '', '']
   L8:
