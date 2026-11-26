@@ -24,7 +24,7 @@ static const char *const secrets[] PROGMEM = {
 
 static bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_SECRET_1 ... KC_SECRET_2:
+        case KC_SECRET_1 ... KC_SECRET_3:
             if (record->event.pressed) {
                 clear_mods();
                 clear_oneshot_mods();
@@ -180,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______, _______,                 _______, _______,  _______,  _______,  _______,
-                                   XXXXXXX, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
+                                   _______, QK_MOUSE_BUTTON_1, QK_MOUSE_BUTTON_2,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [NUM] = LAYOUT_LR(
@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [TXT] = LAYOUT_LR(
         XXXXXXX,    KC_8,    KC_9, KC_SECRET_1, XXXXXXX,                   EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
         SELWORD, SELWBAK, SELLINE, KC_SECRET_2, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_1,    KC_2,    KC_3,    XXXXXXX,     XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_1,    KC_2,    KC_3,    KC_SECRET_3,     XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                    XXXXXXX, KC_MINS, XXXXXXX,              XXXXXXX, XXXXXXX, XXXXXXX
     ),
 

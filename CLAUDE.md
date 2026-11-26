@@ -45,6 +45,7 @@ just mouseless          # Outputs mouseless_grid_config.yaml
 just trainer charybdis   # Outputs keymap-drawer/charybdis_trainer.html
 just serve               # Serve existing pages only: index of all boards (generate_trainer.py --index)
 just serve dilemma       # Serve one board, building it first if missing
+just stop                # Quit the trainer server (it also quits after 30 idle minutes)
 python scripts/test_generate_trainer.py   # self-check for the trainer generator
 
 # Refresh the committed board geometry the trainer builds against
@@ -97,8 +98,10 @@ keyboard `layouts` block (`just layouts`, `scripts/extract_layout.py`) — so th
 and `nix build .#trainer` need no submodules; the test script fails if a copy goes stale.
 `scripts/serve_trainer.py` opens it at `http://127.0.0.1:8765/...` (LibreWolf's sandbox
 refuses to read files outside the user dirs, so `file://` will not load); the server is
-reused between runs and exits after 30 idle minutes. Set `TRAINER_ROOT` to serve another
-directory (the nix package does). Practice text comes from `WORDS`/`LEVELS` in the
+reused between runs, exits after 30 idle minutes, and `just stop` (or
+`keymap-trainer --stop`) quits it sooner by asking it over `/__quit__` — it is detached,
+so there is no Ctrl-C. Set `TRAINER_ROOT` to serve another directory (the nix package
+does). Practice text comes from `WORDS`/`LEVELS` in the
 generator: word list plus optional punctuation, numbers and code symbols, so each level
 forces different layers.
 

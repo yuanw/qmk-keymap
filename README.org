@@ -15,6 +15,7 @@ symbol based on https://github.com/getreuer/qmk-keymap
 just trainer charybdis   # or imprint / dilemma / spankbd
 just serve               # serve the pages as they are, index of all four boards
 just serve dilemma       # one board; builds it first if the page is missing
+just stop                # quit the server now (it also quits itself after 30 idle min)
 #+end_example
 
 Reuses the keymap-drawer YAML and the QMK geometry to write a self-contained
@@ -42,6 +43,7 @@ symbols to Sym.
 nix build .#trainer
 ./result/bin/keymap-trainer              # index page of the four boards
 ./result/bin/keymap-trainer charybdis
+./result/bin/keymap-trainer --stop
 #+end_example
 
 It builds from committed files only (keymap-drawer/<target>.json, _output.yaml and

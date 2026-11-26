@@ -52,7 +52,10 @@
               name = "keymap-trainer";
               runtimeInputs = [ python3 ];
               text = ''
-                # keymap-trainer [target] — serve the pages on 127.0.0.1 (no target: the index)
+                # keymap-trainer [target|--stop] — serve the pages on 127.0.0.1 (no target: the index)
+                if [ "''${1:-}" = --stop ]; then
+                  exec python3 ${./scripts}/serve_trainer.py --stop
+                fi
                 if [ $# -gt 0 ]; then page="''${1}_trainer.html"; else page=index.html; fi
                 exec env TRAINER_ROOT=${pages}/pages python3 ${./scripts}/serve_trainer.py "$page"
               '';
